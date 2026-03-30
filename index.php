@@ -11,7 +11,7 @@ mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
         <title>PIXEL BLASTER ADVENTURE 2</title>
     </head>
     <body>
-        <?php echo '<p>Hello World</p>'; ?>
+        <?php echo '<p>Bienvenue</p>'; ?>
     </body>
 </html>
 <script> src="maindos/main.js"</script>
