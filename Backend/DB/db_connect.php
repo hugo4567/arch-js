@@ -13,6 +13,6 @@ try {
     $conn = mysqli_connect($serveur, $utilisateur, $mot_de_passe, $base_de_donnees, 3306);
     // Si on arrive ici, c'est que c'est gagné !
 } catch (mysqli_sql_exception $e) {
-    //echo "Détail de l'erreur : " . $e->getMessage();
+    echo "Détail de l'erreur : " . $e->getMessage();
 }
 ?>
