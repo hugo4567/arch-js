@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-	<base href="/">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Goozy - Wasm Engine</title>
@@ -35,12 +34,12 @@
 <body>
     <div id="loading">Chargement du moteur Wasm...</div>
 
-	<div id="fpsCounter" style="position: absolute; top: 10px; left: 10px; color: lime; font-family: monospace; font-size: 20px; font-weight: bold; z-index: 10;"" "pointer-events: none; text-shadow: 2px 2px 0px black;">
+	<div id="fpsCounter" style="position: absolute; top: 10px; left: 10px; color: lime; font-family: monospace; font-size: 20px; font-weight: bold; z-index: 10; pointer-events: none; text-shadow: 2px 2px 0px black;">
         FPS: 0
     </div>
 
     <canvas id="canvas" oncontextmenu="event.preventDefault()"></canvas>
 
-    <script type="module" src="main.js"></script>
+    <script type="module" src="./main.js"></script>
 </body>
 </html>
