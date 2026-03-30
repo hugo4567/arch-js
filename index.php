@@ -54,7 +54,7 @@ error_reporting(E_ALL);
             <h3>Espace Créateur</h3>
                 <p>Créez vos propres niveaux et partagez-les.</p>
                 <form action="login.php" method="POST">
-                    <a href="maindos/editor.html">Créer un niveau</a>
+                    <a href="login.php">Créer un niveau</a>
                 </form>
             </div>
 
