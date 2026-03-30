@@ -31,7 +31,7 @@ error_reporting(E_ALL);
             <div class="tab">
                 <h3>Infos & Contact</h3>
                 <p>&nbsp;Découvrez notre équipe et les détails du projet.</p>
-                <a href="infos.php" class="btn">Voir les infos</a>
+                <a href="info.php" class="btn">Voir les infos</a>
             </div>
 
             <div class="tab">
