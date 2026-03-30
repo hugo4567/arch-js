@@ -26,6 +26,13 @@ function select_admin($conn){
     return $rs;
 }
 
+function select_admin_login($conn, $login){
+    $sql = "SELECT * FROM admin WHERE login = $login";
+    $query = mysqli_query($conn, $sql);
+    $rs = creer_rs($query);
+    return $rs;
+}
+
 function creer_rs($query){
     $rs = [];
 

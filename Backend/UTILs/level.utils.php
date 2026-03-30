@@ -1,5 +1,5 @@
 <?php
-// FICHIER POUR DES FONCTIONS AUXILLIAIRES
+// FICHIER POUR DES FONCTIONS AUXILLIAIRES LIER A LEVEL
 function print_level($conn, $id)
 {
     if (isset($id)) 

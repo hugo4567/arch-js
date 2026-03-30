@@ -38,7 +38,7 @@ error_reporting(E_ALL);
                 <h3>Jouer au Jeu</h3>
                 <p>Lancez l'aventure directement dans votre navigateur.</p>
                 <form action="login.php" method="POST">
-                    <button type="submit" name="target" value="play"><a href="maindos/AppBundle/index.html">Jouer au jeu</a></button>
+                    <button type="submit" name="target" value="play">Lancer le Jeu</button>
                 </form>
             </div>
 
@@ -54,7 +54,7 @@ error_reporting(E_ALL);
                 <h3>Espace Créateur</h3>
                 <p>Créez vos propres niveaux et partagez-les.</p>
                 <form action="login.php" method="POST">
-                    <button type="submit" name="target" value="creator"><a href="maindos/editor.html">Créer un Niveau</a></button>
+                    <button type="submit" name="target" value="creator">Créer un Niveau</button>
                 </form>
             </div>
 
