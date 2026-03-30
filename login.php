@@ -58,25 +58,49 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Portail de Connexion</title>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <style>
-        body {
-            background-color: #ecf0f1;
-            padding: 50px 20px;
-            font-family: sans-serif;
-        }
-        .main-container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-        h1 { text-align: center; color: #2c3e50; margin-bottom: 40px; }
-        .error-msg { 
-            background: #f8d7da; color: #721c24; 
-            padding: 15px; margin-bottom: 20px; border-radius: 4px; text-align: center;
-        }
-    </style>
+/* --- Importation des polices --- */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Quicksand:wght@500;700&display=swap');
+
+body {
+    margin: 0;
+    padding: 40px 20px;
+    font-family: 'Quicksand', sans-serif;
+    /* Fond briques Pixel */
+    background: #4a6a72 radial-gradient(#6c8b93 20%, transparent 20%) 0 0,
+                #4a6a72 radial-gradient(#6c8b93 20%, transparent 20%) 8px 8px;
+    background-size: 16px 16px;
+    image-rendering: pixelated;
+    display: flex;
+    justify-content: center;
+}
+
+.main-container {
+    width: 100%;
+    max-width: 650px;
+}
+
+h1 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.2rem;
+    text-align: center;
+    color: #fff;
+    text-shadow: 3px 3px 0 #e74c3c, 5px 5px 0 rgba(0,0,0,0.4);
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+.error-msg {
+    background-color: #e74c3c;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 20px;
+    border: 4px solid #c0392b;
+    box-shadow: 0 4px 0 rgba(0,0,0,0.2);
+}
+</style>
 </head>
 <body>
 
