@@ -1,16 +1,3 @@
-<?php
-session_start();
-
-if (isset($_POST["login"])) {
-    if ($_POST["login"] == "admin" && $_POST["passwd"] == "admin") {
-        $_SESSION["admin"] = time();
-        header("Location: admin_joueur.php");
-        exit();
-    } else {
-        $erreur = "Login ou mot de passe incorrect.";
-    }
-}
-?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -140,9 +127,5 @@ if (isset($_POST["login"])) {
         </form>
     </div>
 </div>
-
-
-
-
 </body>
 </html>

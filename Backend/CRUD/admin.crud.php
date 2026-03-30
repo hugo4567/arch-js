@@ -22,7 +22,18 @@ function delete_admin($conn, $id_admin){
 function select_admin($conn){
     $sql = "SELECT * FROM admin";
     $query = mysqli_query($conn, $sql);
-    ...
+    $rs = creer_rs($query);
+    return $rs;
+}
+
+function creer_rs($query){
+    $rs = [];
+
+    while ($row = mysqli_fetch_assoc($query)){
+        $rs[] = $row;
+    }
+
+    return $rs;
 }
 
 ?>
