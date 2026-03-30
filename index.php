@@ -17,4 +17,4 @@ mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 <script> src="maindos/main.js"</script>
 <script> src="maindos/AppBundle/main.js"</script>
 
-<a> href=login.php login</a>
+<a href=login.php >login</a>
