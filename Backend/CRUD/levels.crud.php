@@ -1,3 +1,70 @@
 <?php
+// --- 1. CREATE ---
+function create_level($conn, $name, $type, $id_crea, $level, $nb_play, $note_pos, $note_neg) {
+    // Sécurisation des données
+    $name = mysqli_real_escape_string($conn, $name);
+    $type = (int)$type;
+    $id_crea = (int)$id_crea;
+    $level = (int)$level;
+    $nb_play = (int)$nb_play;
+    $note_pos = (int)$note_pos;
+    $note_neg = (int)$note_neg;
 
+    $sql = "INSERT INTO ma_table (name, type, id_crea, level, nb_play, note_pos, note_neg) 
+            VALUES ('$name', $type, $id_crea, $level, $nb_play, $note_pos, $note_neg)";
+            
+    return mysqli_query($conn, $sql); // Retourne true si succès, false sinon
+}
+
+// --- 2. READ (Tous les éléments) ---
+function get_all_level($conn) {
+    $sql = "SELECT * FROM ma_table ORDER BY id DESC";
+    $result = mysqli_query($conn, $sql);
+    
+    $items = [];
+    if ($result && mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $items[] = $row;
+        }
+    }
+    return $items; // Retourne un tableau avec toutes les lignes
+}
+
+// --- 3. READ (Un seul élément par ID) ---
+function get_item_by_id($conn, $id) {
+    $id = (int)$id;
+    $sql = "SELECT * FROM ma_table WHERE id = $id";
+    $result = mysqli_query($conn, $sql);
+    
+    if ($result && mysqli_num_rows($result) > 0) {
+        return mysqli_fetch_assoc($result); // Retourne la ligne sous forme de tableau associatif
+    }
+    return null; // Si non trouvé
+}
+
+// --- 4. UPDATE ---
+function update_item($conn, $id, $name, $type, $id_crea, $level, $nb_play, $note_pos, $note_neg) {
+    $id = (int)$id;
+    $name = mysqli_real_escape_string($conn, $name);
+    $type = (int)$type;
+    $id_crea = (int)$id_crea;
+    $level = (int)$level;
+    $nb_play = (int)$nb_play;
+    $note_pos = (int)$note_pos;
+    $note_neg = (int)$note_neg;
+
+    $sql = "UPDATE ma_table 
+            SET name='$name', type=$type, id_crea=$id_crea, level=$level, nb_play=$nb_play, note_pos=$note_pos, note_neg=$note_neg 
+            WHERE id=$id";
+
+    return mysqli_query($conn, $sql);
+}
+
+// --- 5. DELETE ---
+function delete_item($conn, $id) {
+    $id = (int)$id;
+    $sql = "DELETE FROM ma_table WHERE id=$id";
+    
+    return mysqli_query($conn, $sql);
+}
 ?>

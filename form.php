@@ -19,7 +19,56 @@ if (isset($_POST["login"])) {
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+<style>
+    .form-grid {
+       display: grid;
+       grid-template-columns: 1fr 1fr;
+       gap: 16px;
+   }
+   
+   @media (max-width: 600px) {
+       .form-grid { grid-template-columns: 1fr; }
+   }
+   
+   .form-group {
+       display: flex;
+       flex-direction: column;
+       gap: 6px;
+   }
+   
+   .form-group label {
+       font-size: .82rem;
+       text-transform: uppercase;
+       letter-spacing: .08em;
+       color: var(--gold-light);
+       font-weight: 600;
+   }
+   
+   .form-group input,
+   .form-group select {
+       background: var(--surface2);
+       border: 1px solid var(--gold);
+       border-radius: var(--radius);
+       color: var(--text);
+       padding: 10px 14px;
+       font-family: 'DM Sans', sans-serif;
+       font-size: .95rem;
+       transition: border-color .2s, box-shadow .2s;
+       outline: none;
+       width: 100%;
+   }
+   
+   .form-group input:focus,
+   .form-group select:focus {
+       border-color: var(--gold-light);
+       box-shadow: 0 0 0 3px rgba(181,136,99,.2);
+   }
+   
+   .form-group select option {
+       background: var(--surface2);
+       color: var(--gold-light);
+   }
+</style>
 <div class="login-wrap">
     <div class="login-box">
         <div class="subtitle">Connexion joueur</div>
