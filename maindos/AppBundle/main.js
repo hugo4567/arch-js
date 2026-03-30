@@ -4,24 +4,23 @@ async function startApp() {
     try {
         const { runMain, getAssemblyExports, getConfig} = await dotnet
             .withDiagnosticTracing(false)
-            .withModuleConfig({canvas: canvasElement // On donne le canvas à Emscripten AVANT le boot
-                })
+            .create();
 
         // On force le canvas pour Emscripten / EGL
         const canvasElement = document.getElementById('canvas');
         dotnet.instance.Module["canvas"] = canvasElement;
 
-        // --- LA MAGIE EST ICI : On r�cup�re les fonctions C# [JSExport] ---
+        // --- LA MAGIE EST ICI : On récupère les fonctions C# [JSExport] ---
         const exports = await getAssemblyExports(getConfig().mainAssemblyName);
         const interop = exports.Interop; // Si tu as mis un namespace, ce serait exports.TonNamespace.Interop
 
         function resizeCanvas() {
-            // On prend la taille d�finie par ton CSS (800x600) multipli�e par le zoom de l'�cran
+            // On prend la taille définie par ton CSS (800x600) multipliée par le zoom de l'écran
             const ratio = window.devicePixelRatio || 1.0;
             const displayWidth = canvasElement.clientWidth * ratio;
             const displayHeight = canvasElement.clientHeight * ratio;
 
-            // On met � jour les pixels internes
+            // On met à jour les pixels internes
             if (canvasElement.width !== displayWidth || canvasElement.height !== displayHeight) {
                 canvasElement.width = displayWidth;
                 canvasElement.height = displayHeight;
@@ -31,12 +30,12 @@ async function startApp() {
             interop.OnCanvasResize(displayWidth, displayHeight, ratio);
         }
 
-        // 1. Redimensionnement de la fen�tre
+        // 1. Redimensionnement de la fenêtre
         window.addEventListener('resize', resizeCanvas);
 
         // 2. Mouvements et clics de la souris
         canvasElement.addEventListener('mousemove', (e) => {
-            // offsetX/Y donne la position relative au canvas (et non � l'�cran)
+            // offsetX/Y donne la position relative au canvas (et non à l'écran)
             // On multiplie par le ratio pour correspondre aux vrais pixels internes du jeu
             const ratio = window.devicePixelRatio || 1.0;
             interop.OnMouseMove(e.offsetX * ratio, e.offsetY * ratio);
@@ -57,10 +56,10 @@ async function startApp() {
             interop.OnKeyUp(e.code);
         });
 
-        // D�sactiver le clic droit du navigateur
+        // Désactiver le clic droit du navigateur
         canvasElement.addEventListener('contextmenu', e => e.preventDefault());
 
-        // On appelle le resize une premi�re fois pour initialiser la bonne taille
+        // On appelle le resize une première fois pour initialiser la bonne taille
         resizeCanvas();
 
         // On lance le jeu
@@ -73,20 +72,20 @@ async function startApp() {
     }
 }
 /*
-// --- SYST�ME DE COMPTEUR FPS IND�PENDANT ---
+// --- SYSTÈME DE COMPTEUR FPS INDÉPENDANT ---
 const fpsElement = document.getElementById('fpsCounter');
 let lastFpsTime = performance.now();
 let frames = 0;
 
 function measureFPS(currentTime) {
     frames++;
-    // Si une seconde (1000 ms) s'est �coul�e
+    // Si une seconde (1000 ms) s'est écoulée
     if (currentTime - lastFpsTime >= 1000) {
         if (fpsElement) fpsElement.innerText = `FPS: ${frames}`;
-        frames = 0; // On remet le compteur � z�ro
+        frames = 0; // On remet le compteur à zéro
         lastFpsTime = currentTime;
     }
-    // On reboucle � l'infini � la vitesse de rafra�chissement de l'�cran
+    // On reboucle à l'infini à la vitesse de rafraîchissement de l'écran
     requestAnimationFrame(measureFPS);
 }
 // On lance la boucle
@@ -103,8 +102,8 @@ window.GameAudio = {
         audio.loop = loop;
         audio.volume = volume;
 
-        // Les navigateurs bloquent parfois l'audio si le joueur n'a pas encore cliqu�
-        audio.play().catch(e => console.warn("[AUDIO] Lecture bloqu�e par le navigateur (interaction requise) :", e));
+        // Les navigateurs bloquent parfois l'audio si le joueur n'a pas encore cliqué
+        audio.play().catch(e => console.warn("[AUDIO] Lecture bloquée par le navigateur (interaction requise) :", e));
     },
 
     pause: function (id) {
@@ -114,7 +113,7 @@ window.GameAudio = {
     stop: function (id) {
         if (this.sounds[id]) {
             this.sounds[id].pause();
-            this.sounds[id].currentTime = 0; // Remet � z�ro
+            this.sounds[id].currentTime = 0; // Remet à zéro
         }
     },
 
@@ -122,5 +121,5 @@ window.GameAudio = {
         if (this.sounds[id]) this.sounds[id].volume = volume;
     }
 };
-console.log("THE ENGINE SHOULD BOOT");
+
 startApp();
