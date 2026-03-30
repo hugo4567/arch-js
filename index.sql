@@ -1,1 +1,1 @@
-CREATE joueur VALUES ("Vie": int, "Nibeau":int)
+CREATE joueur VALUES ("Vie": int, "Niveau":int)
