@@ -1,64 +1,70 @@
 <style>
 .login-wrap {
-    /* Style "Interface" sur fond sombre */
-    background-color: #f3eee1; /* On garde le crème pour le contraste */
+    /* Fond blanc/cassé pour détacher la carte du fond de page */
+    background-color: #ffffff; 
     border-radius: 20px;
-    padding: 25px;
-    border: 4px solid #ffffff;
-    box-shadow: 0 10px 0 rgba(0,0,0,0.4);
+    padding: 30px;
+    border: 4px solid #e2d9c2; /* Bordure discrète */
+    box-shadow: 0 10px 0 rgba(0,0,0,0.05); /* Ombre légère pour l'effet 3D */
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
 }
 
 .subtitle {
     font-weight: 700;
+    font-size: 1.3rem;
     color: #5d5348;
-    font-size: 1.2rem;
-    border-bottom: 2px solid #e2d9c2;
-    padding-bottom: 10px;
-    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
 .form-group {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 8px;
 }
 
-/* On remet les inputs bien propres */
+.form-group label {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #8a7e70;
+    text-transform: capitalize;
+}
+
+/* Style des inputs façon "barre blanche" de la photo */
 input {
-    background: white;
+    background: #fdfcf9;
     border: 2px solid #e2d9c2;
     border-radius: 10px;
-    padding: 12px 15px;
+    padding: 14px 18px;
     font-family: 'Quicksand', sans-serif;
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: #5d5348;
     outline: none;
+    transition: border-color 0.2s;
 }
 
 input:focus {
-    border-color: #f1c40f;
+    border-color: #f1c40f; /* Jaune quand on clique */
+    background: #fff;
 }
 
-/* Le bouton "C'est parti" / "Gérer" */
+/* Bouton Jaune SMM2 */
 .btn-primary {
     background-color: #f1c40f;
     color: #5d5348;
+    font-family: 'Quicksand', sans-serif;
     font-weight: 700;
-    font-size: 1.3rem;
-    padding: 12px;
+    font-size: 1.5rem;
+    padding: 15px;
     border: none;
-    border-radius: 12px;
+    border-radius: 15px;
     cursor: pointer;
     box-shadow: 0 6px 0 #d4ad0c;
     transition: all 0.1s;
     margin-top: 10px;
-}
-
-.btn-primary:hover {
-    background-color: #f3d047;
 }
 
 .btn-primary:active {
@@ -66,7 +72,7 @@ input:focus {
     box-shadow: 0 2px 0 #d4ad0c;
 }
 </style>
-
+<br><br>
 <div class="login-container-global">
     <div class="login-wrap role-joueur">
         <div class="subtitle">Connexion Joueur</div>
@@ -83,7 +89,7 @@ input:focus {
             <button type="submit" class="btn-primary">C'est parti !</button>
         </form>
     </div>
-
+<br><br>
     <div class="login-wrap role-createur">
         <div class="subtitle">Connexion Créateur</div>
         <form method="POST" action="login.php">
@@ -99,7 +105,7 @@ input:focus {
             <button type="submit" class="btn-primary">Éditer mes niveaux</button>
         </form>
     </div>
-
+<br><br>
     <div class="login-wrap role-admin">
         <div class="subtitle">Administration</div>
         <form method="POST" action="login.php">
