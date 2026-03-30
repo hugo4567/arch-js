@@ -125,3 +125,53 @@
     box-shadow: 0 2px 0 #27ae60;
 }
 </style>
+
+<div class="login-container-global">
+    <div class="login-wrap role-joueur">
+        <div class="subtitle">Connexion Joueur</div>
+        <form method="POST" action="login.php">
+            <input type="hidden" name="role" value="joueur">
+            <div class="form-group">
+                <label>Login</label>
+                <input type="text" name="login" required>
+            </div>
+            <div class="form-group">
+                <label>Mot de passe</label>
+                <input type="password" name="passwd" required>
+            </div>
+            <button type="submit" class="btn-primary">C'est parti !</button>
+        </form>
+    </div>
+
+    <div class="login-wrap role-createur">
+        <div class="subtitle">Connexion Créateur</div>
+        <form method="POST" action="login.php">
+            <input type="hidden" name="role" value="createur">
+            <div class="form-group">
+                <label>Nom de créateur</label>
+                <input type="text" name="login" required>
+            </div>
+            <div class="form-group">
+                <label>Code secret</label>
+                <input type="password" name="passwd" required>
+            </div>
+            <button type="submit" class="btn-primary">Éditer mes niveaux</button>
+        </form>
+    </div>
+
+    <div class="login-wrap role-admin">
+        <div class="subtitle">Administration</div>
+        <form method="POST" action="login.php">
+            <input type="hidden" name="role" value="admin">
+            <div class="form-group">
+                <label>Identifiant Maître</label>
+                <input type="text" name="login" required>
+            </div>
+            <div class="form-group">
+                <label>Mot de passe</label>
+                <input type="password" name="passwd" required>
+            </div>
+            <button type="submit" class="btn-primary">Gérer le monde</button>
+        </form>
+    </div>
+</div>
