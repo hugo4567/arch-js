@@ -1,6 +1,6 @@
 <?php
-$serveur = "https://l1.dptinfo-usmb.fr/phpmyadmin";
-$utilisateur = "grp1";
+// On n'utilise PAS l'URL de phpMyAdmin ici
+$serveur = "127.0.0.1"; // Au lieu de "localhost"$utilisateur = "grp1";
 $mot_de_passe = "Exoo2zoa";
 $base_de_donnees = "db_grp1";
 

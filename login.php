@@ -1,9 +1,18 @@
 <?php
+// Test d'affichage simple
+// echo "Le PHP fonctionne !"; 
+// die(); 
+
 session_start();
-include("Backend/DB/db_connect.php");
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
+// Déplace l'inclusion APRES l'activation des erreurs
+if (file_exists("Backend/DB/db_connect.php")) {
+    include("Backend/DB/db_connect.php");
+} else {
+    die("Erreur : Le fichier Backend/DB/db_connect.php est introuvable.");
+}
 ?>
 
 
