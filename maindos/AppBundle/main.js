@@ -4,7 +4,9 @@ async function startApp() {
     try {
         const { runMain, getAssemblyExports, getConfig} = await dotnet
             .withDiagnosticTracing(false)
-            .create();
+            .withModuleConfig({
+        canvas: canvasElement // On donne le canvas à Emscripten AVANT le boot
+            })
 
         // On force le canvas pour Emscripten / EGL
         const canvasElement = document.getElementById('canvas');
