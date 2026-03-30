@@ -51,7 +51,6 @@ error_reporting(E_ALL);
             </div>
 
             <div class="tab">
-       
             <h3>Espace Créateur</h3>
                 <p>Créez vos propres niveaux et partagez-les.</p>
                 <form action="login.php" method="POST">
@@ -66,7 +65,7 @@ error_reporting(E_ALL);
         <p>&copy; 2026 ARCH JS Team - Tout droit réservé</p>
     </footer>
 
-    <script src="maindos/main.js"></script>
+
     <script src="maindos/AppBundle/main.js"></script>
     <a href="maindos/AppBundle/index.html"> INDEX JEU</a>
     <a href="maindos/editor.html"> INDEX editor</a>

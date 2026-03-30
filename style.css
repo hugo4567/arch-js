@@ -1,37 +1,36 @@
 /* --- Importation de polices "Retro/Gaming" (Google Fonts) --- */
-/* 'Quicksand' pour le texte lisible et rond, 'Press Start 2P' pour le côté pixel */
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Quicksand:wght@500;700&display=swap');
 
 /* --- Configuration Générale --- */
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Quicksand', sans-serif;
+    font-family: 'Quicksand', sans-serif; /* Police ronde et propre pour le texte */
     font-weight: 500;
-    /* Fond : Ciel Bleu Clair avec un motif de nuages pixel répétitif (simulé ici par un dégradé) */
-    background: #5cafff radial-gradient(#fff 20%, transparent 20%) 0 0,
-                #5cafff radial-gradient(#fff 20%, transparent 20%) 8px 8px;
-    background-size: 16px 16px; /* Effet de trame pixel */
-    color: #333;
+    /* Fond : Un motif de mur de briques pixel (comme sur l'image) */
+    background: #4a6a72 radial-gradient(#6c8b93 20%, transparent 20%) 0 0,
+                #4a6a72 radial-gradient(#6c8b93 20%, transparent 20%) 8px 8px;
+    background-size: 16px 16px; /* Effet de briques pixel */
+    color: #e0e0e0;
     image-rendering: pixelated; /* Pour que tout reste net */
 }
 
 /* --- Barre de Navigation --- */
 nav {
-    background-color: rgba(255, 255, 255, 0.9); /* Fond blanc transparent */
+    background-color: rgba(0, 0, 0, 0.85); /* Fond sombre */
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 4px solid #f1c40f; /* Ligne Jaune soleil */
-    box-shadow: 0 4px 0 rgba(0,0,0,0.1);
+    border-bottom: 4px solid #f1c40f; /* Ligne Jaune SMM2 */
+    box-shadow: 0 4px 0 rgba(0,0,0,0.3);
 }
 
 .logo {
     font-family: 'Press Start 2P', cursive; /* Police Pixel pour le Logo */
-    font-size: 1.2rem;
-    color: #e74c3c; /* Rouge Mario */
-    text-shadow: 2px 2px 0 #fff, 4px 4px 0 rgba(0,0,0,0.2);
+    font-size: 1rem;
+    color: #fff;
+    text-shadow: 2px 2px 0 #e74c3c, 4px 4px 0 rgba(0,0,0,0.5); /* Effet 3D Rouge SMM2 */
 }
 
 nav ul {
@@ -42,7 +41,7 @@ nav ul {
 }
 
 nav ul li a {
-    color: #333;
+    color: #fff;
     text-decoration: none;
     font-weight: 700;
     padding: 5px 10px;
@@ -52,123 +51,134 @@ nav ul li a {
 
 nav ul li a:hover {
     background-color: #f1c40f; /* Fond Jaune au survol */
-    color: #fff;
+    color: #000;
 }
 
 /* --- Header --- */
 header {
     text-align: center;
     padding: 60px 20px;
-    background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent */
+    background-color: rgba(0, 0, 0, 0.7); /* Zone noire contrastée */
 }
 
 header h1 {
-    font-family: 'Press Start 2P', cursive;
-    font-size: 2.2rem;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
     color: #fff;
-    text-shadow: 3px 3px 0 #e74c3c, 6px 6px 0 rgba(0,0,0,0.3); /* Effet 3D Rouge */
     margin-bottom: 15px;
 }
 
 header p {
     font-size: 1.2rem;
-    color: #333;
-    font-weight: 700;
+    color: #fff;
 }
 
-/* --- Grille des "Cartes" (Tabs-container) --- */
+/* --- Grille des Cartes (Tabs-container) --- */
+/* On passe en colonnes pour imiter la liste de SMM2 */
 .tabs-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
+    display: flex;
+    flex-direction: column; /* Liste verticale */
+    align-items: center; /* Centre les cartes */
+    gap: 20px;
     padding: 40px;
-    max-width: 1200px;
+    max-width: 800px;
     margin: 0 auto;
 }
 
 .tab {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 20px; /* Coins très arrondis */
-    text-align: center;
-    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
-    border: 6px solid #f1c40f; /* Bordure Jaune grasse */
-    box-shadow: 0 8px 0 rgba(0,0,0,0.1); /* Ombre plate */
+    background-color: #fff; /* Boutons Blancs SMM2 */
+    color: #333; /* Texte sombre sur fond blanc */
+    width: 100%; /* Cartes larges */
+    padding: 20px 30px;
+    border-radius: 12px; /* Coins arrondis légers SMM2 */
+    text-align: left; /* Alignement texte à gauche */
+    transition: transform 0.15s ease-out, box-shadow 0.15s ease-out, border-color 0.15s ease-out;
+    border: 4px solid transparent; /* Bordure transparente par défaut */
+    box-shadow: 0 6px 0 rgba(0,0,0,0.1); /* Ombre plate SMM2 */
     position: relative;
     overflow: hidden;
+    display: flex; /* Aligne l'icône et le texte */
+    align-items: center;
 }
 
-/* Icône fantôme pixel au fond de chaque carte (optionnel) */
-.tab::after {
+/* Simulation des icônes circulaires de SMM2 */
+/* On ajoute un pseudo-élément avant chaque carte */
+.tab::before {
+    content: '★'; /* Icône par défaut */
+    font-size: 1.5rem;
+    font-family: 'Press Start 2P', cursive;
+    color: #fff;
+    background-color: #f1c40f; /* Fond Jaune Soleil SMM2 */
+    width: 60px;
+    height: 60px;
+    border-radius: 50%; /* Cercle parfait */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 25px; /* Espace icône-texte */
+    box-shadow: 0 4px 0 rgba(0,0,0,0.1); /* Ombre icône */
+}
+
+/* Personnalisation des icônes/couleurs par section */
+.tab:nth-child(1)::before { content: 'ℹ️'; background-color: #3498db; } /* Infos/Bleu */
+.tab:nth-child(2)::before { content: '🎮'; background-color: #e67e22; } /* Jeu/Orange */
+.tab:nth-child(3)::before { content: '🛒'; background-color: #2ecc71; } /* Market/Vert */
+.tab:nth-child(4)::before { content: '🛠️'; background-color: #e74c3c; } /* Créateur/Rouge */
+
+
+/* Effet au survol (Imite la sélection de SMM2) */
+.tab:hover {
+    transform: scale(1.03); /* Zoom léger */
+    border-color: #e74c3c; /* Bordure Rouge comme les coins de SMM2 */
+    box-shadow: 0 10px 0 rgba(0,0,0,0.15);
+}
+
+/* Les fameux coins rouges de sélection SMM2 (Coins haut-gauche et bas-droite) */
+.tab:hover::after {
     content: '';
     position: absolute;
-    bottom: -20px;
-    right: -20px;
-    width: 100px;
-    height: 100px;
-    background-color: rgba(0,0,0,0.03);
-    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    background-color: transparent;
+    border: 4px solid #e74c3c;
+    border-right: none;
+    border-bottom: none;
+    top: 5px;
+    left: 5px;
 }
-
-.tab:hover {
-    transform: translateY(-8px) scale(1.02); /* Soulèvement + Zoom */
-    box-shadow: 0 15px 0 rgba(0,0,0,0.15);
+.tab:hover::before_border_bottom_right { /* Note: Pseudo-élément fictif pour simplifier */
+    /* Code pour le coin bas-droite serait nécessaire */
 }
 
 .tab h3 {
-    font-family: 'Press Start 2P', cursive;
-    font-size: 1rem;
-    margin-top: 0;
+    font-family: 'Quicksand', sans-serif; /* Police propre pour les titres SMM2 */
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin: 0;
     color: #333;
-    margin-bottom: 15px;
 }
 
 .tab p {
-    color: #666;
+    color: #777;
     font-size: 0.95rem;
-    margin-bottom: 20px;
+    margin: 5px 0 0 0;
 }
 
 /* --- Boutons et Liens transformés en boutons --- */
-/* Le look "Bouton Mario Maker" : Couleurs vives, ombre plate en bas */
+/* Pour SMM2, les boutons ne sont pas dans les cartes, c'est la carte elle-même qui est le bouton */
+/* On adapte donc ton HTML pour que le lien `<a>` englobe toute la carte ou pour que le formulaire soit la carte. */
+
+/* Si tu gardes tes liens `<a>` dans ton HTML, cache-les ou style-les pour qu'ils soient invisibles et prennent toute la place */
 .btn, .tab a, .tab button {
-    display: inline-block;
-    padding: 12px 24px;
-    text-decoration: none;
-    border-radius: 12px;
-    border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0; /* Rend le bouton/lien invisible mais cliquable */
     cursor: pointer;
-    font-weight: 700;
-    font-size: 1rem;
-    transition: 0.1s;
-    /* Ombre plate en bas pour l'effet 3D */
-    box-shadow: 0 5px 0 rgba(0,0,0,0.2);
-    position: relative;
 }
-
-/* Clic sur le bouton : Il "s'enfonce" */
-.btn:active, .tab a:active, .tab button:active {
-    transform: translateY(3px);
-    box-shadow: 0 2px 0 rgba(0,0,0,0.2);
-}
-
-/* Couleurs spécifiques basées sur Mario Maker */
-
-/* 1. Infos (Bleu Ciel) */
-.tab:nth-child(1) a { background-color: #3498db; color: #fff; }
-
-/* 2. Jeu (Jaune Soleil / Orange) */
-.tab:nth-child(2) a { background-color: #e67e22; color: #fff; } 
-.tab:nth-child(2) h3 { color: #e67e22; }
-
-/* 3. Marketplace (Vert Herbe) */
-.tab:nth-child(3) a { background-color: #2ecc71; color: #fff; }
-.tab:nth-child(3) h3 { color: #2ecc71; }
-
-/* 4. Créateur (Rouge Vif) */
-.tab:nth-child(4) a { background-color: #e74c3c; color: #fff; }
-.tab:nth-child(4) h3 { color: #e74c3c; }
-
 
 /* --- Footer --- */
 footer {
@@ -176,7 +186,7 @@ footer {
     padding: 30px;
     font-size: 0.9rem;
     color: #fff;
-    background-color: #e74c3c; /* Fond Rouge */
+    background-color: #000; /* Fond Noir */
     margin-top: 50px;
     border-top: 4px solid #fff;
 }
