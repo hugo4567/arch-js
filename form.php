@@ -1,22 +1,34 @@
+<?php
+session_start();
+
+if (isset($_POST["login"])) {
+    if ($_POST["login"] == "admin" && $_POST["passwd"] == "admin") {
+        $_SESSION["admin"] = time();
+        header("Location: admin_joueur.php");
+        exit();
+    } else {
+        $erreur = "Login ou mot de passe incorrect.";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Connexion – Chess Database</title>
+    <title>Connexion – Joueur</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="login-wrap">
     <div class="login-box">
-        <div class="logo">♛</div>
-        <div class="subtitle">Chess Database — Admin</div>
+        <div class="subtitle">Connexion joueur</div>
 
         <?php if (isset($erreur)): ?>
             <div class="alert alert-error">⚠ <?= htmlspecialchars($erreur) ?></div>
         <?php endif; ?>
 
-        <form method="POST" action="admin_form.php">
+        <form method="POST" action="form.php">
             <div class="form-group" style="margin-bottom:16px;">
                 <label for="login">Login</label>
                 <input type="text" id="login" name="login" autocomplete="username" autofocus>
@@ -31,3 +43,6 @@
         </form>
     </div>
 </div>
+
+</body>
+</html>
