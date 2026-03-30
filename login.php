@@ -15,29 +15,28 @@ if (file_exists("Backend/DB/db_connect.php")) {
 }
 ?>
 
-
 <?php
-// Si déjà connecté, rediriger vers index
-if (isset($_SESSION["admin"])) {//isset est une fonction qui vérifie si une variable est définie et n'est pas null
-    header("Location: index.php");// en gros si la session admin existe, redirige vers index.php
-    exit;
-}
-
-$error = "";
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $login = isset($_POST["login"]) ? $_POST["login"] : "";
-    $passwd = isset($_POST["passwd"]) ? $_POST["passwd"] : "";
-    
-    if ($login === "admin" && $passwd === "admin") {
-        $_SESSION["admin"] = time();
-        header("Location: index.php");
+    $role = $_POST['role'] ?? ''; // N'oublie pas l'input hidden dans form.php !
+
+    if ($role === "admin") {
+        // Verif login/pass...
+        header("Location: admin_dashboard.php");
         exit;
-    } else {
-        $error = "Identifiants invalides";
+    } 
+    elseif ($role === "createur") {
+        // Verif login/pass...
+        header("Location: createur_home.php");
+        exit;
+    }
+    elseif ($role === "joueur") {
+        // Verif login/pass...
+        header("Location: espace_joueur.php");
+        exit;
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -124,24 +123,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </style>
 </head>
 <body>
-    <div class="login-container">
-        <h1>Connexion Admin</h1>
-        
-        <?php if ($error): ?>
-            <div class="error"><?php echo $error; ?></div>
-        <?php endif; ?>
-        
-        <form method="POST">
-            <div>
-                <label for="login">Login:</label>
-                <input type="text" id="login" name="login" required autofocus>
-            </div>
-            <div>
-                <label for="passwd">Mot de passe:</label>
-                <input type="password" id="passwd" name="passwd" required>
-            </div>
-            <button type="submit">Connexion</button>
-        </form>
+    <div class="main-wrapper">
+        <h1>Bienvenue sur la plateforme</h1>
+        <?php 
+            // C'est ici que la magie opère !
+            // Le code de form.php sera "copié-collé" ici dynamiquement
+            include("form.php"); 
+        ?>
     </div>
 </body>
 </html>

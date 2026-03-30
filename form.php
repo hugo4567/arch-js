@@ -55,8 +55,15 @@
        background: var(--surface2);
        color: var(--gold-light);
    }
+
+   .login-wrap { ... }
 </style>
 
+<div class="login-container-global">
+    <div class="login-box">Connexion Joueur...</div>
+    <div class="login-box">Connexion Créateur...</div>
+    <div class="login-box">Connexion Admin...</div>
+</div>
 <?php
 // Form 1. Formulaire de connexion des joueurs
 
