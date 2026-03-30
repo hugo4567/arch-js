@@ -1,6 +1,6 @@
 <?php
 // On utilise l'hôte spécifique au réseau de l'IUT
-$serveur = "l1.dptinfo-usmb.fr/phpmyadmin/"; 
+$serveur = "localhost"; 
 // SI localhost ne marche pas, essaie : "mariadb" ou "mysql" 
 // selon si tu es dans un conteneur spécifique du département.
 
@@ -13,6 +13,6 @@ try {
     $conn = mysqli_connect($serveur, $utilisateur, $mot_de_passe, $base_de_donnees, 3306);
     // Si on arrive ici, c'est que c'est gagné !
 } catch (mysqli_sql_exception $e) {
-    echo "Détail de l'erreur : " . $e->getMessage();
+    //echo "Détail de l'erreur : " . $e->getMessage();
 }
 ?>
