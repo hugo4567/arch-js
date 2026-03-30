@@ -30,13 +30,13 @@ error_reporting(E_ALL);
             
             <div class="tab">
                 <h3>Infos & Contact</h3>
-                <p>Découvrez notre équipe et les détails du projet.</p>
+                <p>&nbsp;Découvrez notre équipe et les détails du projet.</p>
                 <a href="infos.php" class="btn">Voir les infos</a>
             </div>
 
             <div class="tab">
                 <h3>Jouer au Jeu</h3>
-                <p>Lancez l'aventure directement dans votre navigateur.</p>
+                <p>&nbsp;Lancez l'aventure directement dans votre navigateur.</p>
                 <form action="login.php" method="POST">
                     <a href="maindos/AppBundle/index.html" class="bouton-jeu">Jouer au jeu</a>
                 </form>
@@ -44,7 +44,7 @@ error_reporting(E_ALL);
 
             <div class="tab">
                 <h3>Marketplace</h3>
-                <p>Parcourez les niveaux créés par la communauté.</p>
+                <p>&nbsp;Parcourez les niveaux créés par la communauté.</p>
                 <form action="login.php" method="POST">
                     <a href="maindos/market.html"> INDEX Market</a>
                 </form>
@@ -52,7 +52,7 @@ error_reporting(E_ALL);
 
             <div class="tab">
             <h3>Espace Créateur</h3>
-                <p>Créez vos propres niveaux et partagez-les.</p>
+                <p>&nbsp;Créez vos propres niveaux et partagez-les.</p>
                 <form action="login.php" method="POST">
                     <a href="login.php">Créer un niveau</a>
                 </form>
