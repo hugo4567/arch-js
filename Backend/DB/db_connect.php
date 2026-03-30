@@ -1,6 +1,6 @@
 <?php
 // On utilise l'hôte spécifique au réseau de l'IUT
-$serveur = "localhost"; 
+$serveur = "l1.dptinfo-usmb.fr/phpmyadmin/"; 
 // SI localhost ne marche pas, essaie : "mariadb" ou "mysql" 
 // selon si tu es dans un conteneur spécifique du département.
 
