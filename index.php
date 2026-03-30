@@ -8,7 +8,7 @@ mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 <meta-charset = utf8> </meta-charset>
 <html>
     <head>
-        <title>Jeu php</title>
+        <title>PIXEL BLASTER ADVENTURE 2</title>
     </head>
     <body>
         <?php echo '<p>Hello World</p>'; ?>
@@ -16,3 +16,4 @@ mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 </html>
 <script> src="maindos/main.js"</script>
 <script> src="maindos/AppBundle/main.js"</script>
+
