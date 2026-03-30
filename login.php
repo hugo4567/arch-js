@@ -4,8 +4,10 @@ include("Backend/DB/db_connect.php")
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+?>
 
 
+<?php
 // Si déjà connecté, rediriger vers index
 if (isset($_SESSION["admin"])) {//isset est une fonction qui vérifie si une variable est définie et n'est pas null
     header("Location: index.php");// en gros si la session admin existe, redirige vers index.php

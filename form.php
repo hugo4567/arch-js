@@ -56,6 +56,16 @@
        color: var(--gold-light);
    }
 </style>
+
+<?php
+// Form 1. Formulaire de connexion des joueurs
+
+// Form 2. Formulaire de connexion des créateurs
+
+// Form 3. Formulaire de connexion des admins
+
+?>
+
 <div class="login-wrap">
     <div class="login-box">
         <div class="subtitle">Connexion joueur</div>
@@ -112,7 +122,7 @@
             <div class="alert alert-error">⚠ <?= htmlspecialchars($erreur) ?></div>
         <?php endif; ?>
 
-        <form method="POST" action="form.php">
+        <form method="POST" action="login.php">
             <div class="form-group" style="margin-bottom:16px;">
                 <label for="login">Login</label>
                 <input type="text" id="login" name="login" autocomplete="username" autofocus>
