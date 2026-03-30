@@ -1,0 +1,2 @@
+a = 'hugo'
+print(b)

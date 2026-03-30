@@ -42,9 +42,9 @@ function get_level_by_id($conn, $id) {
     return null; // Si non trouvé
 }
 
-function get_level_by_name($conn, $id) {
-    $id = (int)$id;
-    $sql = "SELECT * FROM levels WHERE id = $id";
+function get_level_by_name($conn, $name) {
+    $name = mysqli_real_escape_string($conn, $name);
+    $sql = "SELECT * FROM levels WHERE name = $name";
     $result = mysqli_query($conn, $sql);
     
     if ($result && mysqli_num_rows($result) > 0) {

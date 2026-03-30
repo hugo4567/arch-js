@@ -2,9 +2,19 @@
 
 function create_admin($conn, $login, $mdp){
     $sql = "INSERT INTO admin (login, mdp) value ('$login', '$mdp')";
-    $query = mysqli_q);
+    $query = mysqli_query($conn, $sql);
+    return $query;
 }
 
 
+function update_admin($conn, $id_admin, $login, $mdp){
+    $sql = "UPDATE admin SET login = $login, mdp = $mdp WHERE id_admin = $id_admin";
+    $query = mysqli_query($conn, $sql);
+    return $query;
+}
+
+function delete_admin($conn, $id_admin){
+    $sql = ""; 
+}
 
 ?>
