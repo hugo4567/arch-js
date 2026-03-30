@@ -64,7 +64,7 @@
             <div class="alert alert-error">⚠ <?= htmlspecialchars($erreur) ?></div>
         <?php endif; ?>
 
-        <form method="POST" action="form.php">
+        <form method="POST" action="login.php">
             <div class="form-group" style="margin-bottom:16px;">
                 <label for="login">Login</label>
                 <input type="text" id="login" name="login" autocomplete="username" autofocus>
@@ -88,7 +88,7 @@
             <div class="alert alert-error">⚠ <?= htmlspecialchars($erreur) ?></div>
         <?php endif; ?>
 
-        <form method="POST" action="form.php">
+        <form method="POST" action="login.php">
             <div class="form-group" style="margin-bottom:16px;">
                 <label for="login">Login</label>
                 <input type="text" id="login" name="login" autocomplete="username" autofocus>
