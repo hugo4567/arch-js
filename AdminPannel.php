@@ -1,6 +1,6 @@
 <?php
 // On charge la connexion à la base de données et les fonctions CRUD (le Modèle)
-require_once 'db.php';
+require_once './Backend/DB/db_connect.php';
 require_once './Backend/CRUD/levels.crud.php';
 
 // On détermine quelle action l'utilisateur veut effectuer. 
