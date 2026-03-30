@@ -63,7 +63,6 @@
 // Form 2. Formulaire de connexion des créateurs
 
 // Form 3. Formulaire de connexion des admins
-
 ?>
 
 <div class="login-wrap">
