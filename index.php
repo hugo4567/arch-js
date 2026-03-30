@@ -1,4 +1,6 @@
 <?php
+session_start();
+// Debugging (à enlever une fois le site en ligne)
 ini_set('display_errors', '1');
 error_reporting(E_ALL);
 ?>
@@ -6,36 +8,62 @@ error_reporting(E_ALL);
 <html lang="fr">
 <head>
     <meta charset="utf-8">
-    <title>PIXEL BLASTER ADVENTURE 2</title>
-    </head>
+    <title>PIXEL BLASTER ADVENTURE - Accueil</title>
+    <link rel="stylesheet" href="style.css"> </head>
 <body>
 
     <nav>
-        <a href="login.php">Page de login</a>
+        <div class="logo">PIXEL BLASTER</div>
+        <ul>
+            <li><a href="index.php">Accueil</a></li>
+            <li><a href="login.php">Connexion / Login</a></li>
+        </ul>
     </nav>
 
+    <header>
+        <h1>Bienvenue sur la Page du Projet</h1>
+        <p>Le futur du jeu de plateforme rétro.</p>
+    </header>
+
     <main>
-        <h1>Page du Projet</h1>
-
-        <section class="form-container">
+        <section class="tabs-container">
             
-            <form action="login.php" method="POST" style="display:inline;">
-                <button type="submit" name="action" value="jeu">Jouer (Game running)</button>
-            </form>
+            <div class="tab">
+                <h3>Infos & Contact</h3>
+                <p>Découvrez notre équipe et les détails du projet.</p>
+                <a href="infos.php" class="btn">Voir les infos</a>
+            </div>
 
-            <form action="login.php" method="POST" style="display:inline;">
-                <button type="submit" name="action" value="market">Marketplace / Posts</button>
-            </form>
+            <div class="tab">
+                <h3>Jouer au Jeu</h3>
+                <p>Lancez l'aventure directement dans votre navigateur.</p>
+                <form action="login.php" method="POST">
+                    <a href="maindos/AppBundle/index.html"> INDEX JEU</a>
+                </form>
+            </div>
 
-            <form action="login.php" method="POST" style="border: 1px solid #000; padding: 10px; margin-top: 20px;">
-                <h3>Accès Admin</h3>
-                <input type="text" name="login" placeholder="Admin User">
-                <input type="password" name="passwd" placeholder="Password">
-                <button type="submit" name="action" value="admin">Connexion Panel Admin</button>
-            </form>
+            <div class="tab">
+                <h3>Marketplace</h3>
+                <p>Parcourez les niveaux créés par la communauté.</p>
+                <form action="login.php" method="POST">
+                    <button type="submit" name="target" value="market">Voir le Marché</button>
+                </form>
+            </div>
+
+            <div class="tab">
+                <h3>Espace Créateur</h3>
+                <p>Créez vos propres niveaux et partagez-les.</p>
+                <form action="login.php" method="POST">
+                    <button type="submit" name="target" value="creator">Créer un Niveau</button>
+                </form>
+            </div>
 
         </section>
     </main>
+
+    <footer>
+        <p>&copy; 2026 ARCH JS Team - Tout droit réservé</p>
+    </footer>
 
     <script src="maindos/main.js"></script>
     <script src="maindos/AppBundle/main.js"></script>
