@@ -47,12 +47,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SÉCURITÉ D'ÉTAT - CONNEXION</title>
     <style>
-/* Importation de la typographie de l'acier et du peuple */
-@import url('https://fonts.googleapis.com/css2?family=Russo+One&family=Share+Tech+Mono&display=swap');
-
 /* =========================================
-   PROTOCOLE ZÉRO : FONDATIONS & ATMOSPHÈRE
+   FONDATIONS & ATMOSPHÈRE GAMING
 ========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;800&family=Rajdhani:wght@500;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -60,48 +59,45 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 body {
-    background-color: #1a1a1d; 
+    /* Grille typique de Level Editor / Moteur 3D */
+    background-color: #0b0e14;
     background-image: 
-        linear-gradient(45deg, #111 25%, transparent 25%), 
-        linear-gradient(-45deg, #111 25%, transparent 25%),
-        linear-gradient(45deg, transparent 75%, #111 75%),
-        linear-gradient(-45deg, transparent 75%, #111 75%),
-        radial-gradient(#8b0000 1px, transparent 1px);
-    background-size: 20px 20px, 20px 20px, 20px 20px, 20px 20px, 10px 10px;
-    background-position: 0 0, 0 10px, 10px -10px, -10px 0px, 0 0;
+        linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-position: center center;
     
-    color: #e0e0e0;
-    font-family: 'Share Tech Mono', monospace;
+    color: #e2e8f0;
+    font-family: 'Rajdhani', sans-serif;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     padding: 20px;
-    overflow-x: hidden;
+    overflow: hidden;
     position: relative;
 }
 
-body::before {
+/* Léger vignettage pour concentrer l'attention au centre */
+body::after {
     content: "";
     position: fixed;
     top: 0; left: 0;
     width: 100vw; height: 100vh;
-    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.3) 50%);
-    background-size: 100% 4px;
-    z-index: 1000;
+    background: radial-gradient(circle, transparent 50%, #0b0e14 100%);
+    z-index: 1;
     pointer-events: none;
-    opacity: 0.6;
 }
 
 /* =========================================
-   MÉCANIQUE DU CARROUSEL 3D
+   MÉCANIQUE DU CARROUSEL 3D (OPTIMISÉE)
 ========================================= */
 .scene {
-    perspective: 1200px;
+    perspective: 1000px;
     width: 100%;
-    max-width: 500px;
-    height: 600px;
+    max-width: 420px;
+    height: 550px;
     position: relative;
     z-index: 10;
 }
@@ -111,132 +107,131 @@ body::before {
     height: 100%;
     position: absolute;
     transform-style: preserve-3d;
-    transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .carousel__face {
     position: absolute;
     width: 100%;
     height: 100%;
-    backface-visibility: hidden; /* Cache l'arrière des autres faces */
+    backface-visibility: hidden;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    
+    /* Effet de profondeur sur les faces inactives */
+    transition: opacity 0.6s ease, filter 0.6s ease;
+    opacity: 0.15;
+    filter: blur(4px);
+    pointer-events: none; /* Empêche de cliquer sur les faces inactives */
 }
 
-/* Placement en triangle équilatéral avec recul (TranslateZ) */
-.face-admin { transform: rotateY(0deg) translateZ(280px); }
-.face-createur { transform: rotateY(120deg) translateZ(280px); }
-.face-joueur { transform: rotateY(240deg) translateZ(280px); }
+/* La face active devient nette et cliquable */
+.carousel__face.active {
+    opacity: 1;
+    filter: blur(0);
+    pointer-events: auto;
+}
+
+/* Écartement optimisé pour éviter les collisions visuelles */
+.face-admin { transform: rotateY(0deg) translateZ(320px); }
+.face-createur { transform: rotateY(120deg) translateZ(320px); }
+.face-joueur { transform: rotateY(240deg) translateZ(320px); }
 
 /* =========================================
-   LE TERMINAL CENTRAL D'ÉTAT (Appliqué aux faces)
+   CARTES DE CONNEXION (UI JEU)
 ========================================= */
-.state-terminal-container {
-    background-color: #26262b;
-    border: 6px solid #da291c;
-    padding: 30px;
-    box-shadow: 
-        0 0 0 4px #ffcd00,
-        0 20px 40px rgba(0,0,0,0.8),
-        inset 0 0 20px rgba(218, 41, 28, 0.3);
+.login-card {
+    background-color: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 40px 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
 }
 
-.state-terminal-container::before,
-.state-terminal-container::after {
+/* Ligne néon dynamique en haut de chaque carte */
+.login-card::before {
     content: '';
     position: absolute;
-    width: 40px;
-    height: 40px;
-    background-color: #1a1a1d;
-    z-index: 2;
+    top: 0; left: 0;
+    width: 100%; height: 4px;
 }
+.face-admin .login-card::before { background: #ef4444; box-shadow: 0 0 15px #ef4444; }
+.face-createur .login-card::before { background: #a855f7; box-shadow: 0 0 15px #a855f7; }
+.face-joueur .login-card::before { background: #10b981; box-shadow: 0 0 15px #10b981; }
 
-.state-terminal-container::before {
-    top: -6px; right: -6px;
-    border-bottom: 6px solid #ffcd00;
-    border-left: 6px solid #da291c;
-}
-
-.state-terminal-container::after {
-    bottom: -6px; left: -6px;
-    border-top: 6px solid #da291c;
-    border-right: 6px solid #ffcd00;
-}
-
-/* =========================================
-   TITRES & FORMULAIRES
-========================================= */
 h1 {
-    font-family: 'Russo One', sans-serif;
-    font-weight: 700;
-    font-size: 2rem;
-    text-transform: uppercase;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 800;
+    font-size: 1.6rem;
     text-align: center;
-    color: #ffcd00;
-    margin-bottom: 30px;
-    padding: 15px 5px;
-    background-color: #da291c;
-    position: relative;
+    margin-bottom: 35px;
     letter-spacing: 2px;
-    text-shadow: 2px 2px 0 #8b0000, -1px -1px 0 #000;
-    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
-    clip-path: polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%);
 }
 
-h1::after { content: ' ☭'; color: #ffcd00; }
+.face-admin h1 { color: #ef4444; }
+.face-createur h1 { color: #a855f7; }
+.face-joueur h1 { color: #10b981; }
 
 .form-group {
-    margin-bottom: 25px;
-    position: relative;
-    z-index: 5;
+    margin-bottom: 20px;
 }
 
 label {
     display: block;
-    color: #ffcd00;
+    color: #94a3b8;
     margin-bottom: 8px;
-    font-size: 1.1rem;
+    font-size: 1rem;
+    font-weight: 700;
     text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 input[type="text"], input[type="password"] {
     width: 100%;
-    padding: 15px;
-    background-color: #111;
-    border: 2px solid #555;
+    padding: 14px 16px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 2px solid #334155;
+    border-radius: 6px;
     color: #fff;
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 1.2rem;
-    transition: all 0.3s;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
     outline: none;
 }
 
-input[type="text"]:focus, input[type="password"]:focus {
-    border-color: #da291c;
-    box-shadow: 0 0 10px rgba(218, 41, 28, 0.5);
+input:focus {
+    border-color: #3b82f6;
+    background-color: rgba(59, 130, 246, 0.05);
 }
 
 button[type="submit"] {
     width: 100%;
-    padding: 15px;
-    background-color: #da291c;
-    color: #ffcd00;
-    border: 2px solid #ffcd00;
-    font-family: 'Russo One', sans-serif;
-    font-size: 1.2rem;
+    padding: 16px;
+    margin-top: 20px;
+    background-color: transparent;
+    border-radius: 6px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 800;
     cursor: pointer;
     text-transform: uppercase;
-    transition: all 0.3s;
-    margin-top: 10px;
-    position: relative;
-    z-index: 5;
+    letter-spacing: 1px;
+    transition: all 0.2s ease;
 }
 
-button[type="submit"]:hover {
-    background-color: #ffcd00;
-    color: #da291c;
-    box-shadow: 0 0 15px #ffcd00;
-}
+/* Boutons thématiques */
+.face-admin button { border: 2px solid #ef4444; color: #ef4444; }
+.face-admin button:hover { background: #ef4444; color: #fff; box-shadow: 0 0 20px rgba(239, 68, 68, 0.4); }
+
+.face-createur button { border: 2px solid #a855f7; color: #a855f7; }
+.face-createur button:hover { background: #a855f7; color: #fff; box-shadow: 0 0 20px rgba(168, 85, 247, 0.4); }
+
+.face-joueur button { border: 2px solid #10b981; color: #10b981; }
+.face-joueur button:hover { background: #10b981; color: #fff; box-shadow: 0 0 20px rgba(16, 185, 129, 0.4); }
 
 /* =========================================
    CONTRÔLES DU CARROUSEL
@@ -244,62 +239,53 @@ button[type="submit"]:hover {
 .controls {
     display: flex;
     justify-content: center;
-    gap: 40px;
-    margin-top: 40px;
+    gap: 30px;
+    margin-top: 20px;
     z-index: 20;
 }
 
 .btn-nav {
-    background: #26262b;
-    color: #ffcd00;
-    border: 2px solid #da291c;
-    padding: 10px 25px;
-    font-family: 'Russo One', sans-serif;
-    font-size: 1.5rem;
+    background: transparent;
+    color: #64748b;
+    border: 2px solid #334155;
+    border-radius: 6px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
     cursor: pointer;
     transition: all 0.3s;
-    box-shadow: 4px 4px 0 #8b0000;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
 }
 
 .btn-nav:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 6px 6px 0 #ffcd00;
-    background: #da291c;
-}
-
-.btn-nav:active {
-    transform: translate(2px, 2px);
-    box-shadow: 2px 2px 0 #8b0000;
+    color: #fff;
+    border-color: #3b82f6;
+    background-color: rgba(59, 130, 246, 0.1);
 }
 
 /* =========================================
    LES ALERTES SYSTÈME
 ========================================= */
 .error-msg {
-    background-color: #8b0000;
-    color: #ffcd00;
-    padding: 15px;
-    border: 4px solid #ffcd00;
+    background-color: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    padding: 12px 20px;
+    border-radius: 6px;
+    border-left: 4px solid #ef4444;
     text-align: center;
-    font-weight: bold;
-    font-size: 1.2rem;
-    margin-bottom: 25px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
     z-index: 100;
     position: absolute;
-    top: 20px;
+    top: 30px;
     left: 50%;
     transform: translateX(-50%);
     min-width: 300px;
-    animation: pulseAlerte 2s infinite;
+    backdrop-filter: blur(5px);
 }
-
-@keyframes pulseAlerte {
-    0% { box-shadow: 0 0 0 rgba(218, 41, 28, 0.7); }
-    50% { box-shadow: 0 0 20px rgba(255, 205, 0, 0.9); }
-    100% { box-shadow: 0 0 0 rgba(218, 41, 28, 0.7); }
-}
-.error-msg::before { content: '[ ALERTE ] '; color: #fff; }
-
     </style>
 </head>
 <body>
@@ -311,52 +297,58 @@ button[type="submit"]:hover {
     <div class="scene">
         <div class="carousel" id="carousel">
             
-            <div class="carousel__face face-admin state-terminal-container">
-                <h1>ADMINISTRATION</h1>
-                <form method="POST" action="">
-                    <input type="hidden" name="role" value="admin">
-                    <div class="form-group">
-                        <label>Identification Cible</label>
-                        <input type="text" name="login" required placeholder="ID Admin">
-                    </div>
-                    <div class="form-group">
-                        <label>Code de Sécurité</label>
-                        <input type="password" name="passwd" required placeholder="••••••••">
-                    </div>
-                    <button type="submit">INITIALISER ACCÈS</button>
-                </form>
+            <div class="carousel__face face-admin">
+                <div class="login-card">
+                    <h1>ADMINISTRATION</h1>
+                    <form method="POST" action="">
+                        <input type="hidden" name="role" value="admin">
+                        <div class="form-group">
+                            <label>Identification Cible</label>
+                            <input type="text" name="login" required placeholder="ID Admin">
+                        </div>
+                        <div class="form-group">
+                            <label>Code de Sécurité</label>
+                            <input type="password" name="passwd" required placeholder="••••••••">
+                        </div>
+                        <button type="submit">INITIALISER ACCÈS</button>
+                    </form>
+                </div>
             </div>
 
-            <div class="carousel__face face-createur state-terminal-container">
-                <h1>CRÉATEUR</h1>
-                <form method="POST" action="">
-                    <input type="hidden" name="role" value="createur">
-                    <div class="form-group">
-                        <label>Matricule Ouvrier</label>
-                        <input type="text" name="login" required placeholder="ID Créateur">
-                    </div>
-                    <div class="form-group">
-                        <label>Clé d'Ingénierie</label>
-                        <input type="password" name="passwd" required placeholder="••••••••">
-                    </div>
-                    <button type="submit">ACCÉDER À L'ATELIER</button>
-                </form>
+            <div class="carousel__face face-createur">
+                <div class="login-card">
+                    <h1>CRÉATEUR</h1>
+                    <form method="POST" action="">
+                        <input type="hidden" name="role" value="createur">
+                        <div class="form-group">
+                            <label>Matricule Ouvrier</label>
+                            <input type="text" name="login" required placeholder="ID Créateur">
+                        </div>
+                        <div class="form-group">
+                            <label>Clé d'Ingénierie</label>
+                            <input type="password" name="passwd" required placeholder="••••••••">
+                        </div>
+                        <button type="submit">ACCÉDER À L'ATELIER</button>
+                    </form>
+                </div>
             </div>
 
-            <div class="carousel__face face-joueur state-terminal-container">
-                <h1>CITOYEN / JOUEUR</h1>
-                <form method="POST" action="">
-                    <input type="hidden" name="role" value="joueur">
-                    <div class="form-group">
-                        <label>Plaque d'Identité</label>
-                        <input type="text" name="login" required placeholder="ID Joueur">
-                    </div>
-                    <div class="form-group">
-                        <label>Passeport Numérique</label>
-                        <input type="password" name="passwd" required placeholder="••••••••">
-                    </div>
-                    <button type="submit">REJOINDRE LA PARTIE</button>
-                </form>
+            <div class="carousel__face face-joueur">
+                <div class="login-card">
+                    <h1>CITOYEN / JOUEUR</h1>
+                    <form method="POST" action="">
+                        <input type="hidden" name="role" value="joueur">
+                        <div class="form-group">
+                            <label>Plaque d'Identité</label>
+                            <input type="text" name="login" required placeholder="ID Joueur">
+                        </div>
+                        <div class="form-group">
+                            <label>Passeport Numérique</label>
+                            <input type="password" name="passwd" required placeholder="••••••••">
+                        </div>
+                        <button type="submit">REJOINDRE LA PARTIE</button>
+                    </form>
+                </div>
             </div>
 
         </div>
@@ -370,12 +362,31 @@ button[type="submit"]:hover {
     <script>
         let currentAngle = 0;
         const carousel = document.getElementById('carousel');
+        const faces = document.querySelectorAll('.carousel__face');
+
+        // Cette fonction est CRITIQUE : elle enlève le flou sur la face qui est devant et le remet sur celles de derrière
+        function updateActiveFace() {
+            let selectedIndex = Math.round(currentAngle / -120);
+            let normalizedIndex = ((selectedIndex % 3) + 3) % 3; // Garde l'index entre 0 et 2
+
+            faces.forEach((face, index) => {
+                if (index === normalizedIndex) {
+                    face.classList.add('active');
+                } else {
+                    face.classList.remove('active');
+                }
+            });
+        }
 
         function rotateCarousel(direction) {
             // direction: 1 pour suivant (tourne vers la gauche), -1 pour précédent (tourne vers la droite)
             currentAngle -= direction * 120;
             carousel.style.transform = `rotateY(${currentAngle}deg)`;
+            updateActiveFace(); // On met à jour le focus après la rotation
         }
+
+        // On lance la fonction une première fois au chargement pour que la première face soit nette
+        updateActiveFace();
     </script>
 
 </body>
