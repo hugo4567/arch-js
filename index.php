@@ -11,7 +11,14 @@ mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
         <title>PIXEL BLASTER ADVENTURE 2</title>
     </head>
     <body>
-        <?php echo '<p>Bienvenue</p>'; ?>
+    
+    <nav>
+        <a href="admin_joueur.php">Joueurs</a>
+        <a href="admin_partie.php">Parties</a>
+        <?php if (isset($_SESSION["admin"])): ?>
+            <a href="index.php?action=disconnect">Déconnexion</a>
+        <?php endif; ?>
+    </nav>
     </body>
 </html>
 <script> src="maindos/main.js"</script>
