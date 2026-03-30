@@ -44,13 +44,29 @@ function get_level_by_id($conn, $id) {
 
 function get_level_by_name($conn, $name) {
     $name = mysqli_real_escape_string($conn, $name);
-    $sql = "SELECT * FROM levels WHERE name = $name";
+    $sql = "SELECT * FROM levels WHERE name = '$name'";
     $result = mysqli_query($conn, $sql);
     
     if ($result && mysqli_num_rows($result) > 0) {
         return mysqli_fetch_assoc($result); // Retourne la ligne sous forme de tableau associatif
     }
     return null; // Si non trouvé
+}
+
+function get_all_levels_by_name($conn, $name) {
+    $name = mysqli_real_escape_string($conn, $name);
+    $sql = "SELECT * FROM levels WHERE name = '$name'";
+    $result = mysqli_query($conn, $sql);
+    
+    $levels = []; // On prépare un tableau vide
+    
+    if ($result && mysqli_num_rows($result) > 0) {
+        // La boucle va piocher CHAQUE résultat trouvé
+        while ($row = mysqli_fetch_assoc($result)) {
+            $levels[] = $row; // On ajoute la ligne au tableau global
+        }
+    }
+    return $levels; // Retourne un tableau contenant les 3 niveaux (ou un tableau vide)
 }
 
 // --- 4. UPDATE ---

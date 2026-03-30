@@ -14,7 +14,15 @@ function update_admin($conn, $id_admin, $login, $mdp){
 }
 
 function delete_admin($conn, $id_admin){
-    $sql = ""; 
+    $sql = "DELETE FROM admin WHERE id_admin = $id_admin";
+    $query = mysqli_query($conn, $sql);
+    return $query;
+}
+
+function select_admin($conn){
+    $sql = "SELECT * FROM admin";
+    $query = mysqli_query($conn, $sql);
+    ...
 }
 
 ?>
