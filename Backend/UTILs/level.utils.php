@@ -1,5 +1,5 @@
 <?php
-
+// FICHIER POUR DES FONCTIONS AUXILLIAIRES
 function print_level($conn, $id)
 {
     if (isset($id)) 
@@ -16,6 +16,5 @@ function print_level($conn, $id)
         }
     }
 }
-
 
 ?>
