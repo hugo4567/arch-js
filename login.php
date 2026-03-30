@@ -48,53 +48,56 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Connexion</title>
     <style>
 /* --- Importation des polices --- */
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Quicksand:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap');
 
 body {
     margin: 0;
     padding: 60px 20px;
     font-family: 'Quicksand', sans-serif;
     
-    /* Couleur de fond gérée à part */
+    /* ON GARDE TON FOND D'ORIGINE */
     background-color: #111e22; 
-    
-    /* Uniquement les motifs ici */
     background-image: radial-gradient(#2c3e50 20%, transparent 20%),
                       radial-gradient(#2c3e50 20%, transparent 20%);
     background-position: 0 0, 8px 8px;
     background-size: 16px 16px;
-    
     image-rendering: pixelated;
+
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .main-container {
     width: 100%;
     max-width: 650px;
+    /* On ajoute un gap ici pour séparer les .login-wrap qui sont dedans */
+    display: flex;
+    flex-direction: column;
+    gap: 40px; 
 }
 
 h1 {
-    font-family: 'Press Start 2P', cursive;
-    font-size: 1.3rem;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
     text-align: center;
-    color: #eee; /* Texte clair */
-    text-shadow: 3px 3px 0 #c0392b, 5px 5px 0 rgba(0,0,0,0.6); /* Ombre 3D Rouge Sombre */
-    margin-bottom: 50px;
-    line-height: 1.8;
+    color: #eee;
+    text-shadow: 3px 3px 0 #d4ad0c; /* Ombre dorée SMM2 */
+    margin-bottom: 20px;
 }
 
-/* --- Message d'erreur (adapté au Dark Mode) --- */
+/* --- Message d'erreur --- */
 .error-msg {
-    background-color: #c0392b; /* Rouge plus sombre */
+    background-color: #c0392b;
     color: white;
     padding: 15px;
-    border-radius: 8px;
+    border-radius: 12px;
     text-align: center;
     font-weight: 700;
     margin-bottom: 25px;
-    border: 4px solid #e74c3c; /* Bordure rouge vive */
-    box-shadow: 0 6px 0 rgba(0,0,0,0.2);
+    border: 4px solid #e74c3c;
+    box-shadow: 0 6px 0 rgba(0,0,0,0.3);
 }
 </style>
 </head>

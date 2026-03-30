@@ -1,120 +1,64 @@
 <style>
-/* --- Importation des polices --- */
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap');
-
-:root {
-    --smm-yellow: #f1c40f;
-    --smm-bg: #f3eee1; /* Fond crème de l'interface */
-    --smm-text-dark: #7a6e5d; /* Marron pour les labels */
-    --smm-text-main: #5d5348; /* Texte principal */
-    --smm-border: #e2d9c2;
-}
-
-body {
-    background-color: #dcd4c0;
-    font-family: 'Quicksand', sans-serif;
-}
-
-.login-container-global {
+.login-wrap {
+    /* Style "Interface" sur fond sombre */
+    background-color: #f3eee1; /* On garde le crème pour le contraste */
+    border-radius: 20px;
+    padding: 25px;
+    border: 4px solid #ffffff;
+    box-shadow: 0 10px 0 rgba(0,0,0,0.4);
     display: flex;
     flex-direction: column;
-    max-width: 800px;
-    margin: 40px auto;
-    background-color: var(--smm-bg);
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-}
-
-/* --- Barre de titre jaune --- */
-.header-settings {
-    background-color: var(--smm-yellow);
-    padding: 15px 25px;
-    display: flex;
-    align-items: center;
     gap: 15px;
 }
 
-.header-settings h2 {
-    color: white;
-    font-size: 2rem;
-    margin: 0;
-    text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+.subtitle {
+    font-weight: 700;
+    color: #5d5348;
+    font-size: 1.2rem;
+    border-bottom: 2px solid #e2d9c2;
+    padding-bottom: 10px;
+    margin-bottom: 5px;
 }
 
-/* --- Grille de contenu --- */
-.login-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    padding: 30px;
-}
-
-/* --- Style des Groupes (Champs) --- */
 .form-group {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 5px;
 }
 
-.form-group label {
-    font-weight: 700;
-    font-size: 0.95rem;
-    color: var(--smm-text-dark);
-}
-
-/* --- Le "Wrapper" de l'input (Rectangle Blanc + Icône Jaune) --- */
-.input-wrapper {
-    display: flex;
+/* On remet les inputs bien propres */
+input {
     background: white;
+    border: 2px solid #e2d9c2;
     border-radius: 10px;
-    border: 3px solid #fff;
-    box-shadow: 0 4px 0 rgba(0,0,0,0.05);
-    overflow: hidden;
-    height: 60px;
-    align-items: stretch;
-}
-
-.input-icon {
-    background-color: var(--smm-yellow);
-    width: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-size: 1.5rem;
-}
-
-.input-field {
-    flex: 1;
-    border: none;
-    padding: 0 20px;
-    font-size: 1.2rem;
-    color: var(--smm-text-main);
+    padding: 12px 15px;
     font-family: 'Quicksand', sans-serif;
-    font-weight: 500;
+    font-size: 1rem;
+    color: #5d5348;
     outline: none;
 }
 
-/* --- Bouton OK --- */
-.footer-actions {
-    display: flex;
-    justify-content: center;
-    padding-bottom: 30px;
+input:focus {
+    border-color: #f1c40f;
 }
 
+/* Le bouton "C'est parti" / "Gérer" */
 .btn-primary {
-    background-color: var(--smm-yellow);
-    color: var(--smm-text-main);
-    font-family: 'Quicksand', sans-serif;
+    background-color: #f1c40f;
+    color: #5d5348;
     font-weight: 700;
-    font-size: 1.8rem;
-    padding: 12px 100px;
+    font-size: 1.3rem;
+    padding: 12px;
     border: none;
     border-radius: 12px;
     cursor: pointer;
     box-shadow: 0 6px 0 #d4ad0c;
-    transition: transform 0.1s;
+    transition: all 0.1s;
+    margin-top: 10px;
+}
+
+.btn-primary:hover {
+    background-color: #f3d047;
 }
 
 .btn-primary:active {
