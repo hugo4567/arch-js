@@ -1,10 +1,10 @@
 for i in range(à40)
 
-NOTE MPD groupe 1
+NOTE MPD groupe 1 (filezilla)
 login : grp1
 mot de passe : Exoo2zoa 
 
-faire les fonctions levels et admin pour grer les choses admin a un level
+faire les fonctions levels et admin pour gerer les choses admin a un level
 
 horaire 00h -- 8h eteint
 

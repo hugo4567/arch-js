@@ -38,7 +38,7 @@ error_reporting(E_ALL);
                 <h3>Jouer au Jeu</h3>
                 <p>Lancez l'aventure directement dans votre navigateur.</p>
                 <form action="login.php" method="POST">
-                    <button type="submit" name="target" value="play">Lancer le Jeu</button>
+                    <a href="maindos/AppBundle/index.html" class="bouton-jeu">Jouer au jeu</a>
                 </form>
             </div>
 
@@ -46,7 +46,7 @@ error_reporting(E_ALL);
                 <h3>Marketplace</h3>
                 <p>Parcourez les niveaux créés par la communauté.</p>
                 <form action="login.php" method="POST">
-                    <button type="submit" name="target" value="market">Voir le Marché</button>
+                    <a href="maindos/market.html"> INDEX Market</a>
                 </form>
             </div>
 
@@ -54,7 +54,7 @@ error_reporting(E_ALL);
                 <h3>Espace Créateur</h3>
                 <p>Créez vos propres niveaux et partagez-les.</p>
                 <form action="login.php" method="POST">
-                    <button type="submit" name="target" value="creator">Créer un Niveau</button>
+                    <a href="maindos/editor.html">Créer un niveau</a>
                 </form>
             </div>
 
@@ -70,5 +70,6 @@ error_reporting(E_ALL);
     <a href="maindos/AppBundle/index.html"> INDEX JEU</a>
     <a href="maindos/editor.html"> INDEX editor</a>
     <a href="maindos/index.html"> INDEX autre</a>
+    <a href="maindos/market.html"> INDEX Market</a>
 </body>
 </html>

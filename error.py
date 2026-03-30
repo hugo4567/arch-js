@@ -1,2 +1,0 @@
-a = 'hugo'
-print(b)

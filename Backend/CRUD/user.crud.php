@@ -1,6 +1,6 @@
 <?php
 // --- 1. CREATE ---
-function create_user($conn, $name, $type, $id_crea, $user, $nb_play, $note_pos, $note_neg) {
+function create_user($conn, $login, $mdp, $levels) {
     // Sécurisation des données
     $name = mysqli_real_escape_string($conn, $name);
     $type = (int)$type;
