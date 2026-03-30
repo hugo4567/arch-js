@@ -42,6 +42,17 @@ function get_level_by_id($conn, $id) {
     return null; // Si non trouvé
 }
 
+function get_level_by_name($conn, $id) {
+    $id = (int)$id;
+    $sql = "SELECT * FROM levels WHERE id = $id";
+    $result = mysqli_query($conn, $sql);
+    
+    if ($result && mysqli_num_rows($result) > 0) {
+        return mysqli_fetch_assoc($result); // Retourne la ligne sous forme de tableau associatif
+    }
+    return null; // Si non trouvé
+}
+
 // --- 4. UPDATE ---
 function update_level($conn, $id, $name, $type, $id_crea, $level, $nb_play, $note_pos, $note_neg) {
     $id = (int)$id;
