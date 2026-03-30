@@ -10,17 +10,17 @@ async function startApp() {
         const canvasElement = document.getElementById('canvas');
         dotnet.instance.Module["canvas"] = canvasElement;
 
-        // --- LA MAGIE EST ICI : On récupère les fonctions C# [JSExport] ---
+        // --- LA MAGIE EST ICI : On rï¿½cupï¿½re les fonctions C# [JSExport] ---
         const exports = await getAssemblyExports(getConfig().mainAssemblyName);
         const interop = exports.Interop; // Si tu as mis un namespace, ce serait exports.TonNamespace.Interop
 
         function resizeCanvas() {
-            // On prend la taille définie par ton CSS (800x600) multipliée par le zoom de l'écran
+            // On prend la taille dï¿½finie par ton CSS (800x600) multipliï¿½e par le zoom de l'ï¿½cran
             const ratio = window.devicePixelRatio || 1.0;
             const displayWidth = canvasElement.clientWidth * ratio;
             const displayHeight = canvasElement.clientHeight * ratio;
 
-            // On met à jour les pixels internes
+            // On met ï¿½ jour les pixels internes
             if (canvasElement.width !== displayWidth || canvasElement.height !== displayHeight) {
                 canvasElement.width = displayWidth;
                 canvasElement.height = displayHeight;
@@ -30,12 +30,12 @@ async function startApp() {
             interop.OnCanvasResize(displayWidth, displayHeight, ratio);
         }
 
-        // 1. Redimensionnement de la fenêtre
+        // 1. Redimensionnement de la fenï¿½tre
         window.addEventListener('resize', resizeCanvas);
 
         // 2. Mouvements et clics de la souris
         canvasElement.addEventListener('mousemove', (e) => {
-            // offsetX/Y donne la position relative au canvas (et non à l'écran)
+            // offsetX/Y donne la position relative au canvas (et non ï¿½ l'ï¿½cran)
             // On multiplie par le ratio pour correspondre aux vrais pixels internes du jeu
             const ratio = window.devicePixelRatio || 1.0;
             interop.OnMouseMove(e.offsetX * ratio, e.offsetY * ratio);
@@ -56,10 +56,10 @@ async function startApp() {
             interop.OnKeyUp(e.code);
         });
 
-        // Désactiver le clic droit du navigateur
+        // Dï¿½sactiver le clic droit du navigateur
         canvasElement.addEventListener('contextmenu', e => e.preventDefault());
 
-        // On appelle le resize une première fois pour initialiser la bonne taille
+        // On appelle le resize une premiï¿½re fois pour initialiser la bonne taille
         resizeCanvas();
 
         // On lance le jeu
@@ -72,20 +72,20 @@ async function startApp() {
     }
 }
 /*
-// --- SYSTÈME DE COMPTEUR FPS INDÉPENDANT ---
+// --- SYSTï¿½ME DE COMPTEUR FPS INDï¿½PENDANT ---
 const fpsElement = document.getElementById('fpsCounter');
 let lastFpsTime = performance.now();
 let frames = 0;
 
 function measureFPS(currentTime) {
     frames++;
-    // Si une seconde (1000 ms) s'est écoulée
+    // Si une seconde (1000 ms) s'est ï¿½coulï¿½e
     if (currentTime - lastFpsTime >= 1000) {
         if (fpsElement) fpsElement.innerText = `FPS: ${frames}`;
-        frames = 0; // On remet le compteur à zéro
+        frames = 0; // On remet le compteur ï¿½ zï¿½ro
         lastFpsTime = currentTime;
     }
-    // On reboucle à l'infini à la vitesse de rafraîchissement de l'écran
+    // On reboucle ï¿½ l'infini ï¿½ la vitesse de rafraï¿½chissement de l'ï¿½cran
     requestAnimationFrame(measureFPS);
 }
 // On lance la boucle
@@ -102,8 +102,8 @@ window.GameAudio = {
         audio.loop = loop;
         audio.volume = volume;
 
-        // Les navigateurs bloquent parfois l'audio si le joueur n'a pas encore cliqué
-        audio.play().catch(e => console.warn("[AUDIO] Lecture bloquée par le navigateur (interaction requise) :", e));
+        // Les navigateurs bloquent parfois l'audio si le joueur n'a pas encore cliquï¿½
+        audio.play().catch(e => console.warn("[AUDIO] Lecture bloquï¿½e par le navigateur (interaction requise) :", e));
     },
 
     pause: function (id) {
@@ -113,7 +113,7 @@ window.GameAudio = {
     stop: function (id) {
         if (this.sounds[id]) {
             this.sounds[id].pause();
-            this.sounds[id].currentTime = 0; // Remet à zéro
+            this.sounds[id].currentTime = 0; // Remet ï¿½ zï¿½ro
         }
     },
 
@@ -121,5 +121,5 @@ window.GameAudio = {
         if (this.sounds[id]) this.sounds[id].volume = volume;
     }
 };
-
+console.log("THE ENGINE SHOULD BOOT");
 startApp();
