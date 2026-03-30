@@ -6,9 +6,11 @@ function admin_auth($conn, $login, $mdp){
 
     if($res_db){
         if ($mdp == $res_db['mdp']){
-            auth = true;
+            $auth = true;
         }
     }
+
+    return $auth;
 }
 
 ?>
