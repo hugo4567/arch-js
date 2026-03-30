@@ -1,128 +1,125 @@
 <style>
 /* --- Importation des polices --- */
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Quicksand:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap');
+
+:root {
+    --smm-yellow: #f1c40f;
+    --smm-bg: #f3eee1; /* Fond crème de l'interface */
+    --smm-text-dark: #7a6e5d; /* Marron pour les labels */
+    --smm-text-main: #5d5348; /* Texte principal */
+    --smm-border: #e2d9c2;
+}
+
+body {
+    background-color: #dcd4c0;
+    font-family: 'Quicksand', sans-serif;
+}
 
 .login-container-global {
     display: flex;
     flex-direction: column;
-    gap: 25px;
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
+    max-width: 800px;
+    margin: 40px auto;
+    background-color: var(--smm-bg);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
-/* --- Style des Cartes (Formulaires) - VERSION SOMBRE --- */
-.login-wrap {
-    background-color: #1a1a1a; /* Gris très foncé pour le fond de carte */
-    border-radius: 12px;
-    padding: 25px;
-    position: relative;
-    border: 4px solid #333; /* Bordure sombre par défaut */
-    box-shadow: 0 8px 0 rgba(0,0,0,0.3); /* Ombre plus marquée */
-    transition: transform 0.1s ease-out, border-color 0.15s ease-out;
-    display: flex;
-    flex-direction: column;
-}
-
-.login-wrap:hover {
-    transform: scale(1.02);
-    border-color: #f1c40f; /* Bordure Jaune Néon SMM2 au survol */
-}
-
-/* --- Titre avec icône circulaire --- */
-.subtitle {
-    font-family: 'Quicksand', sans-serif;
-    font-weight: 700;
-    font-size: 1.3rem;
-    color: #eee; /* Texte clair */
+/* --- Barre de titre jaune --- */
+.header-settings {
+    background-color: var(--smm-yellow);
+    padding: 15px 25px;
     display: flex;
     align-items: center;
-    margin-bottom: 25px;
+    gap: 15px;
 }
 
-.subtitle::before {
-    content: '🎮';
-    font-size: 1.3rem;
-    background-color: #333; /* Fond sombre pour l'icône */
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 18px;
-    box-shadow: 0 4px 0 rgba(0,0,0,0.2);
+.header-settings h2 {
     color: white;
-    border: 2px solid transparent;
+    font-size: 2rem;
+    margin: 0;
+    text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
 }
 
-/* Couleurs d'icônes par rôle (plus "flashy" sur fond sombre) */
-.role-joueur .subtitle::before { 
-    content: '🕹️'; 
-    border-color: #3498db; /* Bleu Électrique */
-    box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
-}
-.role-createur .subtitle::before { 
-    content: '🛠️'; 
-    border-color: #e67e22; /* Orange Vif */
-    box-shadow: 0 0 10px rgba(230, 126, 34, 0.5);
-}
-.role-admin .subtitle::before { 
-    content: '👑'; 
-    border-color: #e74c3c; /* Rouge Néon */
-    box-shadow: 0 0 10px rgba(231, 76, 60, 0.5);
+/* --- Grille de contenu --- */
+.login-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 30px;
 }
 
-/* --- Champs de saisie - VERSION SOMBRE --- */
+/* --- Style des Groupes (Champs) --- */
 .form-group {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    margin-bottom: 20px;
 }
 
 .form-group label {
-    font-family: 'Quicksand', sans-serif;
     font-weight: 700;
-    font-size: 0.9rem;
-    color: #aaa; /* Texte gris moyen */
-    text-transform: uppercase;
+    font-size: 0.95rem;
+    color: var(--smm-text-dark);
 }
 
-.form-group input {
-    background: #2c2c2c; /* Fond de l'input sombre */
-    border: 2px solid #444; /* Bordure de l'input */
-    border-radius: 8px;
-    padding: 14px;
-    font-family: 'Quicksand', sans-serif;
-    font-size: 1rem;
-    color: #fff; /* Texte saisi en blanc */
-    outline: none;
-    transition: border-color 0.2s;
-}
-
-.form-group input:focus {
-    border-color: #f1c40f; /* Jaune Néon au focus */
-}
-
-/* --- Bouton de validation (plus contrasté) --- */
-.btn-primary {
-    background-color: #2ecc71; /* Vert SMM2 */
-    color: white;
-    font-family: 'Quicksand', sans-serif;
-    font-weight: 700;
-    font-size: 1.1rem;
-    padding: 15px;
-    border: none;
+/* --- Le "Wrapper" de l'input (Rectangle Blanc + Icône Jaune) --- */
+.input-wrapper {
+    display: flex;
+    background: white;
     border-radius: 10px;
+    border: 3px solid #fff;
+    box-shadow: 0 4px 0 rgba(0,0,0,0.05);
+    overflow: hidden;
+    height: 60px;
+    align-items: stretch;
+}
+
+.input-icon {
+    background-color: var(--smm-yellow);
+    width: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.input-field {
+    flex: 1;
+    border: none;
+    padding: 0 20px;
+    font-size: 1.2rem;
+    color: var(--smm-text-main);
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 500;
+    outline: none;
+}
+
+/* --- Bouton OK --- */
+.footer-actions {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 30px;
+}
+
+.btn-primary {
+    background-color: var(--smm-yellow);
+    color: var(--smm-text-main);
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: 1.8rem;
+    padding: 12px 100px;
+    border: none;
+    border-radius: 12px;
     cursor: pointer;
-    box-shadow: 0 5px 0 #27ae60;
-    transition: all 0.1s;
+    box-shadow: 0 6px 0 #d4ad0c;
+    transition: transform 0.1s;
 }
 
 .btn-primary:active {
-    transform: translateY(2px);
-    box-shadow: 0 2px 0 #27ae60;
+    transform: translateY(4px);
+    box-shadow: 0 2px 0 #d4ad0c;
 }
 </style>
 
