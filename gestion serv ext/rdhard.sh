@@ -14,3 +14,6 @@ acpitool -s
 
 # Ou s2ram
 s2ram
+# Éditer crontab
+crontab -e 1er file
+/etc/systemd/system/sleep-at-time.service 2e file
