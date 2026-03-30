@@ -54,10 +54,16 @@ body {
     margin: 0;
     padding: 60px 20px;
     font-family: 'Quicksand', sans-serif;
-    /* Fond briques Pixel - VERSION ASSOMBRIE (Thème Nuit) */
-    background: #111e22 radial-gradient(#2c3e50 20%, transparent 20%) 0 0,
-                #111e22 radial-gradient(#2c3e50 20%, transparent 20%) 8px 8px;
+    
+    /* Couleur de fond gérée à part */
+    background-color: #111e22; 
+    
+    /* Uniquement les motifs ici */
+    background-image: radial-gradient(#2c3e50 20%, transparent 20%),
+                      radial-gradient(#2c3e50 20%, transparent 20%);
+    background-position: 0 0, 8px 8px;
     background-size: 16px 16px;
+    
     image-rendering: pixelated;
     display: flex;
     justify-content: center;
