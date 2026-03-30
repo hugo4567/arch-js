@@ -13,4 +13,13 @@ FAAAAAAH is not real... it can't hurts you FAAAAAAH
 https://github.com/Ex-A01/ARCH-JS   GITHUB DE LA VERSION DEPLOYEE
 A CHAQUE SEANCE, il y a un nouveau truc qui tourne sur le site
 
+if(isJew())
+{
+    die();
+}
+
 *** code ***
+nginx -t
+
+Redémarrez : systemctl restart nginx
+*** PHP ***

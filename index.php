@@ -51,7 +51,8 @@ error_reporting(E_ALL);
             </div>
 
             <div class="tab">
-                <h3>Espace Créateur</h3>
+       
+            <h3>Espace Créateur</h3>
                 <p>Créez vos propres niveaux et partagez-les.</p>
                 <form action="login.php" method="POST">
                     <a href="maindos/editor.html">Créer un niveau</a>
