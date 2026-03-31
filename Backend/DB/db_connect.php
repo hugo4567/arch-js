@@ -15,8 +15,7 @@ try {
     $conn = mysqli_connect($serveur, $utilisateur, $mot_de_passe, $base_de_donnees, 3306);
     mysqli_set_charset($conn, "utf8");
     // Si on arrive ici, c'est que c'est gagné !
-    // essaie avec l1.dptingo-usmb.fr : connection refused.
-    // G -> connexion bloquée par le pare-feu.
+
 } catch (mysqli_sql_exception $e) {
     echo "Détail de l'erreur : " . $e->getMessage();
 }
