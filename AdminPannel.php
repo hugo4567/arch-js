@@ -4,6 +4,13 @@
 require_once __DIR__ . '/Backend/DB/db_connect.php';
 require_once __DIR__ . '/Backend/CRUD/levels.crud.php';
 
+session_start();
+
+if(!isset($_SESSION["admin"]))
+{
+    header("Location: login.php");
+}
+
 // On détermine quelle action l'utilisateur veut effectuer. 
 $action = isset($_GET['action']) ? $_GET['action'] : 'list';
 

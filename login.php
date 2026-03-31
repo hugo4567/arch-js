@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($role === "admin") {
         if ($login === "admin" && $passwd === "admin") {
             $_SESSION["admin"] = time();
-            header("Location: index.php"); // Redirige vers ton accueil
+            header("Location: AdminPannel.php"); // Redirige vers admin panel pour le moment
             exit;
         } else { $error = "Identifiants Admin incorrects !"; }
     } 
