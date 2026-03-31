@@ -17,3 +17,7 @@ s2ram
 # Éditer crontab
 crontab -e 1er file
 /etc/systemd/system/sleep-at-time.service 2e file
+
+
+# Créer un tunnel SSH via code-server (port forwarding)
+ssh -L 2222:localhost:22 root@code-server-ip
