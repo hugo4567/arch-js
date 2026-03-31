@@ -35,8 +35,8 @@
                 <td><?= $l['level'] ?></td>
                 <td><?= $l['nb_play'] ?></td>
                 <td>
-                    <a href="index.php?action=edit&id=<?= $l['id'] ?>" class="btn">Modifier</a>
-                    <a href="index.php?action=delete&id=<?= $l['id'] ?>" class="btn btn-danger" onclick="return confirm('Sûr de vouloir supprimer ?');">Supprimer</a>
+                    <a href="AdminPannel.php?action=edit&id=<?= $l['id'] ?>" class="btn">Modifier</a>
+                    <a href="AdminPannel.php?action=delete&id=<?= $l['id'] ?>" class="btn btn-danger" onclick="return confirm('Sûr de vouloir supprimer ?');">Supprimer</a>
                 </td>
             </tr>
             <?php endforeach; ?>

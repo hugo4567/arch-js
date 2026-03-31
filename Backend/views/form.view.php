@@ -23,7 +23,7 @@ $note_neg = $is_edit ? $level_data['note_neg'] : 0;
 </head>
 <body>
     <h1><?= $is_edit ? 'Modifier le niveau' : 'Créer un niveau' ?></h1>
-    <a href="index.php">Retour à la liste</a>
+    <a href="AdminPannel.php">Retour à la liste</a>
 
     <form method="POST" action="">
         <label>Nom :</label>
