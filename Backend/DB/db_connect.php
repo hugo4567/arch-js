@@ -2,10 +2,9 @@
 
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
-// On utilise l'hôte spécifique au réseau de l'IUT
-$serveur = "127.0.0.1"; 
-// SI localhost ne marche pas, essaie : "mariadb" ou "mysql" 
-// selon si tu es dans un conteneur spécifique du département.
+
+$serveur = "localhost"; 
+// Si localhost ne marche pas, faut mettre 127.0.0.1
 
 $utilisateur = "grp1";
 $mot_de_passe = "Exoo2zoa";
