@@ -26,3 +26,7 @@ Redémarrez : systemctl restart nginx
 
 CES QUI QUI FAIT DES COMMIT A 20h38 ???./
 C'est le FAAAAAAAAAH
+
+
+
+Someone a des problemes avec la conf ou oklm ????
