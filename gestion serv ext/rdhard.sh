@@ -21,3 +21,8 @@ crontab -e 1er file
 
 # Créer un tunnel SSH via code-server (port forwarding)
 ssh -L 2222:localhost:22 root@code-server-ip
+
+
+# Programmer réveil dans 2 minutes
+sudo rtcwake -m mem -t $(date -d "+2 minutes" +%s)
+# Le PC doit se réveiller dans 2 min
