@@ -30,3 +30,7 @@ C'est le FAAAAAAAAAH
 
 
 Someone a des problemes avec la conf ou oklm ????
+
+
+
+MErci de tranformer tout le code imbuvable par g
