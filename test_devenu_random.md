@@ -36,3 +36,6 @@ Someone a des problemes avec la conf ou oklm ????
 MErci de tranformer tout le code imbuvable par gégé en code lisible et commenté et comprehessible, sinon le prof vas nous poser des questions impossibles;
 
 DE plus, on peut recoder des fonctions pour les rendres plus simples, ou importer des bibliotheques.
+
+
+COUCOU IMPERIAL KILLER !!!!!
