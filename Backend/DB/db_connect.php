@@ -3,7 +3,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 
-$serveur = "localhost"; 
+$serveur = "l1.dptinfo-usmb.fr"; 
 // Si localhost ne marche pas, faut mettre 127.0.0.1
 
 $utilisateur = "grp1";
