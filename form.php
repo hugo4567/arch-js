@@ -1,3 +1,4 @@
+<-- si un gars pourvait tout mettre dans des css se serait un peu mieux mais bon /-->
 <style>
 .login-wrap {
     /* Fond blanc/cassé pour détacher la carte du fond de page */
