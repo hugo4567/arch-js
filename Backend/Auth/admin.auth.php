@@ -1,6 +1,6 @@
 <?php
 
-function admin_auth($conn, $login, $mdp){
+function admin_auth($conn, $login, $mdp){ // Pas safe, mais ça marche.
     $auth = false;
     $res_db = select_admin_login($conn, $login);
 
