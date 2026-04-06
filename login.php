@@ -18,6 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $role = $_POST["role"] ?? "";
 
     if ($role === "admin") {
+        include("Backend/Auth/admin.auth.php");
         if ($login === "admin" && $passwd === "admin") {
             $_SESSION["admin"] = time();
             header("Location: AdminPannel.php"); // Redirige vers admin panel pour le moment
