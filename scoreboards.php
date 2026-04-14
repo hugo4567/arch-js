@@ -13,5 +13,5 @@ error_reporting(E_ALL);
 <body>
 
 <?php
-$text
+$text = '<table> <tr> bonsoir </tr> </table>'
 ?>

@@ -9,7 +9,8 @@ error_reporting(E_ALL);
 <head>
     <meta charset="utf-8">
     <title>PIXEL BLASTER ADVENTURE - Accueil</title>
-    <link rel="stylesheet" href="style.css"> </head>
+    <link rel="stylesheet" href="style.css"> 
+</head>
 <body>
 
     <nav>
@@ -55,6 +56,13 @@ error_reporting(E_ALL);
                 <p>&nbsp;Créez vos propres niveaux et partagez-les.</p>
                 <form action="login.php" method="POST">
                     <a href="./login.php">Créer un niveau</a>
+                </form>
+            </div>
+            <div class="tab">
+            <h3>Espace Scores</h3>
+                <p>&nbsp;CHECK MOI LES SCORES, DEVENEZ LE BEST.</p>
+                <form action="scoreboards.php" method="POST">
+                    <a href="./scoreboards.php">WELCOME</a>
                 </form>
             </div>
 
