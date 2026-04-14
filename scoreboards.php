@@ -17,9 +17,9 @@ require_once __DIR__ . '/Backend/DB/db_connect.php';
 <?php
 
 $text = "<table id='scores' class='scores'>";
-$text .= "<tr>;
+$text .= "<th>";
 foreach(get_all_users($conn) as $user) {
-    $text .= "<th>". $user['nom'] . "</th><th>" . $user[Score] . "</th></tr>";
+    $text .= "<tr>". $user['nom'] . "</tr><tr>" . $user['Score'] . "</tr></th>";
 
 $text .=    "<tr><td>HUGO</td><td>12000</td></tr>";
 $text .=    "<tr><td>MAXIME</td><td>-390</td></tr>";
