@@ -13,10 +13,10 @@ error_reporting(E_ALL);
 <body>
 
 <?php
-$text = "<table id='scores' class='scores'> 
-    <tr><th>Joueur</th><th>Score</th></tr>
-    <tr><td>Alice</td><td>120</td></tr>
-    <tr><td>Bob</td><td>95</td></tr>
-  </table>;
+$text = "<table id='scores' class='scores'>";
+$text .= "<tr><th>Joueur</th><th>Score</th></tr>";
+$text .=    "<tr><td>HUGO</td><td>12000</td></tr>";
+$text .=    "<tr><td>MAXIME</td><td>-390</td></tr>";
+$text .=  "</table>";
 echo($text);
 ?>
