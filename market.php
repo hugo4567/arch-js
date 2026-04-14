@@ -65,109 +65,11 @@ $playerMoney = $_SESSION["money"];
 <head>
     <meta charset="UTF-8">
     <title>8-BIT MARKET</title>
-    <style>
-        /* On reprend ton style de login */
-        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
-        body { 
-            font-family: 'Press Start 2P', cursive; 
-            background-color: #000;
-            background-image: 
-                linear-gradient(45deg, #111 25%, transparent 25%, transparent 75%, #111 75%, #111),
-                linear-gradient(45deg, #111 25%, transparent 25%, transparent 75%, #111 75%, #111);
-            background-size: 8px 8px;
-            color: #fff; 
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 40px;
-            image-rendering: pixelated;
-        }
-
-        .market { width: 100%; max-width: 600px; }
-
-        h1 { font-size: 1.2rem; text-align: center; color: #e52521; margin-bottom: 30px; }
-
-        .status-box {
-            border: 4px solid #fff;
-            padding: 20px;
-            margin-bottom: 30px;
-            text-align: center;
-            box-shadow: 8px 8px 0px rgba(255,255,255,0.1);
-        }
-
-        .item { 
-            background: #000; 
-            padding: 20px; 
-            margin-bottom: 20px; 
-            border: 4px solid #555; 
-            box-shadow: 6px 6px 0px #333;
-            position: relative;
-        }
-        
-        .item:hover { border-color: #fff; }
-
-        .item h3 { font-size: 0.8rem; margin-bottom: 10px; color: #fff; }
-        .item p { font-size: 0.6rem; color: #aaa; margin-bottom: 15px; line-height: 1.4; }
-
-        .buy-btn { 
-            display: inline-block;
-            background: #000; 
-            padding: 10px 15px; 
-            color: #fff; 
-            text-decoration: none; 
-            border: 4px solid #fff; 
-            font-size: 0.7rem;
-            transition: transform 0.1s;
-        }
-
-        .buy-btn:hover { background: #fff; color: #000; }
-        .buy-btn:active { transform: translate(4px, 4px); }
-
-        .msg { 
-            margin-bottom: 30px; 
-            padding: 15px; 
-            border: 4px solid #e52521; 
-            font-size: 0.7rem; 
-            text-align: center;
-            animation: blink 1s infinite;
-        }
-
-        .reset-btn {
-            background: none;
-            border: 4px solid #e52521;
-            color: #e52521;
-            padding: 10px;
-            font-family: 'Press Start 2P', cursive;
-            font-size: 0.6rem;
-            cursor: pointer;
-            margin-top: 20px;
-        }
-
-        @keyframes blink {
-            50% { opacity: 0.5; }
-        }
-
-        .item-img {
-        width: 100%;
-        height: 150px;
-        background-color: #222; /* Fond en attendant l'image */
-        margin-bottom: 15px;
-        border: 2px solid #555;
-        object-fit: cover; /* Garde les proportions */
-        image-rendering: pixelated; /* Très important pour le style 8-bit */
-    }
-
-    .item-content {
-        display: flex;
-        flex-direction: column;
-    }
-    </style>
 </head>
 <body class="page-market">
 
 <div class="market">
-    <h1>🛒 MARCHÉ NOIR</h1>
+    <h1>🛒MARCHÉ NOIR</h1>
 
     <div class="status-box">
         OR : <?php echo $playerMoney; ?> G
