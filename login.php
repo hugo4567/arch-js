@@ -100,7 +100,7 @@ a{
     perspective: 1000px;
     width: 100%;
     max-width: 420px;
-    height: 550px;
+    height: 500px;
     position: relative;
     z-index: 10;
 }
@@ -260,7 +260,10 @@ button[type="submit"]:active {
     display: flex;
     justify-content: center;
     gap: 20px;
-    margin-top: 30px;
+    position: absolute; 
+    left: 0;
+    right: 0;
+    bottom: 80px; 
     z-index: 20;
 }
 
@@ -268,16 +271,13 @@ button[type="submit"]:active {
     background: #000000;
     color: #ffffff;
     border: 4px solid #555555;
-    border-radius: 0;
     font-family: 'Press Start 2P', monospace;
     font-size: 0.7rem;
     cursor: pointer;
     padding: 12px 30px;
     box-shadow: 4px 4px 0px #555555;
-    margin: 70px;
-    
+    margin: 0; 
 }
-
 .btn-nav:hover {
     border-color: #ffffff;
     background-color: #222222;

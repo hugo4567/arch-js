@@ -42,3 +42,8 @@ DE plus, on peut recoder des fonctions pour les rendres plus simples, ou importe
 
 
 <-- si un gars pourvait tout mettre dans des css se serait un peu mieux mais bon /-->
+
+
+
+zip un dossier avec le terminal :
+zip -r [NOM_DOSSIER].zip [NOM_DOSSIER]/
