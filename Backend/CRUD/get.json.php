@@ -24,8 +24,19 @@ function get_level_by_id($id){
 
 
 function get_all_levels(){ // return an array of json files.
-    global $path_json
+    global $path_json;
+    $contenus_json = [];
     $fichiers = scandir($path_json);
+
+    for ($i = 0; $i < count($fichiers); $i++){
+        $contenu = file_get_contents($fichiers[$i]);
+
+        if ($contenu !== false) {
+            $contenus_json[] = 
+        } else {
+            echo "Erreur lors de la lecture du fichier $fichiers[$i]";
+        }
+    }
 }
 
 ?>
