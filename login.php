@@ -100,7 +100,7 @@ a{
     perspective: 1000px;
     width: 100%;
     max-width: 420px;
-    height: 500px;
+    height: 550px;
     position: relative;
     z-index: 10;
 }
@@ -261,7 +261,7 @@ button[type="submit"]:active {
     justify-content: center;
     gap: 20px;
     position: absolute; 
-    left: 0;
+    left: -40px;
     right: 0;
     bottom: 80px; 
     z-index: 20;
