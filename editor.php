@@ -918,13 +918,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action']) && $_GET['ac
                 scene.GameObjects.push(gameObject);
             });
 
-            let dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(scene, null, 2));
-            let downloadAnchorNode = document.createElement('a');
-            downloadAnchorNode.setAttribute("href", dataStr);
-            downloadAnchorNode.setAttribute("download", document.getElementById('levelName').value + ".json");
-            document.body.appendChild(downloadAnchorNode);
-            downloadAnchorNode.click();
-            downloadAnchorNode.remove();
+            // ==========================================
+            // NOUVEAU : ENVOI AU SERVEUR AU LIEU DU TÉLÉCHARGEMENT
+            // ==========================================
+            const exportBtn = document.querySelector('.export-btn');
+            const originalText = exportBtn.innerHTML;
+            exportBtn.innerHTML = "⏳ Sauvegarde en cours...";
+            exportBtn.disabled = true;
+
+            fetch('editor.php?action=save_level', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(scene, null, 2)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('✅ ' + data.message);
+                } else {
+                    alert('❌ Erreur : ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Erreur réseau:', error);
+                alert('❌ Impossible de joindre le serveur.');
+            })
+            .finally(() => {
+                exportBtn.innerHTML = "☁️ Sauvegarder sur le Serveur"; // On change l'icône !
+                exportBtn.disabled = false;
+            });
         }
 
         // ==========================================
