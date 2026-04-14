@@ -3,6 +3,7 @@ session_start();
 // Debugging (à enlever une fois le site en ligne)
 ini_set('display_errors', '1');
 error_reporting(E_ALL);
+require_once __DIR__ . '/backend/CRUD/user.crud.php'
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -19,4 +20,5 @@ $text .=    "<tr><td>HUGO</td><td>12000</td></tr>";
 $text .=    "<tr><td>MAXIME</td><td>-390</td></tr>";
 $text .=  "</table>";
 echo($text);
+echo(get_all_users())
 ?>
