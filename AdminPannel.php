@@ -19,9 +19,8 @@ switch ($action) {
         // 1. Si le formulaire a été soumis (clic sur le bouton enregistrer -> POST)
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
-            // Ici, il faut appeler ta fonction pour créer le level dans la base de données.
-            // Exemple (à adapter avec le vrai nom de ta fonction CRUD, ex: insert_level) :
-            // insert_level($conn, $_POST['name'], $_POST['type'], $_POST['id_crea'], $_POST['level'], $_POST['nb_play'], $_POST['note_pos'], $_POST['note_neg']);
+            // J'ai DÉCOMMENTÉ l'appel à la fonction pour que ça ajoute vraiment en BDD
+            create_level($conn, $_POST['name'], $_POST['type'], $_POST['id_crea'], $_POST['level'], $_POST['nb_play'], $_POST['note_pos'], $_POST['note_neg']);
             
             // On redirige vers la liste une fois l'ajout terminé
             header('Location: AdminPannel.php');
@@ -29,8 +28,7 @@ switch ($action) {
         }
         
         // 2. Si on arrive simplement sur la page (clic sur le lien -> GET)
-        // On affiche le formulaire vierge
-       
+        $level_data = null;
         require __DIR__ . '/Backend/views/form.view.php';
         break;
     case 'edit':

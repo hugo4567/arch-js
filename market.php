@@ -3,9 +3,30 @@ session_start();
 
 // --- CONFIG / DATA ---
 $items = [
-    ["id" => 1, "name" => "Épée en fer", "price" => 150, "desc" => "Une épée simple mais fiable."],
-    ["id" => 2, "name" => "Potion de soin", "price" => 50, "desc" => "Rend 25 HP."],
-    ["id" => 3, "name" => "Arc de chêne", "price" => 200, "desc" => "Arc léger et précis."],
+    [
+        "id" => 1, 
+        "name" => "MONDE 1-1", 
+        "price" => 50, 
+        "desc" => "La plaine verdoyante.", 
+        "image" => "img/lvl1.png", 
+        "file" => "downloads/level1.zip"
+    ],
+    [
+        "id" => 2, 
+        "name" => "MONDE 1-2", 
+        "price" => 100, 
+        "desc" => "Les mines de charbon.", 
+        "image" => "img/lvl2.png", 
+        "file" => "downloads/level2.zip"
+    ],
+    [
+        "id" => 3, 
+        "name" => "CHATEAU FINAL", 
+        "price" => 250, 
+        "desc" => "Le trône du boss.", 
+        "image" => "img/lvl3.png", 
+        "file" => "downloads/level3.zip"
+    ],
 ];
 
 // Initialisation de l'argent
@@ -126,6 +147,21 @@ $playerMoney = $_SESSION["money"];
         @keyframes blink {
             50% { opacity: 0.5; }
         }
+
+        .item-img {
+        width: 100%;
+        height: 150px;
+        background-color: #222; /* Fond en attendant l'image */
+        margin-bottom: 15px;
+        border: 2px solid #555;
+        object-fit: cover; /* Garde les proportions */
+        image-rendering: pixelated; /* Très important pour le style 8-bit */
+    }
+
+    .item-content {
+        display: flex;
+        flex-direction: column;
+    }
     </style>
 </head>
 <body>
@@ -142,9 +178,27 @@ $playerMoney = $_SESSION["money"];
     <?php endif; ?>
 
     <?php foreach ($items as $item): ?>
-        <div class="item">
-            <a class="buy-btn" href="?buy=<?php echo $item['id']; ?>">TELECHARGER</a>
+    <div class="item">
+        <img src="<?php echo $item['image']; ?>" alt="Preview" class="item-img">
+        
+        <div class="item-content">
+            <h3><?php echo $item["name"]; ?> — <?php echo $item["price"]; ?>G</h3>
+            <p><?php echo $item["desc"]; ?></p>
+            
+            <?php 
+            // Si on vient d'acheter cet item précisément
+            if (isset($_GET['buy']) && intval($_GET['buy']) == $item['id'] && strpos($message, 'SUCCÈS') !== false): 
+            ?>
+                <a class="buy-btn" href="<?php echo $item['file']; ?>" download style="border-color: #4caf50; color: #4caf50;">
+                    CLIQUE ICI POUR LE ZIP
+                </a>
+            <?php else: ?>
+                <a class="buy-btn" href="?buy=<?php echo $item['id']; ?>">
+                    ACHETER (<?php echo $item['price']; ?>G)
+                </a>
+            <?php endif; ?>
         </div>
+    </div>
     <?php endforeach; ?>
 
     <?php if ($playerMoney < 50): ?>
