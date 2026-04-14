@@ -125,7 +125,7 @@ header p {
 .tab:nth-child(2)::before { content: '🎮'; background-color: #e67e22; } /* Jeu/Orange */
 .tab:nth-child(3)::before { content: '🛒'; background-color: #2ecc71; } /* Market/Vert */
 .tab:nth-child(4)::before { content: '🛠️'; background-color: #e74c3c; } /* Créateur/Rouge */
-.tab:nth-child(5)::before { content: '🏆'; background-color: #840a88; } /* Créateur/Rouge */
+.tab:nth-child(5)::before { content: '🏆'; background-color: #a80dad; } /* Créateur/Rouge */
 
 /* Effet au survol (Imite la sélection de SMM2) */
 .tab:hover {
@@ -271,3 +271,8 @@ footer {
 
 /*/////////////////////////////////////////////////////CSS DE LA PAGE LOGIN///////////////////////////////////////////////*/
 
+.tab {
+    border: 21px;
+    color:black;
+
+}

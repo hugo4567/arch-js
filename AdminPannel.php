@@ -17,15 +17,7 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'list';
 switch ($action) {
     case 'add':
         // Si le formulaire a été soumis en POST (clic sur le bouton enregistrer)
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            create_level($conn, $_POST['name'], $_POST['type'], $_POST['id_crea'], $_POST['level'], $_POST['nb_play'], $_POST['note_pos'], $_POST['note_neg']);
-            
-            // CORRECTION : On redirige vers le VRAI nom de ton fichier
-            header('Location: AdminPannel.php');
-            exit;
-        }
-        
-        $level_data = null; 
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') "
         require __DIR__ . '/Backend/views/form.view.php';
         break;
 

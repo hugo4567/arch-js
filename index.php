@@ -47,7 +47,7 @@ error_reporting(E_ALL);
                 <h3>Marketplace</h3>
                 <p>&nbsp;Parcourez les niveaux créés par la communauté.</p>
                 <form action="login.php" method="POST">
-                    <a href="maindos/market.php"> INDEX Market</a>
+                    <a href="market.php"> INDEX Market</a>
                 </form>
             </div>
 

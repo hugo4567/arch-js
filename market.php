@@ -1,5 +1,4 @@
-echo("oui")
-oui
+
 <?php
 // --- CONFIG / DATA ---
 $items = [
