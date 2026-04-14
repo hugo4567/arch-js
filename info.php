@@ -9,74 +9,7 @@ session_start();
     <link rel="stylesheet" href="style.css">
     <style>
         /* Styles spécifiques pour la page Infos */
-        .info-container {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 20px;
-        }
-
-        .info-block {
-            background: white;
-            border: 6px solid #3498db; /* Bleu pour les infos */
-            border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 30px;
-            color: #333;
-            box-shadow: 0 8px 0 rgba(0,0,0,0.1);
-        }
-
-        .info-block h2 {
-            font-family: 'Press Start 2P', cursive;
-            font-size: 1.2rem;
-            color: #3498db;
-            margin-top: 0;
-        }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .member-card {
-            background: #f9f9f9;
-            border: 3px solid #eee;
-            border-radius: 15px;
-            padding: 15px;
-            text-align: center;
-        }
-
-        .member-card img {
-            width: 80px;
-            height: 80px;
-            background: #ddd;
-            border-radius: 50%;
-            margin-bottom: 10px;
-        }
-
-        .contact-link {
-            display: flex;
-            align-items: center;
-            background: #f1c40f;
-            color: black;
-            padding: 15px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: bold;
-            margin-bottom: 10px;
-            transition: 0.2s;
-        }
-
-        .contact-link:hover {
-            transform: scale(1.02);
-            background: #f39c12;
-        }
-
-        .contact-icon {
-            margin-right: 15px;
-            font-size: 1.5rem;
-        }
+        
     </style>
 </head>
 <body>
