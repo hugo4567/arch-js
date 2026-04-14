@@ -54,48 +54,57 @@
         <div id="preview"></div>
     </div>
 
-    <script>
-        function generateRandomText() {
-            const words = ['apple', 'banana', 'cherry', 'dragon', 'elephant', 'forest', 'galaxy', 'horizon', 'island', 'jungle'];
-            return Array.from({length: Math.floor(Math.random() * 5) + 3}, 
-                () => words[Math.floor(Math.random() * words.length)]).join(' ');
-        }
+    <?php
+function generateRandomText() {
+    $words = ['apple', 'banana', 'cherry', 'dragon', 'elephant', 'forest', 'galaxy', 'horizon', 'island', 'jungle'];
+    $randomWords = array_rand($words, min(3, rand(3, 5)));
+    $text = [];
+    foreach ((array)$randomWords as $index) {
+        $text[] = $words[$index];
+    }
+    return implode(' ', $text);
+}
 
-        function generateRandomName() {
-            const firstNames = ['Alex', 'Jordan', 'Sam', 'Casey', 'Morgan', 'Taylor'];
-            const lastNames = ['Smith', 'Johnson', 'Williams', 'Brown', 'Jones', 'Garcia'];
-            return `${firstNames[Math.floor(Math.random() * firstNames.length)]} ${lastNames[Math.floor(Math.random() * lastNames.length)]}`;
-        }
+function generateRandomName() {
+    $firstNames = ['Alex', 'Jordan', 'Sam', 'Casey', 'Morgan', 'Taylor'];
+    $lastNames = ['Smith', 'Johnson', 'Williams', 'Brown', 'Jones', 'Garcia'];
+    return $firstNames[array_rand($firstNames)] . ' ' . $lastNames[array_rand($lastNames)];
+}
 
-        function generateJSON() {
-            return {
-                name: generateRandomName(),
-                cells: [
-                    generateRandomText(),
-                    generateRandomText(),
-                    generateRandomText()
-                ]
-            };
-        }
+// Créer le répertoire s'il n'existe pas
+if (!is_dir('./levels')) {
+    mkdir('./levels', 0755, true);
+}
 
-        function generateAndDownload() {
-            const data = generateJSON();
-            const json = JSON.stringify(data, null, 2);
-            
-            // Afficher l'aperçu
-            document.getElementById('preview').innerHTML = `<pre>${json}</pre>`;
-            
-            // Télécharger le fichier
-            const blob = new Blob([json], { type: 'application/json' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `${data.name.replace(/\s+/g, '_')}_${Date.now()}.json`;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-        }
-    </script>
+// Générer les données
+$data = [
+    'name' => generateRandomName(),
+    'cells' => [
+        generateRandomText(),
+        generateRandomText(),
+        generateRandomText()
+    ]
+];
+
+// Créer le fichier JSON
+$filename = './levels/' . str_replace(' ', '_', $data['name']) . '_' . time() . '.json';
+$json = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
+
+// Sauvegarder le fichier
+if (file_put_contents($filename, $json)) {
+    echo json_encode([
+        'success' => true,
+        'message' => 'Fichier créé avec succès',
+        'filename' => basename($filename),
+        'data' => $data
+    ]);
+} else {
+    http_response_code(500);
+    echo json_encode([
+        'success' => false,
+        'message' => 'Erreur lors de la création du fichier'
+    ]);
+}
+?>
 </body>
 </html>
