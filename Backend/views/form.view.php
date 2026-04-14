@@ -1,16 +1,4 @@
 <?php 
-// Définition des valeurs par défaut (vides pour la création, remplies pour la modification)
-
-/*if(!isset($level_data)){ // val par défaut
-    $level_data['name'] = '';
-    $level_data['type'] = 0;
-    $level_data['id_crea'] = 0;
-    $level_data['level'] = 0;
-    $level_data['nb_play'] = 0;
-    $level_data['note_pos'] = 0;
-    $level_data['note_neg'] = 0;
-}*/
-
 $is_edit = ($level_data !== null);
 $name = $is_edit ? $level_data['name'] : '';
 $type = $is_edit ? $level_data['type'] : 0;
@@ -45,7 +33,12 @@ $note_neg = $is_edit ? $level_data['note_neg'] : 0;
 
         <label>ID Créateur :</label>
         <input type="number" name="id_crea" value="<?= $id_crea ?>" required>
-"$nb_play ?>" required>
+
+        <label>Level :</label>
+        <input type="number" name="level" value="<?= $level ?>" required>
+
+        <label>Nombre de parties :</label>
+        <input type="number" name="nb_play" value="<?= $nb_play ?>" required>
 
         <label>Notes Positives :</label>
         <input type="number" name="note_pos" value="<?= $note_pos ?>" required>

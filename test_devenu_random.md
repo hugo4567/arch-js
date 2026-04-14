@@ -10,7 +10,7 @@ horaire 00h -- 8h eteint
 
 FAAAAAAH is not real... it can't hurts you FAAAAAAH
 
-https://github.com/Ex-A01/ARCH-JS   GITHUB DE LA VERSION DEPLOYEE
+[git du proj](https://github.com/Ex-A01/ARCH-JS   GITHUB DE LA VERSION DEPLOYEE)
 A CHAQUE SEANCE, il y a un nouveau truc qui tourne sur le site
 
 
@@ -43,3 +43,5 @@ DE plus, on peut recoder des fonctions pour les rendres plus simples, ou importe
 
 zip un dossier avec le terminal :
 zip -r [NOM_DOSSIER].zip [NOM_DOSSIER]/
+
+https://docs.google.com/document/d/18-8ev12SeBaD-JHFx1wEziCqG8VKFN-_sg5ofqCcOYQ/edit?pli=1&tab=t.0
