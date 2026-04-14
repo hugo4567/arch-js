@@ -29,6 +29,5 @@ echo($text);
 ?>
 
 <?php
-pjweb(e=4)
-require_once __DIR__ . "Backend/DB/db_disconnect.php";
+require_once __DIR__ . "/Backend/DB/db_disconnect.php";
 ?>
