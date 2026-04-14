@@ -14,8 +14,7 @@ $conn = mysqli_connect($serveur, $utilisateur, $mot_de_passe, $base_de_donnees, 
 if (null == $conn){
     echo("Détail de l'erreur : ". mysqli_connect_error());
     }
-
-else
+else{
     echo("On est co !");
-mysqli_set_charset($conn, "utf8");
+mysqli_set_charset($conn, "utf8");}//langue de communication
 ?>

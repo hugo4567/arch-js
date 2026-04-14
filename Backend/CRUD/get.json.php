@@ -24,7 +24,8 @@ function get_level_by_id($id){
 
 
 function get_all_levels(){ // return an array of json files.
-    
+    global $path_json
+    $fichiers = scandir($path_json);
 }
 
 ?>

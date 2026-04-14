@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     elseif ($role === "createur") {
         if ($login === "crea" && $passwd === "crea") {
             $_SESSION["createur"] = $login;
-            header("Location: createur_home.php");
+            header("Location: editor.php");
             exit;
         } else { $error = "Identifiants Créateur incorrects !"; }
     }

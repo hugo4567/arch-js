@@ -147,9 +147,10 @@
     top: 5px;
     left: 5px;
 }
-.page-index .tab:hover::before_border_bottom_right { /* Note: Pseudo-élément fictif pour simplifier */
-    /* Code pour le coin bas-droite serait nécessaire */
+.page-index .tab:hover::before_border_bottom_right {
+    color:red
 }
+
 
 .page-index .tab h3 {
     font-family: 'Quicksand', sans-serif; /* Police propre pour les titres SMM2 */
