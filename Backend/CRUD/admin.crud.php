@@ -29,6 +29,9 @@ function select_admin($conn){
 function select_admin_login($conn, $login){
     $sql = "SELECT * FROM admin WHERE login = $login";
     $query = mysqli_query($conn, $sql);
+    if (!$query){
+        echo "Détail de l'erreur : " . $e->getMessage();
+    }
     $rs = creer_rs($query);
     return $rs;
 }

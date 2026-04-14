@@ -1,6 +1,6 @@
 <?php
 
-require("/../CRUD/admin.crud.php");
+require __DIR__ . '/../CRUD/admin.crud.php';
 function admin_auth($conn, $login, $mdp){ // Pas safe, mais ça marche.
     $auth = false;
     $res_db = select_admin_login($conn, $login);

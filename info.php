@@ -7,10 +7,6 @@ session_start();
     <meta charset="utf-8">
     <title>Infos & Contact - PIXEL BLASTER</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* Styles spécifiques pour la page Infos */
-        
-    </style>
 </head>
 <body>
 
