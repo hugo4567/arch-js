@@ -200,6 +200,17 @@
             padding: 20px;
         }
 
+        /* --- Barre de Navigation --- */
+        .page-info nav {
+            background-color: rgba(0, 0, 0, 0.85); /* Fond sombre */
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 4px solid #f1c40f; /* Ligne Jaune SMM2 */
+            box-shadow: 0 4px 0 rgba(0,0,0,0.3);
+        }
+
         .page-info .logo {
             font-family: 'Press Start 2P', cursive; /* Police Pixel pour le Logo */
             font-size: 1rem;
@@ -227,6 +238,7 @@
             background-color: #f1c40f; /* Fond Jaune au survol */
             color: #000;
         }
+
 
         .page-info .info-block {
             background: white;

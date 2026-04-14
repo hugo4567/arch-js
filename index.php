@@ -14,9 +14,8 @@ error_reporting(E_ALL);
 <body class="page-index">
 
     <nav>
-        <div class="logo">PIXEL BLASTER</div>
+        <div class="logo"><a href="index.php">PIXEL BLASTER</a></div>
         <ul>
-            <li><a href="index.php">Accueil</a></li>
             <li><a href="login.php">Connexion / Login</a></li>
         </ul>
     </nav>

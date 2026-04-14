@@ -11,9 +11,10 @@ function save_level($id, $contenu){
 
 
 function get_level_by_id($id){
+    global $path_json;
     $nom = "$id.json";
 
-    $contenu = file_get_contents($nom);
+    $contenu = file_get_contents($path_json . $nom);
 
     if ($contenu !== false) {
         return $contenu;
@@ -39,6 +40,20 @@ function get_all_levels(){ // return an array of json files.
     }
 
     return $contenus_json;
+}
+
+function delete_file($id){
+    global $path_json;
+
+    if (unlink($if ($path_json . $nom)){
+        echo "Le fichier a été supprimé avec succès.";
+    } else {
+        echo "Erreur : Impossible de supprimer le fichier.";
+    })) {
+        echo "Le fichier a été supprimé avec succès.";
+    } else {
+        echo "Erreur : Impossible de supprimer le fichier.";
+    }
 }
 
 ?>

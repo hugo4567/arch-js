@@ -1,13 +1,66 @@
 ﻿<?php
-    require "./Backend/DB/db_connect.php";
-    session_start();
+// On charge les dépendances (comme dans AdminPannel.php)
+require_once __DIR__ . "/Backend/DB/db_connect.php";
+require_once __DIR__ . "/Backend/CRUD/levels.crud.php";
 
-    if(!isset($_SESSION["crea"]))
-    {
-        header("Location: login.php");
+session_start();
+
+if(!isset($_SESSION["crea"])) {
+    header("Location: login.php");
+    exit;
+}
+
+// Interception de la requête de sauvegarde (AJAX)
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action']) && $_GET['action'] === 'save_level') {
+    header('Content-Type: application/json');
+    
+    // Récupération du JSON envoyé par le JavaScript
+    $json_data = file_get_contents('php://input');
+    $data = json_decode($json_data, true);
+
+    if ($data) {
+        $levelName = $data['Name'];
+        
+        // Création du dossier s'il n'existe pas
+        $dir = __DIR__ . '/Levels';
+        if (!is_dir($dir)) {
+            mkdir($dir, 0777, true);
+        }
+        
+        // Sécurisation du nom de fichier (retire les espaces/caractères spéciaux) + Timestamp pour éviter d'écraser
+        $safeName = preg_replace('/[^a-zA-Z0-9_-]/', '_', $levelName);
+        $filename = $safeName . '_' . time() . '.json';
+        $filepath = $dir . '/' . $filename;
+        
+        // --- 1. VÉRIFICATION ET CRÉATION DU FICHIER ---
+        if (file_put_contents($filepath, $json_data)) {
+            
+            // --- 2. INSERTION DANS LA DB SEULEMENT SI LE FICHIER EST CRÉÉ ---
+            $type = 1; // Valeur arbitraire, à adapter selon ta logique
+            $id_crea = is_numeric($_SESSION["crea"]) ? $_SESSION["crea"] : 1; // On suppose que la session contient l'ID
+            $levelPathForDB = 'Levels/' . $filename; // Le chemin stocké en DB
+            $nb_play = 0;
+            $note_pos = 0;
+            $note_neg = 0;
+
+            try {
+                // Appel de ta fonction existante
+                create_level($conn, $levelName, $type, $id_crea, $levelPathForDB, $nb_play, $note_pos, $note_neg);
+                echo json_encode(['success' => true, 'message' => 'Niveau sauvegardé sur le serveur et ajouté à la BDD !']);
+            } catch (Exception $e) {
+                // Si la base de données échoue, on nettoie le fichier orphelin
+                unlink($filepath);
+                echo json_encode(['success' => false, 'message' => 'Erreur BDD. Le fichier a été annulé.']);
+            }
+
+        } else {
+            echo json_encode(['success' => false, 'message' => 'Erreur de droits : le serveur n\'a pas pu créer le fichier.']);
+        }
+    } else {
+        echo json_encode(['success' => false, 'message' => 'Données JSON corrompues.']);
     }
-
-
+    exit; // On arrête le script pour ne pas charger le HTML de l'éditeur derrière l'appel AJAX
+}
 ?>
 
 <!DOCTYPE html>
