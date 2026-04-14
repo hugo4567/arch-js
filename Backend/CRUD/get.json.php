@@ -44,16 +44,9 @@ function get_all_levels(){ // return an array of json files.
 
 function delete_file($id){
     global $path_json;
+    $nom = "$id.json";
 
-    if (unlink($if ($path_json . $nom)){
-        echo "Le fichier a été supprimé avec succès.";
-    } else {
-        echo "Erreur : Impossible de supprimer le fichier.";
-    })) {
-        echo "Le fichier a été supprimé avec succès.";
-    } else {
-        echo "Erreur : Impossible de supprimer le fichier.";
-    }
+    return unlink($path_json . $nom);
 }
 
 ?>
