@@ -65,6 +65,13 @@ error_reporting(E_ALL);
                     <a href="./scoreboards.php">WELCOME</a>
                 </form>
             </div>
+            <div class="tab">
+            <h3>liste niveaux</h3>
+                <p>&nbsp;KILLIAN REGARDE.</p>
+                <form action="lister_json.php" method="POST">
+                    <a href="./lister_json.php">MAXIME REGARDE</a>
+                </form>
+            </div>
 
             <iframe 
     src="https://ex-a01.github.io/ARCH-JS//index.html" 

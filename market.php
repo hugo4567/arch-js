@@ -21,7 +21,7 @@ $items = [
     ],
     [
         "id" => 3, 
-        "name" => "CHATEAU FINAL", 
+        "name" => "MONDE 1-3", 
         "price" => 250, 
         "desc" => "Le trône du boss.", 
         "image" => "img/lvl3.png", 
