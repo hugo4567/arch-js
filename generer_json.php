@@ -55,6 +55,8 @@
     </div>
 
     <?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
 function generateRandomText() {
     $words = ['apple', 'banana', 'cherry', 'dragon', 'elephant', 'forest', 'galaxy', 'horizon', 'island', 'jungle'];
     $randomWords = array_rand($words, min(3, rand(3, 5)));
@@ -104,7 +106,10 @@ if (file_put_contents($filename, $json)) {
         'success' => false,
         'message' => 'Erreur lors de la création du fichier'
     ]);
-}
+}}
 ?>
+<form method="POST">
+        <button type="submit">Générer JSON</button>
+    </form>
 </body>
 </html>
