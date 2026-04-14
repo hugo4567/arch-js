@@ -25,9 +25,11 @@ $text .=    "<tr><td>HUGO</td><td>12000</td></tr>";
 $text .=    "<tr><td>MAXIME</td><td>-390</td></tr>";
 $text .=  "</table>";
 echo($text);
+}
 
 ?>
 
 <?php
 require_once __DIR__ . "/Backend/DB/db_disconnect.php";
+echo("a");
 ?>
