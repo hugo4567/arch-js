@@ -82,6 +82,11 @@ body {
     position: relative;
 }
 
+.exit {
+
+
+}
+
 /* =========================================
    MÉCANIQUE DU CARROUSEL 3D
 ========================================= */
@@ -315,7 +320,7 @@ button[type="submit"]:active {
             <div class="carousel__face face-admin">
                 <div class="login-card">
                     <h1>ADMINISTRATION</h1>
-                    <a href="./index.php">SORTIR DICIniveau</a>
+                    <a href="./index.php" id='exit'>SORTIR D'ICI</a>
                     <form method="POST" action="">
                         <input type="hidden" name="role" value="admin">
                         <div class="form-group">
@@ -374,7 +379,6 @@ button[type="submit"]:active {
         <button class="btn-nav" onclick="rotateCarousel(-1)">&#9664; PRÉCÉDENT</button>
         <button class="btn-nav" onclick="rotateCarousel(1)">SUIVANT &#9654;</button>
     </div>
-    <a href="./index.php">SORTIR DICIniveau</a>
 
     <script>
         let currentAngle = 0;
