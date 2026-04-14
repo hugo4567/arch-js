@@ -238,7 +238,7 @@
         }
 
         .page-info .info-block h2 {
-            font-family: 'Press Start 2P', cursive;
+            font-family: 'Press Start 2P';
             font-size: 1.2rem;
             color: #3498db;
             margin-top: 0;
@@ -317,6 +317,9 @@
   border: 1px solid #c54e4e;
 }
 
+.page-scoreboard b{
+    color:red
+}
 
 
 
@@ -579,6 +582,8 @@
     0%, 100% { border-color: #e52521; }
     50% { border-color: #550000; }
 }
+
+/*/////////////////////////////////////////////////////CSS DE LA PAGE MARKETPLACE///////////////////////////////////////////////*/
 
 
 

@@ -164,7 +164,7 @@ $playerMoney = $_SESSION["money"];
     }
     </style>
 </head>
-<body>
+<body class="page-market">
 
 <div class="market">
     <h1>🛒 MARCHÉ NOIR</h1>
