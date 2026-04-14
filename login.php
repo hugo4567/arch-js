@@ -272,8 +272,10 @@ button[type="submit"]:active {
     font-family: 'Press Start 2P', monospace;
     font-size: 0.7rem;
     cursor: pointer;
-    padding: 12px 20px;
+    padding: 12px 30px;
     box-shadow: 4px 4px 0px #555555;
+    margin: 70px;
+    
 }
 
 .btn-nav:hover {
