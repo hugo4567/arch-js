@@ -17,12 +17,12 @@ require_once __DIR__ . '/Backend/DB/db_connect.php';
 <?php
 
 $text = "<table id='scores' class='scores'>";
-$text .= "<tr><th>Joueur</th><th>Score</th></tr>";
+$text .= "<tr><th>".  ."</th><th>Score</th></tr>";
 $text .=    "<tr><td>HUGO</td><td>12000</td></tr>";
 $text .=    "<tr><td>MAXIME</td><td>-390</td></tr>";
 $text .=  "</table>";
 echo($text);
-echo(get_all_users($conn))
+
 ?>
 
 <?php

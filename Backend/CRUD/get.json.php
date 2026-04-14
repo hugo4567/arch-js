@@ -32,11 +32,13 @@ function get_all_levels(){ // return an array of json files.
         $contenu = file_get_contents($fichiers[$i]);
 
         if ($contenu !== false) {
-            $contenus_json[] = 
+            $contenus_json[] = $contenu;
         } else {
             echo "Erreur lors de la lecture du fichier $fichiers[$i]";
         }
     }
+
+    return $contenus_json;
 }
 
 ?>
