@@ -199,6 +199,34 @@
             padding: 20px;
         }
 
+        .page-info .logo {
+            font-family: 'Press Start 2P', cursive; /* Police Pixel pour le Logo */
+            font-size: 1rem;
+            color: #fff;
+            text-shadow: 2px 2px 0 #e74c3c, 4px 4px 0 rgba(0,0,0,0.5); /* Effet 3D Rouge SMM2 */
+        }
+
+        .page-info nav ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+            margin: 0;
+        }
+
+        .page-info nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            padding: 5px 10px;
+            border-radius: 15px;
+            transition: 0.2s;
+        }
+
+        .page-info nav ul li a:hover {
+            background-color: #f1c40f; /* Fond Jaune au survol */
+            color: #000;
+        }
+
         .page-info .info-block {
             background: white;
             border: 6px solid #3498db; /* Bleu pour les infos */

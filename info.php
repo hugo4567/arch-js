@@ -8,7 +8,7 @@ session_start();
     <title>Infos & Contact - PIXEL BLASTER</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="page-index">
+<body class="page-info">
 
     <nav>
         <div class="logo">PIXEL BLASTER</div>
