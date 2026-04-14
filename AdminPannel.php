@@ -30,7 +30,7 @@ switch ($action) {
         
         // 2. Si on arrive simplement sur la page (clic sur le lien -> GET)
         // On affiche le formulaire vierge
-        $level_data = null;
+       
         require __DIR__ . '/Backend/views/form.view.php';
         break;
     case 'edit':
