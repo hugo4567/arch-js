@@ -11,7 +11,7 @@ error_reporting(E_ALL);
     <title>PIXEL BLASTER ADVENTURE - Accueil</title>
     <link rel="stylesheet" href="style.css"> 
 </head>
-<body>
+<body class="page-index">
 
     <nav>
         <div class="logo">PIXEL BLASTER</div>

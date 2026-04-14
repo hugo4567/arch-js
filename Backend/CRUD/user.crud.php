@@ -70,4 +70,27 @@ function delete_user($conn, $id) {
     
     return mysqli_query($conn, $sql);
 }
+
+function select_user_login($conn, $login){
+    $sql = "SELECT login, mdp FROM users WHERE login = '$login'";
+    $query = mysqli_query($conn, $sql);
+    if (!$query){
+        echo "<pre>Erreur SQL : " . mysqli_error($conn) . "</pre>";
+        echo "<pre>Requête tentée : " . $sql . "</pre>";
+        return false;
+    }
+    $rs = creer_rs($query);
+    return $rs;
+}
+
+function creer_rs($query){
+    $rs = [];
+
+    while ($row = mysqli_fetch_assoc($query)){
+        $rs[] = $row;
+    }
+
+    return $rs;
+}
+
 ?>

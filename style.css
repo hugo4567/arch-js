@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Quicksand:wght@500;700&display=swap');
 
 /* --- Configuration Générale --- */
-body {
+ body {
     margin: 0;
     padding: 0;
     font-family: 'Quicksand', sans-serif; /* Police ronde et propre pour le texte */
@@ -16,7 +16,7 @@ body {
 }
 
 /* --- Barre de Navigation --- */
-nav {
+.page-index nav {
     background-color: rgba(0, 0, 0, 0.85); /* Fond sombre */
     padding: 10px 20px;
     display: flex;
@@ -26,21 +26,21 @@ nav {
     box-shadow: 0 4px 0 rgba(0,0,0,0.3);
 }
 
-.logo {
+.page-index .logo {
     font-family: 'Press Start 2P', cursive; /* Police Pixel pour le Logo */
     font-size: 1rem;
     color: #fff;
     text-shadow: 2px 2px 0 #e74c3c, 4px 4px 0 rgba(0,0,0,0.5); /* Effet 3D Rouge SMM2 */
 }
 
-nav ul {
+.page-index nav ul {
     list-style: none;
     display: flex;
     gap: 15px;
     margin: 0;
 }
 
-nav ul li a {
+.page-index nav ul li a {
     color: #fff;
     text-decoration: none;
     font-weight: 700;
@@ -49,19 +49,19 @@ nav ul li a {
     transition: 0.2s;
 }
 
-nav ul li a:hover {
+.page-index nav ul li a:hover {
     background-color: #f1c40f; /* Fond Jaune au survol */
     color: #000;
 }
 
 /* --- Header --- */
-header {
+.page-index header {
     text-align: center;
     padding: 60px 20px;
     background-color: rgba(0, 0, 0, 0.7); /* Zone noire contrastée */
 }
 
-header h1 {
+.page-index header h1 {
     font-family: 'Quicksand', sans-serif;
     font-size: 3rem;
     font-weight: 700;
@@ -69,14 +69,14 @@ header h1 {
     margin-bottom: 15px;
 }
 
-header p {
+.page-index header p {
     font-size: 1.2rem;
     color: #fff;
 }
 
 /* --- Grille des Cartes (Tabs-container) --- */
 /* On passe en colonnes pour imiter la liste de SMM2 */
-.tabs-container {
+.page-index .tabs-container {
     display: flex;
     flex-direction: column; /* Liste verticale */
     align-items: center; /* Centre les cartes */
@@ -86,7 +86,7 @@ header p {
     margin: 0 auto;
 }
 
-.tab {
+.page-index .tab {
     background-color: #fff; /* Boutons Blancs SMM2 */
     color: #333; /* Texte sombre sur fond blanc */
     width: 100%; /* Cartes larges */
@@ -104,7 +104,7 @@ header p {
 
 /* Simulation des icônes circulaires de SMM2 */
 /* On ajoute un pseudo-élément avant chaque carte */
-.tab::before {
+.page-index .tab::before {
     content: '★'; /* Icône par défaut */
     font-size: 1.5rem;
     font-family: 'Press Start 2P', cursive;
@@ -121,21 +121,21 @@ header p {
 }
 
 /* Personnalisation des icônes/couleurs par section */
-.tab:nth-child(1)::before { content: 'ℹ️'; background-color: #3498db; } /* Infos/Bleu */
-.tab:nth-child(2)::before { content: '🎮'; background-color: #e67e22; } /* Jeu/Orange */
-.tab:nth-child(3)::before { content: '🛒'; background-color: #2ecc71; } /* Market/Vert */
-.tab:nth-child(4)::before { content: '🛠️'; background-color: #e74c3c; } /* Créateur/Rouge */
-.tab:nth-child(5)::before { content: '🏆'; background-color: #a80dad; } /* Créateur/Rouge */
+.page-index .tab:nth-child(1)::before { content: 'ℹ️'; background-color: #3498db; } /* Infos/Bleu */
+.page-index .tab:nth-child(2)::before { content: '🎮'; background-color: #e67e22; } /* Jeu/Orange */
+.page-index .tab:nth-child(3)::before { content: '🛒'; background-color: #2ecc71; } /* Market/Vert */
+.page-index .tab:nth-child(4)::before { content: '🛠️'; background-color: #e74c3c; } /* Créateur/Rouge */
+.page-index .tab:nth-child(5)::before { content: '🏆'; background-color: #a80dad; } /* Créateur/Rouge */
 
 /* Effet au survol (Imite la sélection de SMM2) */
-.tab:hover {
+.page-index .tab:hover {
     transform: scale(1.03); /* Zoom léger */
     border-color: #e74c3c; /* Bordure Rouge comme les coins de SMM2 */
     box-shadow: 0 10px 0 rgba(0,0,0,0.15);
 }
 
 /* Les fameux coins rouges de sélection SMM2 (Coins haut-gauche et bas-droite) */
-.tab:hover::after {
+.page-index .tab:hover::after {
     content: '';
     position: absolute;
     width: 15px;
@@ -147,11 +147,11 @@ header p {
     top: 5px;
     left: 5px;
 }
-.tab:hover::before_border_bottom_right { /* Note: Pseudo-élément fictif pour simplifier */
+.page-index .tab:hover::before_border_bottom_right { /* Note: Pseudo-élément fictif pour simplifier */
     /* Code pour le coin bas-droite serait nécessaire */
 }
 
-.tab h3 {
+.page-index .tab h3 {
     font-family: 'Quicksand', sans-serif; /* Police propre pour les titres SMM2 */
     font-weight: 700;
     font-size: 1.3rem;
@@ -159,7 +159,7 @@ header p {
     color: #333;
 }
 
-.tab p {
+.page-index .tab p {
     color: #777;
     font-size: 0.95rem;
     margin: 5px 0 0 0;
@@ -170,7 +170,7 @@ header p {
 /* On adapte donc ton HTML pour que le lien `<a>` englobe toute la carte ou pour que le formulaire soit la carte. */
 
 /* Si tu gardes tes liens `<a>` dans ton HTML, cache-les ou style-les pour qu'ils soient invisibles et prennent toute la place */
-.btn, .tab a, .tab button {
+.page-index .btn, .tab a, .tab button {
     position: absolute;
     top: 0;
     left: 0;
@@ -181,7 +181,7 @@ header p {
 }
 
 /* --- Footer --- */
-footer {
+.page-index footer {
     text-align: center;
     padding: 30px;
     font-size: 0.9rem;
@@ -193,13 +193,13 @@ footer {
 
 /*///////////////////////////////////////////////////// CSS DE LA PAGE INFO.PHP//////////////////////////////////////////////////////*/
 
-.info-container {
+.page-info .info-container {
             max-width: 900px;
             margin: 40px auto;
             padding: 20px;
         }
 
-        .info-block {
+        .page-info .info-block {
             background: white;
             border: 6px solid #3498db; /* Bleu pour les infos */
             border-radius: 20px;
@@ -209,21 +209,21 @@ footer {
             box-shadow: 0 8px 0 rgba(0,0,0,0.1);
         }
 
-        .info-block h2 {
+        .page-info .info-block h2 {
             font-family: 'Press Start 2P', cursive;
             font-size: 1.2rem;
             color: #3498db;
             margin-top: 0;
         }
 
-        .team-grid {
+        .page-info .team-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
             margin-top: 20px;
         }
 
-        .member-card {
+        .page-info .member-card {
             background: #f9f9f9;
             border: 3px solid #eee;
             border-radius: 15px;
@@ -231,7 +231,7 @@ footer {
             text-align: center;
         }
 
-        .member-card img {
+        .page-info .member-card img {
             width: 80px;
             height: 80px;
             background: #ddd;
@@ -239,7 +239,7 @@ footer {
             margin-bottom: 10px;
         }
 
-        .contact-link {
+        .page-info .contact-link {
             display: flex;
             align-items: center;
             background: #f1c40f;
@@ -252,12 +252,12 @@ footer {
             transition: 0.2s;
         }
 
-        .contact-link:hover {
+        .page-info .contact-link:hover {
             transform: scale(1.02);
             background: #f39c12;
         }
 
-        .contact-icon {
+        .page-info .contact-icon {
             margin-right: 15px;
             font-size: 1.5rem;
         }
