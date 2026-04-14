@@ -14,4 +14,6 @@ error_reporting(E_ALL);
 
 <?php
 $text = '<table> <tr> bonsoir </tr> </table>'
+echo($text);
+ece e(ùm )
 ?>

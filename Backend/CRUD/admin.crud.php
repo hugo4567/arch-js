@@ -27,10 +27,11 @@ function select_admin($conn){
 }
 
 function select_admin_login($conn, $login){
-    $sql = "SELECT login, mdp FROM admin WHERE login = $login";
+    $sql = "SELECT login, mdp FROM admin WHERE login = '$login'";
     $query = mysqli_query($conn, $sql);
     if (!$query){
-        echo "Erreur.";
+        echo "<pre>Erreur SQL : " . mysqli_error($conn) . "</pre>";
+        echo "<pre>Requête tentée : " . $sql . "</pre>";
         return false;
     }
     $rs = creer_rs($query);
