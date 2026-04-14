@@ -65,11 +65,10 @@ $playerMoney = $_SESSION["money"];
 <head>
     <meta charset="UTF-8">
     <title>8-BIT MARKET</title>
+    <link rel="stylesheet" href="style.css"> 
 </head>
-<body class="page-market">
-
-<div class="market">
-    <h1>🛒MARCHÉ NOIR</h1>
+<body class="page-market"> <div class="market">
+    <h1>🛒 MARCHÉ NOIR</h1>
 
     <div class="status-box">
         OR : <?php echo $playerMoney; ?> G
@@ -88,7 +87,6 @@ $playerMoney = $_SESSION["money"];
             <p><?php echo $item["desc"]; ?></p>
             
             <?php 
-            // Si on vient d'acheter cet item précisément
             if (isset($_GET['buy']) && intval($_GET['buy']) == $item['id'] && strpos($message, 'SUCCÈS') !== false): 
             ?>
                 <a class="buy-btn" href="<?php echo $item['file']; ?>" download style="border-color: #4caf50; color: #4caf50;">
