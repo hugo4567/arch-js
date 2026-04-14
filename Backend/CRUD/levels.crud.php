@@ -94,4 +94,12 @@ function delete_level($conn, $id) {
     
     return mysqli_query($conn, $sql);
 }
+
+// --- 6. GET LEVEL ID ---
+function get_level_id($conn, $id){
+    $id = (int)$id;
+    $sql = "SELECT level FROM levels WHERE id=$id";
+
+    return mysqli_query($conn, $sql);
+}
 ?>
