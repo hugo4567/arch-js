@@ -17,7 +17,7 @@ if (isset($_GET['buy'])) {
     foreach ($items as $item) {
         if ($item["id"] === $id) {
             if ($playerMoney >= $item["price"]) {
-                $playerMoney -= $item["price"];
+                $playerMoney = $playerMoney-$item["price"];
                 $message = "Tu as acheté : <b>{$item['name']}</b> !";
             } else {
                 $message = "Tu n'as pas assez d'argent.";

@@ -13,7 +13,7 @@
 </head>
 <body>
     <h1>Gestion des Niveaux</h1>
-    <a href="index.php?action=add" class="btn">+ Ajouter un niveau</a>
+    <a href="AdminPannel.php?action=add" class="btn">+ Ajouter un niveau</a>
 
     <table>
         <thead>

@@ -13,6 +13,6 @@ error_reporting(E_ALL);
 <body>
 
 <?php
-$text = '<table id='scores' class='scores'> <tr> bonsoir </tr> </table>';
+$text = "<table id='scores' class='scores'> <tr> bonsoir </tr> </table>";
 echo($text);
 ?>
