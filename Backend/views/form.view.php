@@ -34,12 +34,7 @@ $note_neg = $is_edit ? $level_data['note_neg'] : 0;
 
         <label>ID Créateur :</label>
         <input type="number" name="id_crea" value="<?= $id_crea ?>" required>
-
-        <label>Niveau (Level) :</label>
-        <input type="number" name="level" value="<?= $level ?>" required>
-
-        <label>Nombre de fois joué :</label>
-        <input type="number" name="nb_play" value="<?= $nb_play ?>" required>
+"$nb_play ?>" required>
 
         <label>Notes Positives :</label>
         <input type="number" name="note_pos" value="<?= $note_pos ?>" required>

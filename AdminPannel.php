@@ -15,11 +15,23 @@ if(!isset($_SESSION["admin"]))
 $action = isset($_GET['action']) ? $_GET['action'] : 'list';
 
 switch ($action) {
-    case 'add':
-        // Si le formulaire a été soumis en POST (clic sur le bouton enregistrer)
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') require __DIR__ . '/Backend/views/form.view.php';
+        case 'add':
+        // 1. Si le formulaire a été soumis (clic sur le bouton enregistrer -> POST)
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            
+            // Ici, il faut appeler ta fonction pour créer le level dans la base de données.
+            // Exemple (à adapter avec le vrai nom de ta fonction CRUD, ex: insert_level) :
+            // insert_level($conn, $_POST['name'], $_POST['type'], $_POST['id_crea'], $_POST['level'], $_POST['nb_play'], $_POST['note_pos'], $_POST['note_neg']);
+            
+            // On redirige vers la liste une fois l'ajout terminé
+            header('Location: AdminPannel.php');
+            exit;
+        }
+        
+        // 2. Si on arrive simplement sur la page (clic sur le lien -> GET)
+        // On affiche le formulaire vierge
+        require __DIR__ . '/Backend/views/form.view.php';
         break;
-
     case 'edit':
         $id = (int)$_GET['id'];
         

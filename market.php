@@ -1,5 +1,5 @@
-
 <?php
+session_start();
 // --- CONFIG / DATA ---
 $items = [
     ["id" => 1, "name" => "Épée en fer", "price" => 150, "desc" => "Une épée simple mais fiable."],
@@ -7,8 +7,12 @@ $items = [
     ["id" => 3, "name" => "Arc de chêne", "price" => 200, "desc" => "Arc léger et précis."],
 ];
 
-// Exemple de monnaie du joueur (à remplacer par ta DB)
-$playerMoney = 300;
+
+if (!isset($_SESSION["money"])) {
+    $_SESSION["money"] = 300;
+}
+
+$playerMoney = $_SESSION["money"];
 
 // Gestion achat
 $message = "";
