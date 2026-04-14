@@ -143,9 +143,7 @@ $playerMoney = $_SESSION["money"];
 
     <?php foreach ($items as $item): ?>
         <div class="item">
-            <h3><?php echo $item["name"]; ?> — <?php echo $item["price"]; ?>G</h3>
-            <p><?php echo $item["desc"]; ?></p>
-            <a class="buy-btn" href="?buy=<?php echo $item['id']; ?>">ACHETER</a>
+            <a class="buy-btn" href="?buy=<?php echo $item['id']; ?>">TELECHARGER</a>
         </div>
     <?php endforeach; ?>
 

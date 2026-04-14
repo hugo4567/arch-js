@@ -14,10 +14,7 @@
 <body>
     <h1>Gestion des Niveaux</h1>
     <a href="AdminPannel.php?action=add" class="btn">+ Ajouter un niveau</a>
-
-    <table>
-        <thead>
-            <tr>
+"
                 <th>ID</th>
                 <th>Nom</th>
                 <th>Type</th>
