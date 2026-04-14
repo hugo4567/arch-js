@@ -58,7 +58,7 @@
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 function generateRandomText() {
-    $words = ['apple', 'banana', 'cherry', 'dragon', 'elephant', 'forest', 'galaxy', 'horizon', 'island', 'jungle'];
+    $words = ['fahhhhhhhhhh', 'banana', 'cherry', 'dragon', 'elephant', 'forest', 'galaxy', 'horizon', 'island', 'jungle'];
     $randomWords = array_rand($words, min(3, rand(3, 5)));
     $text = [];
     foreach ((array)$randomWords as $index) {
@@ -68,8 +68,8 @@ function generateRandomText() {
 }
 
 function generateRandomName() {
-    $firstNames = ['Alex', 'Jordan', 'Sam', 'Casey', 'Morgan', 'Taylor'];
-    $lastNames = ['Smith', 'Johnson', 'Williams', 'Brown', 'Jones', 'Garcia'];
+    $firstNames = ['fahhhhhhhhhh', 'Jordan', 'Sam', 'Casey', 'Morgan', 'Taylor'];
+    $lastNames = ['fahhhhhhhhhh', 'Johnson', 'Williams', 'Brown', 'Jones', 'Garcia'];
     return $firstNames[array_rand($firstNames)] . ' ' . $lastNames[array_rand($lastNames)];
 }
 

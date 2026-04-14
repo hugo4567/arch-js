@@ -10,7 +10,7 @@ if(!isset($_SESSION["crea"])) {
     exit;
 }
 
-// Interception de la requête de sauvegarde (AJAX)
+// Interception de la requête de sauvegarde 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action']) && $_GET['action'] === 'save_level') {
     header('Content-Type: application/json');
     
