@@ -40,7 +40,7 @@ if (!empty($user['levels'])) {
         <h2>Menu de Test</h2>
         <p>Le bouton envoie le fichier <b>Test.json</b> à l'Iframe.</p>
         
-        <button onclick="chargerEtLancerNiveau('/Levels/Test_1776618458.json')">
+        <button onclick="chargerEtLancerNiveau('/~grp1/Levels/Test_1776618458.json')">
             🎮 Lancer "Test.json"
         </button>
     </div>
