@@ -41,7 +41,7 @@ if (!empty($user['levels'])) {
         <p>Le bouton envoie le fichier <b>Test.json</b> à l'Iframe.</p>
         
         <button onclick="chargerEtLancerNiveau('/~grp1/Levels/Test_1776618458.json')">
-            🎮 Lancer "Test.json"
+            🎮 Lancer "Test_1776618458.json"
         </button>
     </div>
 
