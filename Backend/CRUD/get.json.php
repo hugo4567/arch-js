@@ -1,10 +1,13 @@
 <?php
 
 $path_json = "/../../levels";
+$nom_fichier_form = ""; // jsp pas quoi mettre
 
-function save_level($id, $contenu){
+function save_level($id){
+    global $nom_fichier_form;
 
     $nom = "$id.json";
+    $contenu = file_get_contents($_FILES[$nom_fichier_form]['tmp_name']);
 
     file_put_contents($nom, $contenu);
 }
@@ -86,4 +89,8 @@ La valeur `$_FILES['avatar']['error']` permet de vérifier si l'upload a fonctio
 * **1 (UPLOAD_ERR_INI_SIZE)** : Dépasse `upload_max_filesize` dans `php.ini`.
 * **4 (UPLOAD_ERR_NO_FILE)** : L'utilisateur n'a sélectionné aucun fichier.
 
+
+## 3. Accès aux contenu
+
+$contenu = file_get_contents($_FILES['mon_fichier']['tmp_name']);
 */
