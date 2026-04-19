@@ -24,74 +24,71 @@ if (!empty($user['levels'])) {
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Jouer - Goozy</title>
+    <title>Test Rapide du Jeu</title>
     <style>
-        /* Ton style... */
-        body { display: flex; background: #111; color: white; }
-        #menu-niveaux { width: 300px; padding: 20px; background: #222; }
-        #game-container { flex-grow: 1; }
-        iframe { width: 100%; height: 100vh; border: none; }
-        button { display: block; width: 100%; margin-bottom: 10px; padding: 10px; cursor: pointer; }
+        body { display: flex; background: #111; color: white; font-family: sans-serif; margin: 0; }
+        #menu { width: 300px; padding: 20px; background: #222; }
+        #game-container { flex-grow: 1; height: 100vh; }
+        iframe { width: 100%; height: 100%; border: none; }
+        button { background: #4CAF50; color: white; border: none; padding: 15px; width: 100%; cursor: pointer; font-size: 16px; font-weight: bold; border-radius: 5px; }
+        button:hover { background: #45a049; }
     </style>
 </head>
 <body>
 
-    <div id="menu-niveaux">
-        <h2>Tes Niveaux</h2>
+    <div id="menu">
+        <h2>Menu de Test</h2>
+        <p>Le bouton envoie le fichier <b>Test.json</b> à l'Iframe.</p>
         
-        <?php if(empty($levels_disponibles)): ?>
-            <p>Tu n'as aucun niveau pour le moment.</p>
-        <?php else: ?>
-            <?php foreach($levels_disponibles as $lvl): ?>
-                <button onclick="chargerEtLancerNiveau('<?= htmlspecialchars($lvl['chemin_fichier']) ?>')">
-                    🎮 Jouer : <?= htmlspecialchars($lvl['nom_niveau']) ?>
-                </button>
-            <?php endforeach; ?>
-        <?php endif; ?>
+        <button onclick="chargerEtLancerNiveau('/Levels/Test.json')">
+            🎮 Lancer "Test.json"
+        </button>
     </div>
 
     <div id="game-container">
-        <iframe id="gameIframe" src="https://ex-a01.github.io/ARCH-JS/"></iframe>
+        <iframe id="gameIframe" src="https://github.com/Ex-A01/ARCH-JS"></iframe>
     </div>
 
     <script>
         const gameIframe = document.getElementById('gameIframe');
         let jeuPret = false;
 
-        // 1. On attend que le jeu nous dise qu'il a fini de booter
+        // 1. On écoute le jeu qui dit "Je suis prêt"
         window.addEventListener('message', (event) => {
-            if (event.origin !== "https://ex-a01.github.io") return;
+            // Remplace par ton pseudo GitHub
+            if (event.origin !== "https://Ex-A01.github.io") return;
 
             if (event.data && event.data.type === 'GAME_READY') {
-                console.log("Le jeu est chargé et prêt à recevoir des niveaux !");
+                console.log("✅ Le jeu est prêt ! Tu peux cliquer sur le bouton.");
                 jeuPret = true;
             }
         });
 
-        // 2. Fonction appelée quand on clique sur un bouton de niveau
+        // 2. On charge le JSON et on l'envoie
         async function chargerEtLancerNiveau(cheminJsonServeur) {
             if (!jeuPret) {
-                alert("Le jeu est encore en cours de chargement, patiente une seconde !");
+                alert("Le WASM n'est pas encore prêt. Attends 2 secondes !");
                 return;
             }
 
             try {
-                // A. Le JS de ton serveur va lire le fichier .json stocké dans ton dossier /Levels
-                const response = await fetch('/' + cheminJsonServeur); 
-                if (!response.ok) throw new Error("Impossible de lire le fichier JSON.");
+                console.log("⬇️ Téléchargement du JSON depuis le serveur PHP...");
+                const response = await fetch(cheminJsonServeur); 
                 
-                // B. On extrait le texte
+                if (!response.ok) throw new Error("Erreur 404: Fichier non trouvé sur le serveur PHP.");
+                
                 const jsonText = await response.text();
+                console.log("✅ JSON récupéré ! Envoi à l'Iframe...");
 
-                // C. On envoie la data pure à l'Iframe GitHub Pages
+                // On envoie le texte pur à l'Iframe
                 gameIframe.contentWindow.postMessage({
                     type: 'LOAD_LEVEL',
                     data: jsonText
-                }, "https://ex-a01.github.io");
+                }, "https://ton-pseudo.github.io"); // Remplace par ton pseudo
 
             } catch (error) {
-                console.error("Erreur de chargement :", error);
-                alert("Erreur lors du chargement du niveau.");
+                console.error("❌ Erreur :", error);
+                alert("Erreur: Impossible de charger le fichier " + cheminJsonServeur);
             }
         }
     </script>
