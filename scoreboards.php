@@ -16,19 +16,28 @@ require_once __DIR__ . '/Backend/DB/db_connect.php';
 
 <?php
 
-$mysql = 
+$scores = get_all_scores_with_details($conn);
 
 $text = "<table id='scores' class='scores'>";
-$text .= "<th>";
-foreach(get_all_users($conn) as $user) {
-    $text .= "<tr>". $user['nom'] . "</tr><tr>" . $user['Score'] . "</tr></th>";
+$text .= "<thead><tr><th>Joueur</th><th>Niveau</th><th>Score</th></tr></thead>";
+$text .= "<tbody>";
 
-$text .=    "<tr><td>HUGO</td><td>12000</td></tr>";
-$text .=    "<tr><td>MAXIME</td><td>-390</td></tr>";
-$text .=  "</table>";
-echo($text);
+foreach($scores as $score) {
+    $text .= "<tr>";
+    $text .= "<td>" . $score['joueur'] . "</td>";
+    $text .= "<td>" . $score['niveau'] . "</td>";
+    $text .= "<td>" . $score['score'] . "</td>";
+    $text .= "</tr>";
 }
 
+$text .= "</tbody></table>";
+echo($text);
+
+?>
+
+<?php
+require_once __DIR__ . "/Backend/DB/db_disconnect.php";
+echo("a");
 ?>
 
 <?php
