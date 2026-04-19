@@ -1,6 +1,6 @@
 <?php
 session_start();
-// Debugging (à enlever une fois le site en ligne)
+// Debugging
 ini_set('display_errors', '1');
 error_reporting(E_ALL);
 require_once __DIR__ . '/Backend/CRUD/user.crud.php';
