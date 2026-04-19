@@ -3,7 +3,7 @@
 $path_json = "/../../levels";
 $nom_fichier_form = "niveau_json";
 
-function save_level($id){
+function save_level_json($id){
     global $nom_fichier_form;
 
     $nom = "$id.json";
@@ -13,7 +13,7 @@ function save_level($id){
 }
 
 
-function get_level_by_id($id){
+function get_level_by_id_json($id){
     global $path_json;
     $nom = "$id.json";
 
@@ -27,7 +27,7 @@ function get_level_by_id($id){
 }
 
 
-function get_all_levels(){ // return an array of json files.
+function get_all_levels_json(){ // return an array of json files.
     global $path_json;
     $contenus_json = [];
     $fichiers = scandir($path_json);
