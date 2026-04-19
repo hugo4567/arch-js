@@ -2,14 +2,22 @@
 session_start();
 require_once __DIR__ . "/Backend/DB/db_connect.php";
 
-// 1. On récupère l'ID du joueur connecté
-$user_id = $_SESSION["user_id"]; 
+$user = get_user_by_id($conn, $_SESSION['id_user']);
 
-// 2. On va chercher les niveaux qu'il a le droit de jouer dans la DB
-// (Adapte la requête à ta vraie structure de BDD)
-$stmt = $conn->prepare("SELECT nom_niveau, chemin_fichier FROM user_levels WHERE id_user = ?");
-$stmt->execute([$user_id]);
-$levels_disponibles = $stmt->fetchAll(PDO::FETCH_ASSOC);
+if (!empty($user['levels'])) {
+    // Transforme le tableau [1, 4, 7] en chaîne "1,4,7" pour la requête SQL
+    $ids_string = implode(',', $user['levels']); 
+    
+    // On va chercher toutes les infos des niveaux que le joueur possède
+    $sql = "SELECT * FROM levels WHERE id IN ($ids_string)";
+    $result_levels = mysqli_query($conn, $sql);
+    
+    while ($lvl = mysqli_fetch_assoc($result_levels)) {
+        echo "<button>Jouer à " . $lvl['name'] . "</button>";
+    }
+} else {
+    echo "Tu ne possèdes aucun niveau.";
+}
 ?>
 
 <!DOCTYPE html>
