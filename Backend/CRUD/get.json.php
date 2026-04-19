@@ -8,11 +8,14 @@ function save_level_json($id){
 
     $nom = "$id.json";
 
-    if(isset($_FILES) && isset($_FILES[$nom_fichier_form])){
+    if(isset($_FILES) && $_FILES[$nom_fichier_form]['error'] === 0){
         $contenu = file_get_contents($_FILES[$nom_fichier_form]['tmp_name']);
-    }
+        $res = true;
 
-    file_put_contents($nom, $contenu);
+        file_put_contents($nom, $contenu);
+    } else {
+        
+    }
 }
 
 
