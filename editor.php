@@ -927,13 +927,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action']) && $_GET['ac
             exportBtn.disabled = true;
 
             fetch('editor.php?action=save_level', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(scene, null, 2)
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(scene, null, 2)
             })
-            .then(response => response.json())
+            .then(async response => {
+            const textResponse = await response.text(); // On récupère le texte brut d'abord
+            try {
+                return JSON.parse(textResponse); // On tente de le convertir en JSON
+            } catch (error) {
+            console.error("Erreur PHP brute : \n", textResponse); // AFFICHE L'ERREUR PHP !
+            throw new Error("Le serveur a renvoyé du texte/HTML au lieu d'un JSON.");
+            }
+            })
             .then(data => {
                 if (data.success) {
                     alert('✅ ' + data.message);
