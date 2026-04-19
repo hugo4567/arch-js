@@ -25,9 +25,9 @@ switch ($action) {
             // on recupère l'id du level qu'on vient d'ajouter
 
             if ($id_level){
-                save_level_json($id_level);
+                save_level_json($id_level); // NE FONCTIONNE PAS ???
             } else {
-                
+
             }
 
 
