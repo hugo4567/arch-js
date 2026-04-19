@@ -2,7 +2,7 @@
 session_start();
 require_once __DIR__ . "/Backend/DB/db_connect.php";
 
-$user = get_user_by_id($conn, $_SESSION['id_user']);
+/*$user = get_user_by_id($conn, $_SESSION['id_user']);
 
 if (!empty($user['levels'])) {
     // Transforme le tableau [1, 4, 7] en chaîne "1,4,7" pour la requête SQL
@@ -17,7 +17,7 @@ if (!empty($user['levels'])) {
     }
 } else {
     echo "Tu ne possèdes aucun niveau.";
-}
+}*/
 ?>
 
 <!DOCTYPE html>
@@ -40,13 +40,13 @@ if (!empty($user['levels'])) {
         <h2>Menu de Test</h2>
         <p>Le bouton envoie le fichier <b>Test.json</b> à l'Iframe.</p>
         
-        <button onclick="chargerEtLancerNiveau('/Levels/Test.json')">
+        <button onclick="chargerEtLancerNiveau('/Levels/Test_1776618458.json')">
             🎮 Lancer "Test.json"
         </button>
     </div>
 
     <div id="game-container">
-        <iframe id="gameIframe" src="https://github.com/Ex-A01/ARCH-JS"></iframe>
+       <iframe src="https://ex-a01.github.io/ARCH-JS/"></iframe>
     </div>
 
     <script>
