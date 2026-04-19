@@ -39,8 +39,3 @@ echo($text);
 require_once __DIR__ . "/Backend/DB/db_disconnect.php";
 echo("a");
 ?>
-
-<?php
-require_once __DIR__ . "/Backend/DB/db_disconnect.php";
-echo("a");
-?>
