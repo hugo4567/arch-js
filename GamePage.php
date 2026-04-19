@@ -53,10 +53,10 @@ if (!empty($user['levels'])) {
         const gameIframe = document.getElementById('gameIframe');
         let jeuPret = false;
 
-        // 1. On écoute le jeu qui dit "Je suis prêt"
+        // 1. On écoute le jeu
         window.addEventListener('message', (event) => {
-            // Remplace par ton pseudo GitHub
-            if (event.origin !== "https://Ex-A01.github.io") return;
+            // 👇 LIGNE À VÉRIFIER ABSOLUMENT 👇
+            if (event.origin !== "https://ex-a01.github.io") return; 
 
             if (event.data && event.data.type === 'GAME_READY') {
                 console.log("✅ Le jeu est prêt ! Tu peux cliquer sur le bouton.");
@@ -64,31 +64,26 @@ if (!empty($user['levels'])) {
             }
         });
 
-        // 2. On charge le JSON et on l'envoie
+        // 2. On envoie le niveau
         async function chargerEtLancerNiveau(cheminJsonServeur) {
             if (!jeuPret) {
-                alert("Le WASM n'est pas encore prêt. Attends 2 secondes !");
+                alert("Le WASM n'est pas encore prêt. Regarde la console (F12) pour voir si le signal arrive !");
                 return;
             }
 
             try {
-                console.log("⬇️ Téléchargement du JSON depuis le serveur PHP...");
                 const response = await fetch(cheminJsonServeur); 
-                
-                if (!response.ok) throw new Error("Erreur 404: Fichier non trouvé sur le serveur PHP.");
-                
+                if (!response.ok) throw new Error("Fichier introuvable.");
                 const jsonText = await response.text();
-                console.log("✅ JSON récupéré ! Envoi à l'Iframe...");
 
-                // On envoie le texte pur à l'Iframe
+                // 👇 DEUXIÈME LIGNE À VÉRIFIER 👇
                 gameIframe.contentWindow.postMessage({
                     type: 'LOAD_LEVEL',
                     data: jsonText
-                }, "https://ton-pseudo.github.io"); // Remplace par ton pseudo
+                }, "https://ex-a01.github.io"); 
 
             } catch (error) {
                 console.error("❌ Erreur :", error);
-                alert("Erreur: Impossible de charger le fichier " + cheminJsonServeur);
             }
         }
     </script>
