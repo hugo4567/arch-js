@@ -60,37 +60,3 @@ function delete_file($id){
   "Gravity": 20
 }
 */
-
-
-/*
-
-# La Superglobale `$_FILES` en PHP
-
-Lorsqu'un fichier est envoyé via un formulaire HTML (`enctype="multipart/form-data"`), PHP stocke les informations dans le tableau associatif **`$_FILES`**.
-
-## 1. Structure du tableau
-Pour un champ défini par `<input type="file" name="avatar">`, les données sont accessibles via `$_FILES['avatar']`.
-
-| Clé | Description | Exemple de valeur |
-| :--- | :--- | :--- |
-| `name` | Nom d'origine du fichier | `photo.jpg` |
-| `full_path` | Chemin complet (si fourni par le navigateur) | `images/photo.jpg` |
-| `type` | Type MIME du fichier | `image/jpeg` |
-| `tmp_name` | **Chemin temporaire** sur le serveur | `/tmp/phpgUv7z` |
-| `error` | Code d'erreur (0 = succès) | `0` |
-| `size` | Taille du fichier en **octets** | `524288` (512 Ko) |
-
----
-
-## 2. Les codes d'erreurs courants
-La valeur `$_FILES['avatar']['error']` permet de vérifier si l'upload a fonctionné :
-
-* **0 (UPLOAD_ERR_OK)** : Succès total.
-* **1 (UPLOAD_ERR_INI_SIZE)** : Dépasse `upload_max_filesize` dans `php.ini`.
-* **4 (UPLOAD_ERR_NO_FILE)** : L'utilisateur n'a sélectionné aucun fichier.
-
-
-## 3. Accès aux contenu
-
-$contenu = file_get_contents($_FILES['mon_fichier']['tmp_name']);
-*/

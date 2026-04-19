@@ -1,2 +1,2 @@
 Noms des fichiers json : [id].json
-id : table levels -> level (int)
+id : table levels -> id (int)
