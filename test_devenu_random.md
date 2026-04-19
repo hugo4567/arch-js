@@ -3,6 +3,8 @@ for i in range(à40)
 NOTE MPD groupe 1 (filezilla)
 login : grp1
 mot de passe : Exoo2zoa 
+host 
+port 22
 
 faire les fonctions levels et admin pour gerer les choses admin a un level
 
