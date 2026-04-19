@@ -4,6 +4,7 @@ $path_json = "/../../levels";
 $nom_fichier_form = "niveau_json";
 
 function save_level_json($id){
+    global $path_json;
     global $nom_fichier_form;
 
     $nom = "$id.json";
@@ -12,10 +13,12 @@ function save_level_json($id){
         $contenu = file_get_contents($_FILES[$nom_fichier_form]['tmp_name']);
         $res = true;
 
-        file_put_contents($nom, $contenu);
+        file_put_contents($path_json . $nom, $contenu);
     } else {
-        
+        $res = false;
     }
+
+    return $res;
 }
 
 
