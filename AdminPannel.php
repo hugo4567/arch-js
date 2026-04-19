@@ -3,6 +3,7 @@
 // Utilisation de __DIR__ pour s'assurer que le chemin est toujours correct depuis ce fichier
 require_once __DIR__ . '/Backend/DB/db_connect.php';
 require_once __DIR__ . '/Backend/CRUD/levels.crud.php';
+require_once __DIR__ . '/Backend/CRUD/get.json.php';
 
 session_start();
 
@@ -24,6 +25,7 @@ switch ($action) {
             // on recupère l'id du level qu'on vient d'ajouter
 
             //TODO : ajout du json : en cours...
+
 
             // On redirige vers la liste une fois l'ajout terminé
             header('Location: AdminPannel.php');

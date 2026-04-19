@@ -1,7 +1,7 @@
 <?php
 
 $path_json = "/../../levels";
-$nom_fichier_form = ""; // jsp pas quoi mettre
+$nom_fichier_form = "niveau_json";
 
 function save_level($id){
     global $nom_fichier_form;
