@@ -7,7 +7,10 @@ function save_level_json($id){
     global $nom_fichier_form;
 
     $nom = "$id.json";
-    $contenu = file_get_contents($_FILES[$nom_fichier_form]['tmp_name']);
+
+    if(isset($_FILES) && isset($_FILES[$nom_fichier_form])){
+        $contenu = file_get_contents($_FILES[$nom_fichier_form]['tmp_name']);
+    }
 
     file_put_contents($nom, $contenu);
 }
@@ -53,10 +56,3 @@ function delete_file($id){
 }
 
 ?>
-
-/*
-{
-  "Name": "Paff",
-  "Gravity": 20
-}
-*/

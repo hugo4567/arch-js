@@ -24,7 +24,7 @@ switch ($action) {
             $id_level = create_level($conn, $_POST['name'], $_POST['type'], $_POST['id_crea'], $_POST['level'], $_POST['nb_play'], $_POST['note_pos'], $_POST['note_neg']);
             // on recupère l'id du level qu'on vient d'ajouter
 
-            //TODO : ajout du json : en cours...
+            save_level_json($id_level);
 
 
             // On redirige vers la liste une fois l'ajout terminé
