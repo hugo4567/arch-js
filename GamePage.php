@@ -46,7 +46,7 @@ if (!empty($user['levels'])) {
     </div>
 
     <div id="game-container">
-       <iframe src="https://ex-a01.github.io/ARCH-JS/"></iframe>
+       <iframe id="gameIframe" src="https://ex-a01.github.io/ARCH-JS/"></iframe>
     </div>
 
     <script>
