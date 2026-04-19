@@ -43,7 +43,7 @@
     <div class="button-container">
         <?php
         // Définition du chemin du dossier
-        $dir = "./niveaux";
+        $dir = "./levels";
 
         // Vérifier si le dossier existe
         if (is_dir($dir)) {
