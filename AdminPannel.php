@@ -20,8 +20,11 @@ switch ($action) {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             // J'ai DÉCOMMENTÉ l'appel à la fonction pour que ça ajoute vraiment en BDD
-            create_level($conn, $_POST['name'], $_POST['type'], $_POST['id_crea'], $_POST['level'], $_POST['nb_play'], $_POST['note_pos'], $_POST['note_neg']);
-            
+            $id_level = create_level($conn, $_POST['name'], $_POST['type'], $_POST['id_crea'], $_POST['level'], $_POST['nb_play'], $_POST['note_pos'], $_POST['note_neg']);
+            // on recupère l'id du level qu'on vient d'ajouter
+
+            //TODO : ajout du json : en cours...
+
             // On redirige vers la liste une fois l'ajout terminé
             header('Location: AdminPannel.php');
             exit;

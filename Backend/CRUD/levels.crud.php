@@ -13,7 +13,14 @@ function create_level($conn, $name, $type, $id_crea, $level, $nb_play, $note_pos
     $sql = "INSERT INTO levels (name, type, id_crea, level, nb_play, note_pos, note_neg) 
             VALUES ('$name', $type, $id_crea, $level, $nb_play, $note_pos, $note_neg)";
             
-    return mysqli_query($conn, $sql); // Retourne true si succès, false sinon
+    if(mysqli_query($conn, $sql)){ // recupère l'id.
+        $id = mysqli_insert_id($conn);
+        $res = $id;
+    } else { // si erreur renvoie false
+        $res = false;
+    }
+
+    return $res;
 }
 
 // --- 2. READ (Tous les éléments) ---
