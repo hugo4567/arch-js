@@ -339,6 +339,40 @@
 .page-scoreboard b {
     color: red;
 }
+.page-scoreboard .scores {
+    border: 15px black solid;
+    color: rgb(25, 62, 141);
+    margin: 40px auto 0;
+    border-collapse: collapse;
+    font-size: 20px;
+    width: 100%;
+    max-width: 600px; /* limite la largeur */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* ombre subtile */
+}
+
+.page-scoreboard .scores thead {
+    background-color: rgb(25, 62, 141); /* fond bleu */
+    color: white; /* texte blanc */
+}
+
+.page-scoreboard .scores th,
+.page-scoreboard .scores td {
+    padding: 12px 20px;
+    border: 1px solid #c54e4e;
+    text-align: center;
+}
+
+.page-scoreboard .scores tbody tr:nth-child(even) {
+    background-color: #f0f0f0; /* rayures alternées */
+}
+
+.page-scoreboard .scores tbody tr:hover {
+    background-color: #e0e0e0; /* survol */
+}
+
+.page-scoreboard b {
+    color: red;
+}
 
 
 
