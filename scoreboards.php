@@ -16,6 +16,8 @@ require_once __DIR__ . '/Backend/DB/db_connect.php';
 
 <?php
 
+$mysql = 
+
 $text = "<table id='scores' class='scores'>";
 $text .= "<th>";
 foreach(get_all_users($conn) as $user) {
