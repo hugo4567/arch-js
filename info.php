@@ -31,7 +31,7 @@ session_start();
                 <div class="member-card">
                     <div class="member-avatar">🎨</div>
                     <strong>Graphiste / DA</strong>
-                    <pSalvador Dalí</p>
+                    <p>Salvador Dalí</p>
                 </div>
                 <div class="member-card">
                     <div class="member-avatar">🎹</div>
