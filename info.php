@@ -10,12 +10,7 @@ session_start();
 </head>
 <body class="page-info">
 
-    <nav>
-        <div class="logo">PIXEL BLASTER</div>
-        <ul>
-            <li><a href="index.php">Retour à l'accueil</a></li>
-        </ul>
-    </nav>
+    <?php include 'navbar.php'; ?>
 
     <div class="info-container">
         

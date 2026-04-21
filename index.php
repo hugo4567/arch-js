@@ -13,12 +13,7 @@ error_reporting(E_ALL);
 </head>
 <body class="page-index">
 
-    <nav>
-        <div class="logo"><a href="index.php">PIXEL BLASTER</a></div>
-        <ul>
-            <li><a href="login.php">Connexion / Login</a></li>
-        </ul>
-    </nav>
+   <?php include 'navbar.php'; ?>
 
     <header>
         <h1>Bienvenue sur la Page du Projet</h1>

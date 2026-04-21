@@ -36,8 +36,8 @@
         }
     </style>
 </head>
-<body>
-
+<body class = "lister">
+    <?php include 'navbar.php'; ?>
     <h1>Sélectionnez un niveau</h1>
 
     <div class="button-container">

@@ -736,3 +736,38 @@ body.page-market {
 @keyframes blink {
     50% { opacity: 0.5; }
 }
+
+
+/*////////////////////////////////////////////////////NAVBAR///////////////////////////////*/
+    nav {
+        background-color: #333;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+        font-family: sans-serif;
+    }
+    nav .logo a {
+        font-weight: bold;
+        font-size: 1.5rem;
+        color: #00d4ff;
+        text-decoration: none;
+    }
+    nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
+    nav ul li {
+        margin-left: 20px;
+    }
+    nav ul li a {
+        color: white;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+    nav ul li a:hover {
+        color: #00d4ff;
+    }
