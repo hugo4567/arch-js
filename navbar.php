@@ -1,11 +1,21 @@
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css"> 
+</head>
+
 <div class="navbar">
     <nav>
         <div class="logo">
-            <a href="index.php">PIXEL BLASTER</a>
+            <a href="index.php" title="Retour à l'accueil">PIXEL BLASTER</a>
         </div>
         <ul>
-            <li><a href="index.php">Accueil</a></li>
-            <li><a href="login.php">Connexion / Login</a></li>
+            <li><a href="maindos/AppBundle/index.html" class="btn-jouer">JOUER</a></li>
+            <li><a href="market.php">Market</a></li>
+            <li><a href="login.php">Créateur</a></li>
+            <li><a href="scoreboards.php">Scores</a></li>
+            <li><a href="lister_json.php">Niveaux</a></li>
+            <li><a href="info.php">Infos</a></li>
+            <li><a href="login.php" style="border: 1px solid #555;">Connexion</a></li>
         </ul>
     </nav>
 </div>
