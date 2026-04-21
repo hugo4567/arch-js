@@ -5,7 +5,7 @@ session_start();
 <html lang="fr">
 <head>
     <meta charset="utf-8">
-    <title>Infos & Contact - PIXEL BLASTER</title>
+    <title>Infos & Contact</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="page-info">
@@ -36,7 +36,7 @@ session_start();
                 <div class="member-card">
                     <div class="member-avatar">🎹</div>
                     <strong>Audio Design</strong>
-                    <p>Bleep Bloop</p>
+                    <p>Ludwig van Beethoven</p>
                 </div>
             </div>
         </section>
