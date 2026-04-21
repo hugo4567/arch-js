@@ -40,3 +40,6 @@ zip un dossier avec le terminal :
 zip -r [NOM_DOSSIER].zip [NOM_DOSSIER]/
 
 [Repartition tache]-https://docs.google.com/document/d/18-8ev12SeBaD-JHFx1wEziCqG8VKFN-_sg5ofqCcOYQ/edit?pli=1&tab=t.0
+
+
+YA QUI QUI EST CO ? -- HUGO E 
