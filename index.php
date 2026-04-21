@@ -79,9 +79,5 @@ error_reporting(E_ALL);
 
 
     <script src="maindos/AppBundle/main.js"></script>
-    <a href="maindos/AppBundle/index.html"> INDEX JEU</a>
-    <a href="maindos/editor.html"> INDEX editor</a>
-    <a href="maindos/index.html"> INDEX autre</a>
-    <a href="maindos/market.html"> INDEX Market</a>
 </body>
 </html>
