@@ -88,17 +88,17 @@ body {
 
 /* --- Personnalisation des icônes/couleurs par section (Ordre) --- */
 /* 1. 1 PLAYER = Infos (Bleu) */
-.page-index .tab:nth-child(1)::before { content: 'ℹ️'; background-color: #0099ff; }
+.page-index .tab:nth-child(1)::before { content: 'ℹ️'; background-color: #ff0606; }
 /* 2. 2 PLAYERS = Jeu (Orange) */
-.page-index .tab:nth-child(2)::before { content: '🎮'; background-color: #2ee7ff; }
+.page-index .tab:nth-child(2)::before { content: '🎮'; background-color: #ff9100; }
 /* 3. EXIT = Créateur (Rouge, j'ai adapté car le 3ème était Vert) */
-.page-index .tab:nth-child(3)::before { content: '🛒'; background-color: #00ff22; }
+.page-index .tab:nth-child(3)::before { content: '🛒'; background-color: #fffb00; }
 
-.page-index .tab:nth-child(4)::before { content: '🛠️'; background-color: #ffd900; }
+.page-index .tab:nth-child(4)::before { content: '🛠️'; background-color: #33ff00; }
 /* 2. 2 PLAYERS = Jeu (Orange) */
-.page-index .tab:nth-child(5)::before { content: '🏆'; background-color: #830202; }
+.page-index .tab:nth-child(5)::before { content: '🏆'; background-color: #1100ff; }
 /* 3. EXIT = Créateur (Rouge, j'ai adapté car le 3ème était Vert) */
-.page-index .tab:nth-child(6)::before { content: '🫃'; background-color: #e74c3c; }
+.page-index .tab:nth-child(6)::before { content: '🫃'; background-color: #960089; }
 /* --- Effet au survol (Imite la sélection de SMM2) --- */
 .page-index .tab:hover {
     transform: scale(1.03); /* Zoom léger SMM2 */
