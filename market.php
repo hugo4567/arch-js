@@ -67,7 +67,8 @@ $playerMoney = $_SESSION["money"];
     <title>8-BIT MARKET</title>
     <link rel="stylesheet" href="style.css"> 
 </head>
-<body class="page-market"> <div class="market">
+<body class="page-market"> 
+    <div class="market">
     <h1>🛒 MARCHÉ NOIR</h1>
 
     <div class="status-box">

@@ -527,44 +527,100 @@ body {
 }
 
 /*///////////////////////////////////////////////////// 
-   PAGE MARKETPLACE (Style Cartes Index)
+    PAGE MARKETPLACE (Style Moderne & Transparent)
 //////////////////////////////////////////////////////*/
+
+/* Conteneur global (si tu en as un) pour limiter la largeur comme sur l'index */
+.page-market .market-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
 
 .page-market .item-card {
     display: flex;
     align-items: center;
-    background: white;
+    /* On passe sur un blanc quasi opaque pour voir la vidéo en fond */
+    background: rgba(255, 255, 255, 0.95); 
     border-radius: 15px;
     padding: 15px 25px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     color: #333;
-    box-shadow: 0 6px 0 rgba(0,0,0,0.1);
+    /* Ombre plus douce et profonde */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2), 0 4px 0 rgba(0,0,0,0.05);
+    border: 2px solid transparent;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Effet de survol sur la carte */
+.page-market .item-card:hover {
+    transform: scale(1.02) translateY(-5px);
+    background: #ffffff;
+    border-color: #2ecc71; /* Bordure qui s'allume en vert au survol */
 }
 
 .page-market .item-icon {
-    width: 60px;
-    height: 60px;
+    width: 65px;
+    height: 65px;
     background-color: #f1c40f;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 20px;
-    font-size: 1.5rem;
+    margin-right: 25px;
+    font-size: 1.8rem;
+    flex-shrink: 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    /* Petit effet de flottement sur l'icône */
+}
+
+/* Infos de l'objet (Nom + Prix/Description) */
+.page-market .item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.page-market .item-info h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+}
+
+.page-market .item-info p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #666;
 }
 
 .page-market .buy-btn {
     margin-left: auto;
     background-color: #2ecc71;
     color: white;
-    padding: 10px 15px;
-    border-radius: 10px;
+    padding: 12px 20px;
+    border-radius: 12px;
     text-decoration: none;
-    font-family: 'Press Start 2P';
-    font-size: 0.5rem;
-    border-bottom: 4px solid #27ae60;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.6rem;
+    border: none;
+    box-shadow: 0 4px 0 #27ae60;
+    transition: all 0.1s active;
 }
 
+/* Animation du bouton au clic */
+.page-market .buy-btn:hover {
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 #27ae60;
+}
+
+.page-market .buy-btn:active {
+    transform: translateY(3px);
+    box-shadow: 0 1px 0 #27ae60;
+}
 /*////////////////////////////////////////////////////NAVBAR///////////////////////////////*/
     /* --- Barre de Navigation --- */
 .navbar nav {
