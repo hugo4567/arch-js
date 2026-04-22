@@ -55,7 +55,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="page-login">
-
+    <video autoplay muted loop playsinline class="bg-video">
+        <source src="img/background_login.mp4" type="video/mp4">
+    </video>
     <?php if ($error): ?>
         <div class="error-msg"><?php echo $error; ?></div>
     <?php endif; ?>
