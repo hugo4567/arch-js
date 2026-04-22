@@ -43,3 +43,6 @@ zip -r [NOM_DOSSIER].zip [NOM_DOSSIER]/
 
 
 YA QUI QUI EST CO ? -- HUGO E 
+
+
+POUR TOUT UPPLOAD VERS LE PROF, commande /fahh !

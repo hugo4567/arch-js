@@ -3,8 +3,7 @@
 error_reporting(E_ALL);
 mysqli_report(MYSQLI_REPORT_OFF);
 ini_set('display_errors', '1');
-
-$serveur = "l1.dptinfo-usmb.fr"; 
+$serveur = "localhost"; 
 // Si localhost ne marche pas, faut mettre 127.0.0.1
 
 $utilisateur = "grp1";

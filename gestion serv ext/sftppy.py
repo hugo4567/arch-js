@@ -22,7 +22,16 @@ def upload_dir(sftp, local_dir, remote_dir):
         for fname in files:
             local_path = os.path.join(root, fname)
             remote_path = remote_root + '/' + fname
-            sftp.put(local_path, remote_path)
+            local_size = os.path.getsize(local_path)
+            local_mtime = int(os.path.getmtime(local_path))
+            try:
+                r = sftp.stat(remote_path)
+                remote_size, remote_mtime = r.st_size, int(r.st_mtime)
+            except IOError:
+                remote_size = remote_mtime = None
+            
+            if remote_size != local_size or remote_mtime is None or local_mtime > remote_mtime:
+                sftp.put(local_path, remote_path)
  
  # Connexion
 host = "l1.dptinfo-usmb.fr"
