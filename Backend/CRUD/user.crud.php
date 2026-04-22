@@ -132,4 +132,8 @@ function remove_level_from_user($conn, $id_user, $id_level_to_remove) {
     }
     return false;
 }
+
+
+
+
 ?>

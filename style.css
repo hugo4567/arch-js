@@ -62,33 +62,68 @@ body {
 }
 
 /* --- Grille des Cartes (Tabs-container) --- */
+/* --- Conteneur global --- */
+/* --- Conteneur global (On réduit la largeur ici) --- */
 .page-index .tabs-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 15px; /* Espace entre les blocs réduit un peu */
     padding: 40px;
-    max-width: 800px;
+    max-width: 700px; /* On réduit la largeur totale des blocs (avant c'était 900px) */
     margin: 0 auto;
     position: relative;
-    z-index: 1; /* Assure que les boutons sont au-dessus de la vidéo */
+    z-index: 1;
 }
 
-/* --- Style de base d'un bouton de menu --- */
+/* --- Style des cartes --- */
 .page-index .tab {
-    background-color: rgba(255, 255, 255, 0.95); /* Légèrement translucide pour le style */
-    color: #333;
-    width: 100%;
-    padding: 20px 30px;
-    border-radius: 12px;
-    text-align: left;
-    transition: transform 0.15s ease-out, box-shadow 0.15s ease-out, border-color 0.15s ease-out;
-    border: 4px solid transparent;
-    box-shadow: 0 6px 0 rgba(0,0,0,0.2);
     position: relative;
-    overflow: hidden;
     display: flex;
     align-items: center;
+    justify-content: space-between; /* MAGIE : Titre à gauche, Description à droite */
+    
+    width: 100%;
+    min-height: 80px; /* On réduit aussi un peu la hauteur */
+    
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 10px 25px;
+    border-radius: 12px;
+    border: 4px solid transparent;
+    box-shadow: 0 6px 0 rgba(0,0,0,0.1);
+    transition: all 0.15s ease-out;
+    box-sizing: border-box;
+}
+
+/* --- Ajustement des titres --- */
+.page-index .tab h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #333;
+    flex-shrink: 0; /* Empêche le titre de s'écraser */
+    /* On retire le min-width ici pour laisser space-between travailler */
+}
+
+/* --- Ajustement des descriptions (poussées à droite) --- */
+.page-index .tab p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #777;
+    text-align: right; /* Texte aligné à droite à l'intérieur de sa zone */
+    flex-grow: 1;      /* Prend tout l'espace disponible au milieu pour pousser vers la droite */
+    padding-left: 20px;
+}
+
+/* --- Le lien invisible (On ne change rien) --- */
+.page-index .tab a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    text-indent: -9999px;
+    cursor: pointer;
 }
 
 /* ... (Tes styles .tab::before et icônes restent les mêmes) ... */
