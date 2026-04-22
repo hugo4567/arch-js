@@ -9,7 +9,7 @@
             <a href="index.php" title="Retour à l'accueil">PIXEL BLASTER</a>
         </div>
         <ul>
-            <li><a href="maindos/AppBundle/index.html" class="btn-jouer">JOUER AU JEU VIDEAL😈</a></li>
+            <li><a href="GamePage.php" class="btn-jouer">JOUER AU JEU VIDEAL😈</a></li>
             <li><a href="market.php">Market🛒</a></li>
             <li><a href="scoreboards.php">Scores🏆</a></li>
             <li><a href="lister_json.php">Niveaux🫃</a></li>

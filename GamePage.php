@@ -5,18 +5,18 @@ require_once __DIR__ . "/Backend/DB/db_connect.php";
 /*$user = get_user_by_id($conn, $_SESSION['id_user']);
 
 if (!empty($user['levels'])) {
-    // Transforme le tableau [1, 4, 7] en chaîne "1,4,7" pour la requête SQL
+    // Transforme le tableau [1, 4, 7] en chaÃ®ne "1,4,7" pour la requÃªte SQL
     $ids_string = implode(',', $user['levels']); 
     
-    // On va chercher toutes les infos des niveaux que le joueur possède
+    // On va chercher toutes les infos des niveaux que le joueur possÃ¨de
     $sql = "SELECT * FROM levels WHERE id IN ($ids_string)";
     $result_levels = mysqli_query($conn, $sql);
     
     while ($lvl = mysqli_fetch_assoc($result_levels)) {
-        echo "<button>Jouer à " . $lvl['name'] . "</button>";
+        echo "<button>Jouer Ã  " . $lvl['name'] . "</button>";
     }
 } else {
-    echo "Tu ne possèdes aucun niveau.";
+    echo "Tu ne possÃ¨des aucun niveau.";
 }*/
 ?>
 
@@ -38,10 +38,10 @@ if (!empty($user['levels'])) {
 
     <div id="menu">
         <h2>Menu de Test</h2>
-        <p>Le bouton envoie le fichier <b>Test.json</b> à l'Iframe.</p>
+        <p>Le bouton envoie le fichier <b>Test.json</b> Ã  l'Iframe.</p>
         
-        <button onclick="chargerEtLancerNiveau('/~grp1/Levels/Test_1776618458.json')">
-            🎮 Lancer "Test_1776618458.json"
+        <button onclick="chargerEtLancerNiveau('/~grp1/levels/Mon_niveau_trop_cool_1776837755.json')">
+            ðŸŽ® Lancer "Test.json"
         </button>
     </div>
 
@@ -53,13 +53,13 @@ if (!empty($user['levels'])) {
         const gameIframe = document.getElementById('gameIframe');
         let jeuPret = false;
 
-        // 1. On écoute le jeu
+        // 1. On Ã©coute le jeu
         window.addEventListener('message', (event) => {
-            // 👇 LIGNE À VÉRIFIER ABSOLUMENT 👇
+            // ðŸ‘‡ LIGNE Ã€ VÃ‰RIFIER ABSOLUMENT ðŸ‘‡
             if (event.origin !== "https://ex-a01.github.io") return; 
 
             if (event.data && event.data.type === 'GAME_READY') {
-                console.log("✅ Le jeu est prêt ! Tu peux cliquer sur le bouton.");
+                console.log("âœ… Le jeu est prÃªt ! Tu peux cliquer sur le bouton.");
                 jeuPret = true;
             }
         });
@@ -67,7 +67,7 @@ if (!empty($user['levels'])) {
         // 2. On envoie le niveau
         async function chargerEtLancerNiveau(cheminJsonServeur) {
             if (!jeuPret) {
-                alert("Le WASM n'est pas encore prêt. Regarde la console (F12) pour voir si le signal arrive !");
+                alert("Le WASM n'est pas encore prÃªt. Regarde la console (F12) pour voir si le signal arrive !");
                 return;
             }
 
@@ -76,14 +76,14 @@ if (!empty($user['levels'])) {
                 if (!response.ok) throw new Error("Fichier introuvable.");
                 const jsonText = await response.text();
 
-                // 👇 DEUXIÈME LIGNE À VÉRIFIER 👇
+                // ðŸ‘‡ DEUXIÃˆME LIGNE Ã€ VÃ‰RIFIER ðŸ‘‡
                 gameIframe.contentWindow.postMessage({
                     type: 'LOAD_LEVEL',
                     data: jsonText
                 }, "https://ex-a01.github.io"); 
 
             } catch (error) {
-                console.error("❌ Erreur :", error);
+                console.error("âŒ Erreur :", error);
             }
         }
     </script>

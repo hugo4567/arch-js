@@ -33,7 +33,7 @@ error_reporting(E_ALL);
                 <h3>Jouer au Jeu</h3>
                 <p>&nbsp;Lancez l'aventure directement dans votre navigateur.</p>
                 <form action="login.php" method="POST">
-                    <a href="maindos/AppBundle/index.html" class="bouton-jeu">Jouer au jeu</a>
+                    <a href="GamePage.php" class="bouton-jeu">Jouer au jeu</a>
                 </form>
             </div>
 
