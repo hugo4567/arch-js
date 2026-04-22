@@ -12,7 +12,7 @@ def ensure_remote_dir(sftp, remote_path):
              sftp.stat(d)
          except IOError:
              sftp.mkdir(d)
- 
+tolerance = 1
 def upload_dir(sftp, local_dir, remote_dir):
     for root, dirs, files in os.walk(local_dir):
         rel = os.path.relpath(root, local_dir)
@@ -30,8 +30,11 @@ def upload_dir(sftp, local_dir, remote_dir):
             except IOError:
                 remote_size = remote_mtime = None
             
-            if remote_size != local_size or remote_mtime is None or local_mtime > remote_mtime:
+            if remote_size != local_size or remote_mtime is None or (local_mtime - remote_mtime)> tolerance:
                 sftp.put(local_path, remote_path)
+                print("Uploaded", remote_path)
+            else:
+                print("Skipped", remote_path)
  
  # Connexion
 host = "l1.dptinfo-usmb.fr"

@@ -27,7 +27,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else { $error = "Identifiants Admin incorrects !"; }
     } 
     elseif ($role === "createur") {
-        if ($login === "crea" && $passwd === "crea") {
+        $crea_auth_path = "Backend/Auth/crea.auth.php";
+        include($crea_auth_path);
+        if (crea_auth($conn, $login, $passwd)) {
             $_SESSION["crea"] = $login;
             header("Location: editor.php");
             exit;
