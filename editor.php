@@ -2,7 +2,6 @@
 // On charge les dépendances (comme dans AdminPannel.php)
 require_once __DIR__ . "/Backend/DB/db_connect.php";
 require_once __DIR__ . "/Backend/CRUD/levels.crud.php";
-include 'navbar.php';
 session_start();
 
 if(!isset($_SESSION["crea"])) {
@@ -208,7 +207,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action']) && $_GET['ac
     </style>
 </head>
 <body>
-    <?php include 'navbar.php'; ?>
 
     <div id="toolbar">
         <h2>Paramètres du Niveau</h2>
@@ -873,7 +871,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action']) && $_GET['ac
                     gameObject.Transform.H = obj.props.zoneH;
                     gameObject.Components.push({ "Type": "COG_Collider", "IsSolid": false, "IsTrigger": true, "BodyType": "Static" });
                     gameObject.Components.push({ "Type": "COG_CameraZone" });
-                    gameObject.Components.push({ "Type": "COG_Sprite", "IsVisible": false, "LayerDepth": 0.2, "Color": [1.0, 1.0, 0.0, 1.0] });
+                    //gameObject.Components.push({ "Type": "COG_Sprite", "IsVisible": false, "LayerDepth": 0.2, "Color": [1.0, 1.0, 0.0, 1.0] });
                 }
                 // --- EXPORT MURS ET PENTES ET OBJETS ANIMÉS ---
                 else {
