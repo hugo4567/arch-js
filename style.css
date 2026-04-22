@@ -2,78 +2,83 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Quicksand:wght@500;700&display=swap');
 
 /* --- Configuration Générale --- */
- body {
+body {
+    background-color: #555c8c; /* Couleur du ciel de l'image (Mauve/Indigo) */
     margin: 0;
-    padding: 0;
-    font-family: 'Quicksand', sans-serif; /* Police ronde et propre pour le texte */
-    font-weight: 500;
-    /* Fond : Un motif de mur de briques pixel (comme sur l'image) */
-    background: #4a6a72 radial-gradient(#6c8b93 20%, transparent 20%) 0 0,
-                #4a6a72 radial-gradient(#6c8b93 20%, transparent 20%) 8px 8px;
-    background-size: 16px 16px; /* Effet de briques pixel */
-    color: #e0e0e0;
-    image-rendering: pixelated; /* Pour que tout reste net */
+    font-family: 'Quicksand', sans-serif; /* Police "propre" SMM2 */
+    color: #fff;
+    /* Conserver l'aspect pixel art pour l'image de fond si tu en mets une */
+    image-rendering: pixelated; 
 }
 
-/* --- Header --- */
+/* --- Header : START GAME --- */
 .page-index header {
     text-align: center;
     padding: 60px 20px;
-    background-color: rgba(0, 0, 0, 0.7); /* Zone noire contrastée */
+    background-color: rgba(0, 0, 0, 0.7); /* Zone noire contrastée, comme demandé */
 }
 
 .page-index header h1 {
-    font-family: 'Quicksand', sans-serif;
-    font-size: 3rem;
+    font-size: 3rem; /* Gros titre SMM2 */
     font-weight: 700;
     color: #fff;
+    margin: 0;
     margin-bottom: 15px;
 }
 
 .page-index header p {
     font-size: 1.2rem;
     color: #fff;
+    margin: 0;
 }
 
 /* --- Grille des Cartes (Tabs-container) --- */
-/* On passe en colonnes pour imiter la liste de SMM2 */
+/* Transforme la liste horizontale en une liste verticale centrée (SMM2) */
 .page-index .tabs-container {
     display: flex;
     flex-direction: column; /* Liste verticale */
-    align-items: center; /* Centre les cartes */
+    align-items: center;    /* Centre les cartes */
     gap: 20px;
     padding: 40px;
     max-width: 800px;
     margin: 0 auto;
 }
 
+/* --- Style de base d'un bouton de menu --- */
 .page-index .tab {
-    background-color: #fff; /* Boutons Blancs SMM2 */
-    color: #333; /* Texte sombre sur fond blanc */
-    width: 100%; /* Cartes larges */
+    background-color: #fff;  /* Boutons Blancs SMM2 */
+    color: #333;             /* Texte sombre sur fond blanc */
+    width: 100%;             /* Cartes larges */
     padding: 20px 30px;
-    border-radius: 12px; /* Coins arrondis légers SMM2 */
-    text-align: left; /* Alignement texte à gauche */
+    border-radius: 12px;     /* Coins arrondis légers SMM2 */
+    text-align: left;        /* Alignement texte à gauche */
+    
+    /* Transitions fluides SMM2 */
     transition: transform 0.15s ease-out, box-shadow 0.15s ease-out, border-color 0.15s ease-out;
+    
     border: 4px solid transparent; /* Bordure transparente par défaut */
     box-shadow: 0 6px 0 rgba(0,0,0,0.1); /* Ombre plate SMM2 */
+    
     position: relative;
     overflow: hidden;
     display: flex; /* Aligne l'icône et le texte */
     align-items: center;
 }
 
-/* Simulation des icônes circulaires de SMM2 */
-/* On ajoute un pseudo-élément avant chaque carte */
+/* --- Simulation des icônes circulaires de SMM2 --- */
+/* Ajoute un pseudo-élément devant chaque carte */
 .page-index .tab::before {
-    content: '★'; /* Icône par défaut */
+    content: '★'; /* Icône par défaut (Étoile) */
     font-size: 1.5rem;
+    /* Utilise Press Start 2P pour les icônes style pixel */
     font-family: 'Press Start 2P', cursive;
     color: #fff;
+    
     background-color: #f1c40f; /* Fond Jaune Soleil SMM2 */
     width: 60px;
     height: 60px;
     border-radius: 50%; /* Cercle parfait */
+    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -81,21 +86,22 @@
     box-shadow: 0 4px 0 rgba(0,0,0,0.1); /* Ombre icône */
 }
 
-/* Personnalisation des icônes/couleurs par section */
-.page-index .tab:nth-child(1)::before { content: 'ℹ️'; background-color: #3498db; } /* Infos/Bleu */
-.page-index .tab:nth-child(2)::before { content: '🎮'; background-color: #e67e22; } /* Jeu/Orange */
-.page-index .tab:nth-child(3)::before { content: '🛒'; background-color: #2ecc71; } /* Market/Vert */
-.page-index .tab:nth-child(4)::before { content: '🛠️'; background-color: #e74c3c; } /* Créateur/Rouge */
-.page-index .tab:nth-child(5)::before { content: '🏆'; background-color: #a80dad; } /* Créateur/Rouge */
+/* --- Personnalisation des icônes/couleurs par section (Ordre) --- */
+/* 1. 1 PLAYER = Infos (Bleu) */
+.page-index .tab:nth-child(1)::before { content: 'ℹ️'; background-color: #3498db; }
+/* 2. 2 PLAYERS = Jeu (Orange) */
+.page-index .tab:nth-child(2)::before { content: '🎮'; background-color: #e67e22; }
+/* 3. EXIT = Créateur (Rouge, j'ai adapté car le 3ème était Vert) */
+.page-index .tab:nth-child(3)::before { content: '🛠️'; background-color: #e74c3c; }
 
-/* Effet au survol (Imite la sélection de SMM2) */
+/* --- Effet au survol (Imite la sélection de SMM2) --- */
 .page-index .tab:hover {
-    transform: scale(1.03); /* Zoom léger */
-    border-color: #e74c3c; /* Bordure Rouge comme les coins de SMM2 */
-    box-shadow: 0 10px 0 rgba(0,0,0,0.15);
+    transform: scale(1.03); /* Zoom léger SMM2 */
+    border-color: #e74c3c;  /* Bordure Rouge comme les coins de SMM2 */
+    box-shadow: 0 10px 0 rgba(0,0,0,0.15); /* Ombre plus profonde */
 }
 
-/* Les fameux coins rouges de sélection SMM2 (Coins haut-gauche et bas-droite) */
+/* --- Les coins rouges de sélection SMM2 (Coins haut-gauche et bas-droite) --- */
 .page-index .tab:hover::after {
     content: '';
     position: absolute;
@@ -108,13 +114,10 @@
     top: 5px;
     left: 5px;
 }
-.page-index .tab:hover::before_border_bottom_right {
-    color:red
-}
 
-
+/* --- Titre et description dans le bouton --- */
 .page-index .tab h3 {
-    font-family: 'Quicksand', sans-serif; /* Police propre pour les titres SMM2 */
+    font-family: 'Quicksand', sans-serif; /* Police propre SMM2 */
     font-weight: 700;
     font-size: 1.3rem;
     margin: 0;
@@ -122,16 +125,12 @@
 }
 
 .page-index .tab p {
-    color: #777;
+    color: #777; /* Texte description gris SMM2 */
     font-size: 0.95rem;
     margin: 5px 0 0 0;
 }
 
-/* --- Boutons et Liens transformés en boutons --- */
-/* Pour SMM2, les boutons ne sont pas dans les cartes, c'est la carte elle-même qui est le bouton */
-/* On adapte donc ton HTML pour que le lien `<a>` englobe toute la carte ou pour que le formulaire soit la carte. */
-
-/* Si tu gardes tes liens `<a>` dans ton HTML, cache-les ou style-les pour qu'ils soient invisibles et prennent toute la place */
+/* --- Boutons et Liens invisibles (Pour rendre toute la carte cliquable) --- */
 .page-index .btn, .tab a, .tab button {
     position: absolute;
     top: 0;
@@ -148,9 +147,9 @@
     padding: 30px;
     font-size: 0.9rem;
     color: #fff;
-    background-color: #000; /* Fond Noir */
+    background-color: #000; /* Fond Noir, comme demandé */
     margin-top: 50px;
-    border-top: 4px solid #fff;
+    border-top: 4px solid #fff; /* Bordure blanche en haut SMM2 */
 }
 
 /*///////////////////////////////////////////////////// CSS DE LA PAGE INFO.PHP//////////////////////////////////////////////////////*/

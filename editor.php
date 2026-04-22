@@ -944,12 +944,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action']) && $_GET['ac
                 if (data.success) {
                     alert('✅ ' + data.message);
                 } else {
-                    alert('❌ Erreur : ' + data.message);
+                    alert('Erreur : ' + data.message);
                 }
             })
             .catch(error => {
                 console.error('Erreur réseau:', error);
-                alert('❌ Impossible de joindre le serveur.');
+                alert('Impossible de joindre le serveur.');
             })
             .finally(() => {
                 exportBtn.innerHTML = "☁️ Sauvegarder sur le Serveur"; // On change l'icône !
