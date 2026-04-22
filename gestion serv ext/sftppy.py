@@ -15,6 +15,7 @@ def ensure_remote_dir(sftp, remote_path):
 tolerance = 1
 def upload_dir(sftp, local_dir, remote_dir):
     for root, dirs, files in os.walk(local_dir):
+        dirs[:] = [d for d in dirs if d not in ('.git', '.svn', '.hg', 'gestion serv ext', '.vscode')]
         rel = os.path.relpath(root, local_dir)
         remote_root = remote_dir if rel == '.' else os.path.join(remote_dir, rel).replace('\\','/')
          

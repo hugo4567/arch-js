@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $crea_auth_path = "Backend/Auth/crea.auth.php";
         include($crea_auth_path);
         if (crea_auth($conn, $login, $passwd)) {
-            $_SESSION["crea"] = $login;
+            $_SESSION["crea"] = time();
             header("Location: editor.php");
             exit;
         } else { $error = "Identifiants Créateur incorrects !"; }
