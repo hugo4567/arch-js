@@ -2,7 +2,7 @@
 session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-include 'navbar.php';
+
 
 // Vérifie le chemin de ta BDD (Attention aux majuscules !)
 $db_path = "Backend/DB/db_connect.php"; 
@@ -55,6 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title> - CONNEXION - </title>
     <link rel="stylesheet" href="style.css">
+    
 </head>
 <body class="page-login">
     
