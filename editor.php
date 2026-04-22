@@ -22,9 +22,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action']) && $_GET['ac
         $levelName = $data['Name'];
         
         // Création du dossier s'il n'existe pas
-        $dir = __DIR__ . '/Levels';
+        $dir = __DIR__ . '/levels';
         if (!is_dir($dir)) {
-            mkdir($dir, 0777, true);
+            //mkdir($dir, 0777, true);
         }
         
         // Sécurisation du nom de fichier (retire les espaces/caractères spéciaux) + Timestamp pour éviter d'écraser
@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action']) && $_GET['ac
             
             // --- 2. INSERTION DANS LA DB SEULEMENT SI LE FICHIER EST CRÉÉ ---
             $type = 1; // Valeur arbitraire, à adapter selon ta logique
-            $id_crea = is_numeric($_SESSION["crea"]) ? $_SESSION["crea"] : 1; // On suppose que la session contient l'ID
+            $id_crea = is_numeric($_SESSION["crea"]) ? $_SESSION["crea"] : 1; // la session contient le time
             $levelPathForDB = 'Levels/' . $filename; // Le chemin stocké en DB
             $nb_play = 0;
             $note_pos = 0;
