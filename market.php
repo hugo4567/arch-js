@@ -74,41 +74,26 @@ $playerMoney = $_SESSION["money"];
     <div class="status-box">
         OR : <?php echo $playerMoney; ?> G
     </div>
-
-    <?php if ($message): ?>
-        <div class="msg"><?php echo $message; ?></div>
-    <?php endif; ?>
-
-    <?php foreach ($items as $item): ?>
-    <div class="item">
-        <img src="<?php echo $item['image']; ?>" alt="Preview" class="item-img">
+    <div class="page-market">
+    <div class="market-grid">
         
-        <div class="item-content">
-            <h3><?php echo $item["name"]; ?> — <?php echo $item["price"]; ?>G</h3>
-            <p><?php echo $item["desc"]; ?></p>
-            
-            <?php 
-            if (isset($_GET['buy']) && intval($_GET['buy']) == $item['id'] && strpos($message, 'SUCCÈS') !== false): 
-            ?>
-                <a class="buy-btn" href="<?php echo $item['file']; ?>" download style="border-color: #4caf50; color: #4caf50;">
-                    CLIQUE ICI POUR LE ZIP
-                </a>
-            <?php else: ?>
-                <a class="buy-btn" href="?buy=<?php echo $item['id']; ?>">
-                    ACHETER (<?php echo $item['price']; ?>G)
-                </a>
-            <?php endif; ?>
+        <div class="item-card">
+            <h3>MONDE 1-1</h3>
+            <p>50G - La plaine verdoyante.</p>
+            <img src="ton-image-mario.png" alt="preview">
+            <a href="#" class="buy-btn">ACHETER (50G)</a>
         </div>
-    </div>
-    <?php endforeach; ?>
 
-    <?php if ($playerMoney < 50): ?>
-        <form method="POST" style="text-align:center;">
-            <button type="submit" name="reset_money" class="reset-btn">
-                PLUS D'OR ? [RESET 300G]
-            </button>
-        </form>
-    <?php endif; ?>
+        <div class="item-card">
+            <h3>MONDE 1-2</h3>
+            <p>100G - Les mines.</p>
+            <img src="ton-image-mario2.png" alt="preview">
+            <a href="#" class="buy-btn">ACHETER (100G)</a>
+        </div>
+
+    </div>
+</div>
+
 </div>
 
 </body>
