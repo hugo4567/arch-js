@@ -65,7 +65,7 @@ function get_user_by_login($conn, $login) {
 }
 
 // --- 4. UPDATE (Mise à jour complète) ---
-function update_user($conn, $id_user, $login, $mdp, $levels) {
+function update_user($conn, $id_user, $login, $mdp, $levels, $pieces) {
     $id_user = (int)$id_user;
     $login = mysqli_real_escape_string($conn, $login);
     $mdp = mysqli_real_escape_string($conn, $mdp);
@@ -75,7 +75,7 @@ function update_user($conn, $id_user, $login, $mdp, $levels) {
     $levels_json = mysqli_real_escape_string($conn, json_encode($levels_clean));
 
     $sql = "UPDATE users 
-            SET login='$login', mdp='$mdp', levels='$levels_json' 
+            SET login='$login', mdp='$mdp', levels='$levels_json', pieces=$pieces 
             WHERE id_user=$id_user";
 
     return mysqli_query($conn, $sql);
@@ -144,6 +144,29 @@ function select_user_login($conn, $login){
     }
     $rs = creer_rs($query);
     return $rs;
+}
+
+
+
+function get_pieces_user($conn, $id_user){
+    $sql = "SELECT pieces FROM users WHERE id_user=$id_user";
+    $query = mysqli_query($conn, $sql);
+    if (!$query){
+        echo "<pre>Erreur SQL : " . mysqli_error($conn) . "</pre>";
+        echo "<pre>Requête tentée : " . $sql . "</pre>";
+        return false;
+    }
+    $rs = creer_rs($query);
+    return $rs;
+    }
+
+
+function add_pieces($conn, $id_user, $pieces_add){
+    $pieces = get_pieces_user($conn, $id_user);
+
+    $pieces_update = $pieces + $pieces_add;
+
+    $sql = "";
 }
 
 function creer_rs($query){

@@ -95,6 +95,18 @@ $playerMoney = $_SESSION["money"];
             <img src="img/lvl2.png" alt="preview">
             <a href="#" class="buy-btn">ACHETER (100G)</a>
         </div>
+        <div class="item-card">
+            <h3>MONDE 1-2</h3>
+            <p>100G - COG DE MR K.</p>
+            <img src="img/lvl2.png" alt="preview">
+            <a href="#" class="buy-btn">ACHETER (100G)</a>
+        </div>
+                <div class="item-card">
+            <h3>MONDE 1-2</h3>
+            <p>100G - FAHHLAND.</p>
+            <img src="img/lvl2.png" alt="preview">
+            <a href="#" class="buy-btn">ACHETER (100G)</a>
+        </div>
 
     </div>
 </div>

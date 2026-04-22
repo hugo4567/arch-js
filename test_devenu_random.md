@@ -12,7 +12,9 @@ horaire 8H ON 00h --eteint
 
 FAAAAAAH is not real... it can't hurts you FAAAAAAH
 
-[git du proj]-https://github.com/Ex-A01/ARCH-JS   GITHUB DE LA VERSION DEPLOYEE
+[git du proj]-https://github.com/Ex-A01/ARCH-JS   GITHUB DE LA VERSION DEPLOYEE PAS DU JEU DE MR K
+
+[site]-https://l1.dptinfo-usmb.fr/~grp1/
 
 
 A CHAQUE SEANCE, il y a un nouveau truc qui tourne sur le site
