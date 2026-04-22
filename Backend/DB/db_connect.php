@@ -15,7 +15,6 @@ if (null == $conn){
     echo("Détail de l'erreur : ". mysqli_connect_error());
 }
 else{
-    echo("On est co !");
     mysqli_set_charset($conn, "utf8");
 }//langue de communication
 ?>

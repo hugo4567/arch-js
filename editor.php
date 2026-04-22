@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action']) && $_GET['ac
             // --- 2. INSERTION DANS LA DB SEULEMENT SI LE FICHIER EST CRÉÉ ---
             $type = 1; // Valeur arbitraire, à adapter selon ta logique
             $id_crea = is_numeric($_SESSION["crea"]) ? $_SESSION["crea"] : 1; // la session contient le time
-            $levelPathForDB = 'Levels/' . $filename; // Le chemin stocké en DB
+            $levelPathForDB = 'levels/' . $filename; // Le chemin stocké en DB
             $nb_play = 0;
             $note_pos = 0;
             $note_neg = 0;
