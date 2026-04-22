@@ -535,15 +535,24 @@ body {
     PAGE MARKETPLACE - LAYOUT FLEXIBLE (STRETCH)
 //////////////////////////////////////////////////////*/
 .page-market {
-    min-height: 100vh;      /* Force la page à faire toute la hauteur de l'écran */
-    margin: 0;
-    position: relative;
-    min-height: 100%;
-    width: 100%;
-    background-color: #111; 
-    overflow-x: hidden;
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+    background-color: transparent; /* On enlève le fond direct */
+    position: relative;
+}
+
+.page-market::before {
+    content: "";
+    position: fixed; /* Il reste fixé à l'écran */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* C'est ICI que tu règles l'obscurité */
+    z-index: -1; /* Derrière le texte */
+    pointer-events: none; /* Pour pouvoir cliquer à travers sur tes boutons */
 }
 
 /* On s'assure que la vidéo reste bien au fond */
@@ -551,12 +560,12 @@ body {
     position: fixed;
     top: 50%;
     left: 50%;
+    transform: translate(-50%, -50%);
     min-width: 100%;
     min-height: 100%;
-    transform: translate(-50%, -50%);
     object-fit: cover;
-    z-index: -1; /* Derrière le voile de .page-market */
-    opacity: 0.8; /* Ajuste selon tes préférences */
+    z-index: 0; /* Plus loin que le voile noir */
+    opacity: 1;  /* On laisse la vidéo à fond, c'est le voile qui fait le job */
 }
 
 .page-market h1 {

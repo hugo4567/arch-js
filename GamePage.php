@@ -40,7 +40,7 @@ if (!empty($user['levels'])) {
         <h2>Menu de Test</h2>
         <p>Le bouton envoie le fichier <b>Test.json</b> Ã  l'Iframe.</p>
         
-        <button onclick="chargerEtLancerNiveau('/~grp1/levels/Mon_niveau_trop_cool_1776837755.json')">
+        <button onclick="chargerEtLancerNiveau('/~grp1/levels/testcrea2_2_1776849827.json')">
             ðŸŽ® Lancer "Test.json"
         </button>
     </div>
@@ -61,6 +61,21 @@ if (!empty($user['levels'])) {
                 jeuPret = true;
             }
         });
+
+            if (event.data && event.data.type === 'LEVEL_FINISHED') {
+                const totalCoins = event.data.coins;
+                console.log("Message reçu du jeu : Niveau terminé avec", totalCoins, "pièces !");
+                
+                // Ici tu peux faire ton affichage de victoire ou envoyer à la DB
+                alert(`Bravo ! Tu as terminé le niveau en récoltant ${totalCoins} pièces !`);
+                
+                /* * Exemple pour la suite :
+                 * fetch('sauvegarder_score.php', {
+                 * method: 'POST',
+                 * body: JSON.stringify({ pieces: totalCoins })
+                 * });
+                 */
+            }
 
         // 2. On envoie le niveau
         async function chargerEtLancerNiveau(cheminJsonServeur) {
