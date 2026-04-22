@@ -208,7 +208,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action']) && $_GET['ac
     </style>
 </head>
 <body>
-
+    <?php include 'navbar.php'; ?>
     <div id="toolbar">
         <h2>Paramètres du Niveau</h2>
         <div class="settings-group" style="background:transparent; padding:0;">
