@@ -2,6 +2,7 @@
 session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+include 'navbar.php';
 
 // Vérifie le chemin de ta BDD (Attention aux majuscules !)
 $db_path = "Backend/DB/db_connect.php"; 
@@ -56,6 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="page-login">
+    
     <video autoplay muted loop playsinline class="bg-video">
         <source src="img/background.mp4" type="video/mp4">
     </video>
@@ -69,7 +71,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="carousel__face face-admin">
                 <div class="login-card">
                     <h1>ADMINISTRATION</h1>
-                    <a href="./index.php" id='exit'>SORTIR D'ICI</a>
                     <form method="POST" action="">
                         <input type="hidden" name="role" value="admin">
                         <div class="form-group">
