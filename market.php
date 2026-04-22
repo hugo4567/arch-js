@@ -68,6 +68,9 @@ $playerMoney = $_SESSION["money"];
     <link rel="stylesheet" href="style.css"> 
 </head>
 <body class="page-market"> 
+    <video autoplay muted loop playsinline class="bg-video">
+        <source src="img/background.mp4" type="video/mp4">
+    </video>
     <div class="market">
     <h1>🛒 MARCHÉ NOIR</h1>
     <div class="or">
@@ -96,6 +99,8 @@ $playerMoney = $_SESSION["money"];
 </div>
 
 </div>
-
+    <footer>
+        <p>&copy; 2026 ARCH JS Team - Tout droit réservé</p>
+    </footer>
 </body>
 </html>

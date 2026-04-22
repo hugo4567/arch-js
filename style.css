@@ -595,6 +595,18 @@ body {
     text-decoration: none;
     border-bottom: 4px solid #27ae60;
 }
+
+/* --- Footer --- */
+.page-market footer {
+    text-align: center;
+    padding: 30px;
+    font-size: 0.9rem;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.8); /* Noir semi-transparent */
+    margin-top: 230px;
+    position: relative;
+    z-index: 1;
+}
 /*////////////////////////////////////////////////////NAVBAR///////////////////////////////*/
     /* --- Barre de Navigation --- */
 .navbar nav {
