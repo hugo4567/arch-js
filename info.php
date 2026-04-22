@@ -16,7 +16,7 @@ session_start();
         
         <section class="info-block">
             <h2>Le Projet</h2>
-            <p><strong>PIXEL BLASTER ADVENTURE 2</strong> est un moteur de jeu de plateforme développé en JavaScript. Notre but est de permettre à chacun de créer, partager et jouer à des niveaux inspirés des classiques du genre.</p>
+            <p><strong>PIXEL BLASTER ADVENTURE</strong> est un moteur de jeu de plateforme développé en JavaScript. Notre but est de permettre à chacun de créer, partager et jouer à des niveaux inspirés des classiques du genre.</p>
             <p>Version actuelle : <strong>1.0.1 (Beta)</strong></p>
         </section>
 
