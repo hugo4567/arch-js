@@ -535,10 +535,12 @@ body {
     PAGE MARKETPLACE - LAYOUT FLEXIBLE (STRETCH)
 //////////////////////////////////////////////////////*/
 .page-market {
+    min-height: 100vh;      /* Force la page à faire toute la hauteur de l'écran */
+    margin: 0;
     position: relative;
-    min-height: 100vh;
+    min-height: 100%;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.5); 
+    background-color: #111; 
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
@@ -608,6 +610,9 @@ body {
     transform: translateY(-10px);
     background: #ffffff; /* Devient totalement blanc au survol */
 }
+.page-market .item-card{
+    color: #000;
+}
 
 /* 3. Images */
 .page-market .item-card img {
@@ -635,15 +640,12 @@ body {
 
 /* --- Footer --- */
 .page-market footer {
+    margin-top: auto;       /* PREND TOUT L'ESPACE VIDE AU-DESSUS */
     text-align: center;
     padding: 30px;
-    font-size: 0.9rem;
-    color: #fff;
-    /* On harmonise le footer aussi */
     background-color: rgba(0, 0, 0, 0.5);
-    margin-top: auto; /* Pousse le footer en bas si peu d'items */
-    position: relative;
-    z-index: 1;
+    color: #fff;
+    width: 100%;
 }
 
 /*////////////////////////////////////////////////////NAVBAR///////////////////////////////*/
