@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once __DIR__ . "/Backend/DB/db_connect.php";
+requiere_once
 
 /*$user = get_user_by_id($conn, $_SESSION['id_user']);
 
