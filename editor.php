@@ -411,6 +411,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action']) && $_GET['ac
 
             'IceSlopeRight': { label: 'Pente Glace Droite (/|)', color: '#66ccff', draw: 'slopeRight', props: { friction: 0.0, restitution: 0.0, matType: 'Simple', atlasX: 2, atlasY: 1, shape: 'SlopeRight' } },
             'IceSlopeLeft': { label: 'Pente Glace Gauche (|\\)', color: '#66ccff', draw: 'slopeLeft', props: { friction: 0.0, restitution: 0.0, matType: 'Simple', atlasX: 3, atlasY: 1, shape: 'SlopeLeft' } },
+
+            'LevelEnd': { label: '🏁 Fin de Niveau', color: 'rgba(50, 255, 50, 0.3)', draw: 'zone', isZone: true, props: { zoneW: 100, zoneH: 100 } },
         };
 
         let currentTool = 'Wall';
@@ -653,13 +655,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action']) && $_GET['ac
                     let h = obj.props.zoneH || 100;
                     ctx.fillRect(x, y, w, h);
 
-                    ctx.strokeStyle = obj.type === 'Trigger' ? '#ff3333' : '#ffff00';
+                    // 👉 MODIFIE CES LIGNES POUR INCLURE LE LEVEL END :
+                    if (obj.type === 'Trigger') ctx.strokeStyle = '#ff3333';
+                    else if (obj.type === 'LevelEnd') ctx.strokeStyle = '#33ff33'; // Vert pour la fin
+                    else ctx.strokeStyle = '#ffff00';
+                    
                     ctx.lineWidth = 2;
                     ctx.strokeRect(x, y, w, h);
 
                     ctx.fillStyle = '#fff';
                     ctx.font = "14px Arial";
-                    let text = obj.type === 'Trigger' ? "⚡ TRIGGER" : "📷 CAM ZONE";
+                    
+                    // 👉 MODIFIE LE TEXTE AFFICHE :
+                    let text = "📷 CAM ZONE";
+                    if (obj.type === 'Trigger') text = "⚡ TRIGGER";
+                    if (obj.type === 'LevelEnd') text = "🏁 FIN NIVEAU";
+                    
                     ctx.fillText(`${text} (${w}x${h})`, x + 5, y + 20);
                 }
             });

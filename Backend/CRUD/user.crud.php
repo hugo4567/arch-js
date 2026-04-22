@@ -162,11 +162,28 @@ function get_pieces_user($conn, $id_user){
 
 
 function add_pieces($conn, $id_user, $pieces_add){
-    $pieces = get_pieces_user($conn, $id_user);
+    $pieces = get_pieces_user($conn, $id_user)[0]["pieces"];
 
     $pieces_update = $pieces + $pieces_add;
 
-    $sql = "";
+    $sql = "UPDATE users 
+            SET pieces=$pieces_update
+            WHERE id_user=$id_user";
+
+    return mysqli_query($conn, $sql);
+}
+
+
+function sub_pieces($conn, $id_user, $pieces_sub){
+    $pieces = get_pieces_user($conn, $id_user)[0]["pieces"];
+
+    $pieces_update = $pieces - $pieces_sub;
+
+    $sql = "UPDATE users 
+            SET pieces=$pieces_update
+            WHERE id_user=$id_user";
+
+    return mysqli_query($conn, $sql);
 }
 
 function creer_rs($query){
