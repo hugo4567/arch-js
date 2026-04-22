@@ -30,7 +30,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $crea_auth_path = "Backend/Auth/crea.auth.php";
         include($crea_auth_path);
         if (crea_auth($conn, $login, $passwd)) {
-            include("Backend/CRUD/crea.crud.php");
             $id = get_crea_id($conn, $login, $passwd);
             $_SESSION["crea"] = $id;
             header("Location: editor.php");

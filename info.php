@@ -11,7 +11,9 @@ session_start();
 <body class="page-info">
 
     <?php include 'navbar.php'; ?>
-
+    <video autoplay muted loop playsinline class="bg-video">
+        <source src="img/background.mp4" type="video/mp4">
+    </video>
     <div class="info-container">
         
         <section class="info-block">
