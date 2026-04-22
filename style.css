@@ -550,7 +550,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* C'est ICI que tu règles l'obscurité */
+    background-color: rgba(0, 0, 0, 0.2); /* C'est ICI que tu règles l'obscurité */
     z-index: -1; /* Derrière le texte */
     pointer-events: none; /* Pour pouvoir cliquer à travers sur tes boutons */
 }
@@ -564,7 +564,7 @@ body {
     min-width: 100%;
     min-height: 100%;
     object-fit: cover;
-    z-index: 0; /* Plus loin que le voile noir */
+    z-index: -0.5; /* Plus loin que le voile noir */
     opacity: 1;  /* On laisse la vidéo à fond, c'est le voile qui fait le job */
 }
 
