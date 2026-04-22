@@ -23,21 +23,17 @@ body {
 
 /* La classe à utiliser pour ta future balise <video> */
 .bg-video {
-    position: fixed;
+    position: fixed; /* Reste fixe pendant le scroll */
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(0.9);
-    
-    /* On force la largeur à 100% de la vue */
-    width: 100vw; 
-    height: auto; /* La hauteur s'adapte sans zoomer */
-    
     min-width: 100%;
     min-height: 100%;
-    
-    object-fit: contain; /* Évite de recadrer l'image */
-    z-index: -1;
-    opacity: 0.6;
+    width: auto;
+    height: auto;
+    z-index: -1; /* Derrière tout le contenu */
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    opacity: 0.6; /* Optionnel : rend la vidéo un peu plus sombre pour la lisibilité */
 }
 
 /* --- Header : START GAME --- */

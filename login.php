@@ -30,7 +30,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $crea_auth_path = "Backend/Auth/crea.auth.php";
         include($crea_auth_path);
         if (crea_auth($conn, $login, $passwd)) {
-            $_SESSION["crea"] = time();
+            include("Backend/CRUD/crea.crud.php");
+            $id = get_crea_id($conn, $login, $passwd);
+            $_SESSION["crea"] = $id;
             header("Location: editor.php");
             exit;
         } else { $error = "Identifiants Créateur incorrects !"; }
@@ -56,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body class="page-login">
     <video autoplay muted loop playsinline class="bg-video">
-        <source src="img/background_login.mp4" type="video/mp4">
+        <source src="img/background.mp4" type="video/mp4">
     </video>
     <?php if ($error): ?>
         <div class="error-msg"><?php echo $error; ?></div>

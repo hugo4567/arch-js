@@ -38,6 +38,17 @@ function select_crea_login($conn, $login){
     return $rs;
 }
 
+function get_crea_id($conn, $login, $mdp){
+    $sql = "SELECT id_crea FROM creators WHERE login = '$login' AND mdp = '$mdp'";
+    $query = mysqli_query($conn, $sql);
+    
+    if ($row = mysqli_fetch_assoc($query)) {
+        return $row['id_crea'];
+    }
+    
+    return false; // Retourne false si l'utilisateur n'est pas trouvé
+}
+
 function creer_rs($query){
     $rs = [];
 
