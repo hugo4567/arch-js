@@ -40,7 +40,7 @@ if (!empty($user['levels'])) {
         <h2>Menu de Test</h2>
         <p>Le bouton envoie le fichier <b>Test.json</b> Ã  l'Iframe.</p>
         
-        <button onclick="chargerEtLancerNiveau('/~grp1/levels/testcrea2_2_1776849827.json')">
+        <button onclick="chargerEtLancerNiveau('/~grp1/levels/cestlebon_1776850671.json')">
             ðŸŽ® Lancer "Test.json"
         </button>
     </div>
@@ -60,7 +60,7 @@ if (!empty($user['levels'])) {
                 console.log("Le jeu est prét ! Tu peux cliquer sur le bouton.");
                 jeuPret = true;
             }
-        });
+        
 
             if (event.data && event.data.type === 'LEVEL_FINISHED') {
                 const totalCoins = event.data.coins;
@@ -76,7 +76,8 @@ if (!empty($user['levels'])) {
                  * });
                  */
             }
-
+        });
+        
         // 2. On envoie le niveau
         async function chargerEtLancerNiveau(cheminJsonServeur) {
             if (!jeuPret) {

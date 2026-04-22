@@ -20,11 +20,13 @@ function delete_score($conn, $enregistrement){
 
 // Récupérer tous les scores avec joueur et niveau
 function get_all_scores_with_details($conn){
-    $sql = "SELECT users.login as joueur, levels.name as niveau, score.score 
-            FROM scores users  levels 
-            JOIN users ON score.user_id = users.id
-            JOIN levels l ON s.level_id = levels.id
-            ORDER BY users.nom, levels.nom";
+    $sql = "SELECT u.login AS joueur,
+                    l.name AS niveau,
+                    s.score
+                FROM scores AS s
+                JOIN users AS u ON s.user_id = u.id_user
+                JOIN levels AS l ON s.level_id = l.id
+                ORDER BY u.login, l.name";
     $squery = mysqli_query($conn, $sql) or die(mysqli_error($conn)); 
     $result = []; 
     while ($row = mysqli_fetch_assoc($squery)) $result[] = $row;
