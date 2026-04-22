@@ -49,3 +49,5 @@ YA QUI QUI EST CO ? -- HUGO E
 
 
 POUR TOUT UPPLOAD VERS LE PROF, commande /fahh !
+
+En gros cest plutot par souci d'opti que par vrai coorection de problemes car je sais que au fond, maxime veut saboter le market.php
