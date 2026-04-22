@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once __DIR__ . "/Backend/DB/db_connect.php";
-requiere_once
+require_once __DIR__ . "/navbar.php";
 
 /*$user = get_user_by_id($conn, $_SESSION['id_user']);
 
@@ -24,6 +24,7 @@ if (!empty($user['levels'])) {
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <link rel="stylesheet" href="style.css"> </head>
     <meta charset="UTF-8">
     <title>Test Rapide du Jeu</title>
     <style>
