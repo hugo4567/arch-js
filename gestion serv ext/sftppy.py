@@ -41,7 +41,7 @@ else:
 
 sftp = paramiko.SFTPClient.from_transport(transport)
 try:
-    upload_dir(sftp, "/var/www/dev-project/market.php", "/home/grp1/public_html")
+    upload_dir(sftp, "/var/www/dev-project", "/home/grp1/public_html")
     print("vrm bon")
 finally:
     sftp.close()

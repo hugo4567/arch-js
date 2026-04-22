@@ -10,20 +10,49 @@ body {
     /* Conserver l'aspect pixel art pour l'image de fond si tu en mets une */
     image-rendering: pixelated; 
 }
+/* --- CONFIGURATION VIDÉO EN ARRIÈRE-PLAN --- */
+
+.page-index {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    /* On garde un fond sombre par défaut en attendant la vidéo */
+    background-color: #111; 
+    overflow-x: hidden;
+}
+
+/* La classe à utiliser pour ta future balise <video> */
+.bg-video {
+    position: fixed; /* Reste fixe pendant le scroll */
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1; /* Derrière tout le contenu */
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    opacity: 0.6; /* Optionnel : rend la vidéo un peu plus sombre pour la lisibilité */
+}
 
 /* --- Header : START GAME --- */
 .page-index header {
     text-align: center;
     padding: 60px 20px;
-    background-color: rgba(0, 0, 0, 0.7); /* Zone noire contrastée, comme demandé */
+    /* On passe en transparent car la vidéo est derrière */
+    background-color: rgba(0, 0, 0, 0.4); 
+    position: relative;
+    z-index: 1;
 }
 
 .page-index header h1 {
-    font-size: 3rem; /* Gros titre SMM2 */
+    font-size: 3rem;
     font-weight: 700;
     color: #fff;
     margin: 0;
     margin-bottom: 15px;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.5); /* Ombre pour détacher du fond vidéo */
 }
 
 .page-index header p {
@@ -33,117 +62,67 @@ body {
 }
 
 /* --- Grille des Cartes (Tabs-container) --- */
-/* Transforme la liste horizontale en une liste verticale centrée (SMM2) */
 .page-index .tabs-container {
     display: flex;
-    flex-direction: column; /* Liste verticale */
-    align-items: center;    /* Centre les cartes */
+    flex-direction: column;
+    align-items: center;
     gap: 20px;
     padding: 40px;
     max-width: 800px;
     margin: 0 auto;
+    position: relative;
+    z-index: 1; /* Assure que les boutons sont au-dessus de la vidéo */
 }
 
 /* --- Style de base d'un bouton de menu --- */
 .page-index .tab {
-    background-color: #fff;  /* Boutons Blancs SMM2 */
-    color: #333;             /* Texte sombre sur fond blanc */
-    width: 100%;             /* Cartes larges */
+    background-color: rgba(255, 255, 255, 0.95); /* Légèrement translucide pour le style */
+    color: #333;
+    width: 100%;
     padding: 20px 30px;
-    border-radius: 12px;     /* Coins arrondis légers SMM2 */
-    text-align: left;        /* Alignement texte à gauche */
-    
-    /* Transitions fluides SMM2 */
+    border-radius: 12px;
+    text-align: left;
     transition: transform 0.15s ease-out, box-shadow 0.15s ease-out, border-color 0.15s ease-out;
-    
-    border: 4px solid transparent; /* Bordure transparente par défaut */
-    box-shadow: 0 6px 0 rgba(0,0,0,0.1); /* Ombre plate SMM2 */
-    
+    border: 4px solid transparent;
+    box-shadow: 0 6px 0 rgba(0,0,0,0.2);
     position: relative;
     overflow: hidden;
-    display: flex; /* Aligne l'icône et le texte */
+    display: flex;
     align-items: center;
 }
 
-/* --- Simulation des icônes circulaires de SMM2 --- */
-/* Ajoute un pseudo-élément devant chaque carte */
+/* ... (Tes styles .tab::before et icônes restent les mêmes) ... */
+
 .page-index .tab::before {
-    content: '★'; /* Icône par défaut (Étoile) */
+    content: '★';
     font-size: 1.5rem;
-    /* Utilise Press Start 2P pour les icônes style pixel */
     font-family: 'Press Start 2P', cursive;
     color: #fff;
-    
-    background-color: #f1c40f; /* Fond Jaune Soleil SMM2 */
+    background-color: #f1c40f;
     width: 60px;
     height: 60px;
-    border-radius: 50%; /* Cercle parfait */
-    
+    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 25px; /* Espace icône-texte */
-    box-shadow: 0 4px 0 rgba(0,0,0,0.1); /* Ombre icône */
+    margin-right: 25px;
+    box-shadow: 0 4px 0 rgba(0,0,0,0.1);
 }
 
-/* --- Personnalisation des icônes/couleurs par section (Ordre) --- */
-/* 1. 1 PLAYER = Infos (Bleu) */
+/* --- Personnalisation des icônes (Tes couleurs actuelles) --- */
 .page-index .tab:nth-child(1)::before { content: 'ℹ️'; background-color: #ff0606; }
-/* 2. 2 PLAYERS = Jeu (Orange) */
 .page-index .tab:nth-child(2)::before { content: '🎮'; background-color: #ff9100; }
-/* 3. EXIT = Créateur (Rouge, j'ai adapté car le 3ème était Vert) */
 .page-index .tab:nth-child(3)::before { content: '🛒'; background-color: #fffb00; }
-
 .page-index .tab:nth-child(4)::before { content: '🛠️'; background-color: #33ff00; }
-/* 2. 2 PLAYERS = Jeu (Orange) */
 .page-index .tab:nth-child(5)::before { content: '🏆'; background-color: #1100ff; }
-/* 3. EXIT = Créateur (Rouge, j'ai adapté car le 3ème était Vert) */
 .page-index .tab:nth-child(6)::before { content: '🫃'; background-color: #960089; }
-/* --- Effet au survol (Imite la sélection de SMM2) --- */
+
+/* --- Effet au survol --- */
 .page-index .tab:hover {
-    transform: scale(1.03); /* Zoom léger SMM2 */
-    border-color: #e74c3c;  /* Bordure Rouge comme les coins de SMM2 */
-    box-shadow: 0 10px 0 rgba(0,0,0,0.15); /* Ombre plus profonde */
-}
-
-/* --- Les coins rouges de sélection SMM2 (Coins haut-gauche et bas-droite) --- */
-.page-index .tab:hover::after {
-    content: '';
-    position: absolute;
-    width: 15px;
-    height: 15px;
-    background-color: transparent;
-    border: 4px solid #e74c3c;
-    border-right: none;
-    border-bottom: none;
-    top: 5px;
-    left: 5px;
-}
-
-/* --- Titre et description dans le bouton --- */
-.page-index .tab h3 {
-    font-family: 'Quicksand', sans-serif; /* Police propre SMM2 */
-    font-weight: 700;
-    font-size: 1.3rem;
-    margin: 0;
-    color: #333;
-}
-
-.page-index .tab p {
-    color: #777; /* Texte description gris SMM2 */
-    font-size: 0.95rem;
-    margin: 5px 0 0 0;
-}
-
-/* --- Boutons et Liens invisibles (Pour rendre toute la carte cliquable) --- */
-.page-index .btn, .tab a, .tab button {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0; /* Rend le bouton/lien invisible mais cliquable */
-    cursor: pointer;
+    transform: scale(1.03);
+    border-color: #e74c3c;
+    box-shadow: 0 10px 0 rgba(0,0,0,0.2);
+    background-color: #fff; /* Devient opaque au survol */
 }
 
 /* --- Footer --- */
@@ -152,11 +131,12 @@ body {
     padding: 30px;
     font-size: 0.9rem;
     color: #fff;
-    background-color: #000; /* Fond Noir, comme demandé */
+    background-color: rgba(0, 0, 0, 0.8); /* Noir semi-transparent */
     margin-top: 50px;
-    border-top: 4px solid #fff; /* Bordure blanche en haut SMM2 */
+    border-top: 4px solid #fff;
+    position: relative;
+    z-index: 1;
 }
-
 /*///////////////////////////////////////////////////// CSS DE LA PAGE INFO.PHP//////////////////////////////////////////////////////*/
 
 .page-info .info-container {
