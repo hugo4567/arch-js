@@ -46,9 +46,6 @@ $note_neg = $is_edit ? $level_data['note_neg'] : 0;
         <label>Notes Négatives :</label>
         <input type="number" name="note_neg" value="<?= $note_neg ?>" required>
 
-        <label>Niveau (json) : </label>
-        <input type="file", name="niveau_json" required>
-
         <button type="submit">Enregistrer</button>
     </form>
 </body>
