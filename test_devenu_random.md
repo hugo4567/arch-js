@@ -8,7 +8,7 @@ port 22
 
 faire les fonctions levels et admin pour gerer les choses admin a un level
 
-horaire 00h -- 8h eteint
+horaire 8H ON 00h --eteint
 
 FAAAAAAH is not real... it can't hurts you FAAAAAAH
 

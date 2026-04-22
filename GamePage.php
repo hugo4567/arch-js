@@ -53,13 +53,11 @@ if (!empty($user['levels'])) {
         const gameIframe = document.getElementById('gameIframe');
         let jeuPret = false;
 
-        // 1. On Ã©coute le jeu
         window.addEventListener('message', (event) => {
-            // ðŸ‘‡ LIGNE Ã€ VÃ‰RIFIER ABSOLUMENT ðŸ‘‡
             if (event.origin !== "https://ex-a01.github.io") return; 
 
             if (event.data && event.data.type === 'GAME_READY') {
-                console.log("âœ… Le jeu est prÃªt ! Tu peux cliquer sur le bouton.");
+                console.log("Le jeu est prét ! Tu peux cliquer sur le bouton.");
                 jeuPret = true;
             }
         });
@@ -67,7 +65,7 @@ if (!empty($user['levels'])) {
         // 2. On envoie le niveau
         async function chargerEtLancerNiveau(cheminJsonServeur) {
             if (!jeuPret) {
-                alert("Le WASM n'est pas encore prÃªt. Regarde la console (F12) pour voir si le signal arrive !");
+                alert("Le WASM n'est pas encore ready. Regarde la console (F12) pour voir si le signal arrive !");
                 return;
             }
 
@@ -83,7 +81,7 @@ if (!empty($user['levels'])) {
                 }, "https://ex-a01.github.io"); 
 
             } catch (error) {
-                console.error("âŒ Erreur :", error);
+                console.error("Erreur :", error);
             }
         }
     </script>
