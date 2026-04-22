@@ -161,7 +161,7 @@ function get_pieces_user($conn, $id_user){
     }
 
 
-function add_pieces($conn, $id_user, $pieces_add){
+function add_pieces_user($conn, $id_user, $pieces_add){
     $pieces = get_pieces_user($conn, $id_user)[0]["pieces"];
 
     $pieces_update = $pieces + $pieces_add;
@@ -174,7 +174,7 @@ function add_pieces($conn, $id_user, $pieces_add){
 }
 
 
-function sub_pieces($conn, $id_user, $pieces_sub){
+function sub_pieces_user($conn, $id_user, $pieces_sub){
     $pieces = get_pieces_user($conn, $id_user)[0]["pieces"];
 
     $pieces_update = $pieces - $pieces_sub;

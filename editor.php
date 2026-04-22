@@ -884,6 +884,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action']) && $_GET['ac
                     gameObject.Components.push({ "Type": "COG_CameraZone" });
                     //gameObject.Components.push({ "Type": "COG_Sprite", "IsVisible": false, "LayerDepth": 0.2, "Color": [1.0, 1.0, 0.0, 1.0] });
                 }
+
+                // --- EXPORT END ZONE ---
+
+                else if (obj.type === 'LevelEnd') {
+                    gameObject.Transform.W = obj.props.zoneW;
+                    gameObject.Transform.H = obj.props.zoneH;
+                    // On met un collider transparent (trigger)
+                    gameObject.Components.push({ "Type": "COG_Collider", "IsSolid": false, "IsTrigger": true, "BodyType": "Static" });
+                    // On attache notre nouveau composant !
+                    gameObject.Components.push({ "Type": "COG_LevelEndTrigger" });
+                }
+
                 // --- EXPORT MURS ET PENTES ET OBJETS ANIMÉS ---
                 else {
                     let p = obj.props;
