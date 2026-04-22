@@ -535,6 +535,11 @@ body {
     text-align: center;
 
 }
+
+.page-market .or{
+    text-align: center;
+
+}
 /* 1. Le conteneur qui force l'alignement en ligne */
 .page-market .market-grid {
     display: flex;

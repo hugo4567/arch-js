@@ -70,9 +70,10 @@ $playerMoney = $_SESSION["money"];
 <body class="page-market"> 
     <div class="market">
     <h1>🛒 MARCHÉ NOIR</h1>
-
-    <div class="status-box">
-        OR : <?php echo $playerMoney; ?> G
+    <div class="or">
+        <div class="status-box">
+            OR : <?php echo $playerMoney; ?> G
+        </div>
     </div>
     <div class="page-market">
     <div class="market-grid">
@@ -80,14 +81,14 @@ $playerMoney = $_SESSION["money"];
         <div class="item-card">
             <h3>MONDE 1-1</h3>
             <p>50G - La plaine verdoyante.</p>
-            <img src="ton-image-mario.png" alt="preview">
+            <img src="img/lvl1.png" alt="preview">
             <a href="#" class="buy-btn">ACHETER (50G)</a>
         </div>
 
         <div class="item-card">
             <h3>MONDE 1-2</h3>
             <p>100G - Les mines.</p>
-            <img src="ton-image-mario2.png" alt="preview">
+            <img src="img/lvl2.png" alt="preview">
             <a href="#" class="buy-btn">ACHETER (100G)</a>
         </div>
 
