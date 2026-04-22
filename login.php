@@ -36,8 +36,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else { $error = "Identifiants Créateur incorrects !"; }
     }
     elseif ($role === "joueur") {
-        if ($login === "player" && $passwd === "player") {
-            $_SESSION["joueur"] = $login;
+        $user_auth_path = "Backend/Auth/user.auth.php";
+        include($user_auth_path);
+        if (user_auth($conn, $login, $passwd)) {
+            $_SESSION["joueur"] = time();
             header("Location: espace_joueur.php");
             exit;
         } else { $error = "Identifiants Joueur incorrects !"; }

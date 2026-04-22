@@ -5,6 +5,7 @@ ini_set('display_errors', '1');
 error_reporting(E_ALL);
 require_once __DIR__ . '/Backend/CRUD/user.crud.php';
 require_once __DIR__ . '/Backend/DB/db_connect.php';
+require_once __DIR__ . '/CRUD_score.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr">

@@ -4,6 +4,9 @@
 </head>
 
 <div class="navbar">
+    <video autoplay muted loop playsinline class="bg-video">
+        <source src="img/background.mp4" type="video/mp4">
+    </video>
     <nav>
         <div class="logo">
             <a href="index.php" title="Retour à l'accueil">PIXEL BLASTER</a>
