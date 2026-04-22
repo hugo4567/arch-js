@@ -4,7 +4,7 @@
 // ==========================================
 
 // --- 1. CREATE ---
-function create_user($conn, $login, $mdp, $levels = []) {
+function create_user($conn, $login, $mdp, $levels = [], $pieces) {
     // Sécurisation des chaînes
     $login = mysqli_real_escape_string($conn, $login);
     $mdp = mysqli_real_escape_string($conn, $mdp); 
@@ -16,7 +16,7 @@ function create_user($conn, $login, $mdp, $levels = []) {
     $levels_json = mysqli_real_escape_string($conn, json_encode($levels_clean));
 
     $sql = "INSERT INTO users (login, mdp, levels) 
-            VALUES ('$login', '$mdp', '$levels_json')";
+            VALUES ('$login', '$mdp', '$levels_json', $pieces)";
             
     return mysqli_query($conn, $sql);
 }

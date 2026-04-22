@@ -23,17 +23,13 @@ body {
 
 /* La classe à utiliser pour ta future balise <video> */
 .bg-video {
-    position: fixed; /* Reste fixe pendant le scroll */
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: -1; /* Derrière tout le contenu */
-    transform: translate(-50%, -50%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
     object-fit: cover;
-    opacity: 0.6; /* Optionnel : rend la vidéo un peu plus sombre pour la lisibilité */
+    z-index: -1;
 }
 
 /* --- Header : START GAME --- */
@@ -615,7 +611,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 4px solid #f1c40f; /* Ligne Jaune SMM2 */
+    border-bottom: 4px solid #4e035e; /* Ligne Jaune SMM2 */
     box-shadow: 0 4px 0 rgba(0,0,0,0.3);
 }
 

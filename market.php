@@ -68,6 +68,7 @@ $playerMoney = $_SESSION["money"];
     <link rel="stylesheet" href="style.css"> 
 </head>
 <body class="page-market"> 
+    <?php include 'navbar.php'; ?>
     <video autoplay muted loop playsinline class="bg-video">
         <source src="img/background.mp4" type="video/mp4">
     </video>
