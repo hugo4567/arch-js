@@ -98,6 +98,13 @@ if ($is_logged_in) {
                  * body: JSON.stringify({ pieces: totalCoins })
                  * });
                  */
+
+                fetch("Backend/Score/sauvegarder_score.php", {
+                    method: 'POST';
+                    body: )
+                    .then(response => response.text())
+                    .then(data => console.log("Réponse du serveur " + data)); // temp
+                 })
             }
         });
         
