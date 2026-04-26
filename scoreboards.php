@@ -14,7 +14,7 @@ require_once __DIR__ . '/CRUD_score.php';
     <title>VOS TOPS SCORES</title>
     <link rel="stylesheet" href="style.css"> </head>
 <body class="page-scoreboard">
-
+<h1> Les tops des niveaux en fonction scores des joueurs</h1>
 <?php
 
 $scores = get_all_scores_with_details($conn);
@@ -36,6 +36,10 @@ echo($text);
 
 ?>
 
+<h1> Les tops scores des joueurs en fonction des totaux de scores/h1>
+
+
+<h1> Les niveaux avec le plus de scores totaux/h1>
 <?php
 require_once __DIR__ . "/Backend/DB/db_disconnect.php";
 echo("a");
