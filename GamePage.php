@@ -3,22 +3,30 @@ session_start();
 require_once __DIR__ . "/Backend/DB/db_connect.php";
 require_once __DIR__ . "/navbar.php";
 
-/*$user = get_user_by_id($conn, $_SESSION['id_user']);
+$user_levels = []; // On initialise un tableau vide par défaut
+$is_logged_in = isset($_SESSION['id_user']); // Assure-toi que c'est bien le nom de ta variable de session
 
-if (!empty($user['levels'])) {
-    // Transforme le tableau [1, 4, 7] en chaÃ®ne "1,4,7" pour la requÃªte SQL
-    $ids_string = implode(',', $user['levels']); 
-    
-    // On va chercher toutes les infos des niveaux que le joueur possÃ¨de
-    $sql = "SELECT * FROM levels WHERE id IN ($ids_string)";
-    $result_levels = mysqli_query($conn, $sql);
-    
-    while ($lvl = mysqli_fetch_assoc($result_levels)) {
-        echo "<button>Jouer Ã  " . $lvl['name'] . "</button>";
+if ($is_logged_in) {
+    // 1. On récupère le user et son tableau d'IDs de niveaux décodé
+    $user = get_user_by_id($conn, $_SESSION['id_user']);
+
+    if ($user && !empty($user['levels'])) {
+        // 2. On sécurise les IDs et on en fait une chaîne "1,2,3"
+        $ids_clean = array_map('intval', $user['levels']);
+        $ids_string = implode(',', $ids_clean);
+        
+        // 3. On va chercher les infos des niveaux dans la table 'levels'
+        // Attention: adapte "id_level" selon le vrai nom de ta clé primaire dans la table levels
+        $sql = "SELECT * FROM levels WHERE id_level IN ($ids_string)";
+        $result_levels = mysqli_query($conn, $sql);
+        
+        if ($result_levels) {
+            while ($lvl = mysqli_fetch_assoc($result_levels)) {
+                $user_levels[] = $lvl;
+            }
+        }
     }
-} else {
-    echo "Tu ne possÃ¨des aucun niveau.";
-}*/
+}
 ?>
 
 <!DOCTYPE html>
