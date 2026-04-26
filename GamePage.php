@@ -2,30 +2,20 @@
 session_start();
 require_once __DIR__ . "/Backend/DB/db_connect.php";
 require_once __DIR__ . "/navbar.php";
+require_once __DIR__ . "/Backend/CRUD/user.crud.php";
 
-$user_levels = []; // On initialise un tableau vide par défaut
-$is_logged_in = isset($_SESSION['id_user']); // Assure-toi que c'est bien le nom de ta variable de session
+$user_levels = []; 
+$is_logged_in = isset($_SESSION['id_user']);
 
 if ($is_logged_in) {
-    // 1. On récupère le user et son tableau d'IDs de niveaux décodé
-    require __DIR__ . "/Backend/CRUD/user.crud.php";
+    // 1. On récupère le user (ta fonction get_user_by_id fait déjà le json_decode)
     $user = get_user_by_id($conn, $_SESSION['id_user']);
 
-    if ($user && !empty($user['levels'])) {
-        // 2. On sécurise les IDs et on en fait une chaîne "1,2,3"
-        $ids_clean = array_map('intval', $user['levels']);
-        $ids_string = implode(',', $ids_clean);
+    // 2. On vérifie que la clé "mes_niveaux" existe bien dans le JSON décodé
+    if ($user && isset($user['levels']['mes_niveaux']) && is_array($user['levels']['mes_niveaux'])) {
         
-        // 3. On va chercher les infos des niveaux dans la table 'levels'
-        // Attention: adapte "id_level" selon le vrai nom de ta clé primaire dans la table levels
-        $sql = "SELECT * FROM levels WHERE id_level IN ($ids_string)";
-        $result_levels = mysqli_query($conn, $sql);
-        
-        if ($result_levels) {
-            while ($lvl = mysqli_fetch_assoc($result_levels)) {
-                $user_levels[] = $lvl;
-            }
-        }
+        // 3. On récupère directement le tableau des noms de fichiers
+        $user_levels = $user['levels']['mes_niveaux']; 
     }
 }
 ?>
@@ -54,11 +44,19 @@ if ($is_logged_in) {
             <?php if (!empty($user_levels)): ?>
                 <p>Choisis un niveau à lancer :</p>
                 
-                <?php foreach ($user_levels as $lvl): ?>
-                    <button onclick="chargerEtLancerNiveau('<?php echo htmlspecialchars($lvl['chemin_fichier']); ?>')">
-                        Jouer à "<?php echo htmlspecialchars($lvl['name']); ?>"
+                <?php foreach ($user_levels as $filename): ?>
+                    <?php 
+                        // On construit le chemin complet attendu par ton JS
+                        $chemin_complet = "/~grp1/levels/" . htmlspecialchars($filename) . ".json";
+                        
+                        // Optionnel : On nettoie un peu le nom pour l'affichage du bouton (enlève le "_1777219013")
+                        $nom_propre = preg_replace('/_[0-9]+$/', '', $filename);
+                    ?>
+                    
+                    <button onclick="chargerEtLancerNiveau('<?php echo $chemin_complet; ?>')">
+                        Lancer "<?php echo htmlspecialchars($nom_propre); ?>"
                     </button>
-                    <br><br>
+                    
                 <?php endforeach; ?>
                 
             <?php else: ?>
