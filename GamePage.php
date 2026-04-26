@@ -101,9 +101,9 @@ if ($is_logged_in) {
 
                 fetch("Backend/Score/sauvegarder_score.php", {
                     method: 'POST';
-                    body: )
+                    body: 'coins=' + encodeURIComponent(totalCoins)
                     .then(response => response.text())
-                    .then(data => console.log("Réponse du serveur " + data)); // temp
+                    .then(); // on sait quand c'est fini
                  })
             }
         });
