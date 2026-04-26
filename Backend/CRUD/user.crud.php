@@ -94,7 +94,7 @@ function delete_user($conn, $id_user) {
 // ==========================================
 
 // Ajoute un ID de niveau à l'inventaire de l'utilisateur (s'il ne l'a pas déjà)
-function add_level_to_user($conn, $id_user, $id_level_to_add) {
+function add_level_to_user($conn, $id_user, $id_level_to_add) {//les scores sont gérés comment ????? par la magie du M ?
     $user = get_user_by_id($conn, $id_user);
     
     if ($user) {
@@ -105,7 +105,7 @@ function add_level_to_user($conn, $id_user, $id_level_to_add) {
         if (!in_array($id_level_to_add, $levels)) {
             $levels[] = $id_level_to_add; // On ajoute l'ID
             // On sauvegarde l'utilisateur avec son nouveau tableau
-            return update_user($conn, $id_user, $user['login'], $user['mdp'], $levels);
+            return update_user($conn, $id_user, $user['login'], $user['mdp'], $levels, 0);
         }
         return true; // Il l'a déjà, on considère que c'est un succès
     }
@@ -126,7 +126,7 @@ function remove_level_from_user($conn, $id_user, $id_level_to_remove) {
             unset($levels[$index]); // On le supprime
             $levels = array_values($levels); // On réindexe le tableau proprement (0, 1, 2...)
             
-            return update_user($conn, $id_user, $user['login'], $user['mdp'], $levels);
+            return update_user($conn, $id_user, $user['login'], $user['mdp'], $levels, 0);
         }
         return true; // Il ne l'avait pas de toute façon
     }
