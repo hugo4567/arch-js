@@ -175,15 +175,8 @@ function add_pieces_user($conn, $id_user, $pieces_add){
 
 
 function sub_pieces_user($conn, $id_user, $pieces_sub){
-    $pieces = get_pieces_user($conn, $id_user)[0]["pieces"];
-
-    $pieces_update = $pieces - $pieces_sub;
-
-    $sql = "UPDATE users 
-            SET pieces=$pieces_update
-            WHERE id_user=$id_user";
-
-    return mysqli_query($conn, $sql);
+    $pieces_add = -$pieces_sub;
+    return add_pieces_user($conn, $id_user, $pieces_add);
 }
 
 function creer_rs($query){
