@@ -47,12 +47,26 @@ if ($is_logged_in) {
 <body>
 
     <div id="menu">
-        <h2>Menu de Test</h2>
-        <p>Le bouton envoie le fichier <b>Test.json</b> Ã  l'Iframe.</p>
+        <h2>Mes Niveaux</h2>
         
-        <button onclick="chargerEtLancerNiveau('/~grp1/levels/cestlebon_1776850671.json')">
-            Lancer "Test.json"
-        </button>
+        <?php if ($is_logged_in): ?>
+            <?php if (!empty($user_levels)): ?>
+                <p>Choisis un niveau à lancer :</p>
+                
+                <?php foreach ($user_levels as $lvl): ?>
+                    <button onclick="chargerEtLancerNiveau('<?php echo htmlspecialchars($lvl['chemin_fichier']); ?>')">
+                        Jouer à "<?php echo htmlspecialchars($lvl['name']); ?>"
+                    </button>
+                    <br><br>
+                <?php endforeach; ?>
+                
+            <?php else: ?>
+                <p>Tu ne possèdes aucun niveau dans ton inventaire.</p>
+            <?php endif; ?>
+            
+        <?php else: ?>
+            <p>Veuillez vous connecter pour voir vos niveaux.</p>
+        <?php endif; ?>
     </div>
 
     <div id="game-container">
