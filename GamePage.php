@@ -8,6 +8,7 @@ $is_logged_in = isset($_SESSION['id_user']); // Assure-toi que c'est bien le nom
 
 if ($is_logged_in) {
     // 1. On récupère le user et son tableau d'IDs de niveaux décodé
+    require
     $user = get_user_by_id($conn, $_SESSION['id_user']);
 
     if ($user && !empty($user['levels'])) {

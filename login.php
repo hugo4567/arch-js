@@ -27,6 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit;
         } else { $error = "Identifiants Admin incorrects !"; }
     } 
+
     elseif ($role === "createur") {
         $crea_auth_path = "Backend/Auth/crea.auth.php";
         include($crea_auth_path);
@@ -37,15 +38,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit;
         } else { $error = "Identifiants Créateur incorrects !"; }
     }
+
     elseif ($role === "joueur") {
-        $user_auth_path = "Backend/Auth/user.auth.php";
-        include($user_auth_path);
-        if (user_auth($conn, $login, $passwd)) {
-            $_SESSION["joueur"] = time();
-            header("Location: espace_joueur.php");
+    $user_auth_path = "Backend/Auth/user.auth.php";
+    include($user_auth_path);
+    if (user_auth($conn, $login, $passwd)) {
+        // On récupère les infos de l'utilisateur grâce à son login pour obtenir son ID
+        $user = get_user_by_login($conn, $login);
+        
+        if ($user) {
+            // On stocke l'ID dans la session
+            $_SESSION["id_user"] = $user['id_user'];
+            
+            // Redirection vers la nouvelle page
+            header("Location: GamePage.php");
             exit;
-        } else { $error = "Identifiants Joueur incorrects !"; }
+        } else {
+            $error = "Erreur lors de la récupération des données du joueur.";
+        }
+    } else { 
+        $error = "Identifiants Joueur incorrects !"; 
     }
+}
 }
 ?>
 <!DOCTYPE html>
