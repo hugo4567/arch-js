@@ -5,11 +5,11 @@
 
 // --- 1. CREATE ---
 function create_user($conn, $login, $mdp, $levels = [], $pieces) {
-    // Sécurisation des chaînes
+    
     $login = mysqli_real_escape_string($conn, $login);
     $mdp = mysqli_real_escape_string($conn, $mdp); 
     
-    // On s'assure que $levels ne contient que des entiers (les IDs des niveaux)
+    // On s'assure que $levels contient que des entiers (les IDs des niveaux)
     $levels_clean = array_map('intval', $levels);
     
     // Encodage en JSON pour la colonne longtext
@@ -21,7 +21,7 @@ function create_user($conn, $login, $mdp, $levels = [], $pieces) {
     return mysqli_query($conn, $sql);
 }
 
-// --- 2. READ (Tous les utilisateurs) ---
+// POur avoir tout les users
 function get_all_users($conn) {
     $sql = "SELECT * FROM users ORDER BY id_user DESC";
     $result = mysqli_query($conn, $sql);
@@ -29,7 +29,7 @@ function get_all_users($conn) {
     $users = [];
     if ($result && mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
-            // Transformation du texte JSON en tableau PHP exploitable
+            // Transformation du texte JSON en tableau PHP exploitable, assez basique mais efficace
             $row['levels'] = json_decode($row['levels'], true) ?: [];
             $users[] = $row;
         }
@@ -37,7 +37,7 @@ function get_all_users($conn) {
     return $users;
 }
 
-// --- 3. READ (Un seul utilisateur) ---
+// read
 function get_user_by_id($conn, $id_user) {
     $id_user = (int)$id_user;
     $sql = "SELECT * FROM users WHERE id_user = $id_user";
@@ -64,13 +64,13 @@ function get_user_by_login($conn, $login) {
     return null;
 }
 
-// --- 4. UPDATE (Mise à jour complète) ---
+// update user
 function update_user($conn, $id_user, $login, $mdp, $levels, $pieces) {
     $id_user = (int)$id_user;
     $login = mysqli_real_escape_string($conn, $login);
     $mdp = mysqli_real_escape_string($conn, $mdp);
     
-    // Nettoyage et encodage JSON
+    // Nettoyage et encodage JSON car ca pose probleme
     $levels_clean = array_map('intval', $levels);
     $levels_json = mysqli_real_escape_string($conn, json_encode($levels_clean));
 
@@ -126,7 +126,7 @@ function remove_level_from_user($conn, $id_user, $id_level_to_remove) {
             unset($levels[$index]); // On le supprime
             $levels = array_values($levels); // On réindexe le tableau proprement (0, 1, 2...)
             
-            return update_user($conn, $id_user, $user['login'], $user['mdp'], $levels, 0);
+            return update_user($conn, $id_user, $user['login'], $user['mdp'], $levels, 0);//je pense quil faudriat faire un join sur scores ou recup les pices du jeu a la fin du niveau
         }
         return true; // Il ne l'avait pas de toute façon
     }
