@@ -1,6 +1,10 @@
 <?php
 session_start();
 
+// 1. Inclusions au tout début pour éviter les erreurs "Cannot redeclare"
+require_once __DIR__ . "/Backend/DB/db_connect.php";
+require_once __DIR__ . "/Backend/CRUD/user.crud.php";
+
 // --- CONFIG / DATA ---
 $items = [
     [
@@ -29,73 +33,47 @@ $items = [
     ],
 ];
 
-// Initialisation de l'argent
-/*if (!isset($_SESSION["id_user"])){g/lvl2.png", 
-        "file" => "LeFaahhDeLespace_1777218686"
-    ],
-    [
-        "id" => 3, 
-        "name" => "MONDE 1-3", 
-        "price" => 250, 
-        "desc" => "Le trône du boss.", 
-        "image" => "img/lvl3.png", 
-        "file" => "downloads/level3.zip"
-    ],
-];*/
-
-// Initialisation de l'argent
+// Vérification de la connexion
 if (!isset($_SESSION["id_user"])){
     header("Location: login.php");
     exit;
 }
 
-if (isset($_SESSION["id_user"]) && !isset($_SESSION["money"]))
-{
-    include("Backend/CRUD/user.crud.php");
-    include("Backend/DB/db_connect.php");
-    $_SESSION["money"] = get_pieces_user($conn, $_SESSION['id_user']);
-}
-
-// GESTION DU RESET (Si on appuie sur le bouton de secours)
-if (isset($_POST['reset_money'])) {
-    $_SESSION["money"] = 100;
-    header("Location: " . $_SERVER['PHP_SELF']); // Clean l'URL
-    exit();
-}
-
-// Gestion achat
-$message = "";
-if (isset($_GET['buy'])) {
-    $id = intval($_GET['buy']);
-    foreach ($items as $item) {
-        if ($item["id"] === $id) {
-            if (isset($_SESSION["money"]))
-            {
-                include("Backend/CRUD/user.crud.php");
-                include("Backend/DB/db_connect.php");
-                $_SESSION["money"] = get_pieces_user($conn, $_SESSION['id_user']);
-            }
-        }
+// 2. Initialisation de l'argent (Correction du bug "Array")
+if (!isset($_SESSION["money"])) {
+    $db_money = get_pieces_user($conn, $_SESSION['id_user']);
+    
+    // Si la fonction renvoie un tableau (ex: ['coins' => 100])
+    if (is_array($db_money)) {
+        // On récupère la clé 'coins', sinon on force la première valeur du tableau
+        $_SESSION["money"] = isset($db_money['coins']) ? (int)$db_money['coins'] : (int)reset($db_money);
+    } else {
+        // Si c'est déjà un nombre
+        $_SESSION["money"] = (int)$db_money;
     }
 }
 
-/*
-// GESTION DU RESET (Si on appuie sur le bouton de secours)
+// GESTION DU RESET
 if (isset($_POST['reset_money'])) {
     $_SESSION["money"] = 100;
     header("Location: " . $_SERVER['PHP_SELF']); // Clean l'URL
     exit();
 }
-*/
 
-// Gestion achat
+// 3. Gestion de l'achat (Nettoyée et dédoublonnée)
 $message = "";
 if (isset($_GET['buy'])) {
     $id = intval($_GET['buy']);
+    
     foreach ($items as $item) {
         if ($item["id"] === $id) {
             if ($_SESSION["money"] >= $item["price"]) {
+                // Retire les pièces en Base de données
                 sub_pieces_user($conn, $_SESSION["id_user"], $item["price"]);
+                
+                // Met à jour l'affichage en direct
+                $_SESSION["money"] -= $item["price"]; 
+                
                 $message = "SUCCÈS : Tu as acheté {$item['name']} !";
             } else {
                 $message = "ERREUR : Pas assez d'argent !";
@@ -120,61 +98,37 @@ $playerMoney = $_SESSION["money"];
         <source src="img/background.mp4" type="video/mp4">
     </video>
     <div class="market">
-    <h1>🛒 MARCHÉ NOIR</h1>
-    <div class="or">
-        <div class="status-box">
-            OR : <?php echo $playerMoney; ?> G
-        </div>
-    </div>
-    <div class="page-market">
-    <div class="market-grid">
-        <!--
-        <div class="item-card">
-            <h3>MONDE 1-1</h3>
-            <p>50G - La plaine verdoyante.</p>
-            <img src="img/lvl1.png" alt="preview">
-            <a href="#" class="buy-btn">ACHETER (50G)</a>
+        <h1>🛒 MARCHÉ NOIR</h1>
+
+        <!-- Affichage du message de succès ou d'erreur -->
+        <?php if (!empty($message)): ?>
+            <div class="message-box" style="background: rgba(0,0,0,0.8); padding: 10px; margin-bottom: 20px; border: 2px solid #fff; text-align: center;">
+                <?php echo htmlspecialchars($message); ?>
+            </div>
+        <?php endif; ?>
+
+        <div class="or">
+            <div class="status-box">
+                OR : <?php echo $playerMoney; ?> G
+            </div>
         </div>
 
-        <div class="item-card">
-            <h3>MONDE 1-2</h3>
-            <p>100G - Les mines.</p>
-            <img src="img/lvl2.png" alt="preview">
-            <a href="#" class="buy-btn">ACHETER (100G)</a>
-        </div>
-        <div class="item-card">
-            <h3>MONDE 1-2</h3>
-            <p>100G - COG DE MR K.</p>
-            <img src="img/lvl2.png" alt="preview">
-            <a href="#" class="buy-btn">ACHETER (100G)</a>
-        </div>
-                <div class="item-card">
-            <h3>MONDE 1-2</h3>
-            <p>100G - FAHHLAND.</p>
-            <img src="img/lvl2.png" alt="preview">
-            <a href="#" class="buy-btn">ACHETER (100G)</a>
-        </div>
-        -->
-
-        <?php foreach ($items as $item): ?>
+        <div class="page-market">
+            <div class="market-grid">
+                
+                <?php foreach ($items as $item): ?>
                     <div class="item-card">
-                        <h3>
-                            <?php echo htmlspecialchars($item['name']); ?>
-                        </h3>
-                        <p>
-                            <?php echo $item['price']; ?>G - <?php echo htmlspecialchars($item['desc']); ?>
-                        </p>
-
+                        <h3><?php echo htmlspecialchars($item['name']); ?></h3>
+                        <p><?php echo $item['price']; ?>G - <?php echo htmlspecialchars($item['desc']); ?></p>
                         <img src="<?php echo htmlspecialchars($item['image']); ?>" alt="preview">
-                        
                         <a href="?buy=<?php echo $item['id']; ?>" class="buy-btn">ACHETER (<?php echo $item['price']; ?>G)</a>
                     </div>
-        <?php endforeach; ?>
+                <?php endforeach; ?>
+
+            </div>
+        </div>
 
     </div>
-</div>
-
-</div>
     <footer>
         <p>&copy; 2026 ARCH JS Team - Tout droit réservé</p>
     </footer>

@@ -71,42 +71,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action']) && $_GET['ac
     body {
         margin: 0;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background: #0f0f12; /* Un noir légèrement bleuté pour la profondeur */
-        color: #e0e0e0;
+        background: #0b090a; /* Noir profond */
+        color: #dcd6f7; /* Texte gris très clair teinté de violet */
         display: flex;
         height: 100vh;
         overflow: hidden;
     }
 
-    /* Barre latérale gauche (Outils) */
+    /* Barre latérale gauche */
     #toolbar {
         width: 380px;
         min-width: 350px;
         flex-shrink: 0;
-        background: #1a1a20; /* Violet très sombre */
+        background: #161a1d; /* Anthracite sombre */
         padding: 15px;
         display: flex;
         flex-direction: column;
         gap: 12px;
-        border-right: 2px solid #3c096c; /* Bordure violette sombre */
+        border-right: 2px solid #3c096c; 
         overflow-y: auto;
-        box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5);
     }
 
     h2 {
         margin: 0 0 10px 0;
         font-size: 16px;
-        border-bottom: 1px solid #ff006e; /* Ligne rose */
+        border-bottom: 1px solid #7b2cbf; /* Ligne violette vibrante */
         padding-bottom: 5px;
-        color: #ff006e; /* Titre rose néon */
+        color: #c77dff; /* Magenta-violet clair */
         text-transform: uppercase;
-        letter-spacing: 1px;
+        letter-spacing: 1.5px;
     }
 
     .tool-btn {
-        background: #24242e;
-        color: #ddd;
-        border: 1px solid #3c096c;
+        background: #240046; /* Violet très sombre */
+        color: #e0aaff;
+        border: 1px solid #5a189a;
         padding: 10px;
         cursor: pointer;
         text-align: left;
@@ -114,28 +113,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action']) && $_GET['ac
         align-items: center;
         gap: 10px;
         border-radius: 6px;
-        transition: all 0.3s ease;
+        transition: all 0.2s ease-in-out;
         font-size: 13px;
     }
 
     .tool-btn:hover {
         background: #3c096c;
-        border-color: #9d4edd;
-        color: #fff;
-        box-shadow: 0 0 8px rgba(157, 78, 221, 0.4);
+        border-color: #c77dff;
+        box-shadow: 0 0 10px rgba(199, 125, 255, 0.2);
     }
 
     .tool-btn.active {
-        background: #9d4edd; /* Violet actif */
-        border-color: #ff006e; /* Bordure rose pour le contraste */
+        background: #7b2cbf; 
+        border-color: #e0aaff;
         color: white;
-        box-shadow: 0 0 12px rgba(255, 0, 110, 0.3);
+        box-shadow: 0 0 15px rgba(123, 44, 191, 0.4);
     }
 
     .color-box {
         width: 14px;
         height: 14px;
-        border: 1px solid rgba(255,255,255,0.2);
+        border: 1px solid rgba(255, 255, 255, 0.3);
         display: inline-block;
         flex-shrink: 0;
         border-radius: 2px;
@@ -148,14 +146,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action']) && $_GET['ac
         gap: 8px;
         margin-bottom: 10px;
         font-size: 13px;
-        background: #24242e;
+        background: #10002b; /* Noir violet */
         padding: 12px;
         border-radius: 8px;
         border-left: 3px solid #9d4edd;
     }
 
     .settings-group label {
-        color: #b3b3b3;
+        color: #9d4edd;
     }
 
     .checkbox-label {
@@ -163,13 +161,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action']) && $_GET['ac
         align-items: center;
         gap: 8px;
         cursor: pointer;
-        color: #e0e0e0;
     }
 
     input[type="text"], input[type="number"], select {
-        background: #121212;
-        border: 1px solid #3c096c;
-        color: #ff006e; /* Texte rose dans les inputs */
+        background: #240046;
+        border: 1px solid #5a189a;
+        color: #e0aaff;
         padding: 6px;
         border-radius: 4px;
         font-size: 13px;
@@ -177,11 +174,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action']) && $_GET['ac
     }
 
     input[type="text"]:focus, input[type="number"]:focus {
-        border-color: #ff006e;
+        border-color: #c77dff;
     }
 
     .export-btn {
-        background: linear-gradient(135deg, #ff006e 0%, #9d4edd 100%);
+        background: linear-gradient(135deg, #5a189a 0%, #c77dff 100%);
         color: white;
         border: none;
         padding: 14px;
@@ -190,39 +187,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action']) && $_GET['ac
         border-radius: 6px;
         margin-top: auto;
         text-transform: uppercase;
-        transition: transform 0.2s, filter 0.2s;
+        transition: filter 0.3s;
     }
 
     .export-btn:hover {
-        filter: brightness(1.2);
-        transform: translateY(-2px);
+        filter: brightness(1.3);
     }
 
-    /* Zone de dessin (Canvas) */
+    /* Zone de dessin */
     #canvas-container {
         flex-grow: 1;
-        background: #0a0a0c;
-        position: relative;
-        overflow: auto;
+        background: #03071e; /* Fond presque noir bleuté */
         display: flex;
         justify-content: center;
         align-items: center;
     }
 
     canvas {
-        background: #1a1a20;
-        box-shadow: 0 0 30px rgba(0,0,0,0.8), 0 0 5px rgba(157, 78, 221, 0.2);
+        background: #10002b;
+        box-shadow: 0 0 40px rgba(0, 0, 0, 0.9);
         cursor: crosshair;
-        border: 1px solid #333;
+        border: 1px solid #3c096c;
     }
 
     #brush-properties {
-        background: #1a1a20;
+        background: #161a1d;
         padding: 15px;
-        border: 1px solid #ff006e;
+        border: 1px solid #7b2cbf;
         border-radius: 8px;
         display: none;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.5);
     }
 </style>
 </head>

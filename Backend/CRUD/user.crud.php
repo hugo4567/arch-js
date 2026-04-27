@@ -11,10 +11,10 @@ function create_user($conn, $login, $mdp, $levels = [], $pieces) {
     
     // On s'assure que $levels contient que des entiers (les IDs des niveaux)
     $levels_clean = array_map('intval', $levels);
-    //La fonction array map permet de creer des variable aevec des int
+    //La fonction array map permet de creer un nouveau avec levels ou chaque case est convertie en entier
     // Encodage en JSON pour la colonne longtext
     $levels_json = mysqli_real_escape_string($conn, json_encode($levels_clean));
-
+    //
     $sql = "INSERT INTO users (login, mdp, levels) 
             VALUES ('$login', '$mdp', '$levels_json', $pieces)";
             
