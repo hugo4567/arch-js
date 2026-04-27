@@ -40,10 +40,10 @@ $text .= "</tbody></table>";
 echo($text);
 
 ?>
-
+<h1> Les tops scores des joueurs en fonction des totaux de scores/h1>
 <?php
 
-$scores = get_all_scores_with_details($conn);
+$scores = get_total_scores_by_level($conn);
 
 $text = "<table id='scores' class='scores'>";
 $text .= "<thead><tr><th>Joueur</th><th>Niveau</th><th>Score</th></tr></thead>";
@@ -61,8 +61,6 @@ $text .= "</tbody></table>";
 echo($text);
 
 ?>
-
-<h1> Les tops scores des joueurs en fonction des totaux de scores/h1>
 
 
 <h1> Les niveaux avec le plus de scores totaux/h1>
