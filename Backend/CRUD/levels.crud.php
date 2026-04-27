@@ -36,7 +36,7 @@ function get_all_level($conn) {
                                                         }
                                                             return $levels; // Retourne un tableau avec toutes les lignes
                                                             }
-}
+
 
 // --- 3. READ (Un seul élément par ID) ---
 function get_level_by_id($conn, $id) {

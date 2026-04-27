@@ -5,33 +5,25 @@ session_start();
 require_once __DIR__ . "/Backend/DB/db_connect.php";
 require_once __DIR__ . "/Backend/CRUD/user.crud.php";
 
-// --- CONFIG / DATA ---
-$items = [
-    [
-        "id" => 1, 
-        "name" => "HUH level", 
-        "price" => 50, 
-        "desc" => "Le game engine se demande", 
-        "image" => "img/lvl1.png", 
-        "file" => "HUH_1777219013"
-    ],
-    [
-        "id" => 2, 
-        "name" => "Space level", 
-        "price" => 100, 
-        "desc" => "La gravité dit faaahhhh", 
-        "image" => "img/lvl2.png", 
-        "file" => "LeFaahhDeLespace_1777218686"
-    ],
-    [
-        "id" => 3, 
-        "name" => "MONDE 1-3", 
-        "price" => 250, 
-        "desc" => "Le trône du boss.", 
-        "image" => "img/lvl3.png", 
-        "file" => "downloads/level3.zip"
-    ],
-];
+// --- CONFIG / DATA DYNAMIQUE ---
+$items = [];
+$db_levels = get_all_level($conn);
+
+if (!empty($db_levels)) {
+    foreach ($db_levels as $lvl) {
+        $items[] = [
+            "id"    => (int)$lvl['id'],
+            "name"  => $lvl['name'],
+            // --- PLACEHOLDERS ---
+            "price" => 50, // Prix par défaut car manquant en BDD
+            "desc"  => "Niveau mystère de la communauté...", // Description par défaut
+            "image" => "img/lvl1.png", // Image par défaut
+            // On utilise le nom de la BDD pour l'inventaire. 
+            // S'il te faut le timestamp (ex: HUH_1777...), il faudra l'ajouter en BDD !
+            "file"  => $lvl['name'] 
+        ];
+    }
+}
 
 // Vérification de la connexion
 if (!isset($_SESSION["id_user"])){
