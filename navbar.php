@@ -1,9 +1,8 @@
 <?php
-session_start();
 $loginButtonText = "Connexion🛠️";
 
 if(isset($_SESSION["id_user"])){
-    
+    $loginButtonText = "Connecté✅";
 }
 ?>
 
