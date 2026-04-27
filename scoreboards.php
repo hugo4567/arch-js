@@ -24,13 +24,10 @@ require_once __DIR__ . '/CRUD_score.php';
 
 $view = $_GET['view'] ?? 'scores';
 $allowed = ['scores','players','levels'];
-if !in_array($view, $allowed) {
-    $view = 'scores';
-    };
 
-else {
+if (!in_array($view, $allowed)) {
     $view = 'scores';
-    }
+}
 $views_order = $allowed;
 
 if ($view === 'levels') {
