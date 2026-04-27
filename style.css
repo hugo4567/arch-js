@@ -706,139 +706,81 @@ body {
 
 /*//////////////////////////////////////////////////////////////////PAGE EDITOR//////////////////////////////////////////////////////////////////////////////*/
 
-        .page-editor body {
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #1e1e1e;
-            color: #fff;
-            display: flex;
-            height: 100vh;
-            overflow: hidden;
-        }
+        /* Configuration globale de la page */
+body.page-editor {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #1e1e1e;
+    color: #fff;
+    display: flex;
+    flex-direction: column; /* La navbar en haut, le layout en dessous */
+    height: 100vh;
+    overflow: hidden;
+}
 
-        /* Barre latérale gauche (Outils) */
+/* Le conteneur qui gère le Flex horizontal (Toolbar | Canvas) */
+.page-editor .main-layout {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1; /* Prend tout l'espace sous la navbar */
+    overflow: hidden;
+}
 
-        .page-editor #toolbar {
-            width: 380px; /* On passe de 280px à 380px pour respirer */
-            min-width: 350px; /* Empêche la barre de devenir trop fine */
-            flex-shrink: 0; /* Empêche la zone de dessin d'écraser la barre */
-            background: #252526;
-            padding: 15px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            border-right: 1px solid #333;
-            overflow-y: auto;
-        }
+/* Barre latérale gauche */
+.page-editor #toolbar {
+    width: 380px;
+    min-width: 350px;
+    flex-shrink: 0;
+    background: #252526;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border-right: 1px solid #333;
+    overflow-y: auto;
+}
 
-        .page-editor h2 {
-            margin: 0 0 10px 0;
-            font-size: 16px;
-            border-bottom: 1px solid #444;
-            padding-bottom: 5px;
-            color: #0098ff;
-        }
+/* Zone de dessin */
+.page-editor #canvas-container {
+    flex-grow: 1;
+    background: #111;
+    position: relative;
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-        .page-editor .tool-btn {
-            background: #333;
-            color: white;
-            border: 1px solid #555;
-            padding: 8px;
-            cursor: pointer;
-            text-align: left;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border-radius: 4px;
-            transition: background 0.2s;
-            font-size: 13px;
-        }
+/* Éléments internes */
+.page-editor h2 {
+    margin: 0 0 10px 0;
+    font-size: 16px;
+    border-bottom: 1px solid #444;
+    padding-bottom: 5px;
+    color: #0098ff;
+}
 
-        .page-editor .tool-btn:hover {
-                background: #444;
-        }
+.page-editor .tool-btn {
+    background: #333;
+    color: white;
+    border: 1px solid #555;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
 
-        .page-editor .tool-btn.active {
-                background: #007acc;
-                border-color: #0098ff;
-        }
+.page-editor .tool-btn:hover {
+    background: #444;
+}
 
-        .page-editor .color-box {
-            width: 14px;
-            height: 14px;
-            border: 1px solid #000;
-            display: inline-block;
-            flex-shrink: 0;
-        }
-
-        /* Configuration du niveau */
-        .page-editor .settings-group {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            margin-bottom: 10px;
-            font-size: 13px;
-            background: #2d2d30;
-            padding: 8px;
-            border-radius: 4px;
-        }
-
-        .page-editor .settings-group label {
-                color: #ccc;
-        }
-
-        .page-editor .checkbox-label {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            cursor: pointer;
-        }
-
-        .page-editor input[type="text"], input[type="number"], select {
-            background: #3c3c3c;
-            border: 1px solid #555;
-            color: white;
-            padding: 5px;
-            border-radius: 3px;
-            font-size: 13px;
-        }
-
-        .page-editor .export-btn {
-            background: #4c0063;
-            color: white;
-            border: none;
-            padding: 12px;
-            font-weight: bold;
-            cursor: pointer;
-            border-radius: 4px;
-            margin-top: auto;
-        }
-
-        .page-editor .export-btn:hover {
-                background: #218838;
-        }
-
-        /* Zone de dessin (Canvas) */
-        .page-editor #canvas-container {
-            flex-grow: 1;
-            background: #111;
-            position: relative;
-            overflow: auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .page-editor canvas {
-            background: #1e1e24;
-            box-shadow: 0 0 10px rgba(0,0,0,0.5);
-            cursor: crosshair;
-        }
-
-        .page-editor #brush-properties {
-            background: #1e1e1e;
-            padding: 10px;
-            border: 1px solid #444;
-            border-radius: 4px;
-            display: none;
-        }
+/* Inputs et Selects */
+.page-editor input[type="text"], 
+.page-editor input[type="number"], 
+.page-editor select {
+    background: #3c3c3c;
+    border: 1px solid #555;
+    color: white;
+    padding: 5px;
+    border-radius: 3px;
+}
