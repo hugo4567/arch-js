@@ -71,7 +71,8 @@ if ($is_logged_in) {
         border-color: #c77dff;
         box-shadow: 0 0 10px rgba(199, 125, 255, 0.2);
         color: #ffffff;
-        transform: matrix(1, 2, 3, 4, 5, 6);
+        transform: rotate(360deg) translateX(20px) skew(30deg, 20deg);
+        
     }
 
 
@@ -81,7 +82,7 @@ if ($is_logged_in) {
         color: white;
         box-shadow: 0 0 15px rgba(123, 44, 191, 0.4);
         transform: translateY(1px);
-       transform: translateY(1px);
+        transform: translateY(1px);
     }
     
 </style>
