@@ -204,32 +204,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action']) && $_GET['ac
             border-radius: 4px;
             display: none;
         }
-        .page-editor nav, 
-        .page-editor .navbar,
-        .page-editor header { 
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 60px; /* La même valeur que le padding-top ci-dessus */
-            z-index: 1000; /* Pour qu'elle passe au-dessus du canvas */
-        }
     </style>
 </head>
 <body>
-    <?php include 'navbar.php'; ?>
 
-    <div class="editor-container">
-        
-        <div id="toolbar">
-            <h2>Paramètres du Niveau</h2>
-            </div>
-
-        <div id="canvas-container">
-            <canvas id="levelCanvas" width="3200" height="1200"></canvas>
-        </div>
-
-    </div>
     <div id="toolbar">
         <h2>Paramètres du Niveau</h2>
         <div class="settings-group" style="background:transparent; padding:0;">

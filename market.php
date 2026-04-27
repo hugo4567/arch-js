@@ -79,13 +79,14 @@ if (isset($_GET['buy'])) {
     }
 }
 
-
+/*
 // GESTION DU RESET (Si on appuie sur le bouton de secours)
 if (isset($_POST['reset_money'])) {
     $_SESSION["money"] = 100;
     header("Location: " . $_SERVER['PHP_SELF']); // Clean l'URL
     exit();
 }
+*/
 
 // Gestion achat
 $message = "";
@@ -157,9 +158,15 @@ $playerMoney = $_SESSION["money"];
 
         <?php foreach ($items as $item): ?>
                     <div class="item-card">
-                        <h3><?php echo htmlspecialchars($item['name']); ?></h3>
-                        <p><?php echo $item['price']; ?>G - <?php echo htmlspecialchars($item['desc']); ?></p>
+                        <h3>
+                            <?php echo htmlspecialchars($item['name']); ?>
+                        </h3>
+                        <p>
+                            <?php echo $item['price']; ?>G - <?php echo htmlspecialchars($item['desc']); ?>
+                        </p>
+
                         <img src="<?php echo htmlspecialchars($item['image']); ?>" alt="preview">
+                        
                         <a href="?buy=<?php echo $item['id']; ?>" class="buy-btn">ACHETER (<?php echo $item['price']; ?>G)</a>
                     </div>
         <?php endforeach; ?>
