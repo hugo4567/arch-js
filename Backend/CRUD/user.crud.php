@@ -70,15 +70,20 @@ function update_user($conn, $id_user, $login, $mdp, $levels, $pieces) {
     $id_user = (int)$id_user;
     $login = mysqli_real_escape_string($conn, $login);
     $mdp = mysqli_real_escape_string($conn, $mdp);
+    $pieces = (int)$pieces; // Sécurité supplémentaire pour l'argent
     
-    // Nettoyage et encodage JSON car ca pose probleme
-    $levels_clean = array_map('intval', $levels);
-    $levels_json = mysqli_real_escape_string($conn, json_encode($levels_clean));
+    // 1. On encode directement le tableau PHP en JSON
+    $json_string = json_encode($levels);
+    
+    // 2. On échappe la chaîne JSON pour éviter les injections SQL
+    $levels_json = mysqli_real_escape_string($conn, $json_string);
 
     $sql = "UPDATE users 
             SET login='$login', mdp='$mdp', levels='$levels_json', pieces=$pieces 
             WHERE id_user=$id_user";
 
+    // 3. Ne pas oublier d'exécuter la requête et de retourner le résultat !
+    return mysqli_query($conn, $sql);
 }
 
 function add_level_to_user($conn, $id_user, $level_file_to_add) {

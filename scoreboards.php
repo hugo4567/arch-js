@@ -39,7 +39,26 @@ echo($text);
 
 ?>
 
+<?php
 
+$scores = get_all_scores_with_details($conn);
+
+$text = "<table id='scores' class='scores'>";
+$text .= "<thead><tr><th>Joueur</th><th>Niveau</th><th>Score</th></tr></thead>";
+$text .= "<tbody>";
+
+foreach($scores as $score) {
+    $text .= "<tr>";
+    $text .= "<td>" . $score['joueur'] . "</td>";
+    $text .= "<td>" . $score['niveau'] . "</td>";
+    $text .= "<td>" . $score['score'] . "</td>";
+    $text .= "</tr>";
+}
+
+$text .= "</tbody></table>";
+echo($text);
+
+?>
 
 <h1> Les tops scores des joueurs en fonction des totaux de scores/h1>
 
