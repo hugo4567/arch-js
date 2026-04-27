@@ -46,6 +46,7 @@ if ($is_logged_in) {
 </style>
 </head>
 <body>
+    <?php include 'navbar.php'; ?>
     
     <div id="menu">
         <h2>Mes Niveaux</h2>
