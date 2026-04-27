@@ -102,7 +102,7 @@ function add_level_to_user($conn, $id_user, $id_level_to_add) {//les scores sont
         $levels = $user['levels']; // C'est déjà un array PHP grâce au get_user_by_id
         $id_level_to_add = (int)$id_level_to_add;
         
-        // On vérifie que le joueur ne possède pas déjà ce niveau
+        // On vérifie que le joueur ne possède pas déjà ce niveau avec in raay
         if (!in_array($id_level_to_add, $levels)) {
             $levels[] = $id_level_to_add; // On ajoute l'ID
             // On sauvegarde l'utilisateur avec son nouveau tableau
