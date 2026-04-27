@@ -157,12 +157,12 @@ function get_pieces_user($conn, $id_user){
         return false;
     }
     $rs = creer_rs($query);
-    return $rs;
+    return $rs[0]["pieces"];
     }
 
 
 function add_pieces_user($conn, $id_user, $pieces_add){
-    $pieces = get_pieces_user($conn, $id_user)[0]["pieces"];
+    $pieces = get_pieces_user($conn, $id_user);
 
     $pieces_update = $pieces + $pieces_add;
 

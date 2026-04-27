@@ -5,19 +5,19 @@ session_start();
 $items = [
     [
         "id" => 1, 
-        "name" => "MONDE 1-1", 
+        "name" => "HUH level", 
         "price" => 50, 
-        "desc" => "La plaine verdoyante.", 
+        "desc" => "Le game engine se demande", 
         "image" => "img/lvl1.png", 
         "file" => "HUH_1777219013"
     ],
     [
         "id" => 2, 
-        "name" => "MONDE 1-2", 
+        "name" => "Space level", 
         "price" => 100, 
-        "desc" => "Les mines de charbon.", 
+        "desc" => "La gravité dit faaahhhh", 
         "image" => "img/lvl2.png", 
-        "file" => "downloads/level2.zip"
+        "file" => "LeFaahhDeLespace_1777218686"
     ],
     [
         "id" => 3, 
@@ -115,6 +115,15 @@ $playerMoney = $_SESSION["money"];
             <img src="img/lvl2.png" alt="preview">
             <a href="#" class="buy-btn">ACHETER (100G)</a>
         </div>
+
+        <?php foreach ($items as $item): ?>
+                    <div class="item-card">
+                        <h3><?php echo htmlspecialchars($item['name']); ?></h3>
+                        <p><?php echo $item['price']; ?>G - <?php echo htmlspecialchars($item['desc']); ?></p>
+                        <img src="<?php echo htmlspecialchars($item['image']); ?>" alt="preview">
+                        <a href="?buy=<?php echo $item['id']; ?>" class="buy-btn">ACHETER (<?php echo $item['price']; ?>G)</a>
+                    </div>
+        <?php endforeach; ?>
 
     </div>
 </div>
