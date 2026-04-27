@@ -4,6 +4,7 @@ session_start();
 // 1. Inclusions au tout début
 require_once __DIR__ . "/Backend/DB/db_connect.php";
 require_once __DIR__ . "/Backend/CRUD/user.crud.php";
+require_once __DIR__ . "/Backend/CRUD/levels.crud.php";
 
 // --- CONFIG / DATA DYNAMIQUE ---
 $items = [];
