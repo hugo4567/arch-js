@@ -72,29 +72,34 @@ error_reporting(E_ALL);
     
 <style>
   @keyframes pigeon-bourre {
-    /* Décollage normal */
-    0%   { left: -100px; top: 80%; transform: rotate(0deg); }
+    0%   { left: -100px; top: 80%; transform: rotate(0deg) scale(1); }
     
-    /* Pète la forme, fait un looping au calme */
-    20%  { left: 20vw; top: 30%; transform: rotate(-360deg); }
+    /* --- LOOPING & POP (20%) --- */
+    18%  { left: 18vw; top: 32%; transform: rotate(-300deg) scale(1); }
+    20%  { left: 20vw; top: 30%; transform: rotate(-360deg) scale(1.6); } /* POP ! */
+    22%  { left: 22vw; top: 33%; transform: rotate(-360deg) scale(1); }
     
-    /* Oublie soudainement comment voler, tombe sur le dos */
-    40%  { left: 35vw; top: 85%; transform: rotate(180deg) scaleY(-1); }
+    /* --- CHUTE SUR LE DOS & POP (40%) --- */
+    38%  { left: 33vw; top: 80%; transform: rotate(150deg) scaleY(-1) scale(1); }
+    40%  { left: 35vw; top: 85%; transform: rotate(180deg) scaleY(-1) scale(1.6); } /* POP ! */
+    42%  { left: 36vw; top: 84%; transform: rotate(178deg) scaleY(-1) scale(1); }
     
-    /* Petit moment de flottement en mode "où suis-je ?" */
-    60%  { left: 40vw; top: 80%; transform: rotate(170deg) scaleY(-1); }
+    /* --- FLOTTEMENT & POP (60%) --- */
+    58%  { left: 39vw; top: 81%; transform: rotate(172deg) scaleY(-1) scale(1); }
+    60%  { left: 40vw; top: 80%; transform: rotate(170deg) scaleY(-1) scale(1.6); } /* POP ! */
+    62%  { left: 43vw; top: 73%; transform: rotate(150deg) scale(1); } /* Remis à l'endroit */
     
-    /* Grosse panique, repart en flèche vers le haut */
-    80%  { left: 70vw; top: 10%; transform: rotate(45deg); }
+    /* --- PANIQUE & POP (80%) --- */
+    78%  { left: 65vw; top: 15%; transform: rotate(40deg) scale(1); }
+    80%  { left: 70vw; top: 10%; transform: rotate(45deg) scale(1.6); } /* POP ! */
+    82%  { left: 75vw; top: 15%; transform: rotate(50deg) scale(1); }
     
-    /* Se prend un mur invisible et s'écrase vers le bas, tout allongé */
-    100% { left: 120vw; top: 90%; transform: rotate(120deg) scaleX(2); }
+    /* Crash final */
+    100% { left: 120vw; top: 90%; transform: rotate(120deg) scaleX(2) scale(1); }
   }
 
   #oiseau {
     position: fixed;
-    /* On passe sur 5 secondes pour avoir le temps de voir l'action */
-    /* ease-in-out donne un effet naturel d'accélération et de décélération entre chaque étape */
     animation: pigeon-bourre 5s ease-in-out forwards;
   }
 </style>
