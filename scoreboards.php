@@ -24,9 +24,14 @@ require_once __DIR__ . '/CRUD_score.php';
 
 $view = $_GET['view'] ?? 'scores';
 $allowed = ['scores','players','levels'];
-if (!in_array($view, $allowed)) {$view = 'scores'};
+if !in_array($view, $allowed) {
+    $view = 'scores';
+    };
+
+else {
+    $view = 'scores';
+    }
 $views_order = $allowed;
-else {$view = 'scores'};
 
 if ($view === 'levels') {
 
@@ -76,7 +81,7 @@ echo($text);
 
 <h1> Les niveaux avec le plus de scores totaux </h1>
 <?php
-if
+if ($view === 'players') {
 $scores = get_total_scores_by_player($conn);
 
 $text = "<table id='scores' class='scores'>";
@@ -92,7 +97,7 @@ foreach($scores as $score) {
 
 $text .= "</tbody></table>";
 echo($text);
-
+}
 ?>
 <?php
 require_once __DIR__ . "/Backend/DB/db_disconnect.php";
