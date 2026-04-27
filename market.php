@@ -25,11 +25,11 @@ $items = [
     ],
     [
         "id" => 3, 
-        "name" => "MONDE 1-3", 
+        "name" => "Jm bigard tkt", 
         "price" => 250, 
-        "desc" => "Le trône du boss.", 
+        "desc" => "COMPLOTISTE", 
         "image" => "img/lvl3.png", 
-        "file" => "downloads/level3.zip"
+        "file" => "test_jm_1777276726"
     ],
 ];
 
@@ -56,8 +56,6 @@ if (isset($_GET['buy'])) {
     
     foreach ($items as $item) {
         if ($item["id"] === $id) {
-            
-            // --- NOUVEAU : GESTION DE L'INVENTAIRE (JSON) ---
             
             // A. On récupère les infos de l'utilisateur (dont ses niveaux)
             $user = get_user_by_id($conn, $_SESSION['id_user']);

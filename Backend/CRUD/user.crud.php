@@ -95,7 +95,7 @@ function delete_user($conn, $id_user) {
 // ==========================================
 
 // Ajoute un ID de niveau à l'inventaire de l'utilisateur (s'il ne l'a pas déjà)
-function add_level_to_user($conn, $id_user, $id_level_to_add) {//les scores sont gérés comment ????? par la magie du M ?
+function add_level_to_user($conn, $id_user, $id_level_to_add) {//les scores sont gérés comment ????? par la magie du G ?
     $user = get_user_by_id($conn, $id_user);
     
     if ($user) {

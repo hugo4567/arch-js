@@ -27,12 +27,12 @@ if ($is_logged_in) {
     <style>
     body {
         display: flex;
-        flex-direction: column; /* ← AJOUT */
+        flex-direction: column;
         background: #111;
         color: white;
         font-family: sans-serif;
         margin: 0;
-        height: 100vh; /* ← AJOUT */
+        height: 100vh;
         overflow: hidden;
     }
     #main-content {
@@ -44,17 +44,42 @@ if ($is_logged_in) {
     #game-container { flex-grow: 1; }
     iframe { width: 100%; height: 100%; border: none; }
     button { 
-        background: #4CAF50; 
-        color: white; border: none; 
+        /* Couleurs & Fond */
+        background: #31005f; /
+        color: #e0aaff;
+        border: 1px solid #5a189a;
+        
         padding: 15px; 
         width: 100%; 
-        cursor: pointer; 
+        border-radius: 6px; 
+        
+        
         font-size: 16px; 
         font-weight: bold; 
-        border-radius: 5px; 
+        text-align: center;
+        
+       
+        cursor: pointer; 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        transition: all 0.2s ease-in-out;
     }
+
     button:hover { 
-        background: #45a049; 
+        background: #3c096c;
+        border-color: #c77dff;
+        box-shadow: 0 0 10px rgba(199, 125, 255, 0.2);
+        color: #ffffff;
+    }
+
+    button:active { 
+        background: #7b2cbf; 
+        border-color: #e0aaff;
+        color: white;
+        box-shadow: 0 0 15px rgba(123, 44, 191, 0.4);
+        transform: translateY(1px);
     }
 </style>
 </head>
