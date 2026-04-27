@@ -18,7 +18,7 @@ if (!empty($db_levels)) {
             // --- PLACEHOLDERS ---
             "price" => 50, // Prix par défaut car manquant en BDD
             "desc"  => "Niveau mystère de la communauté...", // Description par défaut
-            "image" => "img/lvl1.png", // Image par défaut
+            "image" => "img/rachid.png", // Image par défaut
             // On utilise le nom de la BDD pour l'inventaire. 
             "file"  => $lvl['name'] 
         ];
