@@ -72,30 +72,32 @@ error_reporting(E_ALL);
     
 <style>
   @keyframes pigeon-bourre {
-    0%   { left: -100px; top: 80%; transform: rotate(0deg) scale(1); }
-    
-    /* --- LOOPING & POP (20%) --- */
-    18%  { left: 18vw; top: 32%; transform: rotate(-300deg) scale(1); }
-    20%  { left: 20vw; top: 30%; transform: rotate(-360deg) scale(1.6); } /* POP ! */
-    22%  { left: 22vw; top: 33%; transform: rotate(-360deg) scale(1); }
-    
-    /* --- CHUTE SUR LE DOS & POP (40%) --- */
-    38%  { left: 33vw; top: 80%; transform: rotate(150deg) scaleY(-1) scale(1); }
-    40%  { left: 35vw; top: 85%; transform: rotate(180deg) scaleY(-1) scale(1.6); } /* POP ! */
-    42%  { left: 36vw; top: 84%; transform: rotate(178deg) scaleY(-1) scale(1); }
-    
-    /* --- FLOTTEMENT & POP (60%) --- */
-    58%  { left: 39vw; top: 81%; transform: rotate(172deg) scaleY(-1) scale(1); }
-    60%  { left: 40vw; top: 80%; transform: rotate(170deg) scaleY(-1) scale(1.6); } /* POP ! */
-    62%  { left: 43vw; top: 73%; transform: rotate(150deg) scale(1); } /* Remis à l'endroit */
-    
-    /* --- PANIQUE & POP (80%) --- */
-    78%  { left: 65vw; top: 15%; transform: rotate(40deg) scale(1); }
-    80%  { left: 70vw; top: 10%; transform: rotate(45deg) scale(1.6); } /* POP ! */
-    82%  { left: 75vw; top: 15%; transform: rotate(50deg) scale(1); }
-    
-    /* Crash final */
-    100% { left: 120vw; top: 90%; transform: rotate(120deg) scaleX(2) scale(1); }
+    /* Décollage */
+    0% { left: -100px; top: 80%; transform: rotate(0deg) scale(1); }
+
+    /* --- ACTE 1 : Le Looping (à 30%) --- */
+    25% { left: 25vw; top: 40%; transform: rotate(-300deg) scale(1); }
+    28% { left: 28vw; top: 35%; transform: rotate(-350deg) scale(0.8); } /* Squash (se contracte) */
+    30% { left: 30vw; top: 30%; transform: rotate(-360deg) scale(1.4); } /* POP 1 ! */
+    33% { left: 33vw; top: 35%; transform: rotate(-360deg) scale(0.9); } /* Rebond */
+    35% { left: 35vw; top: 40%; transform: rotate(-360deg) scale(1); }   /* Stabilisation */
+
+    /* --- ACTE 2 : Tombe sur le dos (à 60%) --- */
+    55% { left: 55vw; top: 75%; transform: rotate(-500deg) scale(1); }
+    58% { left: 58vw; top: 78%; transform: rotate(-530deg) scale(0.8); } /* Squash */
+    60% { left: 60vw; top: 80%; transform: rotate(-540deg) scale(1.4); } /* POP 2 ! (totalement à l'envers) */
+    63% { left: 63vw; top: 78%; transform: rotate(-550deg) scale(0.9); } /* Rebond */
+    65% { left: 65vw; top: 75%; transform: rotate(-550deg) scale(1); }   /* Stabilisation */
+
+    /* --- ACTE 3 : Fuite en panique (à 85%) --- */
+    80% { left: 80vw; top: 40%; transform: rotate(-700deg) scale(1); }
+    83% { left: 83vw; top: 35%; transform: rotate(-710deg) scale(0.8); } /* Squash */
+    85% { left: 85vw; top: 30%; transform: rotate(-720deg) scale(1.4); } /* POP 3 ! (remis à l'endroit) */
+    88% { left: 88vw; top: 35%; transform: rotate(-720deg) scale(0.9); } /* Rebond */
+    90% { left: 90vw; top: 40%; transform: rotate(-720deg) scale(1); }   /* Stabilisation */
+
+    /* --- CRASH FINAL --- */
+    100% { left: 120vw; top: 90%; transform: rotate(-600deg) scaleX(2) scale(1); }
   }
 
   #oiseau {
