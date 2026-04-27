@@ -34,7 +34,7 @@ error_reporting(E_ALL);
             <a href="info.php" class="btn">Voir les infos</a>
         </div>
 
-        <img id="oiseau" src="img/pigeon.avif" style="position:fixed; left:-100px; top:80%; width:80px; z-index:9999;">
+        <img id="oiseau" src="img/ralpha.png" style="position:fixed; left:-100px; top:80%; width:80px; z-index:9999;">
 
         <div class="tab">
             <h3>Jouer au Jeu</h3>
@@ -87,6 +87,6 @@ error_reporting(E_ALL);
         <p>&copy; 2026 ARCH JS Team - Tout droit réservé</p>
     </footer>
 
-    <script src="maindos/AppBundle/main.js"></script>
+    <!-- <script src="maindos/AppBundle/main.js"></script> -->
 </body>
 </html>
