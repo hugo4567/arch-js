@@ -1,7 +1,6 @@
 <?php
 session_start();
 require_once __DIR__ . "/Backend/DB/db_connect.php";
-require_once __DIR__ . "/navbar.php";
 require_once __DIR__ . "/Backend/CRUD/user.crud.php";
 
 $user_levels = []; 
@@ -86,26 +85,26 @@ if ($is_logged_in) {
         
 
             if (event.data && event.data.type === 'LEVEL_FINISHED') {
-                const totalCoins = event.data.coins;
-                console.log("Message reçu du jeu : Niveau terminé avec", totalCoins, "pièces !");
-                
-                // Ici tu peux faire ton affichage de victoire ou envoyer à la DB
-                alert(`Bravo ! Tu as terminé le niveau en récoltant ${totalCoins} pièces !`);
-                
-                /* * Exemple pour la suite :
-                 * fetch('sauvegarder_score.php', {
-                 * method: 'POST',
-                 * body: JSON.stringify({ pieces: totalCoins })
-                 * });
-                 */
+            const totalCoins = event.data.coins;
+            console.log("Message reçu du jeu : Niveau terminé avec", totalCoins, "pièces !");
+    
+            alert(`Bravo ! Tu as terminé le niveau en récoltant ${totalCoins} pièces !`);
 
-                fetch('Backend/Score/sauvegarder_score.php', {
-                    method: 'POST';
-                    body: 'coins=' + encodeURIComponent(totalCoins)
-                    .then(response => response.text())
-                    .then(); // on sait quand c'est fini
-                 })
-            }
+            // --- CORRECTION ICI ---
+            fetch("Backend/Score/sauvegarder_score.php", {
+                method: 'POST', // C'était un point-virgule ici, erreur !
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'coins=' + encodeURIComponent(totalCoins)
+            }) // Fermeture de l'objet et du fetch
+            .then(response => response.text())
+            .then(data => {
+                console.log("Score sauvegardé :", data);
+            })
+            .catch(error => console.error("Erreur sauvegarde :", error));
+    // -----------------------
+}
         });
         
         // 2. On envoie le niveau
