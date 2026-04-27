@@ -45,20 +45,18 @@ if ($is_logged_in) {
     iframe { width: 100%; height: 100%; border: none; }
     button { 
         /* Couleurs & Fond */
-        background: #31005f; /
-        color: #e0aaff;
+        background: #31005f; 
+        color: #FFFFFF !important; /* <--- CHANGE CETTE LIGNE PAR #FFFFFF */
         border: 1px solid #5a189a;
         
         padding: 15px; 
         width: 100%; 
         border-radius: 6px; 
         
-        
         font-size: 16px; 
         font-weight: bold; 
         text-align: center;
         
-       
         cursor: pointer; 
         display: flex;
         align-items: center;
@@ -80,10 +78,9 @@ if ($is_logged_in) {
         color: white;
         box-shadow: 0 0 15px rgba(123, 44, 191, 0.4);
         transform: translateY(1px);
+       transform: translateY(1px);
     }
-    .text{
-        color: #222;
-    }
+    
 </style>
 </head>
 <body>
