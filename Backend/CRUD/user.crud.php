@@ -3,7 +3,7 @@
 // CRUD : USERS (avec gestion du JSON pour les levels)
 // ==========================================
 
-// --- 1. CREATE ---
+// creer un utlisateur
 function create_user($conn, $login, $mdp, $levels = [], $pieces) {
     
     $login = mysqli_real_escape_string($conn, $login);
