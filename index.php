@@ -75,6 +75,3 @@ error_reporting(E_ALL);
     <script src="maindos/AppBundle/main.js"></script>
 </body>
 </html>
-<?php
-phpinfo();
-?>
