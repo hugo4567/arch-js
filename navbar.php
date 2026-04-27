@@ -12,7 +12,6 @@
             <li><a href="GamePage.php" class="btn-jouer">JOUER AU JEU VIDEAL😈</a></li>
             <li><a href="market.php">Market🛒</a></li>
             <li><a href="scoreboards.php">Scores🏆</a></li>
-            <li><a href="lister_json.php">Niveaux🫃</a></li>
             <li><a href="info.php">Infosℹ️</a></li>
             <li><a href="login.php" style="border: 1px solid #555;">Connexion🛠️</a></li>
         </ul>

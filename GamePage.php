@@ -94,7 +94,6 @@ if ($is_logged_in) {
     
             alert(`Bravo ! Tu as terminé le niveau en récoltant ${totalCoins} pièces !`);
 
-            // --- CORRECTION ICI ---
             fetch("Backend/Score/sauvegarder_score.php", {
                 method: 'POST',
                 headers: {
@@ -107,7 +106,6 @@ if ($is_logged_in) {
                 console.log("Score sauvegardé :", data);
             })
             .catch(error => console.error("Erreur sauvegarde :", error));
-    // -----------------------
 }
         });
         
