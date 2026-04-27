@@ -39,11 +39,10 @@ if (!isset($_SESSION["id_user"])){
     exit;
 }
 
-// 2. Récupération de l'argent EN DIRECT depuis la BDD (plus de $_SESSION["money"])
+// 2. Récupération de l'argent EN DIRECT depuis la BDD
 $db_money = get_pieces_user($conn, $_SESSION['id_user']);
 $playerMoney = 0;
 
-// Gestion sécurisée du retour de la fonction (au cas où elle renvoie un tableau)
 if (is_array($db_money)) {
     $playerMoney = isset($db_money['coins']) ? (int)$db_money['coins'] : (int)reset($db_money);
 } else {
@@ -57,16 +56,49 @@ if (isset($_GET['buy'])) {
     
     foreach ($items as $item) {
         if ($item["id"] === $id) {
-            // On compare directement avec l'argent récupéré en base de données
-            if ($playerMoney >= $item["price"]) {
+            
+            // --- NOUVEAU : GESTION DE L'INVENTAIRE (JSON) ---
+            
+            // A. On récupère les infos de l'utilisateur (dont ses niveaux)
+            $user = get_user_by_id($conn, $_SESSION['id_user']);
+            
+            // B. On extrait son tableau de niveaux existants
+            $levels_data = is_string($user['levels']) ? json_decode($user['levels'], true) : $user['levels'];
+            $current_levels = [];
+            
+            if (isset($levels_data['mes_niveaux']) && is_array($levels_data['mes_niveaux'])) {
+                $current_levels = $levels_data['mes_niveaux'];
+            }
+
+            // C. On vérifie s'il possède déjà ce niveau
+            if (in_array($item['file'], $current_levels)) {
+                $message = "ERREUR : Tu possèdes déjà {$item['name']} !";
+            } 
+            // D. S'il ne l'a pas, on vérifie l'argent
+            elseif ($playerMoney >= $item["price"]) {
                 
                 // Retire les pièces en Base de données
                 $success = sub_pieces_user($conn, $_SESSION["id_user"], $item["price"]);
                 
                 if ($success !== false) {
+                    
+                    // --- AJOUT DU NIVEAU DANS LE JSON ---
+                    $current_levels[] = $item['file'];
+                    
+                    // array_values(array_unique(...)) évite les doublons et garantit le format liste JSON [...]
+                    $new_levels_json = json_encode(["mes_niveaux" => array_values(array_unique($current_levels))]);
+                    
+                    // Mise à jour dans la base de données (table users, colonne levels)
+                    $stmt = $conn->prepare("UPDATE users SET levels = :levels WHERE id_user = :id_user");
+                    $stmt->execute([
+                        ':levels' => $new_levels_json,
+                        ':id_user' => $_SESSION['id_user']
+                    ]);
+                    // ------------------------------------
+                    
                     // Met à jour la variable locale pour l'affichage immédiat
                     $playerMoney -= $item["price"]; 
-                    $message = "SUCCÈS : Tu as acheté {$item['name']} !";
+                    $message = "SUCCÈS : Tu as acheté {$item['name']} ! Il a été ajouté à tes niveaux.";
                 } else {
                     $message = "ERREUR : Impossible de finaliser l'achat côté serveur.";
                 }
