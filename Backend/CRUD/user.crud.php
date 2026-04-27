@@ -27,6 +27,7 @@ function get_all_users($conn) {
     $result = mysqli_query($conn, $sql);
     
     $users = [];
+    //num row est le nombre de lignes de result
     if ($result && mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
             // Transformation du texte JSON en tableau PHP exploitable, assez basique mais efficace
