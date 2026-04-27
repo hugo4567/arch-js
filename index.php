@@ -70,40 +70,35 @@ error_reporting(E_ALL);
 
     </section>
     
-
- 
 <style>
-  @keyframes wtf-traverse {
-    0%   { left: -100px; top: 120%; transform: scale(0.1) rotate(0deg) skew(0deg); filter: hue-rotate(0deg) invert(0%); }
-    15%  { left: 30vw; top: 10%; transform: scale(5) rotate(720deg) skew(45deg); filter: hue-rotate(90deg) invert(100%); }
-    30%  { left: 80vw; top: 90%; transform: scale(0.5) rotate(-1080deg) skew(-50deg); filter: hue-rotate(180deg) blur(10px); }
-    45%  { left: 10vw; top: -20%; transform: scale(1) rotateX(1440deg) rotateY(720deg); filter: drop-shadow(20px 20px 50px red) sepia(100%); }
-    60%  { left: 50vw; top: 50%; transform: scale(15) rotate(42069deg); filter: contrast(500%) saturate(1000%); }
-    85%  { left: 120vw; top: 110%; transform: scaleX(-2) rotate(42deg); filter: hue-rotate(360deg); }
-    100% { left: 50vw; top: -500px; transform: scale(0.01) rotate(0deg); filter: blur(50px) opacity(0); }
-  }
-
-  /* Bonus : un petit clignotement pour ruiner la rétine */
-  @keyframes epilespy-mode {
-    0%, 100% { mix-blend-mode: normal; }
-    50% { mix-blend-mode: difference; }
+  @keyframes pigeon-bourre {
+    /* Décollage normal */
+    0%   { left: -100px; top: 80%; transform: rotate(0deg); }
+    
+    /* Pète la forme, fait un looping au calme */
+    20%  { left: 20vw; top: 30%; transform: rotate(-360deg); }
+    
+    /* Oublie soudainement comment voler, tombe sur le dos */
+    40%  { left: 35vw; top: 85%; transform: rotate(180deg) scaleY(-1); }
+    
+    /* Petit moment de flottement en mode "où suis-je ?" */
+    60%  { left: 40vw; top: 80%; transform: rotate(170deg) scaleY(-1); }
+    
+    /* Grosse panique, repart en flèche vers le haut */
+    80%  { left: 70vw; top: 10%; transform: rotate(45deg); }
+    
+    /* Se prend un mur invisible et s'écrase vers le bas, tout allongé */
+    100% { left: 120vw; top: 90%; transform: rotate(120deg) scaleX(2); }
   }
 
   #oiseau {
-    position: fixed; /* Essentiel pour qu'il traverse bien l'écran */
-    will-change: transform, left, top, filter; /* Pour que le navigateur ne décède pas */
-    
-    /* 1.2s : c'est 2x plus rapide.
-      cubic-bezier(...) : ça lui donne un effet de rebond démoniaque.
-      infinite alternate : il fait l'aller-retour à l'infini.
-    */
-    animation: 
-      wtf-traverse 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite alternate,
-      epilespy-mode 0.05s infinite;
-      
-    z-index: 9999;
+    position: fixed;
+    /* On passe sur 5 secondes pour avoir le temps de voir l'action */
+    /* ease-in-out donne un effet naturel d'accélération et de décélération entre chaque étape */
+    animation: pigeon-bourre 5s ease-in-out forwards;
   }
 </style>
+
 </main> 
 
     <footer>
