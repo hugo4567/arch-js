@@ -72,9 +72,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action']) && $_GET['ac
 <body class="page-editor">
 
     <div id="toolbar">
-        <video autoplay muted loop playsinline class="bg-video">
-        <source src="img/background.mp4" type="video/mp4">
-        </video>
         <h2>Paramètres du Niveau</h2>
         <div class="settings-group" style="background:transparent; padding:0;">
             <label>Nom du niveau:</label>
