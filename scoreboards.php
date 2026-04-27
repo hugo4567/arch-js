@@ -53,7 +53,7 @@ foreach($scores as $score) {
     $text .= "<tr>";
     $text .= "<td>" . $score['joueur'] . "</td>";
     $text .= "<td>" . $score['niveau'] . "</td>";
-    $text .= "<td>" . $score['score'] . "</td>";
+    $text .= "<td>" . $score['total_score'] . "</td>";
     $text .= "</tr>";
 }
 
