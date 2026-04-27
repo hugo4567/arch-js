@@ -657,7 +657,7 @@ body {
     width: 100%;
 }
 
-/*////////////////////////////////////////////////////NAVBAR/////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////NAVBAR///////////////////////////////*/
     /* --- Barre de Navigation --- */
 .navbar nav {
     background-color: rgba(0, 0, 0, 0.85); /* Fond sombre */
@@ -699,88 +699,4 @@ body {
 .navbar nav ul li a:hover {
     background-color: #f1c40f; /* Fond Jaune au survol */
     color: #000;
-}
-
-
-
-
-/*//////////////////////////////////////////////////////////////////PAGE EDITOR//////////////////////////////////////////////////////////////////////////////*/
-
-        /* Configuration globale de la page */
-body.page-editor {
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #1e1e1e;
-    color: #fff;
-    display: flex;
-    flex-direction: column; /* La navbar en haut, le layout en dessous */
-    height: 100vh;
-    overflow: hidden;
-}
-
-/* Le conteneur qui gère le Flex horizontal (Toolbar | Canvas) */
-.page-editor .main-layout {
-    display: flex;
-    flex-direction: row;
-    flex-grow: 1; /* Prend tout l'espace sous la navbar */
-    overflow: hidden;
-}
-
-/* Barre latérale gauche */
-.page-editor #toolbar {
-    width: 380px;
-    min-width: 350px;
-    flex-shrink: 0;
-    background: #252526;
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    border-right: 1px solid #333;
-    overflow-y: auto;
-}
-
-/* Zone de dessin */
-.page-editor #canvas-container {
-    flex-grow: 1;
-    background: #111;
-    position: relative;
-    overflow: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Éléments internes */
-.page-editor h2 {
-    margin: 0 0 10px 0;
-    font-size: 16px;
-    border-bottom: 1px solid #444;
-    padding-bottom: 5px;
-    color: #0098ff;
-}
-
-.page-editor .tool-btn {
-    background: #333;
-    color: white;
-    border: 1px solid #555;
-    padding: 8px;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background 0.2s;
-}
-
-.page-editor .tool-btn:hover {
-    background: #444;
-}
-
-/* Inputs et Selects */
-.page-editor input[type="text"], 
-.page-editor input[type="number"], 
-.page-editor select {
-    background: #3c3c3c;
-    border: 1px solid #555;
-    color: white;
-    padding: 5px;
-    border-radius: 3px;
 }

@@ -9,7 +9,7 @@ $items = [
         "price" => 50, 
         "desc" => "La plaine verdoyante.", 
         "image" => "img/lvl1.png", 
-        "file" => "downloads/level1.zip"
+        "file" => "HUH_1777219013"
     ],
     [
         "id" => 2, 
@@ -44,7 +44,7 @@ if (isset($_SESSION["id_user"]) && !isset($_SESSION["money"])) {
 
 // GESTION DU RESET (Si on appuie sur le bouton de secours)
 if (isset($_POST['reset_money'])) {
-    $_SESSION["money"] = 300;
+    $_SESSION["money"] = 100;
     header("Location: " . $_SERVER['PHP_SELF']); // Clean l'URL
     exit();
 }
@@ -56,7 +56,7 @@ if (isset($_GET['buy'])) {
     foreach ($items as $item) {
         if ($item["id"] === $id) {
             if ($_SESSION["money"] >= $item["price"]) {
-                $_SESSION["money"] -= $item["price"];
+                sub_pieces_user($conn, $_SESSION["id_user"], $item["price"]);
                 $message = "SUCCÈS : Tu as acheté {$item['name']} !";
             } else {
                 $message = "ERREUR : Pas assez d'argent !";
