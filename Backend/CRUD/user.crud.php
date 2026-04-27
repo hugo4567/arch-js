@@ -95,21 +95,32 @@ function delete_user($conn, $id_user) {
 // ==========================================
 
 // Ajoute un ID de niveau à l'inventaire de l'utilisateur (s'il ne l'a pas déjà)
-function add_level_to_user($conn, $id_user, $id_level_to_add) {//les scores sont gérés comment ????? par la magie du G ?
+function add_level_to_user($conn, $id_user, $level_file_to_add) {
     $user = get_user_by_id($conn, $id_user);
     
     if ($user) {
-        $levels = $user['levels']; // C'est déjà un array PHP grâce au get_user_by_id
-        $id_level_to_add = (int)$id_level_to_add;
+        // 1. On s'assure de récupérer l'inventaire sous forme de tableau PHP
+        $levels_data = is_string($user['levels']) ? json_decode($user['levels'], true) : $user['levels'];
         
-        // On vérifie que le joueur ne possède pas déjà ce niveau avec in raay
-        if (!in_array($id_level_to_add, $levels)) {
-            $levels[] = $id_level_to_add; // On ajoute l'ID
-            // On sauvegarde l'utilisateur avec son nouveau tableau
-            return update_user($conn, $id_user, $user['login'], $user['mdp'], $levels, 0);
+        // 2. On initialise la clé "mes_niveaux" si elle n'existe pas encore
+        if (!isset($levels_data['mes_niveaux']) || !is_array($levels_data['mes_niveaux'])) {
+            $levels_data['mes_niveaux'] = [];
         }
+        
+        // 3. On vérifie que le joueur ne possède pas déjà ce niveau
+        if (!in_array($level_file_to_add, $levels_data['mes_niveaux'])) {
+            $levels_data['mes_niveaux'][] = $level_file_to_add; // On ajoute le nom du fichier
+            
+            // 4. On encode EN JSON STRING pour la base de données !
+            $levels_json = json_encode($levels_data);
+            
+            // 5. On sauvegarde via le CRUD classique
+            return update_user($conn, $id_user, $user['login'], $user['mdp'], $levels_json, 0);
+        }
+        
         return true; // Il l'a déjà, on considère que c'est un succès
     }
+    
     return false; // User non trouvé
 }
 

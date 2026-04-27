@@ -25,11 +25,11 @@ $items = [
     ],
     [
         "id" => 3, 
-        "name" => "Jm bigard tkt", 
+        "name" => "MONDE 1-3", 
         "price" => 250, 
-        "desc" => "COMPLOTISTE", 
+        "desc" => "Le trône du boss.", 
         "image" => "img/lvl3.png", 
-        "file" => "test_jm_1777276726"
+        "file" => "downloads/level3.zip"
     ],
 ];
 
@@ -57,6 +57,8 @@ if (isset($_GET['buy'])) {
     foreach ($items as $item) {
         if ($item["id"] === $id) {
             
+            // --- GESTION DE L'INVENTAIRE VIA CRUD ---
+            
             // A. On récupère les infos de l'utilisateur (dont ses niveaux)
             $user = get_user_by_id($conn, $_SESSION['id_user']);
             
@@ -80,23 +82,17 @@ if (isset($_GET['buy'])) {
                 
                 if ($success !== false) {
                     
-                    // --- AJOUT DU NIVEAU DANS LE JSON ---
-                    $current_levels[] = $item['file'];
+                    // --- UTILISATION DU CRUD POUR AJOUTER LE NIVEAU ---
+                    $ajout_inventaire = add_level_to_user($conn, $_SESSION['id_user'], $item['file']);
                     
-                    // array_values(array_unique(...)) évite les doublons et garantit le format liste JSON [...]
-                    $new_levels_json = json_encode(["mes_niveaux" => array_values(array_unique($current_levels))]);
-                    
-                    // Mise à jour dans la base de données (table users, colonne levels)
-                    $stmt = $conn->prepare("UPDATE users SET levels = :levels WHERE id_user = :id_user");
-                    $stmt->execute([
-                        ':levels' => $new_levels_json,
-                        ':id_user' => $_SESSION['id_user']
-                    ]);
-                    // ------------------------------------
-                    
-                    // Met à jour la variable locale pour l'affichage immédiat
-                    $playerMoney -= $item["price"]; 
-                    $message = "SUCCÈS : Tu as acheté {$item['name']} ! Il a été ajouté à tes niveaux.";
+                    if ($ajout_inventaire) {
+                        // Met à jour la variable locale pour l'affichage immédiat
+                        $playerMoney -= $item["price"]; 
+                        $message = "SUCCÈS : Tu as acheté {$item['name']} ! Il a été ajouté à tes niveaux.";
+                    } else {
+                        $message = "ERREUR : L'achat est passé mais l'ajout à l'inventaire a échoué.";
+                    }
+
                 } else {
                     $message = "ERREUR : Impossible de finaliser l'achat côté serveur.";
                 }

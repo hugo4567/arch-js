@@ -81,6 +81,9 @@ if ($is_logged_in) {
         box-shadow: 0 0 15px rgba(123, 44, 191, 0.4);
         transform: translateY(1px);
     }
+    .text{
+        color: #222;
+    }
 </style>
 </head>
 <body>
@@ -94,13 +97,16 @@ if ($is_logged_in) {
                     <p>Choisis un niveau à lancer :</p>
                     
                     <?php foreach ($user_levels as $filename): ?>
-                        <?php 
-                            $chemin_complet = "/~grp1/levels/" . htmlspecialchars($filename) . ".json";
-                            $nom_propre = preg_replace('/_[0-9]+$/', '', $filename);
-                        ?>
+                        <div class="text">
+                            <?php 
+                                $chemin_complet = "/~grp1/levels/" . htmlspecialchars($filename) . ".json";
+                                $nom_propre = preg_replace('/_[0-9]+$/', '', $filename);
+                            ?>
+                        </div>
                         <button onclick="chargerEtLancerNiveau('<?php echo $chemin_complet; ?>')">
                             Lancer "<?php echo htmlspecialchars($nom_propre); ?>"
                         </button>
+                        <br>
                     <?php endforeach; ?>
                     
                 <?php else: ?>
