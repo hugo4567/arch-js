@@ -106,6 +106,31 @@ error_reporting(E_ALL);
   }
 </style>
 
+<script>
+  // 1. On charge ton chef-d'œuvre sonore
+  const sfxPop = new Audio('https://www.myinstants.com/media/sounds/fahhhhhhhhhhhhhh.mp3');
+
+  // 2. La fonction pour jouer le son (avec clone pour gérer les superpositions)
+  function jouerSfx() {
+    let sfx = sfxPop.cloneNode();
+    sfx.volume = 0.7; // Tu peux ajuster le volume entre 0.0 et 1.0
+    
+    // Le .catch permet d'éviter une erreur console si le navigateur bloque l'autoplay
+    sfx.play().catch(err => console.log("Clic requis par le navigateur pour jouer le son :", err));
+  }
+
+  // 3. On déclenche les sons avec le timing parfait pour tes 5 secondes (5000ms)
+  
+  // POP 1 (30% de 5s)
+  setTimeout(jouerSfx, 1500); 
+  
+  // POP 2 (60% de 5s)
+  setTimeout(jouerSfx, 3000); 
+  
+  // POP 3 (85% de 5s)
+  setTimeout(jouerSfx, 4250); 
+</script>
+
 </main> 
 
     <footer>
