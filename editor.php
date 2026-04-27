@@ -78,7 +78,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action']) && $_GET['ac
         height: 100vh;
         overflow: hidden;
 }
-
+#main-content {
+    display: flex;
+    flex: 1;          /* Prend tout l'espace restant sous la navbar */
+    overflow: hidden;
+}
     /* Barre latérale gauche */
     #toolbar {
         width: 380px;
@@ -221,149 +225,150 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action']) && $_GET['ac
 </style>
 </head>
 <body>
+    <?php include 'navbar.php'; ?>
     <div id="main-content"> <!-- ← WRAPPER -->
-    <div id="toolbar">
-        <h2>Paramètres du Niveau</h2>
-        <div class="settings-group" style="background:transparent; padding:0;">
-            <label>Nom du niveau:</label>
-            <input type="text" id="levelName" value="Nouveau Niveau">
-            <label>Gravité:</label>
-            <input type="number" id="levelGravity" value="20.0" step="0.1">
-        </div>
-
-        <h2>Outils & Presets</h2>
-        <div id="tools-container" style="display: flex; flex-direction: column; gap: 5px;">
-        </div>
-
-        <div id="brush-properties">
-            <h2 style="color: #ff9900; margin-top:0;">Propriétés de l'Objet</h2>
-
-            <div id="uid-props" class="settings-group" style="display:none; border-left: 3px solid #0098ff;">
-                <label title="Identifiant unique pour recevoir des messages">UID (Optionnel) :</label>
-                <input type="text" id="propUid" placeholder="Ex: boss_music_01">
+        <div id="toolbar">
+            <h2>Paramètres du Niveau</h2>
+            <div class="settings-group" style="background:transparent; padding:0;">
+                <label>Nom du niveau:</label>
+                <input type="text" id="levelName" value="Nouveau Niveau">
+                <label>Gravité:</label>
+                <input type="number" id="levelGravity" value="20.0" step="0.1">
             </div>
 
-            <div id="animator-props" class="settings-group" style="display:none; border-left: 3px solid #ffaa00;">
-                <label style="color: #ffaa00; font-weight: bold;">🎞️ Animations (COG_Animator)</label>
-                <div id="anim-list" style="display:flex; flex-direction:column; gap:5px;"></div>
-                <button onclick="addAnimUI()" style="background:#444; color:#fff; border:1px dashed #666; padding:6px; cursor:pointer; margin-top:5px; border-radius:3px;">+ Nouvelle Animation</button>
+            <h2>Outils & Presets</h2>
+            <div id="tools-container" style="display: flex; flex-direction: column; gap: 5px;">
             </div>
 
-            <div id="standard-props" class="settings-group">
-                <label>Friction (0 = Glisse, 1 = Accroche):</label>
-                <input type="number" id="propFriction" step="0.1">
+            <div id="brush-properties">
+                <h2 style="color: #ff9900; margin-top:0;">Propriétés de l'Objet</h2>
 
-                <label>Rebond / Restitution (0 = Lourd, 1 = Balle):</label>
-                <input type="number" id="propRestitution" step="0.1">
-
-                <label>Matériau (Rendu Visuel):</label>
-                <select id="propMatType">
-                    <option value="Stretch">Stretch (Répétition)</option>
-                    <option value="Simple">Simple (Étirement/Unique)</option>
-                </select>
-
-                <div style="background: #1a1a1a; padding: 8px; border-left: 3px solid #00cc88; border-radius: 3px; margin: 8px 0;">
-                    <label style="color: #00ff77; font-weight: bold; display: block; margin-bottom: 6px;">🎨 Sélection de Tile</label>
-
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 6px;">
-                        <div>
-                            <label style="font-size: 11px; color: #aaa;">Colonne X:</label>
-                            <input type="number" id="propAtlasX" step="1" min="0">
-                        </div>
-                        <div>
-                            <label style="font-size: 11px; color: #aaa;">Ligne Y:</label>
-                            <input type="number" id="propAtlasY" step="1" min="0">
-                        </div>
-                    </div>
-
-                    <div style="background: #222; border: 1px solid #555; padding: 6px; border-radius: 3px; text-align: center; font-family: monospace; font-size: 12px;">
-                        <div style="color: #0098ff; margin-bottom: 4px;">
-                            <strong>Offset calculé:</strong>
-                        </div>
-                        <div id="tileOffsetPreview" style="color: #fff; font-weight: bold;">
-                            [0.000, 0.000]
-                        </div>
-                    </div>
+                <div id="uid-props" class="settings-group" style="display:none; border-left: 3px solid #0098ff;">
+                    <label title="Identifiant unique pour recevoir des messages">UID (Optionnel) :</label>
+                    <input type="text" id="propUid" placeholder="Ex: boss_music_01">
                 </div>
 
-                <div style="margin-top: 15px; border-top: 1px dashed #555; padding-top: 10px;">
-                    <label style="color: #0098ff; font-weight: bold;">📋 Sélecteur de Tile</label>
+                <div id="animator-props" class="settings-group" style="display:none; border-left: 3px solid #ffaa00;">
+                    <label style="color: #ffaa00; font-weight: bold;">🎞️ Animations (COG_Animator)</label>
+                    <div id="anim-list" style="display:flex; flex-direction:column; gap:5px;"></div>
+                    <button onclick="addAnimUI()" style="background:#444; color:#fff; border:1px dashed #666; padding:6px; cursor:pointer; margin-top:5px; border-radius:3px;">+ Nouvelle Animation</button>
+                </div>
 
-                    <div style="display: flex; gap: 8px; margin-bottom: 8px; align-items: center;">
-                        <div style="flex: 1;">
-                            <label style="display: block; margin-bottom: 3px; font-size: 12px;">Atlas :</label>
-                            <input type="text" id="atlasPath" value="atlas.png" style="width: 100%;">
-                        </div>
-                        <button onclick="reloadAtlas()" style="background: #007acc; border: 1px solid #0098ff; color: white; padding: 8px 12px; cursor: pointer; border-radius: 3px; font-size: 12px; margin-top: 18px;">🔄 Charger</button>
-                    </div>
+                <div id="standard-props" class="settings-group">
+                    <label>Friction (0 = Glisse, 1 = Accroche):</label>
+                    <input type="number" id="propFriction" step="0.1">
 
-                    <div style="display: flex; gap: 5px; align-items: center; margin-bottom: 8px;">
-                        <div style="flex: 1;">
-                            <label style="margin: 0; font-size: 12px;">Taille tuile (px):</label>
-                            <input type="number" id="atlasTileSize" value="64" step="1" min="1" style="width: 100%;">
+                    <label>Rebond / Restitution (0 = Lourd, 1 = Balle):</label>
+                    <input type="number" id="propRestitution" step="0.1">
+
+                    <label>Matériau (Rendu Visuel):</label>
+                    <select id="propMatType">
+                        <option value="Stretch">Stretch (Répétition)</option>
+                        <option value="Simple">Simple (Étirement/Unique)</option>
+                    </select>
+
+                    <div style="background: #1a1a1a; padding: 8px; border-left: 3px solid #00cc88; border-radius: 3px; margin: 8px 0;">
+                        <label style="color: #00ff77; font-weight: bold; display: block; margin-bottom: 6px;">🎨 Sélection de Tile</label>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 6px;">
+                            <div>
+                                <label style="font-size: 11px; color: #aaa;">Colonne X:</label>
+                                <input type="number" id="propAtlasX" step="1" min="0">
+                            </div>
+                            <div>
+                                <label style="font-size: 11px; color: #aaa;">Ligne Y:</label>
+                                <input type="number" id="propAtlasY" step="1" min="0">
+                            </div>
                         </div>
-                        <div style="flex: 1;">
-                            <label style="margin: 0; font-size: 12px;">Tuile sélectionnée:</label>
-                            <div style="background: #1e1e1e; border: 1px solid #555; padding: 4px 8px; border-radius: 3px; font-family: monospace; font-size: 12px; color: #0098ff;">
-                                <span id="tileIndicator">X:0 Y:0</span>
+
+                        <div style="background: #222; border: 1px solid #555; padding: 6px; border-radius: 3px; text-align: center; font-family: monospace; font-size: 12px;">
+                            <div style="color: #0098ff; margin-bottom: 4px;">
+                                <strong>Offset calculé:</strong>
+                            </div>
+                            <div id="tileOffsetPreview" style="color: #fff; font-weight: bold;">
+                                [0.000, 0.000]
                             </div>
                         </div>
                     </div>
 
-                    <div style="background: #222; border: 2px solid #444; overflow: hidden; border-radius: 4px; position: relative; aspect-ratio: auto;">
-                        <canvas id="atlasCanvas" style="width: 100%; height: auto; cursor: crosshair; display: block; background: #111;"></canvas>
-                    </div>
-                    <img id="atlasImgSource" src="atlas.png" style="display: none;">
+                    <div style="margin-top: 15px; border-top: 1px dashed #555; padding-top: 10px;">
+                        <label style="color: #0098ff; font-weight: bold;">📋 Sélecteur de Tile</label>
 
-                    <div style="margin-top: 5px; font-size: 11px; color: #888;">
-                        💡 Cliquez sur une tuile dans l'atlas pour la sélectionner
+                        <div style="display: flex; gap: 8px; margin-bottom: 8px; align-items: center;">
+                            <div style="flex: 1;">
+                                <label style="display: block; margin-bottom: 3px; font-size: 12px;">Atlas :</label>
+                                <input type="text" id="atlasPath" value="atlas.png" style="width: 100%;">
+                            </div>
+                            <button onclick="reloadAtlas()" style="background: #007acc; border: 1px solid #0098ff; color: white; padding: 8px 12px; cursor: pointer; border-radius: 3px; font-size: 12px; margin-top: 18px;">🔄 Charger</button>
+                        </div>
+
+                        <div style="display: flex; gap: 5px; align-items: center; margin-bottom: 8px;">
+                            <div style="flex: 1;">
+                                <label style="margin: 0; font-size: 12px;">Taille tuile (px):</label>
+                                <input type="number" id="atlasTileSize" value="64" step="1" min="1" style="width: 100%;">
+                            </div>
+                            <div style="flex: 1;">
+                                <label style="margin: 0; font-size: 12px;">Tuile sélectionnée:</label>
+                                <div style="background: #1e1e1e; border: 1px solid #555; padding: 4px 8px; border-radius: 3px; font-family: monospace; font-size: 12px; color: #0098ff;">
+                                    <span id="tileIndicator">X:0 Y:0</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="background: #222; border: 2px solid #444; overflow: hidden; border-radius: 4px; position: relative; aspect-ratio: auto;">
+                            <canvas id="atlasCanvas" style="width: 100%; height: auto; cursor: crosshair; display: block; background: #111;"></canvas>
+                        </div>
+                        <img id="atlasImgSource" src="atlas.png" style="display: none;">
+
+                        <div style="margin-top: 5px; font-size: 11px; color: #888;">
+                            💡 Cliquez sur une tuile dans l'atlas pour la sélectionner
+                        </div>
                     </div>
                 </div>
+
+                <div id="zone-props" class="settings-group" style="display:none;">
+                    <label>Largeur de la zone (px):</label>
+                    <input type="number" id="propZoneW" step="50" min="50">
+
+                    <label>Hauteur de la zone (px):</label>
+                    <input type="number" id="propZoneH" step="50" min="50">
+                </div>
+
+                <div id="trigger-props" class="settings-group" style="display:none; border-left: 3px solid #ff3333;">
+                    <label>Target UID (Cible à contacter):</label>
+                    <input type="text" id="propTargetUid" placeholder="Ex: boss_music_01">
+                    <label>Message à envoyer (Ex: play, stop):</label>
+                    <input type="text" id="propMessage" value="play">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="propTriggerOnce" checked> Se déclenche 1 seule fois
+                    </label>
+                </div>
+
+                <div id="audio-props" class="settings-group" style="display:none; border-left: 3px solid #ff00ff;">
+                    <label>Fichier Audio (OGG/MP3/WAV):</label>
+                    <input type="text" id="propOggPath" value="assets/tracks/music.ogg">
+                    <label>Volume:</label>
+                    <input type="number" id="propVolume" step="0.1" min="0" max="1" value="0.5">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="propPlayOnAwake" checked> Play on Awake
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="propLoop" checked> Boucle (Loop)
+                    </label>
+                </div>
+
             </div>
 
-            <div id="zone-props" class="settings-group" style="display:none;">
-                <label>Largeur de la zone (px):</label>
-                <input type="number" id="propZoneW" step="50" min="50">
+            <h2 style="margin-top: 15px;">Actions</h2>
+            <button class="tool-btn" data-tool="Eraser"><span class="color-box" style="background:#ff3333;"></span> Gomme</button>
+            <button class="tool-btn" onclick="clearLevel()">🗑️ Tout effacer</button>
 
-                <label>Hauteur de la zone (px):</label>
-                <input type="number" id="propZoneH" step="50" min="50">
-            </div>
-
-            <div id="trigger-props" class="settings-group" style="display:none; border-left: 3px solid #ff3333;">
-                <label>Target UID (Cible à contacter):</label>
-                <input type="text" id="propTargetUid" placeholder="Ex: boss_music_01">
-                <label>Message à envoyer (Ex: play, stop):</label>
-                <input type="text" id="propMessage" value="play">
-                <label class="checkbox-label">
-                    <input type="checkbox" id="propTriggerOnce" checked> Se déclenche 1 seule fois
-                </label>
-            </div>
-
-            <div id="audio-props" class="settings-group" style="display:none; border-left: 3px solid #ff00ff;">
-                <label>Fichier Audio (OGG/MP3/WAV):</label>
-                <input type="text" id="propOggPath" value="assets/tracks/music.ogg">
-                <label>Volume:</label>
-                <input type="number" id="propVolume" step="0.1" min="0" max="1" value="0.5">
-                <label class="checkbox-label">
-                    <input type="checkbox" id="propPlayOnAwake" checked> Play on Awake
-                </label>
-                <label class="checkbox-label">
-                    <input type="checkbox" id="propLoop" checked> Boucle (Loop)
-                </label>
-            </div>
-
+            <button class="export-btn" onclick="exportJSON()">💾 Exporter JSON</button>
         </div>
 
-        <h2 style="margin-top: 15px;">Actions</h2>
-        <button class="tool-btn" data-tool="Eraser"><span class="color-box" style="background:#ff3333;"></span> Gomme</button>
-        <button class="tool-btn" onclick="clearLevel()">🗑️ Tout effacer</button>
-
-        <button class="export-btn" onclick="exportJSON()">💾 Exporter JSON</button>
-    </div>
-
-    <div id="canvas-container">
-        <canvas id="levelCanvas" width="3200" height="1200"></canvas>
-    </div>
+        <div id="canvas-container">
+            <canvas id="levelCanvas" width="3200" height="1200"></canvas>
+        </div>
     </div>    
 
     <script>

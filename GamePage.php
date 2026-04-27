@@ -25,16 +25,27 @@ if ($is_logged_in) {
     <title>Test Rapide du Jeu</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        body { display: flex; background: #111; color: white; font-family: sans-serif; margin: 0; }
-        #menu { width: 300px; padding: 20px; background: #222; }
-        #game-container { flex-grow: 1; height: 100vh; }
-        iframe { width: 100%; height: 100%; border: none; }
-        button { background: #4CAF50; color: white; border: none; padding: 15px; width: 100%; cursor: pointer; font-size: 16px; font-weight: bold; border-radius: 5px; }
-        button:hover { background: #45a049; }
-    </style>
+    body {
+        display: flex;
+        flex-direction: column; /* ← AJOUT */
+        background: #111;
+        color: white;
+        font-family: sans-serif;
+        margin: 0;
+        height: 100vh; /* ← AJOUT */
+        overflow: hidden;
+    }
+    #main-content {
+        display: flex;
+        flex: 1;
+        overflow: hidden;
+    }
+    #menu { width: 300px; padding: 20px; background: #222; }
+    #game-container { flex-grow: 1; }
+    iframe { width: 100%; height: 100%; border: none; }
+</style>
 </head>
 <body>
-    <?php include 'navbar.php'; ?>
     
     <div id="menu">
         <h2>Mes Niveaux</h2>

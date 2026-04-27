@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-// 1. Inclusions au tout début pour éviter les erreurs "Cannot redeclare"
+// 1. Inclusions au tout début
 require_once __DIR__ . "/Backend/DB/db_connect.php";
 require_once __DIR__ . "/Backend/CRUD/user.crud.php";
 
@@ -39,50 +39,44 @@ if (!isset($_SESSION["id_user"])){
     exit;
 }
 
-// 2. Initialisation de l'argent (Correction du bug "Array")
-if (!isset($_SESSION["money"])) {
-    $db_money = get_pieces_user($conn, $_SESSION['id_user']);
-    
-    // Si la fonction renvoie un tableau (ex: ['coins' => 100])
-    if (is_array($db_money)) {
-        // On récupère la clé 'coins', sinon on force la première valeur du tableau
-        $_SESSION["money"] = isset($db_money['coins']) ? (int)$db_money['coins'] : (int)reset($db_money);
-    } else {
-        // Si c'est déjà un nombre
-        $_SESSION["money"] = (int)$db_money;
-    }
+// 2. Récupération de l'argent EN DIRECT depuis la BDD (plus de $_SESSION["money"])
+$db_money = get_pieces_user($conn, $_SESSION['id_user']);
+$playerMoney = 0;
+
+// Gestion sécurisée du retour de la fonction (au cas où elle renvoie un tableau)
+if (is_array($db_money)) {
+    $playerMoney = isset($db_money['coins']) ? (int)$db_money['coins'] : (int)reset($db_money);
+} else {
+    $playerMoney = (int)$db_money;
 }
 
-// GESTION DU RESET
-if (isset($_POST['reset_money'])) {
-    $_SESSION["money"] = 100;
-    header("Location: " . $_SERVER['PHP_SELF']); // Clean l'URL
-    exit();
-}
-
-// 3. Gestion de l'achat (Nettoyée et dédoublonnée)
+// 3. Gestion de l'achat
 $message = "";
 if (isset($_GET['buy'])) {
     $id = intval($_GET['buy']);
     
     foreach ($items as $item) {
         if ($item["id"] === $id) {
-            if ($_SESSION["money"] >= $item["price"]) {
+            // On compare directement avec l'argent récupéré en base de données
+            if ($playerMoney >= $item["price"]) {
+                
                 // Retire les pièces en Base de données
-                sub_pieces_user($conn, $_SESSION["id_user"], $item["price"]);
+                $success = sub_pieces_user($conn, $_SESSION["id_user"], $item["price"]);
                 
-                // Met à jour l'affichage en direct
-                $_SESSION["money"] -= $item["price"]; 
-                
-                $message = "SUCCÈS : Tu as acheté {$item['name']} !";
+                if ($success !== false) {
+                    // Met à jour la variable locale pour l'affichage immédiat
+                    $playerMoney -= $item["price"]; 
+                    $message = "SUCCÈS : Tu as acheté {$item['name']} !";
+                } else {
+                    $message = "ERREUR : Impossible de finaliser l'achat côté serveur.";
+                }
+
             } else {
                 $message = "ERREUR : Pas assez d'argent !";
             }
         }
     }
 }
-
-$playerMoney = $_SESSION["money"];
 ?>
 
 <!DOCTYPE html>
