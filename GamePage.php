@@ -72,6 +72,7 @@ if ($is_logged_in) {
         box-shadow: 0 0 10px rgba(199, 125, 255, 0.2);
         color: #ffffff;
         transform: rotate(360deg);
+        transform: translateX(20px);
     }
 
 

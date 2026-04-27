@@ -72,7 +72,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
 </head>
 <body class="page-login">
-    
+    <?php include 'navbar.php'; ?>
+
     <video autoplay muted loop playsinline class="bg-video">
         <source src="img/background.mp4" type="video/mp4">
     </video>
