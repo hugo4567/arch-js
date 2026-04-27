@@ -40,7 +40,7 @@ $text .= "</tbody></table>";
 echo($text);
 
 ?>
-<h1> Les tops scores des joueurs en fonction des totaux de scores/h1>
+<h1> Les tops scores des joueurs en fonction des totaux de scores </h1>
 <?php
 
 $scores = get_total_scores_by_level($conn);
@@ -63,7 +63,27 @@ echo($text);
 ?>
 
 
-<h1> Les niveaux avec le plus de scores totaux/h1>
+<h1> Les niveaux avec le plus de scores totaux </h1>
+<?php
+
+$scores = get_total_scores_by_player($conn);
+
+$text = "<table id='scores' class='scores'>";
+$text .= "<thead><tr><th>Joueur</th><th>Niveau</th><th>Score</th></tr></thead>";
+$text .= "<tbody>";
+
+foreach($scores as $score) {
+    $text .= "<tr>";
+    $text .= "<td>" . $score['joueur'] . "</td>";
+    $text .= "<td>" . $score['niveau'] . "</td>";
+    $text .= "<td>" . $score['score'] . "</td>";
+    $text .= "</tr>";
+}
+
+$text .= "</tbody></table>";
+echo($text);
+
+?>
 <?php
 require_once __DIR__ . "/Backend/DB/db_disconnect.php";
 echo("a");
