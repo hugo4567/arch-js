@@ -22,6 +22,14 @@ require_once __DIR__ . '/CRUD_score.php';
 </video>
 <?php
 
+$view = $_GET['view'] ?? 'scores';
+$allowed = ['scores','players','levels'];
+if (!in_array($view, $allowed)) {$view = 'scores'};
+$views_order = $allowed;
+else {$view = 'scores'};
+
+if ($view === 'levels') {
+
 $scores = get_all_scores_with_details($conn);
 
 $text = "<table id='scores' class='scores'>";
@@ -38,16 +46,12 @@ foreach($scores as $score) {
 
 $text .= "</tbody></table>";
 echo($text);
-
+}
 ?>
 <h1> Les tops scores tout niveaux confondus </h1>
 <?php
 
-$view = $_GET['view'] ?? 'scores';
-$allowed = ['scores','players','levels'];
-if (!in_array($view, $allowed)) {$view = 'scores'};
-$views_order = $allowed;
-else $view = 'scores';
+
 
 if ($view === 'scores') {
 
@@ -72,7 +76,7 @@ echo($text);
 
 <h1> Les niveaux avec le plus de scores totaux </h1>
 <?php
-
+if
 $scores = get_total_scores_by_player($conn);
 
 $text = "<table id='scores' class='scores'>";
