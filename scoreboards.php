@@ -40,7 +40,7 @@ $text .= "</tbody></table>";
 echo($text);
 
 ?>
-<h1> Les tops scores des joueurs en fonction des totaux de scores </h1>
+<h1> Les tops scores tout niveaux confondus </h1>
 <?php
 
 $scores = get_total_scores_by_level($conn);
