@@ -33,6 +33,8 @@ error_reporting(E_ALL);
             <a href="info.php" class="btn">Voir les infos</a>
         </div>
 
+        <img id="oiseau" src=lv1.png" style="position:fixed; left:-100px; top:80%; width:80px; z-index:9999;">
+
         <div class="tab">
             <h3>Jouer au Jeu</h3>
             <p>&nbsp;Lancez l'aventure directement dans votre navigateur.</p>
@@ -66,6 +68,18 @@ error_reporting(E_ALL);
         </div>
 
     </section>
+    
+
+ 
+<style>
+ @keyframes traverse {
+   from { left: -100px; top: 80%; }
+   to { left: 100vw; top: 10%; }
+ }
+ #oiseau {
+   animation: traverse 2.5s linear forwards;
+ }
+</style>
 </main> 
 
     <footer>
