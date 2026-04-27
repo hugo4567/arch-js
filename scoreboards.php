@@ -14,6 +14,8 @@ require_once __DIR__ . '/CRUD_score.php';
     <title>VOS TOPS SCORES</title>
     <link rel="stylesheet" href="style.css"> </head>
 <body class="page-scoreboard">
+    <?php include 'navbar.php'; ?>
+
 <h1> Les tops des niveaux en fonction scores des joueurs</h1>
 <video autoplay muted loop playsinline class="bg-video">
     <source src="img/background.mp4" type="video/mp4">
