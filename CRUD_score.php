@@ -26,7 +26,7 @@ function get_all_scores_with_details($conn){
                 FROM scores AS s
                 JOIN users AS u ON s.user_id = u.id_user
                 JOIN levels AS l ON s.level_id = l.id
-                ORDER BY  s.score,u.login " ;
+                ORDER BY s.score,u.login ";
     $squery = mysqli_query($conn, $sql) or die(mysqli_error($conn)); 
     $result = []; 
     while ($row = mysqli_fetch_assoc($squery)) $result[] = $row;

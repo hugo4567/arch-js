@@ -25,16 +25,17 @@ function create_level($conn, $name, $type, $id_crea, $level, $nb_play, $note_pos
 
 // --- 2. READ (Tous les éléments) ---
 function get_all_level($conn) {
-    $sql = "SELECT * FROM levels ORDER BY id DESC";
-    $result = mysqli_query($conn, $sql);
-    
-    $levels = [];
-    if ($result && mysqli_num_rows($result) > 0) {
-        while ($row = mysqli_fetch_assoc($result)) {
-            $levels[] = $row;
-        }
-    }
-    return $levels; // Retourne un tableau avec toutes les lignes
+        $sql = "SELECT * FROM levels ORDER BY id DESC";
+            $result = mysqli_query($conn, $sql);
+                
+                    $levels = [];
+                        if ($result && mysqli_num_rows($result) > 0) {
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                            $levels[] = $row;
+                                                    }
+                                                        }
+                                                            return $levels; // Retourne un tableau avec toutes les lignes
+                                                            }
 }
 
 // --- 3. READ (Un seul élément par ID) ---
