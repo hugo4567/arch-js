@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action']) && $_GET['ac
         
         // Sécurisation du nom de fichier (retire les espaces/caractères spéciaux) + Timestamp pour éviter d'écraser
         $safeName = preg_replace('/[^a-zA-Z0-9_-]/', '_', $levelName);
-        $filename = $safeName . '_' . time() . '.json';
+        $filename = $safeName . '.json'; // . '_' . time() . '.json';
         $filepath = $dir . '/' . $filename;
         
         // --- 1. VÉRIFICATION ET CRÉATION DU FICHIER ---

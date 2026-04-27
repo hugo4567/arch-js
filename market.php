@@ -19,7 +19,6 @@ if (!empty($db_levels)) {
             "desc"  => "Niveau mystère de la communauté...", // Description par défaut
             "image" => "img/lvl1.png", // Image par défaut
             // On utilise le nom de la BDD pour l'inventaire. 
-            // S'il te faut le timestamp (ex: HUH_1777...), il faudra l'ajouter en BDD !
             "file"  => $lvl['name'] 
         ];
     }
