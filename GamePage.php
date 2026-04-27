@@ -35,7 +35,6 @@ if ($is_logged_in) {
     </style>
 </head>
 <body>
-
     <div id="menu">
         <h2>Mes Niveaux</h2>
         
@@ -92,7 +91,7 @@ if ($is_logged_in) {
 
             // --- CORRECTION ICI ---
             fetch("Backend/Score/sauvegarder_score.php", {
-                method: 'POST', // C'était un point-virgule ici, erreur !
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
                 },
