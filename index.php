@@ -92,6 +92,26 @@ error_reporting(E_ALL);
     100% { left: 120vw; top: 90%; transform: rotate(-600deg) scaleX(2) scale(1); }
   }
 
+/* Nouvelle animation pour faire trembler l'écran */
+  @keyframes shake-page {
+    0% { transform: translate(2px, 1px) rotate(0deg); }
+    10% { transform: translate(-2px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(0px, 3px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-2px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(2px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -2px) rotate(1deg); }
+    90% { transform: translate(2px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+  }
+
+  /* La classe qui sera ajoutée au body au moment du pop */
+  .shake-active {
+    animation: shake-page 0.3s cubic-bezier(.36,.07,.19,.97) both;
+  }
+
   #oiseau {
     position: fixed;
     /* On le place à sa position de départ, il attend sagement */
@@ -108,25 +128,42 @@ error_reporting(E_ALL);
 <script>
   const sfxPop = new Audio('https://www.myinstants.com/media/sounds/fahhhhhhhhhhhhhh.mp3');
 
-  function jouerSfx() {
+  function faireTrembler() {
+    const page = document.body;
+    // On retire la classe au cas où elle y serait déjà
+    page.classList.remove('shake-active');
+    
+    // ASTUCE : On demande au navigateur de recalculer la page. 
+    // Ça permet de "reset" l'animation pour qu'elle puisse se rejouer tout de suite.
+    void page.offsetWidth; 
+    
+    // On remet la classe pour lancer le tremblement
+    page.classList.add('shake-active');
+  }
+
+  function jouerPopEtTrembler() {
+    // 1. On joue le son
     let sfx = sfxPop.cloneNode();
     sfx.volume = 0.7;
-    sfx.play(); // Plus besoin du .catch, car le navigateur autorise le son après un clic !
+    sfx.play(); 
+    
+    // 2. On fait trembler la page en même temps
+    faireTrembler();
   }
 
   function lancerAnimation() {
     const pigeon = document.getElementById('oiseau');
     
-    // 1. On lance le visuel
+    // On lance le visuel du pigeon
     pigeon.classList.add('vole-pigeon');
 
-    // 2. On programme l'audio aux millisecondes près
-    setTimeout(jouerSfx, 1500); 
-    setTimeout(jouerSfx, 3000); 
-    setTimeout(jouerSfx, 4250); 
+    // On programme le combo (Son + Tremblement) aux millisecondes près
+    setTimeout(jouerPopEtTrembler, 1500); 
+    setTimeout(jouerPopEtTrembler, 3000); 
+    setTimeout(jouerPopEtTrembler, 4250); 
   }
 
-  // L'astuce ultime : on attend un clic n'importe où sur la page (le document)
+  // On attend un clic n'importe où sur la page
   document.addEventListener('click', function onClickPage() {
     lancerAnimation();
     
