@@ -71,12 +71,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action']) && $_GET['ac
     body {
         margin: 0;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background: #0b090a; /* Noir profond */
-        color: #dcd6f7; /* Texte gris très clair teinté de violet */
+        background: #0b090a;
+        color: #dcd6f7;
         display: flex;
+        flex-direction: column; /* ← AJOUTER */
         height: 100vh;
         overflow: hidden;
-    }
+}
 
     /* Barre latérale gauche */
     #toolbar {
@@ -220,7 +221,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action']) && $_GET['ac
 </style>
 </head>
 <body>
-
+    <div id="main-content"> <!-- ← WRAPPER -->
     <div id="toolbar">
         <h2>Paramètres du Niveau</h2>
         <div class="settings-group" style="background:transparent; padding:0;">
@@ -363,6 +364,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action']) && $_GET['ac
     <div id="canvas-container">
         <canvas id="levelCanvas" width="3200" height="1200"></canvas>
     </div>
+    </div>    
 
     <script>
         const canvas = document.getElementById('levelCanvas');
