@@ -11,7 +11,7 @@ function create_user($conn, $login, $mdp, $levels = [], $pieces) {
     
     // On s'assure que $levels contient que des entiers (les IDs des niveaux)
     $levels_clean = array_map('intval', $levels);
-    
+    //La fonction array map
     // Encodage en JSON pour la colonne longtext
     $levels_json = mysqli_real_escape_string($conn, json_encode($levels_clean));
 

@@ -74,6 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action']) && $_GET['ac
             background: #1e1e1e;
             color: #fff;
             display: flex;
+            flex-direction: column;
             height: 100vh;
             overflow: hidden;
         }
