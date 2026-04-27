@@ -73,13 +73,36 @@ error_reporting(E_ALL);
 
  
 <style>
- @keyframes traverse {
-   from { left: -100px; top: 80%; }
-   to { left: 100vw; top: 10%; }
- }
- #oiseau {
-   animation: traverse 2.5s linear forwards;
- }
+  @keyframes wtf-traverse {
+    0%   { left: -100px; top: 120%; transform: scale(0.1) rotate(0deg) skew(0deg); filter: hue-rotate(0deg) invert(0%); }
+    15%  { left: 30vw; top: 10%; transform: scale(5) rotate(720deg) skew(45deg); filter: hue-rotate(90deg) invert(100%); }
+    30%  { left: 80vw; top: 90%; transform: scale(0.5) rotate(-1080deg) skew(-50deg); filter: hue-rotate(180deg) blur(10px); }
+    45%  { left: 10vw; top: -20%; transform: scale(1) rotateX(1440deg) rotateY(720deg); filter: drop-shadow(20px 20px 50px red) sepia(100%); }
+    60%  { left: 50vw; top: 50%; transform: scale(15) rotate(42069deg); filter: contrast(500%) saturate(1000%); }
+    85%  { left: 120vw; top: 110%; transform: scaleX(-2) rotate(42deg); filter: hue-rotate(360deg); }
+    100% { left: 50vw; top: -500px; transform: scale(0.01) rotate(0deg); filter: blur(50px) opacity(0); }
+  }
+
+  /* Bonus : un petit clignotement pour ruiner la rétine */
+  @keyframes epilespy-mode {
+    0%, 100% { mix-blend-mode: normal; }
+    50% { mix-blend-mode: difference; }
+  }
+
+  #oiseau {
+    position: fixed; /* Essentiel pour qu'il traverse bien l'écran */
+    will-change: transform, left, top, filter; /* Pour que le navigateur ne décède pas */
+    
+    /* 1.2s : c'est 2x plus rapide.
+      cubic-bezier(...) : ça lui donne un effet de rebond démoniaque.
+      infinite alternate : il fait l'aller-retour à l'infini.
+    */
+    animation: 
+      wtf-traverse 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite alternate,
+      epilespy-mode 0.05s infinite;
+      
+    z-index: 9999;
+  }
 </style>
 </main> 
 
