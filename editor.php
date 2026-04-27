@@ -68,143 +68,163 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action']) && $_GET['ac
     <meta charset="UTF-8">
     <title>FAAAHHHh Level Editor</title>
     <style>
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #1e1e1e;
-            color: #fff;
-            display: flex;
-            height: 100vh;
-            overflow: hidden;
-        }
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: #0f0f12; /* Un noir légèrement bleuté pour la profondeur */
+        color: #e0e0e0;
+        display: flex;
+        height: 100vh;
+        overflow: hidden;
+    }
 
-        /* Barre latérale gauche (Outils) */
+    /* Barre latérale gauche (Outils) */
+    #toolbar {
+        width: 380px;
+        min-width: 350px;
+        flex-shrink: 0;
+        background: #1a1a20; /* Violet très sombre */
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        border-right: 2px solid #3c096c; /* Bordure violette sombre */
+        overflow-y: auto;
+        box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5);
+    }
 
-        #toolbar {
-            width: 380px; /* On passe de 280px à 380px pour respirer */
-            min-width: 350px; /* Empêche la barre de devenir trop fine */
-            flex-shrink: 0; /* Empêche la zone de dessin d'écraser la barre */
-            background: #252526;
-            padding: 15px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            border-right: 1px solid #333;
-            overflow-y: auto;
-        }
+    h2 {
+        margin: 0 0 10px 0;
+        font-size: 16px;
+        border-bottom: 1px solid #ff006e; /* Ligne rose */
+        padding-bottom: 5px;
+        color: #ff006e; /* Titre rose néon */
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
 
-        h2 {
-            margin: 0 0 10px 0;
-            font-size: 16px;
-            border-bottom: 1px solid #444;
-            padding-bottom: 5px;
-            color: #0098ff;
-        }
+    .tool-btn {
+        background: #24242e;
+        color: #ddd;
+        border: 1px solid #3c096c;
+        padding: 10px;
+        cursor: pointer;
+        text-align: left;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border-radius: 6px;
+        transition: all 0.3s ease;
+        font-size: 13px;
+    }
 
-        .tool-btn {
-            background: #333;
-            color: white;
-            border: 1px solid #555;
-            padding: 8px;
-            cursor: pointer;
-            text-align: left;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border-radius: 4px;
-            transition: background 0.2s;
-            font-size: 13px;
-        }
+    .tool-btn:hover {
+        background: #3c096c;
+        border-color: #9d4edd;
+        color: #fff;
+        box-shadow: 0 0 8px rgba(157, 78, 221, 0.4);
+    }
 
-            .tool-btn:hover {
-                background: #444;
-            }
+    .tool-btn.active {
+        background: #9d4edd; /* Violet actif */
+        border-color: #ff006e; /* Bordure rose pour le contraste */
+        color: white;
+        box-shadow: 0 0 12px rgba(255, 0, 110, 0.3);
+    }
 
-            .tool-btn.active {
-                background: #007acc;
-                border-color: #0098ff;
-            }
+    .color-box {
+        width: 14px;
+        height: 14px;
+        border: 1px solid rgba(255,255,255,0.2);
+        display: inline-block;
+        flex-shrink: 0;
+        border-radius: 2px;
+    }
 
-        .color-box {
-            width: 14px;
-            height: 14px;
-            border: 1px solid #000;
-            display: inline-block;
-            flex-shrink: 0;
-        }
+    /* Configuration du niveau */
+    .settings-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 10px;
+        font-size: 13px;
+        background: #24242e;
+        padding: 12px;
+        border-radius: 8px;
+        border-left: 3px solid #9d4edd;
+    }
 
-        /* Configuration du niveau */
-        .settings-group {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            margin-bottom: 10px;
-            font-size: 13px;
-            background: #2d2d30;
-            padding: 8px;
-            border-radius: 4px;
-        }
+    .settings-group label {
+        color: #b3b3b3;
+    }
 
-            .settings-group label {
-                color: #ccc;
-            }
+    .checkbox-label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+        color: #e0e0e0;
+    }
 
-        .checkbox-label {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            cursor: pointer;
-        }
+    input[type="text"], input[type="number"], select {
+        background: #121212;
+        border: 1px solid #3c096c;
+        color: #ff006e; /* Texte rose dans les inputs */
+        padding: 6px;
+        border-radius: 4px;
+        font-size: 13px;
+        outline: none;
+    }
 
-        input[type="text"], input[type="number"], select {
-            background: #3c3c3c;
-            border: 1px solid #555;
-            color: white;
-            padding: 5px;
-            border-radius: 3px;
-            font-size: 13px;
-        }
+    input[type="text"]:focus, input[type="number"]:focus {
+        border-color: #ff006e;
+    }
 
-        .export-btn {
-            background: #28a745;
-            color: white;
-            border: none;
-            padding: 12px;
-            font-weight: bold;
-            cursor: pointer;
-            border-radius: 4px;
-            margin-top: auto;
-        }
+    .export-btn {
+        background: linear-gradient(135deg, #ff006e 0%, #9d4edd 100%);
+        color: white;
+        border: none;
+        padding: 14px;
+        font-weight: bold;
+        cursor: pointer;
+        border-radius: 6px;
+        margin-top: auto;
+        text-transform: uppercase;
+        transition: transform 0.2s, filter 0.2s;
+    }
 
-            .export-btn:hover {
-                background: #218838;
-            }
+    .export-btn:hover {
+        filter: brightness(1.2);
+        transform: translateY(-2px);
+    }
 
-        /* Zone de dessin (Canvas) */
-        #canvas-container {
-            flex-grow: 1;
-            background: #111;
-            position: relative;
-            overflow: auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    /* Zone de dessin (Canvas) */
+    #canvas-container {
+        flex-grow: 1;
+        background: #0a0a0c;
+        position: relative;
+        overflow: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-        canvas {
-            background: #1e1e24;
-            box-shadow: 0 0 10px rgba(0,0,0,0.5);
-            cursor: crosshair;
-        }
+    canvas {
+        background: #1a1a20;
+        box-shadow: 0 0 30px rgba(0,0,0,0.8), 0 0 5px rgba(157, 78, 221, 0.2);
+        cursor: crosshair;
+        border: 1px solid #333;
+    }
 
-        #brush-properties {
-            background: #1e1e1e;
-            padding: 10px;
-            border: 1px solid #444;
-            border-radius: 4px;
-            display: none;
-        }
-    </style>
+    #brush-properties {
+        background: #1a1a20;
+        padding: 15px;
+        border: 1px solid #ff006e;
+        border-radius: 8px;
+        display: none;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    }
+</style>
 </head>
 <body>
 
