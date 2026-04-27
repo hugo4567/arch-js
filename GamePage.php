@@ -99,7 +99,7 @@ if ($is_logged_in) {
                  * });
                  */
 
-                fetch("Backend/Score/sauvegarder_score.php", {
+                fetch('Backend/Score/sauvegarder_score.php', {
                     method: 'POST';
                     body: 'coins=' + encodeURIComponent(totalCoins)
                     .then(response => response.text())
@@ -120,7 +120,6 @@ if ($is_logged_in) {
                 if (!response.ok) throw new Error("Fichier introuvable.");
                 const jsonText = await response.text();
 
-                // ðŸ‘‡ DEUXIÃˆME LIGNE Ã€ VÃ‰RIFIER ðŸ‘‡
                 gameIframe.contentWindow.postMessage({
                     type: 'LOAD_LEVEL',
                     data: jsonText
