@@ -17,6 +17,12 @@ if ($is_logged_in) {
         $user_levels = $user['levels']['mes_niveaux']; 
     }
 }
+
+if(!isset($_SESSION["id_user"]))
+{
+    header("Location: login.php");
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -32,43 +38,50 @@ if ($is_logged_in) {
         iframe { width: 100%; height: 100%; border: none; }
         button { background: #4CAF50; color: white; border: none; padding: 15px; width: 100%; cursor: pointer; font-size: 16px; font-weight: bold; border-radius: 5px; }
         button:hover { background: #45a049; }
+
+        .main-content {
+            display: flex;
+            height: calc(100vh - 60px); /* Ajuste 60px selon la hauteur de ta navbar */
+        }
     </style>
 </head>
 <body>
-    <div id="menu">
-        <h2>Mes Niveaux</h2>
-        
-        <?php if ($is_logged_in): ?>
-            <?php if (!empty($user_levels)): ?>
-                <p>Choisis un niveau à lancer :</p>
-                
-                <?php foreach ($user_levels as $filename): ?>
-                    <?php 
-                        // On construit le chemin complet attendu par ton JS
-                        $chemin_complet = "/~grp1/levels/" . htmlspecialchars($filename) . ".json";
+    <?php include 'navbar.php'; ?>
+    <div class="main-content">
+        <div id="menu">
+            <h2>Mes Niveaux</h2>
+            
+            <?php if ($is_logged_in): ?>
+                <?php if (!empty($user_levels)): ?>
+                    <p>Choisis un niveau à lancer :</p>
+                    
+                    <?php foreach ($user_levels as $filename): ?>
+                        <?php 
+                            // On construit le chemin complet attendu par ton JS
+                            $chemin_complet = "/~grp1/levels/" . htmlspecialchars($filename) . ".json";
+                            
+                            // Optionnel : On nettoie un peu le nom pour l'affichage du bouton (enlève le "_1777219013")
+                            $nom_propre = preg_replace('/_[0-9]+$/', '', $filename);
+                        ?>
                         
-                        // Optionnel : On nettoie un peu le nom pour l'affichage du bouton (enlève le "_1777219013")
-                        $nom_propre = preg_replace('/_[0-9]+$/', '', $filename);
-                    ?>
+                        <button onclick="chargerEtLancerNiveau('<?php echo $chemin_complet; ?>')">
+                            Lancer "<?php echo htmlspecialchars($nom_propre); ?>"
+                        </button>
+                        
+                    <?php endforeach; ?>
                     
-                    <button onclick="chargerEtLancerNiveau('<?php echo $chemin_complet; ?>')">
-                        Lancer "<?php echo htmlspecialchars($nom_propre); ?>"
-                    </button>
-                    
-                <?php endforeach; ?>
+                <?php else: ?>
+                    <p>Tu ne possèdes aucun niveau dans ton inventaire.</p>
+                <?php endif; ?>
                 
             <?php else: ?>
-                <p>Tu ne possèdes aucun niveau dans ton inventaire.</p>
+                <p>Veuillez vous connecter pour voir vos niveaux.</p>
             <?php endif; ?>
-            
-        <?php else: ?>
-            <p>Veuillez vous connecter pour voir vos niveaux.</p>
-        <?php endif; ?>
+        </div>
     </div>
-
-    <div id="game-container">
-       <iframe id="gameIframe" src="https://ex-a01.github.io/ARCH-JS/"></iframe>
-    </div>
+        <div id="game-container">
+        <iframe id="gameIframe" src="https://ex-a01.github.io/ARCH-JS/"></iframe>
+        </div>
 
     <script>
         const gameIframe = document.getElementById('gameIframe');
