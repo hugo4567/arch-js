@@ -79,49 +79,37 @@ function update_user($conn, $id_user, $login, $mdp, $levels, $pieces) {
             SET login='$login', mdp='$mdp', levels='$levels_json', pieces=$pieces 
             WHERE id_user=$id_user";
 
-    return mysqli_query($conn, $sql);
 }
 
-// --- 5. DELETE ---
-function delete_user($conn, $id_user) {
-    $id_user = (int)$id_user;
-    $sql = "DELETE FROM users WHERE id_user=$id_user";
-    
-    return mysqli_query($conn, $sql);
-}
-
-// ==========================================
-// FONCTIONS UTILES (Spécifiques au tableau JSON)
-// ==========================================
-
-// Ajoute un ID de niveau à l'inventaire de l'utilisateur (s'il ne l'a pas déjà)
 function add_level_to_user($conn, $id_user, $level_file_to_add) {
     $user = get_user_by_id($conn, $id_user);
     
     if ($user) {
-        // 1. On s'assure de récupérer l'inventaire sous forme de tableau PHP
+        // 1. Ensure we retrieve the inventory as a PHP array
         $levels_data = is_string($user['levels']) ? json_decode($user['levels'], true) : $user['levels'];
         
-        // 2. On initialise la clé "mes_niveaux" si elle n'existe pas encore
+        // 2. Initialize the "mes_niveaux" key if it doesn't exist
         if (!isset($levels_data['mes_niveaux']) || !is_array($levels_data['mes_niveaux'])) {
             $levels_data['mes_niveaux'] = [];
         }
         
-        // 3. On vérifie que le joueur ne possède pas déjà ce niveau
+        // 3. Verify the player doesn't already own the level
         if (!in_array($level_file_to_add, $levels_data['mes_niveaux'])) {
-            $levels_data['mes_niveaux'][] = $level_file_to_add; // On ajoute le nom du fichier
+            $levels_data['mes_niveaux'][] = $level_file_to_add; 
             
-            // 4. On encode EN JSON STRING pour la base de données !
-            $levels_json = json_encode($levels_data);
-            
-            // 5. On sauvegarde via le CRUD classique
-            return update_user($conn, $id_user, $user['login'], $user['mdp'], $levels_json, get_pieces_user($conn, $id_user));
+            // --- FIX 1: Secure the coins value before passing it ---
+            $db_money = get_pieces_user($conn, $id_user);
+            $pieces = is_array($db_money) ? (isset($db_money['coins']) ? (int)$db_money['coins'] : (int)reset($db_money)) : (int)$db_money;
+
+            // --- FIX 2: Pass $levels_data (Array) instead of encoding it to a string here ---
+            // If update_user() runs array_map(), it needs the raw array. It likely handles the json_encode() internally.
+            return update_user($conn, $id_user, $user['login'], $user['mdp'], $levels_data, $pieces);
         }
         
-        return true; // Il l'a déjà, on considère que c'est un succès
+        return true; // Already owned = success
     }
     
-    return false; // User non trouvé
+    return false; // User not found
 }
 
 // Retire un ID de niveau de l'inventaire de l'utilisateur

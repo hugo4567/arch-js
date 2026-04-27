@@ -15,6 +15,9 @@ require_once __DIR__ . '/CRUD_score.php';
     <link rel="stylesheet" href="style.css"> </head>
 <body class="page-scoreboard">
 <h1> Les tops des niveaux en fonction scores des joueurs</h1>
+<video autoplay muted loop playsinline class="bg-video">
+    <source src="img/background.mp4" type="video/mp4">
+</video>
 <?php
 
 $scores = get_all_scores_with_details($conn);
@@ -35,6 +38,8 @@ $text .= "</tbody></table>";
 echo($text);
 
 ?>
+
+
 
 <h1> Les tops scores des joueurs en fonction des totaux de scores/h1>
 

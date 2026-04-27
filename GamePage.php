@@ -91,7 +91,7 @@ if ($is_logged_in) {
     <?php include 'navbar.php'; ?>
     <div id="main-content">
         <div id="menu">
-            <h2>Mes Niveaux</h2>
+            <h2>Mes Niveaux fahhctionelles</h2>
             
             <?php if ($is_logged_in): ?>
                 <?php if (!empty($user_levels)): ?>
