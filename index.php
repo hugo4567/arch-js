@@ -71,64 +71,68 @@ error_reporting(E_ALL);
     </section>
     
 <style>
+  /* Tes keyframes restent les mêmes */
   @keyframes pigeon-bourre {
-    /* Décollage */
     0% { left: -100px; top: 80%; transform: rotate(0deg) scale(1); }
-
-    /* --- ACTE 1 : Le Looping (à 30%) --- */
     25% { left: 25vw; top: 40%; transform: rotate(-300deg) scale(1); }
-    28% { left: 28vw; top: 35%; transform: rotate(-350deg) scale(0.8); } /* Squash (se contracte) */
-    30% { left: 30vw; top: 30%; transform: rotate(-360deg) scale(1.4); } /* POP 1 ! */
-    33% { left: 33vw; top: 35%; transform: rotate(-360deg) scale(0.9); } /* Rebond */
-    35% { left: 35vw; top: 40%; transform: rotate(-360deg) scale(1); }   /* Stabilisation */
-
-    /* --- ACTE 2 : Tombe sur le dos (à 60%) --- */
+    28% { left: 28vw; top: 35%; transform: rotate(-350deg) scale(0.8); }
+    30% { left: 30vw; top: 30%; transform: rotate(-360deg) scale(1.4); } 
+    33% { left: 33vw; top: 35%; transform: rotate(-360deg) scale(0.9); }
+    35% { left: 35vw; top: 40%; transform: rotate(-360deg) scale(1); }   
     55% { left: 55vw; top: 75%; transform: rotate(-500deg) scale(1); }
-    58% { left: 58vw; top: 78%; transform: rotate(-530deg) scale(0.8); } /* Squash */
-    60% { left: 60vw; top: 80%; transform: rotate(-540deg) scale(1.4); } /* POP 2 ! (totalement à l'envers) */
-    63% { left: 63vw; top: 78%; transform: rotate(-550deg) scale(0.9); } /* Rebond */
-    65% { left: 65vw; top: 75%; transform: rotate(-550deg) scale(1); }   /* Stabilisation */
-
-    /* --- ACTE 3 : Fuite en panique (à 85%) --- */
+    58% { left: 58vw; top: 78%; transform: rotate(-530deg) scale(0.8); } 
+    60% { left: 60vw; top: 80%; transform: rotate(-540deg) scale(1.4); } 
+    63% { left: 63vw; top: 78%; transform: rotate(-550deg) scale(0.9); } 
+    65% { left: 65vw; top: 75%; transform: rotate(-550deg) scale(1); }   
     80% { left: 80vw; top: 40%; transform: rotate(-700deg) scale(1); }
-    83% { left: 83vw; top: 35%; transform: rotate(-710deg) scale(0.8); } /* Squash */
-    85% { left: 85vw; top: 30%; transform: rotate(-720deg) scale(1.4); } /* POP 3 ! (remis à l'endroit) */
-    88% { left: 88vw; top: 35%; transform: rotate(-720deg) scale(0.9); } /* Rebond */
-    90% { left: 90vw; top: 40%; transform: rotate(-720deg) scale(1); }   /* Stabilisation */
-
-    /* --- CRASH FINAL --- */
+    83% { left: 83vw; top: 35%; transform: rotate(-710deg) scale(0.8); } 
+    85% { left: 85vw; top: 30%; transform: rotate(-720deg) scale(1.4); } 
+    88% { left: 88vw; top: 35%; transform: rotate(-720deg) scale(0.9); } 
+    90% { left: 90vw; top: 40%; transform: rotate(-720deg) scale(1); }   
     100% { left: 120vw; top: 90%; transform: rotate(-600deg) scaleX(2) scale(1); }
   }
 
   #oiseau {
     position: fixed;
+    /* On le place à sa position de départ, il attend sagement */
+    left: -100px; 
+    top: 80%;
+  }
+
+  /* La classe magique qui sera ajoutée au clic */
+  .vole-pigeon {
     animation: pigeon-bourre 5s ease-in-out forwards;
   }
 </style>
 
 <script>
-  // 1. On charge ton chef-d'œuvre sonore
   const sfxPop = new Audio('https://www.myinstants.com/media/sounds/fahhhhhhhhhhhhhh.mp3');
 
-  // 2. La fonction pour jouer le son (avec clone pour gérer les superpositions)
   function jouerSfx() {
     let sfx = sfxPop.cloneNode();
-    sfx.volume = 0.7; // Tu peux ajuster le volume entre 0.0 et 1.0
-    
-    // Le .catch permet d'éviter une erreur console si le navigateur bloque l'autoplay
-    sfx.play().catch(err => console.log("Clic requis par le navigateur pour jouer le son :", err));
+    sfx.volume = 0.7;
+    sfx.play(); // Plus besoin du .catch, car le navigateur autorise le son après un clic !
   }
 
-  // 3. On déclenche les sons avec le timing parfait pour tes 5 secondes (5000ms)
-  
-  // POP 1 (30% de 5s)
-  setTimeout(jouerSfx, 1500); 
-  
-  // POP 2 (60% de 5s)
-  setTimeout(jouerSfx, 3000); 
-  
-  // POP 3 (85% de 5s)
-  setTimeout(jouerSfx, 4250); 
+  function lancerAnimation() {
+    const pigeon = document.getElementById('oiseau');
+    
+    // 1. On lance le visuel
+    pigeon.classList.add('vole-pigeon');
+
+    // 2. On programme l'audio aux millisecondes près
+    setTimeout(jouerSfx, 1500); 
+    setTimeout(jouerSfx, 3000); 
+    setTimeout(jouerSfx, 4250); 
+  }
+
+  // L'astuce ultime : on attend un clic n'importe où sur la page (le document)
+  document.addEventListener('click', function onClickPage() {
+    lancerAnimation();
+    
+    // On détruit l'événement juste après pour que ça ne se joue qu'une seule fois
+    document.removeEventListener('click', onClickPage);
+  });
 </script>
 
 </main> 
