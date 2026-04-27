@@ -49,12 +49,12 @@ if (!isset($_SESSION["id_user"])){
     exit;
 }
 
-if (isset($_SESSION["id_user"]) && !isset($_SESSION["money"])) {
+if (isset($_SESSION["id_user"]) && !isset($_SESSION["money"]))
+{
     include("Backend/CRUD/user.crud.php");
     include("Backend/DB/db_connect.php");
     $_SESSION["money"] = get_pieces_user($conn, $_SESSION['id_user']);
-    }
-
+}
 
 // GESTION DU RESET (Si on appuie sur le bouton de secours)
 if (isset($_POST['reset_money'])) {
@@ -69,11 +69,15 @@ if (isset($_GET['buy'])) {
     $id = intval($_GET['buy']);
     foreach ($items as $item) {
         if ($item["id"] === $id) {
-            if isset($_SESSION["money"])) {
-    include("Backend/CRUD/user.crud.php");
-    include("Backend/DB/db_connect.php");
-    $_SESSION["money"] = get_pieces_user($conn, $_SESSION['id_user']);
+            if (isset($_SESSION["money"]))
+            {
+                include("Backend/CRUD/user.crud.php");
+                include("Backend/DB/db_connect.php");
+                $_SESSION["money"] = get_pieces_user($conn, $_SESSION['id_user']);
+            }
+        }
     }
+}
 
 
 // GESTION DU RESET (Si on appuie sur le bouton de secours)
