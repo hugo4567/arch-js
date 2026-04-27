@@ -48,6 +48,9 @@ foreach($scores as $score) {
 
 $text .= "</tbody></table>";
 echo($text);
+$i = array_search($view, $views_order);
+    $next = $views_order[($i + 1) % count($views_order)];
+    echo "<p><a href='?view=$next' class='btn'>Suivant</a></p>";
 }
 ?>
 <h1> Les tops scores tout niveaux confondus </h1>
@@ -72,6 +75,9 @@ foreach($scores as $score) {
 
 $text .= "</tbody></table>";
 echo($text);
+$i = array_search($view, $views_order);
+    $next = $views_order[($i + 1) % count($views_order)];
+    echo "<p><a href='?view=$next' class='btn'>Suivant</a></p>";
 }
 ?>
 
@@ -94,6 +100,9 @@ foreach($scores as $score) {
 
 $text .= "</tbody></table>";
 echo($text);
+$i = array_search($view, $views_order);
+    $next = $views_order[($i + 1) % count($views_order)];
+    echo "<p><a href='?view=$next' class='btn'>Suivant</a></p>";
 }
 ?>
 <?php
