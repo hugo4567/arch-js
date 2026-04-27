@@ -7,7 +7,11 @@ if (isset($_POST['coins']) && isset($_SESSION['id_user'])){
     $res = add_pieces_user($conn, $_SESSION['id_user'], $totalCoins);
 
     if (!$res){
-        echo "Erreur lors de l'insertion dans la base de donnée.";
+        echo json_decode("Erreur lors de l'insertion dans la base de donnée.");
+    }
+
+    else {
+        echo json_encode("OK.");
     }
 }
 ?>
