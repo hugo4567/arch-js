@@ -115,7 +115,7 @@ function add_level_to_user($conn, $id_user, $level_file_to_add) {
             $levels_json = json_encode($levels_data);
             
             // 5. On sauvegarde via le CRUD classique
-            return update_user($conn, $id_user, $user['login'], $user['mdp'], $levels_json, 0);
+            return update_user($conn, $id_user, $user['login'], $user['mdp'], $levels_json, get_pieces_user($conn, $id_user));
         }
         
         return true; // Il l'a déjà, on considère que c'est un succès
