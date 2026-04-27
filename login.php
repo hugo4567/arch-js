@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION["id_user"] = $user['id_user'];
             
             // Redirection vers la nouvelle page
-            header("Location: GamePage.php");
+            header("Location: index.php");
             exit;
         } else {
             $error = "Erreur lors de la récupération des données du joueur.";

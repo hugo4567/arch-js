@@ -63,6 +63,7 @@ if ($is_logged_in) {
         justify-content: center;
         gap: 10px;
         transition: all 0.2s ease-in-out;
+        transition: transform 0.3s;
     }
 
     button:hover { 
@@ -70,7 +71,9 @@ if ($is_logged_in) {
         border-color: #c77dff;
         box-shadow: 0 0 10px rgba(199, 125, 255, 0.2);
         color: #ffffff;
+        transform: rotate(360deg);
     }
+
 
     button:active { 
         background: #7b2cbf; 
