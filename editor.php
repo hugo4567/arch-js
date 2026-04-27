@@ -529,7 +529,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action']) && $_GET['ac
                     ctx.fillStyle = '#fff';
                     ctx.font = "14px Arial";
                     
-                    // MODIFIE LE TEXTE AFFICHE :
+                    // 👉 MODIFIE LE TEXTE AFFICHE :
                     let text = "📷 CAM ZONE";
                     if (obj.type === 'Trigger') text = "⚡ TRIGGER";
                     if (obj.type === 'LevelEnd') text = "🏁 FIN NIVEAU";

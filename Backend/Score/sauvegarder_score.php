@@ -4,7 +4,7 @@ session_start();
 // On indique au navigateur qu'on va renvoyer du JSON
 header('Content-Type: application/json');
 
-require_once __DIR__ . "/../DB/db_connect.php";
+require_once __DIR__ . "/../DB/db_connect.php"; // on verra si on a le temps ou fah
 require_once __DIR__ . "/../CRUD/user.crud.php";
 
 if (isset($_POST['coins']) && isset($_SESSION['id_user'])) {
