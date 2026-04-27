@@ -46,12 +46,11 @@ echo($text);
 $scores = get_total_scores_by_level($conn);
 
 $text = "<table id='scores' class='scores'>";
-$text .= "<thead><tr><th>Joueur</th><th>Niveau</th><th>Score</th></tr></thead>";
+$text .= "<thead><tr>th>Niveau</th><th>Score</th></tr></thead>";
 $text .= "<tbody>";
 
 foreach($scores as $score) {
     $text .= "<tr>";
-    $text .= "<td>" . $score['joueur'] . "</td>";
     $text .= "<td>" . $score['niveau'] . "</td>";
     $text .= "<td>" . $score['total_score'] . "</td>";
     $text .= "</tr>";
