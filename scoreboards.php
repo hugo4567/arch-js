@@ -59,7 +59,7 @@ $i = array_search($view, $views_order);
 
 
 if ($view === 'scores') {
-echo"<h1> Les tops scores tout niveaux confondus </h1>";
+echo"<h1> HAll of fame des niveaux </h1>";
 $scores = get_total_scores_by_level($conn);
 
 $text = "<table id='scores' class='scores'>";
