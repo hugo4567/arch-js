@@ -16,7 +16,7 @@ require_once __DIR__ . '/Backend/CRUD/CRUD_score.php';
 <body class="page-scoreboard">
     <?php include 'navbar.php'; ?>
 
-<h1> Les tops des niveaux en fonction scores des joueurs</h1>
+
 <video autoplay muted loop playsinline class="bg-video">
     <source src="img/background.mp4" type="video/mp4">
 </video>
@@ -31,7 +31,7 @@ if (!in_array($view, $allowed)) {
 $views_order = $allowed;
 
 if ($view === 'levels') {
-
+echo'<h1> Les tops scores des joueurs en fonction de leur top niveau</h1>';
 $scores = get_all_scores_with_details($conn);
 
 $text = "<table id='scores' class='scores'>";
@@ -53,13 +53,13 @@ $i = array_search($view, $views_order);
     echo "<p><a href='?view=$next' class='hugob'>Suivant</a></p>";
 }
 ?>
-<h1> Les tops scores tout niveaux confondus </h1>
+
 <?php
 
 
 
 if ($view === 'scores') {
-
+echo"<h1> Les tops scores tout niveaux confondus </h1>";
 $scores = get_total_scores_by_level($conn);
 
 $text = "<table id='scores' class='scores'>";
@@ -82,9 +82,10 @@ $i = array_search($view, $views_order);
 ?>
 
 
-<h1> Les niveaux avec le plus de scores totaux </h1>
+
 <?php
 if ($view === 'players') {
+echo'<h1> Les joueurs avec le plus de scores totaux </h1>';
 $scores = get_total_scores_by_player($conn);
 
 $text = "<table id='scores' class='scores'>";
