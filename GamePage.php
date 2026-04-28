@@ -138,7 +138,6 @@ if ($is_logged_in) {
             if (event.data && event.data.type === 'LEVEL_FINISHED') {
                 const totalCoins = event.data.coins;
                 console.log("Message reçu du jeu : Niveau terminé avec", totalCoins, "pièces !");
-        
                 alert(`Bravo ! Tu as terminé le niveau en récoltant ${totalCoins} pièces !`);
 
                 fetch("Backend/Score/sauvegarder_score.php", {
@@ -148,22 +147,29 @@ if ($is_logged_in) {
                     },
                     body: 'coins=' + encodeURIComponent(totalCoins)
                 })
-                .then(async response => {
-                    // On lit d'abord la réponse brute en tant que texte au lieu de forcer le JSON
-                    const textContent = await response.text(); 
+                .then(response => {
+                    // On vérifie si le serveur a bien répondu avec du JSON avant de continuer
+                    const contentType = response.headers.get("content-type");
                     
-                    try {
-                        // On tente de la convertir en JSON
-                        const data = JSON.parse(textContent);
-                        console.log("Score sauvegardé avec succès :", data);
-                    } catch (e) {
-                        // Si ça plante (réponse vide ou erreur PHP), on l'affiche proprement
-                        console.error("Le serveur n'a pas renvoyé de JSON valide.");
-                        console.error("Réponse brute du serveur :", textContent);
-                        console.warn("Vérifie ton fichier Backend/Score/sauvegarder_score.php : y a-t-il une erreur PHP cachée ou un chemin incorrect ?");
+                    if (response.ok && contentType && contentType.includes("application/json")) {
+                        return response.json();
                     }
+                    
+                    // Si ce n'est pas du JSON, on récupère le texte pour le débogage
+                    return response.text().then(text => {
+                        throw new Error(`Réponse non-JSON reçue : ${text}`);
+                    });
                 })
-                .catch(error => console.error("Erreur réseau/fetch :", error));
+                .then(data => {
+                    // Ici, data est forcément un objet JSON valide
+                    console.log("Score sauvegardé avec succès :", data);
+                })
+                .catch(error => {
+                    // Centralisation des erreurs (Réseau, HTTP 404/500, ou JSON invalide)
+                    console.error("Détails de l'erreur :");
+                    console.error(error.message);
+                    console.warn("Vérifie ton fichier PHP : chemin correct ? Erreurs PHP affichées dans le texte ?");
+                });
             }
         });
         
