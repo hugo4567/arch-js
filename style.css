@@ -300,6 +300,9 @@ body {
 .page-scoreboard .scores tbody tr:nth-child(even) {
     background-color: #a01616f6; /* rayures alternées */
 }
+.page-scoreboard .scores tbody tr:nth-child(odd) {
+    background-color: #a01616f6; /* rayures alternées */
+}
 
 .page-scoreboard .scores tbody tr:hover {
     background-color: #ffffff5b; /* survol */
