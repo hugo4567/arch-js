@@ -262,14 +262,6 @@ body {
 
 /*/////////////////////////////////////////////////////CSS DE LA PAGE SCOREBOARD//////////////////////////////////////////*/
 
-.page-scoreboard .scores {
-    border: 5px rgb(184, 12, 132) solid;
-    color: rgb(25, 62, 141);
-    margin: 40px auto 0;
-    border-collapse: collapse;
-    font-size: 20px;
-    border-radius: 2px;
-}
 
 .page-scoreboard .scores th,
 .page-scoreboard .scores td {
@@ -282,11 +274,12 @@ body {
     color: red;
 }
 .page-scoreboard .scores {
-    border: 15px black solid;
-    color: rgb(25, 62, 141);
+    border: 5px rgb(78, 12, 58) solid;
+    color: rgb(79, 25, 141);
     margin: 40px auto 0;
     border-collapse: collapse;
     font-size: 20px;
+    border-radius: 2px;
     width: 100%;
     max-width: 600px; /* limite la largeur */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* ombre subtile */
@@ -300,12 +293,12 @@ body {
 .page-scoreboard .scores th,
 .page-scoreboard .scores td {
     padding: 12px 20px;
-    border: 1px solid #c54e4e;
+    border: 1px solid #0400ff;
     text-align: center;
 }
 
 .page-scoreboard .scores tbody tr:nth-child(even) {
-    background-color: #f0f0f0; /* rayures alternées */
+    background-color: #790884; /* rayures alternées */
 }
 
 .page-scoreboard .scores tbody tr:hover {
@@ -723,6 +716,6 @@ body {
 }
 
 .hugob, #hugob:hover {
-    background-color: #f1c40f; /* Fond Jaune au survol */
+    background-color: #800f62; /* Fond Jaune au survol */
     color: #000;
 }
