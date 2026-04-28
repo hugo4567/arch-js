@@ -11,6 +11,7 @@ if(isset($_SESSION["id_user"])){
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="style.css"> 
+    <link rel="shortcut icon" type="image/png" href="img/rachid.png"/>
 </head>
 <body>
     <div class="navbar">

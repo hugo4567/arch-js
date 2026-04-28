@@ -63,7 +63,7 @@ if ($view === 'scores') {
 $scores = get_total_scores_by_level($conn);
 
 $text = "<table id='scores' class='scores'>";
-$text .= "<thead><tr>th>Niveau</th><th>Score</th></tr></thead>";
+$text .= "<thead><tr><th>Niveau</th><th>Score</th></tr></thead>";
 $text .= "<tbody>";
 
 foreach($scores as $score) {
@@ -107,6 +107,4 @@ $i = array_search($view, $views_order);
 ?>
 <?php
 require_once __DIR__ . "/Backend/DB/db_disconnect.php";
-echo("a");
-phpinfo();
 ?>

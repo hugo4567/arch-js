@@ -10,7 +10,7 @@ error_reporting(E_ALL);
     <meta charset="utf-8">
     <title>PIXEL BLASTER ADVENTURE - Accueil</title>
     <link rel="stylesheet" href="style.css"> 
-    <link rel="icon" type="image/x-icon" href="./favicon.ico">
+    <link rel="shortcut icon" type="image/png" href="img/rachid.png"/>
 </head>
 <body class="page-index">
 
