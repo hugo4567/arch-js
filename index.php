@@ -22,7 +22,7 @@ error_reporting(E_ALL);
 
     <header>
         <h1>PIXEL BLASTER ADVENTURE</h1>
-        <p>Le futur du jeu de plateforme rétro.</p>
+        <p>Le futur du jeu de plateforme collaboratif.</p>
     </header>
 
     <main>
