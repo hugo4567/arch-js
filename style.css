@@ -298,11 +298,11 @@ body {
 }
 
 .page-scoreboard .scores tbody tr:nth-child(even) {
-    background-color: #790884; /* rayures alternées */
+    background-color: #ff0000f6; /* rayures alternées */
 }
 
 .page-scoreboard .scores tbody tr:hover {
-    background-color: #e0e0e0; /* survol */
+    background-color: #fb050585; /* survol */
 }
 
 .page-scoreboard b {
