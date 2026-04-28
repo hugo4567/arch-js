@@ -33,7 +33,7 @@ def upload_dir(sftp, local_dir, remote_dir):
             
             if remote_size != local_size or remote_mtime is None or (local_mtime - remote_mtime)> tolerance:
                 sftp.put(local_path, remote_path)
-                print("\033[32mUploaded\033[0m]", remote_path)
+                print("\033[32mUploaded", remote_path,'\033[0m')
             else:
                 print("Skipped", remote_path)
  

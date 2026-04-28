@@ -1,6 +1,6 @@
 <?php
 session_start();
-// Debugging
+// Debugging, on peut garder stv
 ini_set('display_errors', '1');
 error_reporting(E_ALL);
 require_once __DIR__ . '/Backend/CRUD/user.crud.php';
@@ -50,7 +50,7 @@ $text .= "</tbody></table>";
 echo($text);
 $i = array_search($view, $views_order);
     $next = $views_order[($i + 1) % count($views_order)];
-    echo "<p><a href='?view=$next' class='btn'>Suivant</a></p>";
+    echo "<p><a href='?view=$next' class='hugob'>Suivant</a></p>";
 }
 ?>
 <h1> Les tops scores tout niveaux confondus </h1>
@@ -77,7 +77,7 @@ $text .= "</tbody></table>";
 echo($text);
 $i = array_search($view, $views_order);
     $next = $views_order[($i + 1) % count($views_order)];
-    echo "<p><a href='?view=$next' class='btn'>Suivant</a></p>";
+    echo "<p><a href='?view=$next' class='hugob'>Suivant</a></p>";
 }
 ?>
 
@@ -102,7 +102,7 @@ $text .= "</tbody></table>";
 echo($text);
 $i = array_search($view, $views_order);
     $next = $views_order[($i + 1) % count($views_order)];
-    echo "<p><a href='?view=$next' class='btn'>Suivant</a></p>";
+    echo "<p><a href='?view=$next' class='hugob'>Suivant</a></p>";
 }
 ?>
 <?php

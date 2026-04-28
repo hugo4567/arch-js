@@ -689,12 +689,12 @@ body {
     gap: 15px;
     margin: 0;
 }
-.navbar nav .logo a{
+.navbar nav .logo a .hugob{
     color:#fff;
     text-decoration: none;
 }
 
-.navbar nav ul li a {
+.navbar nav ul li a .hugob{
     color: #fff;
     text-decoration: none;
     font-weight: 700;
@@ -703,7 +703,7 @@ body {
     transition: 0.2s;
 }
 
-.navbar nav ul li a:hover {
+.navbar nav ul li a .hugob:hover {
     background-color: #f1c40f; /* Fond Jaune au survol */
     color: #000;
 }
