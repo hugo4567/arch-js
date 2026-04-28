@@ -148,24 +148,24 @@ if ($is_logged_in) {
                     body: 'coins=' + encodeURIComponent(totalCoins)
                 })
                 .then(response => {
-                    // On vérifie si le serveur a bien répondu avec du JSON avant de continuer
+                    // verif si json
                     const contentType = response.headers.get("content-type");
                     
                     if (response.ok && contentType && contentType.includes("application/json")) {
                         return response.json();
                     }
                     
-                    // Si ce n'est pas du JSON, on récupère le texte pour le débogage
+                    // si pas json
                     return response.text().then(text => {
                         throw new Error(`Réponse non-JSON reçue : ${text}`);
                     });
                 })
                 .then(data => {
-                    // Ici, data est forcément un objet JSON valide
+                    // si json
                     console.log("Score sauvegardé avec succès :", data);
                 })
                 .catch(error => {
-                    // Centralisation des erreurs (Réseau, HTTP 404/500, ou JSON invalide)
+
                     console.error("Détails de l'erreur :");
                     console.error(error.message);
                     console.warn("Vérifie ton fichier PHP : chemin correct ? Erreurs PHP affichées dans le texte ?");
