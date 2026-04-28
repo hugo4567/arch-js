@@ -9,7 +9,7 @@ function create_user($conn, $login, $mdp, $levels = [], $pieces) {
     $login = mysqli_real_escape_string($conn, $login);
     $mdp = mysqli_real_escape_string($conn, $mdp); 
     
-    // On s'assure que $levels contient que des entiers (les IDs des niveaux)
+    // demande si $levels contient que des entiers (les IDs des niveaux)
     $levels_clean = array_map('intval', $levels);
     //La fonction array map permet de creer un nouveau avec levels ou chaque case est convertie en entier
     // Encodage en JSON pour la colonne longtext
@@ -51,7 +51,7 @@ function get_user_by_id($conn, $id_user) {
     }
     return null;
 }
-
+//pour avoir l'user en fonction de son login
 function get_user_by_login($conn, $login) {
     $login = mysqli_real_escape_string($conn, $login);
     $sql = "SELECT * FROM users WHERE login = '$login'";
