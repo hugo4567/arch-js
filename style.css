@@ -263,17 +263,18 @@ body {
 /*/////////////////////////////////////////////////////CSS DE LA PAGE SCOREBOARD//////////////////////////////////////////*/
 
 .page-scoreboard .scores {
-    border: 15px black solid;
+    border: 5px rgb(184, 12, 132) solid;
     color: rgb(25, 62, 141);
     margin: 40px auto 0;
     border-collapse: collapse;
     font-size: 20px;
+    border-radius: 2px;
 }
 
 .page-scoreboard .scores th,
 .page-scoreboard .scores td {
     padding: 10px 20px;
-    border: 1px solid #c54e4e;
+    border: 1px solid #1d0b8f;
     text-align: center;
 }
 
