@@ -26,11 +26,6 @@ if (isset($_POST["login"]) && isset($_POST["mdp"])){
 ?>
 
 
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
