@@ -13,7 +13,7 @@ function create_user($conn, $login, $mdp, $levels = [], $pieces) {
     $levels_clean = array_map('intval', $levels);
     //La fonction array map permet de creer un nouveau avec levels ou chaque case est convertie en entier
     // Encodage en JSON pour la colonne longtext
-    $levels_json = mysqli_real_escape_string($conn, json_encode($levels_clean));
+    $levels_json = mysqli_real_escape_string($conn, json_encode($levels_clean, JSON_FORCE_OBJECT));
     //un tableau est transformé en une chaîne JSON et est ensuite sécurisé par escape string qui evite les injection sql
     $sql = "INSERT INTO users (login, mdp, levels, pieces) 
             VALUES ('$login', '$mdp', '$levels_json', $pieces)";
