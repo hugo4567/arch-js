@@ -10,10 +10,8 @@ if (file_exists($db_path)) {
 }
 
 
-
-
 if (isset($_POST["login"]) && isset($_POST["mdp"])){
-    $user_crud_path = "Backend/CRUD/user.crud.php";
+    $user_crud_path = "/Backend/CRUD/user.crud.php";
     require_once __DIR__ . $user_crud_path;
 
     create_user($conn, $_SESSION["login"], $_SESSION["mdp"], [], 0);
@@ -22,6 +20,10 @@ if (isset($_POST["login"]) && isset($_POST["mdp"])){
     // redirection vers la page de login
     header("Location: login.php");
     exit;
+}
+
+else{
+    echo "erreur";
 }
 ?>
 
@@ -43,7 +45,7 @@ if (isset($_POST["login"]) && isset($_POST["mdp"])){
 
 
 <!-- Reste à faire le form d'inscription (flemme de le faire mnt) -->
- <form method="POST" action="">
+ <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
     <label>Définir l'identifiant</label>
     <input type="text" name="login" required placeholder="identifiant">
 
