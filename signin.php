@@ -37,7 +37,7 @@ else {
     <title>- INSCRIPTION -</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="page-login ">
+<body class="page-login">
     <?php include 'navbar.php'; ?>
 
     <video autoplay muted loop playsinline class="bg-video">
@@ -45,16 +45,23 @@ else {
     </video>
 
 
-<!-- Reste à faire le form d'inscription (flemme de le faire mnt) -->
- <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-    <label>Définir l'identifiant</label>
-    <input type="text" name="login" required placeholder="identifiant">
+    <div class="login-center">
+        <div class="scene">
+            <div class="login-card">
+                <h1>JOUEUR</h1>
+                <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                    <div class="form-group"></div>    
+                <label>Définir l'identifiant</label>
+                    <input type="text" name="login" required placeholder="identifiant">
 
-    <label>Définir code de sécurité</label>
-    <input type="password" name="mdp" required placeholder="••••••••">
+                    <label>Définir code de sécurité</label>
+                    <input type="password" name="mdp" required placeholder="••••••••">
 
-    <button type="submit">INSCRIPTION</button>
+                    <button type="submit">INSCRIPTION</button>
 
- </form>
+                </form>
+        </div>
+    </div>
+ </div>
 </body>
 </html>
