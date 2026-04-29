@@ -2,17 +2,16 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-
-$db_path = "/Backend/DB/db_connect.php"; 
+$db_path = "Backend/DB/db_connect.php"; 
 
 if (file_exists($db_path)) {
-    require_once __DIR__ . $db_path;
+    include($db_path);
 
 
 
     if (isset($_POST["login"]) && isset($_POST["mdp"])){
-        $user_crud_path = "/Backend/CRUD/user.crud.php";
-        require_once __DIR__ . $user_crud_path;
+        $user_crud_path = "Backend/CRUD/user.crud.php";
+        include($user_crud_path);
 
         create_user($conn, $_POST["login"], $_POST["mdp"], [], 0);
 
