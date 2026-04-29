@@ -43,5 +43,13 @@ if (isset($_POST["login"]) && isset($_POST["mdp"])){
 
 
 <!-- Reste à faire le form d'inscription (flemme de le faire mnt) -->
+ <form method="POST" action="singin.php">
+    <label>Choix de l'identifiant</label>
+    <input type="text" name="login" required placeholder="identifiant">
+
+    <label>Définir code de sécurité</label>
+    <input type="password" name="mdp" required placeholder="••••••••">
+
+ </form>
 </body>
 </html>
