@@ -14,7 +14,7 @@ if (file_exists($db_path)) {
         $user_crud_path = "/Backend/CRUD/user.crud.php";
         require_once __DIR__ . $user_crud_path;
 
-        create_user($conn, $_SESSION["login"], $_SESSION["mdp"], [], 0);
+        create_user($conn, $_POST["login"], $_POST["mdp"], [], 0);
 
 
         // redirection vers la page de login
@@ -22,8 +22,6 @@ if (file_exists($db_path)) {
         exit;
     }
 }
-
-else
 ?>
 
 
