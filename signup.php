@@ -3,7 +3,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 
-$db_path = "Backend/DB/db_connect.php"; 
+$db_path = "/Backend/DB/db_connect.php"; 
 
 if (file_exists($db_path)) {
     require_once __DIR__ . $db_path;
@@ -23,8 +23,6 @@ if (isset($_POST["login"]) && isset($_POST["mdp"])){
     header("Location: login.php");
     exit;
 }
-
-
 ?>
 
 
@@ -41,11 +39,14 @@ if (isset($_POST["login"]) && isset($_POST["mdp"])){
     <title>- INSCRIPTION -</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="">
     <?php include 'navbar.php'; ?>
 
     <video autoplay muted loop playsinline class="bg-video">
         <source src="img/background.mp4" type="video/mp4">
     </video>
+
+
+<!-- Reste à faire le form d'inscription (flemme de le faire mnt) -->
 </body>
 </html>
