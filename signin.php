@@ -7,24 +7,23 @@ $db_path = "/Backend/DB/db_connect.php";
 
 if (file_exists($db_path)) {
     require_once __DIR__ . $db_path;
+
+
+
+    if (isset($_POST["login"]) && isset($_POST["mdp"])){
+        $user_crud_path = "/Backend/CRUD/user.crud.php";
+        require_once __DIR__ . $user_crud_path;
+
+        create_user($conn, $_SESSION["login"], $_SESSION["mdp"], [], 0);
+
+
+        // redirection vers la page de login
+        header("Location: login.php");
+        exit;
+    }
 }
 
-
-if (isset($_POST["login"]) && isset($_POST["mdp"])){
-    $user_crud_path = "/Backend/CRUD/user.crud.php";
-    require_once __DIR__ . $user_crud_path;
-
-    create_user($conn, $_SESSION["login"], $_SESSION["mdp"], [], 0);
-
-
-    // redirection vers la page de login
-    header("Location: login.php");
-    exit;
-}
-
-else{
-    echo "erreur";
-}
+else
 ?>
 
 

@@ -15,7 +15,7 @@ function create_user($conn, $login, $mdp, $levels = [], $pieces) {
     // Encodage en JSON pour la colonne longtext
     $levels_json = mysqli_real_escape_string($conn, json_encode($levels_clean));
     //un tableau est transformé en une chaîne JSON et est ensuite sécurisé par escape string qui evite les injection sql
-    $sql = "INSERT INTO users (login, mdp, levels) 
+    $sql = "INSERT INTO users (login, mdp, levels, pieces) 
             VALUES ('$login', '$mdp', '$levels_json', $pieces)";
             
     return mysqli_query($conn, $sql);
