@@ -22,6 +22,11 @@ if (file_exists($db_path)) {
         exit;
     }
 }
+
+else {
+    // Si ce message s'affiche, c'est que le chemin est faux
+    die("Le chemin vers db_connect.php est incorrect : " . $db_path);
+}
 ?>
 
 
