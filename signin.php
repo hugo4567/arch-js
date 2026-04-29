@@ -37,7 +37,7 @@ else {
     <title>- INSCRIPTION -</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="">
+<body class="page-login ">
     <?php include 'navbar.php'; ?>
 
     <video autoplay muted loop playsinline class="bg-video">
