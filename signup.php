@@ -42,6 +42,10 @@ if (isset($_POST["login"]) && isset($_POST["mdp"])){
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <?php include 'navbar.php'; ?>
+
+    <video autoplay muted loop playsinline class="bg-video">
+        <source src="img/background.mp4" type="video/mp4">
+    </video>
 </body>
 </html>
