@@ -50,13 +50,14 @@ else {
             <div class="login-card">
                 <h1>JOUEUR</h1>
                 <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-                    <div class="form-group"></div>    
-                <label>Définir l'identifiant</label>
-                    <input type="text" name="login" required placeholder="identifiant">
-
-                    <label>Définir code de sécurité</label>
-                    <input type="password" name="mdp" required placeholder="••••••••">
-
+                    <div class="form-group">   
+                        <label>Définir l'identifiant</label>
+                        <input type="text" name="login" required placeholder="identifiant">
+                    </div>
+                    <div class="form-group">
+                        <label>Définir code de sécurité</label>
+                        <input type="password" name="mdp" required placeholder="••••••••">
+                    </div>
                     <button type="submit">INSCRIPTION</button>
 
                 </form>
