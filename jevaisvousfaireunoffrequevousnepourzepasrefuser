@@ -1,0 +1,20 @@
+REPARTITION DES TACHES info204
+projet : jeu dans une page web avec compteur de score, etditeur de niveau, partie préporenetion, bases de donénes multiples avec ecange avec la page.
+systreme de login joueur et admin qui peut gerer pour verif les donées. Les jouers peuvent suinscrire avec le form de conexion
+soit on est co et on est createur verfiée, soit pas de compte et on peut juste jouer. tu peut avoir un coompte et ne pas etre certifié.
+Un big  CRUD qui fait tout, on a au moins 3 tables users, niveaux dans un JSON (?????)
+
+HUGO(fedora) :
+
+
+MAXIME(arch) :
+
+
+KILIAN (windows) :
+terminer le moteur
+exposer les variables
+adapter a la page web
+
+
+
+ethan(windows) :

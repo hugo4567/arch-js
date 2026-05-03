@@ -1,0 +1,1033 @@
+{
+  "Name": "Nouveau Niveau",
+  "Gravity": 20,
+  "GameObjects": [
+    {
+      "Name": "Coin_1",
+      "Transform": {
+        "X": 550,
+        "Y": 150,
+        "W": 50,
+        "H": 50
+      },
+      "Components": [
+        {
+          "Type": "COG_Collider",
+          "IsSolid": false,
+          "IsTrigger": true,
+          "BodyType": "Static"
+        },
+        {
+          "Type": "COG_CoinBehavior"
+        },
+        {
+          "Type": "COG_Sprite",
+          "TexturePath": "atlas.png",
+          "LayerDepth": 0.4,
+          "AtlasOffset": [
+            0,
+            0.25
+          ],
+          "AtlasSize": [
+            0.125,
+            0.125
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "CamZone_2",
+      "Transform": {
+        "X": 200,
+        "Y": 200,
+        "W": 800,
+        "H": 600
+      },
+      "Components": [
+        {
+          "Type": "COG_Collider",
+          "IsSolid": false,
+          "IsTrigger": true,
+          "BodyType": "Static"
+        },
+        {
+          "Type": "COG_CameraZone"
+        }
+      ]
+    },
+    {
+      "Name": "IceSlopeLeft_3",
+      "Transform": {
+        "X": 600,
+        "Y": 200,
+        "W": 50,
+        "H": 50
+      },
+      "Components": [
+        {
+          "Type": "COG_Collider",
+          "IsSolid": true,
+          "Friction": 0,
+          "Restitution": 0,
+          "BodyType": "Static",
+          "Shape": "SlopeLeft"
+        },
+        {
+          "Type": "COG_Sprite",
+          "TexturePath": "atlas.png",
+          "LayerDepth": 0.6,
+          "MatType": "Simple",
+          "TextureBaseSize": 50,
+          "AtlasOffset": [
+            0.375,
+            0.125
+          ],
+          "AtlasSize": [
+            0.125,
+            0.125
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "IceSlopeLeft_4",
+      "Transform": {
+        "X": 650,
+        "Y": 250,
+        "W": 50,
+        "H": 50
+      },
+      "Components": [
+        {
+          "Type": "COG_Collider",
+          "IsSolid": true,
+          "Friction": 0,
+          "Restitution": 0,
+          "BodyType": "Static",
+          "Shape": "SlopeLeft"
+        },
+        {
+          "Type": "COG_Sprite",
+          "TexturePath": "atlas.png",
+          "LayerDepth": 0.6,
+          "MatType": "Simple",
+          "TextureBaseSize": 50,
+          "AtlasOffset": [
+            0.375,
+            0.125
+          ],
+          "AtlasSize": [
+            0.125,
+            0.125
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "IceSlopeLeft_5",
+      "Transform": {
+        "X": 700,
+        "Y": 300,
+        "W": 50,
+        "H": 50
+      },
+      "Components": [
+        {
+          "Type": "COG_Collider",
+          "IsSolid": true,
+          "Friction": 0,
+          "Restitution": 0,
+          "BodyType": "Static",
+          "Shape": "SlopeLeft"
+        },
+        {
+          "Type": "COG_Sprite",
+          "TexturePath": "atlas.png",
+          "LayerDepth": 0.6,
+          "MatType": "Simple",
+          "TextureBaseSize": 50,
+          "AtlasOffset": [
+            0.375,
+            0.125
+          ],
+          "AtlasSize": [
+            0.125,
+            0.125
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "IceSlopeRight_6",
+      "Transform": {
+        "X": 400,
+        "Y": 350,
+        "W": 50,
+        "H": 50
+      },
+      "Components": [
+        {
+          "Type": "COG_Collider",
+          "IsSolid": true,
+          "Friction": 0,
+          "Restitution": 0,
+          "BodyType": "Static",
+          "Shape": "SlopeRight"
+        },
+        {
+          "Type": "COG_Sprite",
+          "TexturePath": "atlas.png",
+          "LayerDepth": 0.6,
+          "MatType": "Simple",
+          "TextureBaseSize": 50,
+          "AtlasOffset": [
+            0.25,
+            0.125
+          ],
+          "AtlasSize": [
+            0.125,
+            0.125
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "IceSlopeLeft_7",
+      "Transform": {
+        "X": 450,
+        "Y": 350,
+        "W": 50,
+        "H": 50
+      },
+      "Components": [
+        {
+          "Type": "COG_Collider",
+          "IsSolid": true,
+          "Friction": 0,
+          "Restitution": 0,
+          "BodyType": "Static",
+          "Shape": "SlopeLeft"
+        },
+        {
+          "Type": "COG_Sprite",
+          "TexturePath": "atlas.png",
+          "LayerDepth": 0.6,
+          "MatType": "Simple",
+          "TextureBaseSize": 50,
+          "AtlasOffset": [
+            0.375,
+            0.125
+          ],
+          "AtlasSize": [
+            0.125,
+            0.125
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "IceSlopeRight_8",
+      "Transform": {
+        "X": 700,
+        "Y": 350,
+        "W": 50,
+        "H": 50
+      },
+      "Components": [
+        {
+          "Type": "COG_Collider",
+          "IsSolid": true,
+          "Friction": 0,
+          "Restitution": 0,
+          "BodyType": "Static",
+          "Shape": "SlopeRight"
+        },
+        {
+          "Type": "COG_Sprite",
+          "TexturePath": "atlas.png",
+          "LayerDepth": 0.6,
+          "MatType": "Simple",
+          "TextureBaseSize": 50,
+          "AtlasOffset": [
+            0.25,
+            0.125
+          ],
+          "AtlasSize": [
+            0.125,
+            0.125
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "LevelEnd_9",
+      "Transform": {
+        "X": 800,
+        "Y": 350,
+        "W": 100,
+        "H": 100
+      },
+      "Components": [
+        {
+          "Type": "COG_Collider",
+          "IsSolid": false,
+          "IsTrigger": true,
+          "BodyType": "Static"
+        },
+        {
+          "Type": "COG_LevelEndTrigger"
+        }
+      ]
+    },
+    {
+      "Name": "IceSlopeRight_10",
+      "Transform": {
+        "X": 350,
+        "Y": 400,
+        "W": 50,
+        "H": 50
+      },
+      "Components": [
+        {
+          "Type": "COG_Collider",
+          "IsSolid": true,
+          "Friction": 0,
+          "Restitution": 0,
+          "BodyType": "Static",
+          "Shape": "SlopeRight"
+        },
+        {
+          "Type": "COG_Sprite",
+          "TexturePath": "atlas.png",
+          "LayerDepth": 0.6,
+          "MatType": "Simple",
+          "TextureBaseSize": 50,
+          "AtlasOffset": [
+            0.25,
+            0.125
+          ],
+          "AtlasSize": [
+            0.125,
+            0.125
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "IceSlopeLeft_11",
+      "Transform": {
+        "X": 500,
+        "Y": 400,
+        "W": 50,
+        "H": 50
+      },
+      "Components": [
+        {
+          "Type": "COG_Collider",
+          "IsSolid": true,
+          "Friction": 0,
+          "Restitution": 0,
+          "BodyType": "Static",
+          "Shape": "SlopeLeft"
+        },
+        {
+          "Type": "COG_Sprite",
+          "TexturePath": "atlas.png",
+          "LayerDepth": 0.6,
+          "MatType": "Simple",
+          "TextureBaseSize": 50,
+          "AtlasOffset": [
+            0.375,
+            0.125
+          ],
+          "AtlasSize": [
+            0.125,
+            0.125
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "Player",
+      "Transform": {
+        "X": 550,
+        "Y": 400,
+        "W": 50,
+        "H": 50
+      },
+      "Components": [
+        {
+          "Type": "COG_PlayerController",
+          "Speed": 8,
+          "JumpImpulse": 15
+        },
+        {
+          "Type": "COG_Collider",
+          "IsSolid": true,
+          "Friction": 0,
+          "BodyType": "Dynamic",
+          "Shape": "PlayerBox"
+        },
+        {
+          "Type": "COG_RopeClimber"
+        },
+        {
+          "Type": "COG_Sprite",
+          "TexturePath": "atlas.png",
+          "LayerDepth": 0.5,
+          "AtlasOffset": [
+            0.5,
+            0
+          ],
+          "AtlasSize": [
+            0.125,
+            0.125
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "IceSlopeRight_13",
+      "Transform": {
+        "X": 650,
+        "Y": 400,
+        "W": 50,
+        "H": 50
+      },
+      "Components": [
+        {
+          "Type": "COG_Collider",
+          "IsSolid": true,
+          "Friction": 0,
+          "Restitution": 0,
+          "BodyType": "Static",
+          "Shape": "SlopeRight"
+        },
+        {
+          "Type": "COG_Sprite",
+          "TexturePath": "atlas.png",
+          "LayerDepth": 0.6,
+          "MatType": "Simple",
+          "TextureBaseSize": 50,
+          "AtlasOffset": [
+            0.25,
+            0.125
+          ],
+          "AtlasSize": [
+            0.125,
+            0.125
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "IceSlopeRight_14",
+      "Transform": {
+        "X": 300,
+        "Y": 450,
+        "W": 50,
+        "H": 50
+      },
+      "Components": [
+        {
+          "Type": "COG_Collider",
+          "IsSolid": true,
+          "Friction": 0,
+          "Restitution": 0,
+          "BodyType": "Static",
+          "Shape": "SlopeRight"
+        },
+        {
+          "Type": "COG_Sprite",
+          "TexturePath": "atlas.png",
+          "LayerDepth": 0.6,
+          "MatType": "Simple",
+          "TextureBaseSize": 50,
+          "AtlasOffset": [
+            0.25,
+            0.125
+          ],
+          "AtlasSize": [
+            0.125,
+            0.125
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "IceSlopeLeft_15",
+      "Transform": {
+        "X": 550,
+        "Y": 450,
+        "W": 50,
+        "H": 50
+      },
+      "Components": [
+        {
+          "Type": "COG_Collider",
+          "IsSolid": true,
+          "Friction": 0,
+          "Restitution": 0,
+          "BodyType": "Static",
+          "Shape": "SlopeLeft"
+        },
+        {
+          "Type": "COG_Sprite",
+          "TexturePath": "atlas.png",
+          "LayerDepth": 0.6,
+          "MatType": "Simple",
+          "TextureBaseSize": 50,
+          "AtlasOffset": [
+            0.375,
+            0.125
+          ],
+          "AtlasSize": [
+            0.125,
+            0.125
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "IceSlopeRight_16",
+      "Transform": {
+        "X": 600,
+        "Y": 450,
+        "W": 50,
+        "H": 50
+      },
+      "Components": [
+        {
+          "Type": "COG_Collider",
+          "IsSolid": true,
+          "Friction": 0,
+          "Restitution": 0,
+          "BodyType": "Static",
+          "Shape": "SlopeRight"
+        },
+        {
+          "Type": "COG_Sprite",
+          "TexturePath": "atlas.png",
+          "LayerDepth": 0.6,
+          "MatType": "Simple",
+          "TextureBaseSize": 50,
+          "AtlasOffset": [
+            0.25,
+            0.125
+          ],
+          "AtlasSize": [
+            0.125,
+            0.125
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "Coin_17",
+      "Transform": {
+        "X": 900,
+        "Y": 450,
+        "W": 50,
+        "H": 50
+      },
+      "Components": [
+        {
+          "Type": "COG_Collider",
+          "IsSolid": false,
+          "IsTrigger": true,
+          "BodyType": "Static"
+        },
+        {
+          "Type": "COG_CoinBehavior"
+        },
+        {
+          "Type": "COG_Sprite",
+          "TexturePath": "atlas.png",
+          "LayerDepth": 0.4,
+          "AtlasOffset": [
+            0,
+            0.25
+          ],
+          "AtlasSize": [
+            0.125,
+            0.125
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "Coin_18",
+      "Transform": {
+        "X": 250,
+        "Y": 500,
+        "W": 50,
+        "H": 50
+      },
+      "Components": [
+        {
+          "Type": "COG_Collider",
+          "IsSolid": false,
+          "IsTrigger": true,
+          "BodyType": "Static"
+        },
+        {
+          "Type": "COG_CoinBehavior"
+        },
+        {
+          "Type": "COG_Sprite",
+          "TexturePath": "atlas.png",
+          "LayerDepth": 0.4,
+          "AtlasOffset": [
+            0,
+            0.25
+          ],
+          "AtlasSize": [
+            0.125,
+            0.125
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "IceSlopeRight_19",
+      "Transform": {
+        "X": 550,
+        "Y": 500,
+        "W": 50,
+        "H": 50
+      },
+      "Components": [
+        {
+          "Type": "COG_Collider",
+          "IsSolid": true,
+          "Friction": 0,
+          "Restitution": 0,
+          "BodyType": "Static",
+          "Shape": "SlopeRight"
+        },
+        {
+          "Type": "COG_Sprite",
+          "TexturePath": "atlas.png",
+          "LayerDepth": 0.6,
+          "MatType": "Simple",
+          "TextureBaseSize": 50,
+          "AtlasOffset": [
+            0.25,
+            0.125
+          ],
+          "AtlasSize": [
+            0.125,
+            0.125
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "IceSlopeLeft_20",
+      "Transform": {
+        "X": 600,
+        "Y": 500,
+        "W": 50,
+        "H": 50
+      },
+      "Components": [
+        {
+          "Type": "COG_Collider",
+          "IsSolid": true,
+          "Friction": 0,
+          "Restitution": 0,
+          "BodyType": "Static",
+          "Shape": "SlopeLeft"
+        },
+        {
+          "Type": "COG_Sprite",
+          "TexturePath": "atlas.png",
+          "LayerDepth": 0.6,
+          "MatType": "Simple",
+          "TextureBaseSize": 50,
+          "AtlasOffset": [
+            0.375,
+            0.125
+          ],
+          "AtlasSize": [
+            0.125,
+            0.125
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "IceSlopeRight_21",
+      "Transform": {
+        "X": 850,
+        "Y": 500,
+        "W": 50,
+        "H": 50
+      },
+      "Components": [
+        {
+          "Type": "COG_Collider",
+          "IsSolid": true,
+          "Friction": 0,
+          "Restitution": 0,
+          "BodyType": "Static",
+          "Shape": "SlopeRight"
+        },
+        {
+          "Type": "COG_Sprite",
+          "TexturePath": "atlas.png",
+          "LayerDepth": 0.6,
+          "MatType": "Simple",
+          "TextureBaseSize": 50,
+          "AtlasOffset": [
+            0.25,
+            0.125
+          ],
+          "AtlasSize": [
+            0.125,
+            0.125
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "IceSlopeRight_22",
+      "Transform": {
+        "X": 500,
+        "Y": 550,
+        "W": 50,
+        "H": 50
+      },
+      "Components": [
+        {
+          "Type": "COG_Collider",
+          "IsSolid": true,
+          "Friction": 0,
+          "Restitution": 0,
+          "BodyType": "Static",
+          "Shape": "SlopeRight"
+        },
+        {
+          "Type": "COG_Sprite",
+          "TexturePath": "atlas.png",
+          "LayerDepth": 0.6,
+          "MatType": "Simple",
+          "TextureBaseSize": 50,
+          "AtlasOffset": [
+            0.25,
+            0.125
+          ],
+          "AtlasSize": [
+            0.125,
+            0.125
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "IceSlopeLeft_23",
+      "Transform": {
+        "X": 650,
+        "Y": 550,
+        "W": 50,
+        "H": 50
+      },
+      "Components": [
+        {
+          "Type": "COG_Collider",
+          "IsSolid": true,
+          "Friction": 0,
+          "Restitution": 0,
+          "BodyType": "Static",
+          "Shape": "SlopeLeft"
+        },
+        {
+          "Type": "COG_Sprite",
+          "TexturePath": "atlas.png",
+          "LayerDepth": 0.6,
+          "MatType": "Simple",
+          "TextureBaseSize": 50,
+          "AtlasOffset": [
+            0.375,
+            0.125
+          ],
+          "AtlasSize": [
+            0.125,
+            0.125
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "IceSlopeRight_24",
+      "Transform": {
+        "X": 800,
+        "Y": 550,
+        "W": 50,
+        "H": 50
+      },
+      "Components": [
+        {
+          "Type": "COG_Collider",
+          "IsSolid": true,
+          "Friction": 0,
+          "Restitution": 0,
+          "BodyType": "Static",
+          "Shape": "SlopeRight"
+        },
+        {
+          "Type": "COG_Sprite",
+          "TexturePath": "atlas.png",
+          "LayerDepth": 0.6,
+          "MatType": "Simple",
+          "TextureBaseSize": 50,
+          "AtlasOffset": [
+            0.25,
+            0.125
+          ],
+          "AtlasSize": [
+            0.125,
+            0.125
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "IceSlopeRight_25",
+      "Transform": {
+        "X": 450,
+        "Y": 600,
+        "W": 50,
+        "H": 50
+      },
+      "Components": [
+        {
+          "Type": "COG_Collider",
+          "IsSolid": true,
+          "Friction": 0,
+          "Restitution": 0,
+          "BodyType": "Static",
+          "Shape": "SlopeRight"
+        },
+        {
+          "Type": "COG_Sprite",
+          "TexturePath": "atlas.png",
+          "LayerDepth": 0.6,
+          "MatType": "Simple",
+          "TextureBaseSize": 50,
+          "AtlasOffset": [
+            0.25,
+            0.125
+          ],
+          "AtlasSize": [
+            0.125,
+            0.125
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "IceSlopeLeft_26",
+      "Transform": {
+        "X": 700,
+        "Y": 600,
+        "W": 50,
+        "H": 50
+      },
+      "Components": [
+        {
+          "Type": "COG_Collider",
+          "IsSolid": true,
+          "Friction": 0,
+          "Restitution": 0,
+          "BodyType": "Static",
+          "Shape": "SlopeLeft"
+        },
+        {
+          "Type": "COG_Sprite",
+          "TexturePath": "atlas.png",
+          "LayerDepth": 0.6,
+          "MatType": "Simple",
+          "TextureBaseSize": 50,
+          "AtlasOffset": [
+            0.375,
+            0.125
+          ],
+          "AtlasSize": [
+            0.125,
+            0.125
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "IceSlopeRight_27",
+      "Transform": {
+        "X": 750,
+        "Y": 600,
+        "W": 50,
+        "H": 50
+      },
+      "Components": [
+        {
+          "Type": "COG_Collider",
+          "IsSolid": true,
+          "Friction": 0,
+          "Restitution": 0,
+          "BodyType": "Static",
+          "Shape": "SlopeRight"
+        },
+        {
+          "Type": "COG_Sprite",
+          "TexturePath": "atlas.png",
+          "LayerDepth": 0.6,
+          "MatType": "Simple",
+          "TextureBaseSize": 50,
+          "AtlasOffset": [
+            0.25,
+            0.125
+          ],
+          "AtlasSize": [
+            0.125,
+            0.125
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "IceSlopeLeft_28",
+      "Transform": {
+        "X": 450,
+        "Y": 650,
+        "W": 50,
+        "H": 50
+      },
+      "Components": [
+        {
+          "Type": "COG_Collider",
+          "IsSolid": true,
+          "Friction": 0,
+          "Restitution": 0,
+          "BodyType": "Static",
+          "Shape": "SlopeLeft"
+        },
+        {
+          "Type": "COG_Sprite",
+          "TexturePath": "atlas.png",
+          "LayerDepth": 0.6,
+          "MatType": "Simple",
+          "TextureBaseSize": 50,
+          "AtlasOffset": [
+            0.375,
+            0.125
+          ],
+          "AtlasSize": [
+            0.125,
+            0.125
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "IceSlopeLeft_29",
+      "Transform": {
+        "X": 500,
+        "Y": 700,
+        "W": 50,
+        "H": 50
+      },
+      "Components": [
+        {
+          "Type": "COG_Collider",
+          "IsSolid": true,
+          "Friction": 0,
+          "Restitution": 0,
+          "BodyType": "Static",
+          "Shape": "SlopeLeft"
+        },
+        {
+          "Type": "COG_Sprite",
+          "TexturePath": "atlas.png",
+          "LayerDepth": 0.6,
+          "MatType": "Simple",
+          "TextureBaseSize": 50,
+          "AtlasOffset": [
+            0.375,
+            0.125
+          ],
+          "AtlasSize": [
+            0.125,
+            0.125
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "IceSlopeLeft_30",
+      "Transform": {
+        "X": 550,
+        "Y": 750,
+        "W": 50,
+        "H": 50
+      },
+      "Components": [
+        {
+          "Type": "COG_Collider",
+          "IsSolid": true,
+          "Friction": 0,
+          "Restitution": 0,
+          "BodyType": "Static",
+          "Shape": "SlopeLeft"
+        },
+        {
+          "Type": "COG_Sprite",
+          "TexturePath": "atlas.png",
+          "LayerDepth": 0.6,
+          "MatType": "Simple",
+          "TextureBaseSize": 50,
+          "AtlasOffset": [
+            0.375,
+            0.125
+          ],
+          "AtlasSize": [
+            0.125,
+            0.125
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "Coin_31",
+      "Transform": {
+        "X": 600,
+        "Y": 800,
+        "W": 50,
+        "H": 50
+      },
+      "Components": [
+        {
+          "Type": "COG_Collider",
+          "IsSolid": false,
+          "IsTrigger": true,
+          "BodyType": "Static"
+        },
+        {
+          "Type": "COG_CoinBehavior"
+        },
+        {
+          "Type": "COG_Sprite",
+          "TexturePath": "atlas.png",
+          "LayerDepth": 0.4,
+          "AtlasOffset": [
+            0,
+            0.25
+          ],
+          "AtlasSize": [
+            0.125,
+            0.125
+          ]
+        }
+      ]
+    }
+  ]
+}

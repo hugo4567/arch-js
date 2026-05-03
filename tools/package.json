@@ -1,0 +1,12 @@
+{
+  "name": "thumbnail-generator",
+  "version": "1.0.0",
+  "description": "Generate level thumbnails using Puppeteer",
+  "main": "generate_thumbnails.js",
+  "scripts": {
+    "thumbs": "node generate_thumbnails.js"
+  },
+  "dependencies": {
+    "puppeteer": "^20.0.0"
+  }
+}
