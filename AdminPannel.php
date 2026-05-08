@@ -13,7 +13,7 @@ if(!isset($_SESSION["admin"]))
 }
 
 // On détermine quelle action l'utilisateur veut effectuer. 
-$action = isset($_GET['action']) ? $_GET['action'] : 'list';
+$action = isset($_GET['actionn']) ? $_GET['action'] : 'list';
 
 switch ($action) {
         case 'add':
