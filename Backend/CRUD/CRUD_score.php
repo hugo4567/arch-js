@@ -1,7 +1,7 @@
 <?php
 
-function create_score($conn, $enregistrement, $user_id, $score, $level_id){
-    $sql = "INSERT INTO scores (enregistrement, user_id, score, level_id) VALUES ('$enregistrement', $user_id, $score, $level_id)";
+function create_score($conn, $user_id, $score, $level_id){
+    $sql = "INSERT INTO scores (user_id, score, level_id) VALUES ($user_id, $score, $level_id)";
     $squery = mysqli_query($conn, $sql);
     return $squery;
 }
@@ -28,8 +28,12 @@ function get_all_scores_with_details($conn){
                 JOIN users AS u ON s.user_id = u.id_user
                 JOIN levels AS l ON s.level_id = l.id
                 ORDER BY s.score DESC, u.login ASC ";
-    $squery = mysqli_query($conn, $sql) or die(mysqli_error($conn)); 
-    $result = []; 
+    $squery = mysqli_query($conn, $sql);
+    if (!$squery) {
+        error_log("SQL error in get_all_scores_with_details: " . mysqli_error($conn) . " -- Query: " . $sql);// on utilise error_log pour ne pas afficher l'erreur à l'utilisateur mais la logger dans les logs du serveur
+        return false;
+    }
+    $result = [];
     while ($row = mysqli_fetch_assoc($squery)) $result[] = $row;
     return $result;
 
@@ -42,8 +46,12 @@ function get_total_scores_by_level($conn){
             JOIN levels AS l ON s.level_id = l.id
             GROUP BY l.name
             ORDER BY total_score DESC";
-    $squery = mysqli_query($conn, $sql) or die(mysqli_error($conn)); 
-    $result = []; 
+    $squery = mysqli_query($conn, $sql);
+    if (!$squery) {
+        error_log("SQL error in get_total_scores_by_level: " . mysqli_error($conn) . " -- Query: " . $sql);
+        return false;
+    }
+    $result = [];
     while ($row = mysqli_fetch_assoc($squery)) $result[] = $row;
     return $result;
 }
@@ -55,8 +63,12 @@ function get_total_scores_by_player($conn){
             JOIN users AS u ON s.user_id = u.id_user
             GROUP BY u.login
             ORDER BY total_score DESC";
-    $squery = mysqli_query($conn, $sql) or die(mysqli_error($conn)); 
-    $result = []; 
+    $squery = mysqli_query($conn, $sql);
+    if (!$squery) {
+        error_log("SQL error in get_total_scores_by_player: " . mysqli_error($conn) . " -- Query: " . $sql);
+        return false;
+    }
+    $result = [];
     while ($row = mysqli_fetch_assoc($squery)) $result[] = $row;
     return $result;
 }

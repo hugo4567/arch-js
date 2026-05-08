@@ -67,10 +67,6 @@ error_reporting(E_ALL);
                 <a href="./scoreboards.php">WELCOME</a>
             </form>
         </div>
-        <div class="tab">
-          <h3> oui </h3>
-          <a href="./gestion serv ext/tinyfilemanager.php"> FICHIERS </a>
-        </div>
 
     </section>
     
@@ -148,7 +144,7 @@ error_reporting(E_ALL);
   function jouerPopEtTrembler() {
     // 1. On joue le son
     let sfx = sfxPop.cloneNode();
-    sfx.volume = 0.7;
+    sfx.volume = 0.03;
     sfx.play(); 
     
     // 2. On fait trembler la page en même temps

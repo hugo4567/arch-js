@@ -1,0 +1,52 @@
+# Backup du snippet JS (GamePage_old.php)
+# Chemin source: GamePage_old.php
+# Date: 2026-04-29
+
+/*
+window.addEventListener('message', (event) => {
+    if (event.origin !== "https://ex-a01.github.io") return; 
+
+    if (event.data && event.data.type === 'GAME_READY') {
+        console.log("Le jeu est prêt ! Tu peux cliquer sur le bouton.");
+        jeuPret = true;
+    }
+
+    if (event.data && event.data.type === 'LEVEL_FINISHED') {
+        const totalCoins = event.data.coins;
+        console.log("Message reçu du jeu : Niveau terminé avec", totalCoins, "pièces !");
+        alert(`Bravo ! Tu as terminé le niveau en récoltant ${totalCoins} pièces !`);
+
+        fetch("Backend/Score/sauvegarder_score.php", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: 'coins=' + encodeURIComponent(totalCoins)
+            //p:'levelid=' + get_level_by_name($nom_propre)
+        })
+        .then(response => {
+            // verif si json
+            const contentType = response.headers.get("content-type");
+            
+            if (response.ok && contentType && contentType.includes("application/json")) {
+                return response.json();
+            }
+            
+            // si pas json
+            return response.text().then(text => {
+                throw new Error(`Réponse non-JSON reçue : ${text}`);
+            });
+        })
+        .then(data => {
+            // si json
+            console.log("Score sauvegardé avec succès :", data);
+        })
+        .catch(error => {
+
+            console.error("Détails de l'erreur :");
+            console.error(error.message);
+            console.warn("Vérifie ton fichier PHP : chemin correct ? Erreurs PHP affichées dans le texte ?");
+        });
+    }
+});
+*/

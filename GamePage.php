@@ -2,6 +2,7 @@
 session_start();
 require_once __DIR__ . "/Backend/DB/db_connect.php";
 require_once __DIR__ . "/Backend/CRUD/user.crud.php";
+require_once __DIR__ . "/Backend/CRUD/levels.crud.php";
 
 $user_levels = []; 
 $is_logged_in = isset($_SESSION['id_user']);
@@ -46,7 +47,7 @@ if ($is_logged_in) {
     button { 
         /* Couleurs & Fond */
         background: #31005f; 
-        color: #FFFFFF !important; /* <--- CHANGE CETTE LIGNE PAR #FFFFFF */
+        color: #FFFFFF !important; 
         border: 1px solid #5a189a;
         
         padding: 15px; 
@@ -71,7 +72,6 @@ if ($is_logged_in) {
         border-color: #c77dff;
         box-shadow: 0 0 10px rgba(199, 125, 255, 0.2);
         color: #ffffff;
-        transform: rotate(360deg) translateX(20px) skew(30deg, 20deg);
         
     }
 
@@ -91,7 +91,7 @@ if ($is_logged_in) {
     <?php include 'navbar.php'; ?>
     <div id="main-content">
         <div id="menu">
-            <h2>Mes Niveaux fahhctionelles</h2>
+            <h2>Mes Niveaux</h2>
             
             <?php if ($is_logged_in): ?>
                 <?php if (!empty($user_levels)): ?>
@@ -99,12 +99,15 @@ if ($is_logged_in) {
                     
                     <?php foreach ($user_levels as $filename): ?>
                         <div class="text">
-                            <?php 
+                            <?php
                                 $chemin_complet = "/~grp1/levels/" . htmlspecialchars($filename) . ".json";
                                 $nom_propre = preg_replace('/_[0-9]+$/', '', $filename);
-                            ?>
+                                $_SESSION['nom_propre'] = $nom_propre;
+                                $ret = get_all_levels_by_name($conn, $nom_propre);
+                                $_SESSION['idlevel'] = $ret[0]['id'];
+                                ?>
                         </div>
-                        <button onclick="chargerEtLancerNiveau('<?php echo $chemin_complet; ?>')">
+                        <button class="<?php echo $nom_propre;?>" onclick="chargerEtLancerNiveau('<?php echo $chemin_complet; ?>')">
                             Lancer "<?php echo htmlspecialchars($nom_propre); ?>"
                         </button>
                         <br>
@@ -126,6 +129,20 @@ if ($is_logged_in) {
     <script>
         const gameIframe = document.getElementById('gameIframe');
         let jeuPret = false;
+        let classDernierNiveau = "";
+
+        
+        // On sélectionne tous les boutons de la page
+        document.querySelectorAll('button').forEach(bouton => {
+            bouton.addEventListener('click', function() {
+                
+                // On récupère la classe du bouton cliqué
+                const classeBouton = this.className;
+                classDernierNiveau = classeBouton;
+            });
+        });
+
+
 
         window.addEventListener('message', (event) => {
             if (event.origin !== "https://ex-a01.github.io") return; 
@@ -146,11 +163,12 @@ if ($is_logged_in) {
                         'Content-Type': 'application/x-www-form-urlencoded',
                     },
                     body: 'coins=' + encodeURIComponent(totalCoins)
+                    //p:'levelid=' + get_level_by_name($nom_propre)
                 })
                 .then(response => {
                     // verif si json
                     const contentType = response.headers.get("content-type");
-                    
+                    // reponse.headers est un objet qui contient les en-têtes de la réponse. get("content-type") permet de récupérer la valeur de l'en-tête "Content-Type" qui indique le type de contenu de la réponse (ex: application/json, text/html, etc.)
                     if (response.ok && contentType && contentType.includes("application/json")) {
                         return response.json();
                     }

@@ -28,17 +28,17 @@ session_start();
                 <div class="member-card">
                     <div class="member-avatar">👤</div>
                     <strong>Développeur Lead</strong>
-                    <p>ARCH JS</p>
+                    <p>ARCH JS- 4 MEMBRES</p>
                 </div>
                 <div class="member-card">
                     <div class="member-avatar">🎨</div>
                     <strong>Graphiste / DA</strong>
-                    <p>Salvador Dalí</p>
+                    <p>ETHAN B</p>
                 </div>
                 <div class="member-card">
                     <div class="member-avatar">🎹</div>
                     <strong>Audio Design</strong>
-                    <p>Ludwig van Beethoven</p>
+                    <p>KILLIAN</p>
                 </div>
             </div>
         </section>
@@ -55,7 +55,7 @@ session_start();
                 <span class="contact-icon">💬</span> Rejoindre le Discord
             </a>
 
-            <a href="https://github.com" class="contact-link" style="background: #333; color: white;">
+            <a href="https://github.com/hugo4567/arch-js" class="contact-link" style="background: #333; color: white;">
                 <span class="contact-icon">🐙</span> GitHub du Projet
             </a>
         </section>

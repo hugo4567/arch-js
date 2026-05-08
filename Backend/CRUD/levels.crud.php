@@ -1,7 +1,7 @@
 <?php
 // --- 1. CREATE ---
 function create_level($conn, $name, $type, $id_crea, $level, $nb_play, $note_pos, $note_neg) {
-    // Sécurisation des données
+    // Sécurisation des données (pas tres utlise pour un projet local)
     $name = mysqli_real_escape_string($conn, $name);
     $type = (int)$type;
     $id_crea = (int)$id_crea;
@@ -27,7 +27,6 @@ function create_level($conn, $name, $type, $id_crea, $level, $nb_play, $note_pos
 function get_all_level($conn) {
         $sql = "SELECT * FROM levels ORDER BY id DESC";
             $result = mysqli_query($conn, $sql);
-                
                     $levels = [];
                         if ($result && mysqli_num_rows($result) > 0) {
                                 while ($row = mysqli_fetch_assoc($result)) {
@@ -66,17 +65,17 @@ function get_all_levels_by_name($conn, $name) {
     $sql = "SELECT * FROM levels WHERE name = '$name'";
     $result = mysqli_query($conn, $sql);
     
-    $levels = []; // On prépare un tableau vide
+    $levels = [];
     
     if ($result && mysqli_num_rows($result) > 0) {
         // La boucle va piocher CHAQUE résultat trouvé
         while ($row = mysqli_fetch_assoc($result)) {
-            $levels[] = $row; // On ajoute la ligne au tableau global
+            $levels[] = $row;
         }
     }
     return $levels; // Retourne un tableau contenant les 3 niveaux (ou un tableau vide)
 }
-
+//45 == retourne true ou false selon le succès de la requete
 // --- 4. UPDATE ---
 function update_level($conn, $id, $name, $type, $id_crea, $level, $nb_play, $note_pos, $note_neg) {
     $id = (int)$id;
@@ -92,7 +91,7 @@ function update_level($conn, $id, $name, $type, $id_crea, $level, $nb_play, $not
             SET name='$name', type=$type, id_crea=$id_crea, level=$level, nb_play=$nb_play, note_pos=$note_pos, note_neg=$note_neg 
             WHERE id=$id";
 
-    return mysqli_query($conn, $sql);
+    return mysqli_query($conn, $sql); //45
 }
 
 // --- 5. DELETE ---
@@ -100,7 +99,7 @@ function delete_level($conn, $id) {
     $id = (int)$id;
     $sql = "DELETE FROM levels WHERE id=$id";
     
-    return mysqli_query($conn, $sql);
+    return mysqli_query($conn, $sql); //45
 }
 
 // --- 6. GET LEVEL ID ---
@@ -108,6 +107,6 @@ function get_level_id($conn, $id){
     $id = (int)$id;
     $sql = "SELECT level FROM levels WHERE id=$id";
 
-    return mysqli_query($conn, $sql);
+    return mysqli_query($conn, $sql); //45
 }
 ?>

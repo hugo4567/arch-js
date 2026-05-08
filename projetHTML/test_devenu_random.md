@@ -1,0 +1,95 @@
+<-------------------->PARTIE COMMANDES ET CONSTANTES : <-------------------->
+for i in range(à40)
+
+NOTE MPD groupe 1 (filezilla)
+login : grp1
+mot de passe : Exoo2zoa 
+host l1.dptinfo-usmb.fr
+port 22
+
+
+horaire 8H ON 00h --eteint
+
+FAAAAAAH is not real... it can't hurts you FAAAAAAH
+
+[git du proj]-https://github.com/Ex-A01/ARCH-JS   GITHUB DE LA VERSION DEPLOYEE PAS DU JEU DE MR K
+
+[site]-https://l1.dptinfo-usmb.fr/~grp1/
+
+
+A CHAQUE SEANCE, il y a un nouveau truc qui tourne sur le site
+
+
+*** code ***
+nginx -t
+
+Redémarrez : systemctl restart nginx
+*** PHP ***
+
+CES QUI QUI FAIT DES COMMIT A 20h38 ???./
+C'est le FAAAAAAAAAH
+
+
+
+Someone a des problemes avec la conf ou oklm ????
+COUCOU IMPERIAL KILLER !!!!!
+
+
+zip un dossier avec le terminal :
+zip -r [NOM_DOSSIER].zip [NOM_DOSSIER]/
+
+<------------------->--------------------------->-------------------->
+
+
+
+TOUT CE QUIL Y A AFAIRE A été DEPLACé ICI MEME :
+
+[Repartition tache]-https://docs.google.com/document/d/18-8ev12SeBaD-JHFx1wEziCqG8VKFN-_sg5ofqCcOYQ/edit?pli=1&tab=t.0
+
+
+YA QUI QUI EST CO ? -- HUGO E 
+
+
+POUR TOUT UPPLOAD VERS LE PROF, commande /fahh !
+
+En gros cest plutot par souci d'opti que par vrai coorection de problemes car je sais que au fond, maxime veut saboter le market.php
+
+
+
+
+
+IF YALL NEED IT : 
+
+
+
+
+
+
+
+
+//-------PARTIE DEBUG -------dadadadadadadada
+function _send_json_and_exit($payload, $httpCode = 500) {
+    if (!headers_sent()) {
+        http_response_code($httpCode);
+        header('Content-Type: application/json');
+    }
+    echo json_encode($payload);
+    exit;
+}
+
+register_shutdown_function(function() {
+    $err = error_get_last();
+    if ($err && in_array($err['type'], [E_ERROR, E_PARSE, E_CORE_ERROR, E_COMPILE_ERROR])) {
+        error_log('Fatal error in sauvegarder_score.php: ' . json_encode($err));
+        _send_json_and_exit(["status" => "error", "message" => "Erreur fatale serveur (voir logs)."], 500);
+    }
+});
+
+
+// Vérifier la connexion BDD
+if (!isset($conn) || !$conn) {
+    error_log('sauvegarder_score.php: DB connection missing or failed');
+    echo json_encode(["status" => "error", "message" => "Erreur serveur : pas de connexion BDD."]);
+    exit;
+}
+//-------PARTIE DEBUG -------dadadadadadadadadada

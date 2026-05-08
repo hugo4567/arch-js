@@ -1,6 +1,8 @@
 <?php
+session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+
 
 $db_path = "Backend/DB/db_connect.php"; 
 
@@ -48,21 +50,24 @@ else {
     <div class="login-center">
         <div class="scene">
             <div class="login-card">
-                <h1>JOUEUR</h1>
-                <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-                    <div class="form-group">   
-                        <label>Définir l'identifiant</label>
-                        <input type="text" name="login" required placeholder="identifiant">
-                    </div>
-                    <div class="form-group">
-                        <label>Définir code de sécurité</label>
-                        <input type="password" name="mdp" required placeholder="••••••••">
-                    </div>
-                    <button type="submit">INSCRIPTION</button>
+                <div class="face-joueur-inscr">
+                    <h1>JOUEUR</h1>
+                    <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                        <div class="form-group">   
+                            <label>Définir l'identifiant</label>
+                            <input type="text" name="login" required placeholder="identifiant">
+                        </div>
+                        <div class="form-group">
+                            <label>Définir code de sécurité</label>
+                            <input type="password" name="mdp" required placeholder="••••••••">
+                        </div>
+                        <button type="submit">S'INSCRIRE</button>
 
-                </form>
+                    </form>
+                </div>
         </div>
     </div>
  </div>
+
 </body>
 </html>

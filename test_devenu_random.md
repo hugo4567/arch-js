@@ -53,3 +53,43 @@ YA QUI QUI EST CO ? -- HUGO E
 POUR TOUT UPPLOAD VERS LE PROF, commande /fahh !
 
 En gros cest plutot par souci d'opti que par vrai coorection de problemes car je sais que au fond, maxime veut saboter le market.php
+
+
+
+
+
+IF YALL NEED IT : 
+
+
+
+
+
+
+
+
+//-------PARTIE DEBUG -------dadadadadadadada
+function _send_json_and_exit($payload, $httpCode = 500) {
+    if (!headers_sent()) {
+        http_response_code($httpCode);
+        header('Content-Type: application/json');
+    }
+    echo json_encode($payload);
+    exit;
+}
+
+register_shutdown_function(function() {
+    $err = error_get_last();
+    if ($err && in_array($err['type'], [E_ERROR, E_PARSE, E_CORE_ERROR, E_COMPILE_ERROR])) {
+        error_log('Fatal error in sauvegarder_score.php: ' . json_encode($err));
+        _send_json_and_exit(["status" => "error", "message" => "Erreur fatale serveur (voir logs)."], 500);
+    }
+});
+
+
+// Vérifier la connexion BDD
+if (!isset($conn) || !$conn) {
+    error_log('sauvegarder_score.php: DB connection missing or failed');
+    echo json_encode(["status" => "error", "message" => "Erreur serveur : pas de connexion BDD."]);
+    exit;
+}
+//-------PARTIE DEBUG -------dadadadadadadadadada

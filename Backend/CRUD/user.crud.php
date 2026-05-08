@@ -143,8 +143,7 @@ function select_user_login($conn, $login){
     $sql = "SELECT login, mdp FROM users WHERE login = '$login'";
     $query = mysqli_query($conn, $sql);
     if (!$query){
-        echo "<pre>Erreur SQL : " . mysqli_error($conn) . "</pre>";
-        echo "<pre>Requête tentée : " . $sql . "</pre>";
+        error_log("Erreur SQL (select_user_login): " . mysqli_error($conn) . " -- Query: " . $sql);
         return false;
     }
     $rs = creer_rs($query);
@@ -157,8 +156,7 @@ function get_pieces_user($conn, $id_user){
     $sql = "SELECT pieces FROM users WHERE id_user=$id_user";
     $query = mysqli_query($conn, $sql);
     if (!$query){
-        echo "<pre>Erreur SQL : " . mysqli_error($conn) . "</pre>";
-        echo "<pre>Requête tentée : " . $sql . "</pre>";
+        error_log("Erreur SQL (get_pieces_user): " . mysqli_error($conn) . " -- Query: " . $sql);
         return false;
     }
     $rs = creer_rs($query);
