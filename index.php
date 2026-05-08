@@ -67,6 +67,10 @@ error_reporting(E_ALL);
                 <a href="./scoreboards.php">WELCOME</a>
             </form>
         </div>
+        <div class="tab">
+          <h3> oui </h3>
+          <a href="./gestion serv ext/tinyfilemanager.php"> </a>
+        </div>
 
     </section>
     
