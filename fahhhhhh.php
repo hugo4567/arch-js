@@ -58,7 +58,7 @@
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 function generateRandomText() {
-    $words = ['fahhhhhhhhhh', 'banana', 'cherry', 'dragon', 'elephant', 'forest', 'galaxy', 'horizon', 'island', 'jungle'];
+    $words = ['fahhhhhhhhhh', 'zaza', 'cherry', 'dragon', 'elephant', 'forest', 'galaxy', 'horizon', 'island', 'jungle'];
     $randomWords = array_rand($words, min(3, rand(3, 5)));
     $text = [];
     foreach ((array)$randomWords as $index) {
