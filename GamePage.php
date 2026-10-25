@@ -123,7 +123,7 @@ if ($is_logged_in) {
         </div>
 
         <div id="game-container">
-        <iframe id="gameIframe" src="https://ex-a01.github.io/ARCH-JS/"></iframe>
+        <iframe id="gameIframe" src="/ARCH-JS/"></iframe>
         </div>
     </div>
     <script>
@@ -145,7 +145,7 @@ if ($is_logged_in) {
 
 
         window.addEventListener('message', (event) => {
-            if (event.origin !== "https://ex-a01.github.io") return; 
+            if (event.source !== gameIframe.contentWindow) return;
 
             if (event.data && event.data.type === 'GAME_READY') {
                 console.log("Le jeu est prêt ! Tu peux cliquer sur le bouton.");
@@ -205,7 +205,7 @@ if ($is_logged_in) {
                 gameIframe.contentWindow.postMessage({
                     type: 'LOAD_LEVEL',
                     data: jsonText
-                }, "https://ex-a01.github.io"); 
+                }, window.location.origin); 
 
             } catch (error) {
                 console.error("Erreur :", error);
