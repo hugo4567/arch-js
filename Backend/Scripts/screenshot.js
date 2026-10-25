@@ -4,11 +4,23 @@ const fs = require("fs");
 const path = require("path");
 const os = require("os");
 
+const browserCandidates = [
+    process.env.PUPPETEER_EXECUTABLE_PATH,
+    "/var/www/dev-project/tools/chromium/linux-1632269/chrome-linux/chrome",
+    "/home/hugo4/.cache/puppeteer/chrome/linux-115.0.5790.98/chrome-linux64/chrome"
+].filter(Boolean);
+const executablePath = browserCandidates.find(candidate => fs.existsSync(candidate));
+
 async function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 async function generateScreenshot(levelId) {
+    if (!executablePath) {
+        console.error("Chromium executable not found");
+        process.exit(1);
+    }
+
     const jsonPath = path.join(__dirname, "../../levels", `${levelId}.json`);
     const outputPath = path.join(__dirname, "../../levels", `${levelId}.png`);
     
@@ -43,7 +55,7 @@ async function generateScreenshot(levelId) {
     try {
         browser = await puppeteer.launch({
             headless: "new",
-            executablePath: "/var/www/dev-project/tools/chromium/linux-1632269/chrome-linux/chrome",
+            executablePath,
             args: [
                 "--no-sandbox",
                 "--disable-setuid-sandbox",
