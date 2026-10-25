@@ -93,3 +93,6 @@ if (!isset($conn) || !$conn) {
     exit;
 }
 //-------PARTIE DEBUG -------dadadadadadadadadada
+
+
+J'ai pas mal de json qui sont pas linkés au slecteurs dans la gamepage, ils sont ou ??
