@@ -6,6 +6,10 @@ require_once __DIR__ . "/Backend/CRUD/levels.crud.php";
 
 $user_levels = []; 
 $is_logged_in = isset($_SESSION['id_user']);
+$available_levels = array_map(
+    static fn($path) => basename($path, '.json'),
+    glob(__DIR__ . '/levels/*.json') ?: []
+);
 
 if ($is_logged_in) {
     $user = get_user_by_id($conn, $_SESSION['id_user']);
@@ -17,6 +21,8 @@ if ($is_logged_in) {
     header('Location: login.php');
     exit; 
 }
+
+$selector_levels = $available_levels;
 ?>
 
 <!DOCTYPE html>
@@ -91,24 +97,28 @@ if ($is_logged_in) {
     <?php include 'navbar.php'; ?>
     <div id="main-content">
         <div id="menu">
-            <h2>Mes Niveaux</h2>
+            <h2>Niveaux disponibles</h2>
             
             <?php if ($is_logged_in): ?>
-                <?php if (!empty($user_levels)): ?>
+                <?php if (!empty($selector_levels)): ?>
                     <p>Choisis un niveau à lancer :</p>
                     
-                    <?php foreach ($user_levels as $filename): ?>
+                    <?php foreach ($selector_levels as $filename): ?>
                         <div class="text">
                             <?php
-                                $chemin_complet = "/~grp1/levels/" . htmlspecialchars($filename) . ".json";
+                                $chemin_complet = "/levels/" . rawurlencode($filename) . ".json";
                                 $nom_propre = preg_replace('/_[0-9]+$/', '', $filename);
                                 $_SESSION['nom_propre'] = $nom_propre;
                                 $ret = get_all_levels_by_name($conn, $nom_propre);
-                                $_SESSION['idlevel'] = $ret[0]['id'];
-                                ?>
+                                if (!empty($ret)) {
+                                    $_SESSION['idlevel'] = $ret[0]['id'];
+                                }
+                                $nom_affiche = htmlspecialchars($nom_propre, ENT_QUOTES, 'UTF-8');
+                                $chemin_js = htmlspecialchars(json_encode($chemin_complet), ENT_QUOTES, 'UTF-8');
+                            ?>
                         </div>
-                        <button class="<?php echo $nom_propre;?>" onclick="chargerEtLancerNiveau('<?php echo $chemin_complet; ?>')">
-                            Lancer "<?php echo htmlspecialchars($nom_propre); ?>"
+                        <button class="<?php echo $nom_affiche; ?>" onclick="chargerEtLancerNiveau(<?php echo $chemin_js; ?>)">
+                            Lancer "<?php echo $nom_affiche; ?>"
                         </button>
                         <br>
                     <?php endforeach; ?>
