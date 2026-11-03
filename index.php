@@ -174,6 +174,45 @@ error_reporting(E_ALL);
 
 </main> 
 
+  <section id="thumbnail-manager" style="max-width: 720px; margin: 24px auto; padding: 18px; background: rgba(0, 0, 0, 0.72); color: #fff; border: 1px solid rgba(255, 255, 255, 0.25);">
+    <h2>Miniatures des niveaux</h2>
+    <button type="button" id="generateAllBtn">Générer toutes les miniatures</button>
+    <p id="thumbnailStatus" aria-live="polite"></p>
+  </section>
+
+  <script>
+    const generateAllBtn = document.getElementById('generateAllBtn');
+    const thumbnailStatus = document.getElementById('thumbnailStatus');
+
+    generateAllBtn.addEventListener('click', async () => {
+      generateAllBtn.disabled = true;
+      try {
+        const levelsResponse = await fetch('Backend/API/get_levels_list.php');
+        if (!levelsResponse.ok) throw new Error('Impossible de lire la liste des niveaux.');
+        const levels = await levelsResponse.json();
+        let completed = 0;
+
+        for (const level of levels) {
+          thumbnailStatus.textContent = `Génération ${completed + 1}/${levels.length} : ${level.name}`;
+          const formData = new FormData();
+          formData.append('id', level.id);
+          const response = await fetch('Backend/API/generate_thumbnail.php', {
+            method: 'POST',
+            body: formData
+          });
+          if (!response.ok) throw new Error(`Échec pour ${level.name}.`);
+          completed += 1;
+        }
+
+        thumbnailStatus.textContent = `${completed} miniatures générées.`;
+      } catch (error) {
+        thumbnailStatus.textContent = error.message;
+      } finally {
+        generateAllBtn.disabled = false;
+      }
+    });
+  </script>
+
     <footer>
         <p>&copy; 2026 ARCH JS Team - Tout droit réservé</p>
     </footer>
