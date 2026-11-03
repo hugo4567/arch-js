@@ -7,18 +7,36 @@ require_once __DIR__ . "/Backend/CRUD/user.crud.php";
 require_once __DIR__ . "/Backend/CRUD/levels.crud.php";
 
 // --- CONFIG / DATA DYNAMIQUE ---
+function normalize_level_key($value) {
+    $value = strtolower(trim((string)$value));
+    $value = iconv('UTF-8', 'ASCII//TRANSLIT', $value);
+    $value = preg_replace('/[^a-z0-9]+/', '_', $value);
+    return trim($value, '_');
+}
+
 $items = [];
 $db_levels = get_all_level($conn);
 
+$thumbnail_index = [];
+foreach (glob(__DIR__ . '/levels/*.png') ?: [] as $png_file) {
+    $base_name = basename($png_file, '.png');
+    $thumbnail_index[normalize_level_key($base_name)] = 'levels/' . basename($png_file);
+}
+
+$fallback_images = ['img/lvl1.png', 'img/lvl2.png', 'img/lvl3.png'];
+
 if (!empty($db_levels)) {
     foreach ($db_levels as $lvl) {
+        $level_key = normalize_level_key($lvl['name']);
+        $fallback_image = $fallback_images[((int)$lvl['id']) % count($fallback_images)];
+
         $items[] = [
             "id"    => (int)$lvl['id'],
             "name"  => $lvl['name'],
             // --- PLACEHOLDERS ---
             "price" => 50, // Prix par défaut car manquant en BDD
             "desc"  => "Niveau mystère de la communauté...", // Description par défaut
-            "image" => "img/niveau87.png", // Image par défaut
+            "image" => $thumbnail_index[$level_key] ?? $fallback_image,
             // On utilise le nom de la BDD pour l'inventaire. 
             "file"  => $lvl['name'] 
         ];

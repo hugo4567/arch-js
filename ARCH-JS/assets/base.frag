@@ -10,6 +10,11 @@ uniform sampler2D uTexture;
 
 void main()
 {
-    // On multiplie la couleur de la texture par la couleur du sprite (qui contient déjà la teinte debug/matérial)
-    FragColor = texture(uTexture, fTexCoords) * fColor;
+    vec4 textureColor = texture(uTexture, fTexCoords);
+    FragColor = textureColor * fColor;
+
+    // Evite les halos et ombres residuels des pixels transparents de l'atlas.
+    if (FragColor.a < 0.01) {
+        discard;
+    }
 }
